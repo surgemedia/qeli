@@ -1,6 +1,5 @@
-Qeli
+Qeli (Queensland Education Leadership Institute)
 ====
-##Queensland Education Leadership Institute
-- Run `npm install -g grunt-cli`
-- Run `npm install -g bower`
-- `git clone https://github.com/surgemedia/qeli.git`
+- `npm install -g grunt-cli`
+- `npm install -g bower`
+- `git clone https://github.com/roots/roots.git` into your Vagrant or MAMP theme folder
