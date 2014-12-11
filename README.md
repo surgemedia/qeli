@@ -6,5 +6,5 @@ Qeli (Queensland Education Leadership Institute)
 
 
 
-***
+
 For Markup Basics [Click Here](https://help.github.com/articles/markdown-basics/)
