@@ -2,7 +2,7 @@ Qeli (Queensland Education Leadership Institute)
 ====
 - `grunt dev` Runs Once
 - `grunt watch` watches for file changes.
-
+- added Bugherd Commit Hook
 
 
 
