@@ -11,8 +11,8 @@ For Markup Basics [Click Here](https://help.github.com/articles/markdown-basics/
 https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 
 <h2>cPanel location</h2>
-- Staging URL (front end):
-- Staging URL (admin):
+- [Staging URL](http://54.79.72.151/~qeliedu/):
+- [Staging Admin](http://54.79.72.151/~qeliedu/wp):
 
 <h2>Wordpress CMS 4.0+</h2>
 
