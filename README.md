@@ -35,32 +35,32 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 
 <h2>Custom Post Types</h2>
 - Case studies
-Field Group|Field Name|Type|Notes
-------------------|------------------|------------------
-Program Basics|Title|Text|
-..|Executive Summary|WYSIWYG|
-..|Audience|WYSIWYG|
-..|Outcome|WYSIWYG|
-..|Articulation|WYSIWYG|
-..|Program Outline|WYSIWYG|
-..|Pre-requisites|Repeater: Course custom post|
-..|||
-Course Data|Cost (incl discounts)|Text|
-..|Class size|Number|
-..|Location (States)|Text|Repeater? For collapsible location and date details
-..|Date|Date|
-..|Length|Text|
-..|Delivery Method|Taxonomy|
-..|Location (Venue)|Map/Address|
-..|Facilitator|Text|
-..|Catering|Text area|
-..|||
-Additional Course Info|Related Programs|Repeater: Course custom post|Should there be a tag or category for courses?
-..|FAQs|WYSIWYG / FAQ page|
-..|Resources|WYSIWYG|
-..|Cancellation Policy|Custom post/page|Custom post or page depending on usage frequency
-..|Testimonial|Repeater: text, image and text area|
-..|Case Study|Repeater: Case study custom post|Custom post or page depending on usage frequency
+|Field Group|Field Name|Type|Notes|
+|-----------|----------|----|-----|
+|Program Basics|Title|Text||
+|..|Executive Summary|WYSIWYG||
+|..|Audience|WYSIWYG||
+|..|Outcome|WYSIWYG||
+|..|Articulation|WYSIWYG||
+|..|Program Outline|WYSIWYG||
+|..|Pre-requisites|Repeater: Course custom post||
+|..||||
+|Course Data|Cost (incl discounts)|Text||
+|..|Class size|Number||
+|..|Location (States)|Text|Repeater? For collapsible location and date details|
+|..|Date|Date||
+|..|Length|Text||
+|..|Delivery Method|Taxonomy||
+|..|Location (Venue)|Map/Address||
+|..|Facilitator|Text||
+|..|Catering|Text area||
+|..||||
+|Additional Course Info|Related Programs|Repeater: Course custom post|Should there be a tag or category for courses?|
+|..|FAQs|WYSIWYG / FAQ page||
+|..|Resources|WYSIWYG||
+|..|Cancellation Policy|Custom post/page|Custom post or page depending on usage frequency|
+|..|Testimonial|Repeater: text, image and text area||
+|..|Case Study|Repeater: Case study custom post|Custom post or page depending on usage frequency|
 - Courses
 - Testimonials
 - QELi News
