@@ -34,7 +34,7 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 - WP Super Cache
 
 <h2>Custom Post Types</h2>
-- Case studies
+Case studies
 |Field Group|Field Name|Type|Notes|
 |-----------|----------|----|-----|
 |Program Basics|Title|Text||
