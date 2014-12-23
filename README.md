@@ -35,6 +35,31 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 
 <h2>Custom Post Types</h2>
 - Case studies
+Field Group|Field Name|Type|Notes
+Program Basics|Title|Text|
+|Executive Summary|WYSIWYG|
+|Audience|WYSIWYG|
+|Outcome|WYSIWYG|
+|Articulation|WYSIWYG|
+|Program Outline|WYSIWYG|
+|Pre-requisites|Repeater: Course custom post|
+|||
+Course Data|Cost (incl discounts)|Text|
+|Class size|Number|
+|Location (States)|Text|Repeater? For collapsible location and date details
+|Date|Date|
+|Length|Text|
+|Delivery Method|Taxonomy|
+|Location (Venue)|Map/Address|
+|Facilitator|Text|
+|Catering|Text area|
+|||
+Additional Course Info|Related Programs|Repeater: Course custom post|Should there be a tag or category for courses?
+|FAQs|WYSIWYG / FAQ page|
+|Resources|WYSIWYG|
+|Cancellation Policy|Custom post/page|Custom post or page depending on usage frequency
+|Testimonial|Repeater: text, image and text area|
+|Case Study|Repeater: Case study custom post|Custom post or page depending on usage frequency
 - Courses
 - Testimonials
 - QELi News
@@ -42,7 +67,6 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 
 <h2>Custom Taxonomies - thinking here....</h2>
 - Course
-	-
 
 <h2>Build tools (see package.json) base set from Roots IO</h2>
 - LESS precompiler
@@ -52,10 +76,10 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 	- "grunt dev"
 
 <h2>Javascript Libraries</h2>
-Add all VENDOR plugins to bower and manage from there if possible. List each below if not bower-able
+-Add all VENDOR plugins to bower and manage from there if possible. List each below if not bower-able
 	- refer to bower.json for plugin packages
 	- see assets/js/vendor for deployed files
-Add all custom js plugins as individual modular files
+-Add all custom js plugins as individual modular files
 	- see assets/js/plugins for build files
 	- merged into scripts.min.js and scripts.js for deployment
 
