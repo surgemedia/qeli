@@ -11,27 +11,29 @@ For Markup Basics [Click Here](https://help.github.com/articles/markdown-basics/
 https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 
 <h2>cPanel location</h2>
-- [Staging URL](http://54.79.72.151/~qeliedu/)
-- [Staging Admin](http://54.79.72.151/~qeliedu/wp-admin/)
+- [Cpanel](https://s4.surgehost.com.au:2083)
+
 
 <h2>Wordpress CMS 4.0+</h2>
+- [Staging URL](http://54.79.72.151/~qeliedu/)
+- [Staging Admin](http://54.79.72.151/~qeliedu/wp-admin/)
 
 <h2>Roots IO Starter theme</h2>
 - Bootrap front end framework
 - Grunt, bower, node build tools
 
 <h2>Plugins</h2>
-- Advanced Custom Fields
-- Advanced Custom Fields: Options Page
-- Advanced Custom Fields: Repeater Field
-- Advanced Custom Fields: Gallery Field
-- Gravity Forms
-- Enable Media Replace
-- Regenerate Thumbnails
-- Velvet Blues Update URLs
-- Wordfence Security
-- WordPress SEO
-- WP Super Cache
+- Advanced Custom Fields : *Installed*
+- Advanced Custom Fields: Options Page : *Installed* 
+- Advanced Custom Fields: Repeater Field : *Installed*
+- Advanced Custom Fields: Gallery Field : *Installed*
+- Gravity Forms : *Installed*
+- Enable Media Replace : *Installed*
+- Regenerate Thumbnails : *Installed*
+- Velvet Blues Update URLs : *Installed*
+- Wordfence Security : *Installed*
+- WordPress SEO : *Installed*
+- WP Super Cache : *Installed*
 
 <h2>Custom Post Types</h2>
 - Case studies
