@@ -1,0 +1,235 @@
+{
+    "key": "group_54ab2668023e2",
+    "title": "Courses - Course Data",
+    "fields": [
+        {
+            "key": "field_54ab2682baefe",
+            "label": "Cost",
+            "name": "cost",
+            "prefix": "",
+            "type": "text",
+            "instructions": "Cost (including discounts)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_54ab26b1baeff",
+            "label": "Class size",
+            "name": "class_size",
+            "prefix": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_54ab286628d69",
+            "label": "Length",
+            "name": "length",
+            "prefix": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_54ab287128d6a",
+            "label": "Delivery Method",
+            "name": "delivery_method",
+            "prefix": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "post_tag",
+            "field_type": "checkbox",
+            "allow_null": 0,
+            "load_save_terms": 0,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_54ab26dabaf00",
+            "label": "Location repeator",
+            "name": "location_repeator",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_54ab271828d67",
+                    "label": "State",
+                    "name": "state",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Queensland",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54ab29cb28d6c",
+                    "label": "Venue",
+                    "name": "venue",
+                    "prefix": "",
+                    "type": "google_map",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "center_lat": "",
+                    "center_lng": "",
+                    "zoom": "",
+                    "height": ""
+                },
+                {
+                    "key": "field_54ab275528d68",
+                    "label": "Date",
+                    "name": "date",
+                    "prefix": "",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
+                    "return_format": "d\/m\/Y",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_54ab312929435",
+                    "label": "Facilitator",
+                    "name": "facilitator",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54ab313029436",
+                    "label": "Catering",
+                    "name": "catering",
+                    "prefix": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "wpautop",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "courses"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1420505668
+}

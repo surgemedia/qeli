@@ -1,0 +1,204 @@
+{
+    "key": "group_54ab2adf99813",
+    "title": "Courses - Additional Course Info",
+    "fields": [
+        {
+            "key": "field_54ab2aea481e4",
+            "label": "Related Programs",
+            "name": "related_programs",
+            "prefix": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "courses"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_54ab2b2a481e5",
+            "label": "FAQs",
+            "name": "faqs",
+            "prefix": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_54ab2b70481e6",
+            "label": "Resources",
+            "name": "resources",
+            "prefix": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1
+        },
+        {
+            "key": "field_54ab2ca5481e7",
+            "label": "Cancellation Policy",
+            "name": "cancellation_policy",
+            "prefix": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_54ab2d07481e8",
+            "label": "Testimonials",
+            "name": "testimonials",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_54ab2d20481e9",
+                    "label": "Title",
+                    "name": "title",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54ab2d49481ea",
+                    "label": "Picture",
+                    "name": "picture",
+                    "prefix": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all"
+                },
+                {
+                    "key": "field_54ab2d6a481eb",
+                    "label": "Testimonial Text",
+                    "name": "testimonial_text",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_54ab2d93481ec",
+            "label": "Case Study",
+            "name": "case_study",
+            "prefix": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "case_studies"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "courses"
+            }
+        ]
+    ],
+    "menu_order": 3,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1420505676
+}
