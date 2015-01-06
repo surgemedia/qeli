@@ -42,6 +42,10 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 - QELi News
 - QELi industry links
 
+<h2>ACF JSON Sync</h2>
+<img src="http://www.advancedcustomfields.com/wp-content/uploads/2014/12/acf-pro-sync-available.png" alt="">
+[Read More](http://www.advancedcustomfields.com/resources/synchronized-json/)
+
 <h2>Custom Taxonomies - thinking here....</h2>
 - Course
 
