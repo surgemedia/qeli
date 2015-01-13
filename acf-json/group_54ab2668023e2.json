@@ -93,8 +93,8 @@
         },
         {
             "key": "field_54ab26dabaf00",
-            "label": "Location repeator",
-            "name": "location_repeator",
+            "label": "Instances",
+            "name": "instances",
             "prefix": "",
             "type": "repeater",
             "instructions": "",
@@ -231,5 +231,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1420505668
+    "modified": 1421124117
 }
