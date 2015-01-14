@@ -1,0 +1,354 @@
+a .list-arrow{
+	margin-right: 5px;
+}
+
+.collapsed .expand{
+	.home-plus();
+}
+
+.expand{
+	.home-minus();
+}
+
+.graphic-label{
+		font-weight: bold;
+		line-height: 28px;
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 10px;
+		font-size: @font-size-h4;
+}
+
+h5.panel-title .icon-collapse-general{
+	vertical-align: -6px;
+}
+
+// TODO - walt to add these to spritesheet
+//
+
+.icon-info {
+	background-position: -320px 0;
+	height: 24px;
+	width: 24px;
+
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.icon-info-aside {
+	background-position: -360px 0;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+
+.icon-back-to-top{
+	height: 80px;
+	width: 80px;
+	display: block;
+	background-size: 80px;
+	background: url(../images/sprites/@1x/back-to-top-light.png) no-repeat;
+	&:hover{
+		background: url(../images/sprites/@1x/back-to-top-dark.png) no-repeat;
+	}
+}
+.icon-mastercard{
+	background-position: -320px -25px;
+	height: 24px;
+	width: 36px;
+	display: inline-block;
+	vertical-align: -3px;
+}
+.icon-bpay{
+	background-position: -320px -50px;
+	height: 24px;
+	width: 36px;
+	display: inline-block;
+	vertical-align: -3px;
+}
+.icon-direct{
+	background-position: -320px -75px;
+	height: 24px;
+	width: 36px;
+	display: inline-block;
+	vertical-align: -3px;
+}
+.icon-eft{
+	background-position: -320px -100px;
+	height: 24px;
+	width: 36px;
+	display: inline-block;
+	vertical-align: -3px;
+}
+.icon-cheque{
+	background-position: -320px -125px;
+	height: 24px;
+	width: 36px;
+	vertical-align: -3px;
+}
+
+
+.icon-chevron-down-line {
+	background-position: -200px 0;
+	height: 14px;
+	width: 20px;
+	display: inline-block;
+	vertical-align: -2px;
+}
+
+.icon-chevron-down-solid {
+	background-position: -200px 0;
+	height: 14px;
+	width: 20px;
+	display: inline-block;
+	vertical-align: -2px;
+}
+
+.icon-collapse-general{
+	.icon-info();
+}
+
+.icon-settings {
+	background-position: -320px -180px;
+	height: 50px;
+	width: 50px;
+}
+
+.icon-graph {
+	background-position: -320px -240px;
+	height: 50px;
+	width: 50px;
+}
+
+.icon-population {
+	background-position: -320px -300px;
+	height: 50px;
+	width: 50px;
+}
+
+.icon-wifi {
+	background-position: -180px -360px;
+	height: 50px;
+	width: 50px;
+}
+
+.icon-info-aside, .icon-settings, .icon-graph, .icon-population, .icon-wifi,
+.icon-chevron-down-line, .icon-chevron-down-solid,
+.icon-info,.icon-mastercard, .icon-bpay, .icon-direct, .icon-eft, .icon-cheque,
+.arrow-down, .arrow-up, .CPI, .employment, .exports, .icons-left-arrow, .icons-right-arrow,
+.list-arrow, .program-arrow, .resize, .unemployment, .home-plus, .home-minus, .info, .arrow-button,
+.graphic-email, .graphic-phone, .sidebar-plus, .sidebar-minus, .icon-home, .icon-search,
+.mob-nav-search, .mob-nav-toggle, .mob-nav-close,
+.contact-icon-address, .contact-icon-postal, .contact-icon-telephone, .contact-icon-email, .contact-icon-stats, .contact-icon-projects {
+	p &, a &{
+		// correction of positioning for font height
+		margin-bottom: -2px;
+	}
+
+	background-image: url(../images/sprites.png);
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+
+
+ @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+   .icon-info-aside, .icon-settings, .icon-graph, .icon-population, .icon-wifi,
+   .icon-chevron-down-line, .icon-chevron-down-solid,
+   .icon-info,.icon-mastercard, .icon-bpay, .icon-direct, .icon-eft, .icon-cheque,
+   .arrow-down, .arrow-up, .CPI, .employment, .exports, .icons-left-arrow, .icons-right-arrow, .list-arrow, .program-arrow, .resize, .unemployment, .home-plus, .home-minus, .info, .arrow-button, .graphic-email, .graphic-phone, .sidebar-plus, .sidebar-minus, .icon-home, .icon-search, .mob-nav-search, .mob-nav-toggle, .mob-nav-close,
+   .contact-icon-address, .contact-icon-postal, .contact-icon-telephone, .contact-icon-email, .contact-icon-stats, .contact-icon-projects {
+
+		background-image: url(../images/sprites@2x.png);
+		background-repeat: no-repeat;
+		background-size: 400px 500px;
+   }
+}
+
+.icon-home {
+	background-position: -125px -280px;
+	width: 20px;
+	height: 13px;
+	vertical-align: 1px;
+}
+
+.icon-search {
+	background-position: -140px -240px;
+	width: 34px;
+	height: 34px;
+}
+
+.arrow-down{
+	background-position: -165px -20px;
+	width: 16px;
+	height: 19px;
+}
+
+.arrow-up{
+	background-position: -165px 0;
+	width: 16px;
+	height: 19px;
+}
+
+.CPI{
+	background-position: 0 0;
+	width: 120px;
+	height: 120px;
+}
+
+.employment{
+	background-position: 0 -120px;
+	width: 120px;
+	height: 120px;
+}
+
+.exports{
+	background-position: 0 -240px;
+	width: 120px;
+	height: 120px;
+}
+
+.sidebar-plus {
+	background-position: -125px -200px;
+	width: 15px;
+	height: 15px;
+}
+
+.sidebar-minus {
+	background-position: -125px -220px;
+	width: 15px;
+	height: 15px;
+}
+
+.icons-left-arrow{
+	background-position: -120px -50px;
+	width: 21px;
+	height: 60px;
+}
+
+.icons-right-arrow{
+	background-position: -145px -50px;
+	width: 21px;
+	height: 60px;
+}
+
+.list-arrow{
+	background-position: -170px -68px;
+	width: 10px;
+	height: 16px;
+}
+
+.program-arrow{
+	background-position: -120px 0;
+	width: 44px;
+	height: 44px;
+}
+
+.resize{
+	background-position: -183px 0;
+	width: 0px;
+	height: 0px;
+}
+
+.unemployment{
+	background-position: 0 -360px ;
+	width: 120px;
+	height: 120px;
+}
+
+.home-plus{
+	background-position: -125px -150px ;
+	width: 19px;
+	height: 19px;
+}
+
+.home-minus{
+	background-position: -125px -170px ;
+	width: 19px;
+	height: 19px;
+}
+
+.info{
+	background-position: -165px -45px ;
+	width: 16px;
+	height: 16px;
+}
+
+.arrow-button{
+	background-position: -125px -99px ;
+	width: 19px;
+	height: 17px;
+}
+
+.graphic-email{
+	background-position: -160px -120px ;
+	width: 29px;
+	height: 25px;
+}
+
+.graphic-phone{
+	background-position: -120px -120px ;
+	width: 29px;
+	height: 25px;
+}
+
+.mob-nav-search {
+	background-position: -125px -300px ;
+	width: 30px;
+	height: 30px;
+}
+
+.mob-nav-toggle {
+	background-position: -170px -300px ;
+	width: 30px;
+	height: 30px;
+}
+
+.mob-nav-close {
+	background-position: -125px -340px ;
+	width: 16px;
+	height: 16px;
+}
+
+.contact-icon-address {
+	background-position: -250px -0px ;
+	width: 50px;
+	height: 50px;
+}
+
+.contact-icon-postal {
+	background-position: -250px -60px ;
+	width: 50px;
+	height: 50px;
+}
+
+.contact-icon-telephone {
+	background-position: -250px -120px ;
+	width: 50px;
+	height: 50px;
+}
+
+.contact-icon-email {
+	background-position: -250px -180px ;
+	width: 50px;
+	height: 50px;
+}
+
+.contact-icon-stats {
+	background-position: -250px -240px ;
+	width: 50px;
+	height: 50px;
+}
+
+.contact-icon-projects {
+	background-position: -250px -300px ;
+	width: 50px;
+	height: 50px;
+}

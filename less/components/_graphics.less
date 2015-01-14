@@ -1,0 +1,234 @@
+.graphic {
+	background: url('../img/sprite.png') 0 0 no-repeat;
+	display: inline-block;
+
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (   min--moz-device-pixel-ratio: 2),
+	only screen and (     -o-min-device-pixel-ratio: 2/1),
+	only screen and (        min-device-pixel-ratio: 2),
+	only screen and (                min-resolution: 192dpi),
+	only screen and (                min-resolution: 2dppx) {
+		background: url('../img/sprite@2x.png') 0 0 no-repeat;
+		background-size: 600px 500px;
+  	}
+
+  	&.logo {
+  		width: 134px;
+  		height: 67px;
+  	}
+
+  	&.nav-home {
+  		width: 44px;
+  		height: 35px;
+  		background-position: 0 -80px;
+  	}
+
+  	&.nav-about {
+  		width: 44px;
+  		height: 35px;
+  		background-position: -50px -80px;
+  	}
+
+  	&.nav-courses {
+  		width: 44px;
+  		height: 35px;
+  		background-position: -100px -80px;
+  	}
+
+  	&.nav-news {
+  		width: 44px;
+  		height: 35px;
+  		background-position: -150px -80px;
+  	}
+
+  	&.nav-contact {
+  		width: 44px;
+  		height: 35px;
+  		background-position: -200px -80px;
+  	}
+
+  	&.nav-search {
+  		width: 44px;
+  		height: 35px;
+  		background-position: -250px -80px;
+  	}
+
+  	&.nav-e-news {
+  		width: 44px;
+  		height: 35px;
+  		background-position: -300px -80px;
+  	}
+
+  	&.icon-close {
+  		width: 15px;
+  		height: 15px;
+  		background-position: 0 -120px;
+  	}
+
+    &.icon-close-circle {
+      width: 12px;
+      height: 12px;
+      background-position: -80px -180px;
+    }
+
+  	&.nav-menu-callout {
+  		width: 20px;
+  		height: 10px;
+  		background-position: -40px -120px;
+  	}
+
+  	&.nav-back-to-top {
+  		width: 9px;
+  		height: 9px;
+  		background-position: -80px -120px;
+  	}
+
+  	&.btn-play-sm {
+  		width: 38px;
+  		height: 38px;
+  		background-position: -360px 0;
+  	}
+
+  	&.btn-play-lg {
+  		width: 121px;
+  		height: 121px;
+  		background-position: -400px 0;
+  	}
+
+  	&.icon-phone {
+  		width: 65px;
+  		height: 65px;
+  		background-position: -280px -140px;
+  	}
+
+  	&.icon-email {
+  		width: 65px;
+  		height: 65px;
+  		background-position: -360px -140px;
+  	}
+
+    &.icon-select-expand {
+      width: 10px;
+      height: 15px;
+      background-position: -180px -120px;
+    }
+
+    &.icon-cart {
+      width: 18px;
+      height: 15px;
+      background-position: -80px -160px;
+    }
+
+    &.icon-read-more {
+      width: 29px;
+      height: 12px;
+      background-position: -120px -160px;
+    }
+
+    &.arrow-right-black {
+      width: 7px;
+      height: 12px;
+      background-position: -100px -120px;
+    }
+
+    &.icon-star {
+      width: 20px;
+      height: 19px;
+      background-position: -80px -140px;
+
+      &.selected {
+         background-position: -120px -140px;
+      }
+    }
+
+  	&.arrow-section-down {
+  		width: 41px;
+  		height: 18px;
+  		background-position: -120px -120px;
+  	}
+
+  	&.arrow-link-sq-green {
+  		width: 19px;
+  		height: 19px;
+  		background-position: 0 -140px;
+  	}
+
+  	&.arrow-link-green {
+  		width: 10px;
+  		height: 10px;
+  		background-position: -40px -140px;
+  	}
+
+  	&.arrow-link-sq-blue {
+  		width: 19px;
+  		height: 19px;
+  		background-position: 0 -160px;
+  	}
+
+  	&.arrow-link-blue {
+  		width: 10px;
+  		height: 10px;
+  		background-position: -40px -160px;
+  	}
+  	
+  	&.arrow-link-sq-pink {
+  		width: 19px;
+  		height: 19px;
+  		background-position: 0 -180px;
+  	}
+
+  	&.arrow-link-pink {
+  		width: 10px;
+  		height: 10px;
+  		background-position: -40px -180px;
+  	}
+
+  	&.icon-share {
+  		width: 20px;
+  		height: 21px;
+  		background-position: 0 -200px;
+  	}
+
+    &.footer-logo {
+      width: 100px;
+      height: 50px;
+      background-position: 0 -280px;
+    }
+
+  	&.footer-qeli {
+  		width: 30px;
+  		height: 26px;
+  		background-position: 0 -240px
+  	}
+
+  	&.footer-about {
+  		width: 30px;
+  		height: 26px;
+  		background-position: -40px -240px
+  	}
+
+  	&.footer-courses {
+  		width: 30px;
+  		height: 26px;
+  		background-position: -80px -240px
+  	}
+
+  	&.footer-news {
+  		width: 30px;
+  		height: 26px;
+  		background-position: -120px -240px
+  	}
+
+  	&.footer-legal {
+  		width: 30px;
+  		height: 26px;
+  		background-position: -160px -240px
+  	}
+
+  	&.footer-sitemap {
+  		width: 30px;
+  		height: 26px;
+  		background-position: -200px -240px
+  	}
+}

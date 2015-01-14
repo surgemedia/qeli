@@ -1,0 +1,38 @@
+.media-releases {
+
+	@media (min-width: @screen-sm-min) {
+		.col-sm-6:first-child {
+			border-right: 1px solid @gray-lighter;
+		}
+	}
+
+	.media-item {
+		margin-bottom: 15px;
+
+		p {
+			margin-bottom: 5px;
+		}
+
+		h2 {
+			margin-bottom: 5px;
+
+			a {	
+				font-size: 16px;
+				color: @gray-dark;
+			}
+
+			.graphic {
+				margin-right: 5px;
+			}
+		}
+
+		.media-link {
+			color: @gray-light;
+
+			.graphic {
+				vertical-align: -2px;
+				margin-right: 5px;
+			}
+		}
+	}
+}

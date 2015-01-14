@@ -1,0 +1,84 @@
+.theme(@color, @lighten) {
+
+	h1, h2, h3, 
+	.h1, .h2, .h3, 
+	a,
+	a:link,
+	a:hover,
+	a:focus {
+		color: @color;
+	}
+
+	.header {
+		background-color: @color;
+		margin-bottom: 25px;
+	}
+
+	.colored-background {
+		background-color: lighten(@color, @lighten);
+		margin-bottom: 30px;
+		padding-bottom: 30px;
+
+		h1 {
+			padding-top: 45px;
+		}
+	}
+	
+	.header {
+		h1 {
+			color: #fff;
+			line-height: 1;
+			margin-bottom: -0.3em;
+		}
+		padding-top: 30px;
+	}
+
+	.numbering {
+		font-family: @font-medium;
+		font-size: 18px;
+		text-align: center;
+		color: @color;
+		line-height: 1.5;
+		border: 2px solid @color;
+		width: 26px;
+		height: 26px;
+		border-radius: 26px;;
+		-webkit-border-radius: 26px;;
+	}
+}
+
+.green {
+	.theme(@green, 40%);
+
+	.arrow-link-sq {
+		.graphic.arrow-link-sq-green;
+	}
+
+	.arrow-link {
+		.graphic.arrow-link-green;
+	}
+}
+
+.blue {
+	.theme(@blue, 52%);
+
+	.arrow-link-sq {
+		.graphic.arrow-link-sq-blue;
+	}
+
+	.arrow-link {
+		.graphic.arrow-link-blue;
+	}
+}
+
+.pink {
+	.theme(@pink, 40%);
+
+	.arrow-link-sq {
+		.graphic.arrow-link-sq-pink;
+	}
+
+	.arrow-link {
+		.graphic.arrow-link-pink;
+	}
+}

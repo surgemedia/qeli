@@ -1,0 +1,113 @@
+#filters ul{
+	//background-color: #FFF3E5;
+	margin-top: 10px;
+}
+
+#courseOverview.container {
+	width: 90%;
+	margin: 0 auto !important;
+}
+
+#courseOverview .course{
+	//width: 33.333%;
+	//float: left;
+	//padding: @grid-gutter-width/2;
+	background-color: #FFF;
+	
+	// this is set by JS when the user interacts with the course
+	&.active{
+		z-index: 100;
+	}
+
+	table{
+		//margin: 1%;
+		//border: 1px solid #ddd;	
+		border-right: 1px dotted @gray-lighter;
+		padding-right: 25px;
+		display: block;
+
+		th {
+			color: @green;
+			background-color: @green-dark;
+			border: 0;
+			padding: 5px 15px 5px 15px;
+		}
+		td {
+			border: 0;
+			margin-top: 1px;
+			padding: 5px 15px 5px 0;
+
+			b {
+				text-transform: uppercase;
+			}
+		}
+
+		tr {
+			margin-bottom: 1px;
+		}
+
+		tbody tr:last-child {
+			border-top: 2px solid @gray-lighter;
+		}
+	}
+	/*
+	.btn-success {
+		background-color: lighten(@green, 30%);
+		color: @gray-dark;
+		text-transform: uppercase;
+		//padding-left: 0;
+	}
+	*/	
+	.btn-program {
+		text-transform: uppercase;
+
+		.button-variant(@gray-dark; lighten(@green, 30%); lighten(@green, 30%));
+	}
+	/*
+	th .fa{
+		font-size: 25px;
+		cursor: pointer;
+	}
+	*/
+	/*
+	&.favourite{
+		.fa-star{
+			display: block;
+		}
+	}
+	.fa-star{
+		display: none;
+	}
+
+	&.favourite{
+		.fa-star-o{
+			display: none;
+		}
+	}
+
+	.fa-star-o{
+		display: block;
+	}
+	*/
+	.icon-star {
+		cursor: pointer;
+	}
+
+	&.favourite {
+		.icon-star {
+			.graphic.icon-star.selected;
+		}
+	}
+
+	.collapse {
+		max-height: 0;
+		.transition(all 0.25);
+		display: block;
+		visibility: visible;
+		overflow: hidden;
+
+		&.in {
+			max-height: none;
+		}
+	}
+}

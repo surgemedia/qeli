@@ -1,0 +1,36 @@
+.project{
+	border-top:  10px solid @body-bg;
+	margin: 0;
+	margin-bottom: @grid-gutter-width/2;
+
+	.list-arrow {
+		vertical-align: 1px;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	h3 {
+		margin-top: 40px;
+	}
+
+	.col-sm-4 {
+		padding-left: 0;
+	}
+
+	.col-xs-12 {
+		padding-left: 0;
+		padding-right: 30px
+	}
+}
+
+
+@media (max-width: @screen-sm) {
+	.project {
+		.col-xs-12 {
+			padding-right: 0;
+		}
+	}
+}
