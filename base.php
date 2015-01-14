@@ -11,8 +11,9 @@
     do_action('get_header');
     get_template_part('templates/header');
   ?>
+<?php if( false == is_front_page()) : ?>
 
-  <div class="wrap container" role="document">
+  <div id="content-container" class="">
     <div class="content row">
       <main class="main" role="main">
         <?php include roots_template_path(); ?>
@@ -21,13 +22,30 @@
         <aside class="sidebar" role="complementary">
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
-      <?php endif; ?>
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
-
-  <?php get_template_part('templates/footer'); ?>
+          <?php get_template_part('templates/footer'); ?>
 
   <?php wp_footer(); ?>
+  </div><!-- /.content -->
+  </div><!-- /.wrap -->
+      <?php endif; ?>
+    
+<?php else : ?>
+  <div id="content-container" class="">
+  <article id="content" class="col-xs-12">
+  <div class="scroller-wrapper" >
+  <div class="scroller">
+ 
+        <?php include roots_template_path(); ?>
+       
+     
+     
+    </div><!-- /.content -->
+  </div><!-- /.wrap -->
+  </article>
+  </div>
+  
+<?php endif;?>
+
 
 </body>
 </html>
