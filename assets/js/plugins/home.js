@@ -7,7 +7,7 @@ $(document).ready(function() {
 		isMobile = true;
 	}
 
-	var homeEl = document.querySelector('.home'),
+	var homeEl = document.querySelector('.home-page'),
 		pageScroll,
 		scrollLocked = false,
 		sectionList,
