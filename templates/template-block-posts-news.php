@@ -1,39 +1,66 @@
+<div class="section news green" style="width: 1680px; height: 806px;">
+  <div class="container center-all">
+    <h2>QELi SECTOR NEWS</h2>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <?php
+        // WP_Query arguments
+        $args = array (
+        'post_type'              => 'news_article',
+        'post_count'            => 3,
+        'posts_per_page'            => 3,
 
-        <div class="section news green" style="width: 1680px; height: 806px;">
-          <div class="container center-all">
-            <h2>QELi SECTOR NEWS</h2>
-            <div class="row">
-              <div class="col-xs-12 col-md-6">
-                <h3><a href="#"><span class="graphic arrow-link"></span> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                <p>Praesent sed tortor in est bibendum blandit. Sed semper nec diam auctor porttitor. Nulla vitae aliquet sapien. Curabitur gravida, dui eleifend finibus port</p>
-                <p class="date">(April 2015)</p>
-                
-                <h3><a href="#"><span class="graphic arrow-link"></span> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                <p>Praesent sed tortor in est bibendum blandit. Sed semper nec diam auctor porttitor. Nulla vitae aliquet sapien. Curabitur gravida, dui eleifend finibus port</p>
-                <p class="date">(February 2015)</p>
-
-                <h3><a href="#"><span class="graphic arrow-link"></span> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                <p>Praesent sed tortor in est bibendum blandit. Sed semper nec diam auctor porttitor. Nulla vitae aliquet sapien. Curabitur gravida, dui eleifend finibus port</p>
-                <p class="date">(January 2015)</p>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                <h3><a href="#"><span class="graphic arrow-link"></span> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                <p>Praesent sed tortor in est bibendum blandit. Sed semper nec diam auctor porttitor. Nulla vitae aliquet sapien. Curabitur gravida, dui eleifend finibus port</p>
-                <p class="date">(January 2015)</p>
-
-                <h3><a href="#"><span class="graphic arrow-link"></span> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                <p>Praesent sed tortor in est bibendum blandit. Sed semper nec diam auctor porttitor. Nulla vitae aliquet sapien. Curabitur gravida, dui eleifend finibus port</p>
-                <p class="date">(February 2015)</p>
-
-                <h3><a href="#"><span class="graphic arrow-link"></span> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                <p>Praesent sed tortor in est bibendum blandit. Sed semper nec diam auctor porttitor. Nulla vitae aliquet sapien. Curabitur gravida, dui eleifend finibus port</p>
-                <p class="date">(January 2015)</p>
-              </div>
-            </div>
-            <a href="http://breadcrumbdigital.com.au/projects/qeli-trials/courses/" class="big-link"><span class="graphic arrow-link-sq"></span> View all news articles</a>
-          </div>
-          <div class="section-footer">
-            <span class="graphic arrow-section-down"></span>
-          </div>
-        </div>
+        );
+        // The Query
+        $query = new WP_Query( $args );
+        // The Loop
+        if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+        $query->the_post();
+        
+        get_template_part('templates/content-post-type-post-block', 'news');
       
+        }
+        } else {
+        //echo 'No Posts Sonny';
+        }
+        // Restore original Post Data
+        wp_reset_postdata()
+        ?>
+        
+      </div>
+      <div class="col-xs-12 col-md-6">
+       <?php
+        // WP_Query arguments
+        $args = array (
+        'post_type'              => 'news_article',
+        'post_count'            => 3,
+        'posts_per_page'            => 3,
+        'offset'            => 3,
+
+        
+        );
+        // The Query
+        $query = new WP_Query( $args );
+        // The Loop
+        if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
+        $query->the_post();
+        
+        get_template_part('templates/content-post-type-post-block', 'news');
+      
+        }
+        } else {
+        //echo 'No Posts Sonny';
+        }
+        // Restore original Post Data
+        wp_reset_postdata()
+        ?>
+      </div>
+    </div>
+    <a href="<?php echo site_url(); ?>/news-articles/" class="big-link"><span class="graphic arrow-link-sq"></span> View all news articles</a>
+  </div>
+  <div class="section-footer">
+    <span class="graphic arrow-section-down"></span>
+  </div>
+</div>
