@@ -30,20 +30,17 @@
       <?php endif; ?>
     
 <?php else : ?>
+  <!-- Needs Revising to extra base-*.php file @stagoo -->
   <div id="content-container" class="">
   <article id="content" class="col-xs-12">
   <div class="scroller-wrapper" >
   <div class="scroller">
- 
         <?php include roots_template_path(); ?>
-       
-     
-     
     </div><!-- /.content -->
   </div><!-- /.wrap -->
   </article>
   </div>
-  
+
 <?php endif;?>
 
 
