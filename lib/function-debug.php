@@ -5,6 +5,6 @@
 function debug($data) {
 //makes debuging easier with clear values
     echo '<pre>';
-    var_dump($data); 
+    print_r($data); 
     echo '</pre>';
 }

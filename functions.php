@@ -22,11 +22,17 @@ $roots_includes = array(
   'lib/scripts.php',         // Scripts and stylesheets
   'lib/extras.php',          // Custom functions
   'lib/function-debug.php',   //Displays arrays in a pre for easy reading
+  'lib/function-get-featured-image-url.php',   //Displays arrays in a pre for easy reading
+  'lib/function-clean-youtube-link.php',   //Displays arrays in a pre for easy reading
+
+
   //Post Types
   'lib/action-post-type-courses.php',       // Custom Post Type : courses
   'lib/action-post-type-case-studies.php',  // Custom Post Type : case-studies
   'lib/action-post-type-videos.php',        // Custom Post Type : Videos
   'lib/action-post-type-news.php',        // Custom Post Type : News
+  'lib/action-post-type-testimonials.php',        // Custom Post Type : News
+
 
 
 

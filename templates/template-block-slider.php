@@ -1,6 +1,8 @@
 <div class="section hero pink" style="width: 1661px; height: 806px;">
           <!--<img data-src="holder.js/1440x475/auto/gray" alt="..." class="img-responsive">-->
-          <div class="home-images">
+          <?php //debug(get_field('sliders')) ?>
+
+          <div class="home-images" style="background-image: url('<?php echo get_field('sliders')['0']['image']['url']; ?>')">
             
           </div>
           <div class="hero-overlay"></div>
