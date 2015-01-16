@@ -4,5 +4,5 @@
 	[<?php
 		//Used post date but also have control for date published.
 	 	echo get_the_date('F j'); 
-	 ?>]
+	 ?>] <?php edit_post_link(); ?>
 </p>
