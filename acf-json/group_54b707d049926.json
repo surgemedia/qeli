@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_54b70807fa398",
-            "label": "People_reapter",
-            "name": "people_reapter",
+            "label": "People Repeater",
+            "name": "people_repeater",
             "prefix": "",
             "type": "repeater",
             "instructions": "",
@@ -18,7 +18,7 @@
             },
             "min": "",
             "max": "",
-            "layout": "table",
+            "layout": "block",
             "button_label": "Add Row",
             "sub_fields": [
                 {
@@ -149,9 +149,9 @@
     "location": [
         [
             {
-                "param": "page",
+                "param": "page_template",
                 "operator": "==",
-                "value": "64"
+                "value": "template-ceo-board.php"
             }
         ]
     ],
@@ -161,5 +161,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421281411
+    "modified": 1421644355
 }

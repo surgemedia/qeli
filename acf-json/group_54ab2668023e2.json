@@ -84,7 +84,7 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "post_tag",
+            "taxonomy": "delivery_method",
             "field_type": "checkbox",
             "allow_null": 0,
             "load_save_terms": 0,
@@ -231,5 +231,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421124117
+    "modified": 1421639327
 }
