@@ -1,5 +1,5 @@
 <?php get_template_part('templates/head'); ?>
-<body <?php body_class(); ?>>
+<body <?php body_class( _e( get_the_title()) ); ?>>
 
   <!--[if lt IE 8]>
     <div class="alert alert-warning">
@@ -12,7 +12,7 @@
     get_template_part('templates/header');
   ?>
 
-  <div id="content-container" class="">
+  <div id="content-container" class="<?php the_field('color_scheme') ?>">
     <div class="content row">
       <main class="main" role="main">
         <?php include roots_template_path(); ?>

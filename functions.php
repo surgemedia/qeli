@@ -18,12 +18,15 @@ $roots_includes = array(
   'lib/activation.php',      // Theme activation
   'lib/titles.php',          // Page titles
   'lib/nav.php',             // Custom nav modifications
+  'lib/nav-custom-walker.php',             // Custom nav modifications
   'lib/gallery.php',         // Custom [gallery] modifications
   'lib/scripts.php',         // Scripts and stylesheets
   'lib/extras.php',          // Custom functions
   'lib/function-debug.php',   //Displays arrays in a pre for easy reading
   'lib/function-get-featured-image-url.php',   //Displays arrays in a pre for easy reading
   'lib/function-clean-youtube-link.php',   //Displays arrays in a pre for easy reading
+  'lib/function-get-templated-post.php',   //Displays arrays in a pre for easy reading
+                                          
 
 
   //Post Types
@@ -32,6 +35,8 @@ $roots_includes = array(
   'lib/action-post-type-videos.php',        // Custom Post Type : Videos
   'lib/action-post-type-news.php',        // Custom Post Type : News
   'lib/action-post-type-testimonials.php',        // Custom Post Type : News
+                                              
+                        
 
 
 
