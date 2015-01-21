@@ -31,7 +31,7 @@ function news_posts() {
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 20,
 		'slug'                => 'news-articles',
-		'menu_icon'           => 'dashicons-welcome-widgets-menus',
+		'menu_icon'           => 'dashicons-media-document',
 		'can_export'          => true,
 		'has_archive'         => true,
 		'exclude_from_search' => false,
