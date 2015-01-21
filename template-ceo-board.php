@@ -15,6 +15,7 @@ Template Name: Ceo and Board
  		get_template_part('templates/content-page', 'acf-normal'); 
 		} //Else 
 	} //For Loop
+	unset($GLOBALS['people_count']);
 	?>
 	</div>
 </div>
