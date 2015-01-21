@@ -49,7 +49,7 @@
       </tr>
       <tr>
         <td><b>Development</b></td>
-        <td><?php truncate(get_field('outcome'),10,"..."); ?></td>
+        <td><?php truncate(get_field('outcome'),9,"..."); ?></td>
       </tr>
       
       <tr>

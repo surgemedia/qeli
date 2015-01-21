@@ -26,10 +26,7 @@ $roots_includes = array(
   'lib/function-get-featured-image-url.php',   //Displays arrays in a pre for easy reading
   'lib/function-clean-youtube-link.php',   //Displays arrays in a pre for easy reading
   'lib/function-truncate-content.php',   //Displays arrays in a pre for easy reading
-
-                                         //
-                                           //
-                                          
+  'lib/function-get-tax-names.php',   //Displays arrays in a pre for easy reading
 
 
   //Post Types

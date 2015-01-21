@@ -1,6 +1,6 @@
 {
     "key": "group_54ab2adf99813",
-    "title": "Courses - Additional Course Info",
+    "title": "Post Type - Courses - Additional Course Info",
     "fields": [
         {
             "key": "field_54ab2aea481e4",
@@ -136,7 +136,7 @@
                     "label": "Answer",
                     "name": "answer",
                     "prefix": "",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -147,9 +147,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": "",
+                    "new_lines": "wpautop",
                     "readonly": 0,
                     "disabled": 0
                 }
@@ -161,7 +161,7 @@
             "name": "cancellation_policy",
             "prefix": "",
             "type": "textarea",
-            "instructions": "If a participant registers for this program and for some unforeseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within seven (7) business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between eight (8) and thirty (30) business days prior to the program commencement date, then a 25% administration charge will apply.",
+            "instructions": "",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -193,5 +193,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421804726
+    "modified": 1421822964
 }

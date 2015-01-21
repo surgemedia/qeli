@@ -1,6 +1,6 @@
 {
     "key": "group_54bc5ba46c2b6",
-    "title": "Course Overview - Featured Items",
+    "title": "Page - Course Overview - Featured Items",
     "fields": [
         {
             "key": "field_54bc5ba96494f",
@@ -64,5 +64,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421633634
+    "modified": 1421820139
 }

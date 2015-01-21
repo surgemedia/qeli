@@ -1,6 +1,6 @@
 {
     "key": "group_54ab2668023e2",
-    "title": "Courses - Course Data",
+    "title": "Post Type - Courses - Course Data",
     "fields": [
         {
             "key": "field_54ab2682baefe",
@@ -108,7 +108,7 @@
             "min": "",
             "max": "",
             "layout": "block",
-            "button_label": "Add Row",
+            "button_label": "Add Instance",
             "sub_fields": [
                 {
                     "key": "field_54ab271828d67",
@@ -255,7 +255,7 @@
                     "min": "",
                     "max": "",
                     "layout": "table",
-                    "button_label": "Add Row",
+                    "button_label": "Add Phases",
                     "sub_fields": [
                         {
                             "key": "field_54bee8ce3269d",
@@ -357,5 +357,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421803338
+    "modified": 1421818618
 }
