@@ -11,7 +11,7 @@
     <tbody>
       <tr>
         <td colspan="2">
-          <?php the_field('executive_summary'); ?>
+          <?php truncate(get_field('executive_summary'),50,"...");?>
         </td>
       </tr>
       <tr>
@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <td><b>Audience</b></td>
-        <td><?php the_field('audience'); ?></td>
+        <td><?php truncate(get_field('audience'),5,"..."); ?></td>
       </tr>
       <tr>
         <td><b>Fees</b></td>
@@ -49,7 +49,7 @@
       </tr>
       <tr>
         <td><b>Development</b></td>
-        <td><?php the_field('outcome') ?></td>
+        <td><?php truncate(get_field('outcome'),10,"..."); ?></td>
       </tr>
       
       <tr>
