@@ -11,7 +11,7 @@
     <tbody>
       <tr>
         <td colspan="2">
-          <?php truncate(the_field('executive_summary'),50,''); ?>
+          <?php the_field('executive_summary'); ?>
         </td>
       </tr>
       <tr>
@@ -49,7 +49,7 @@
       </tr>
       <tr>
         <td><b>Development</b></td>
-        <td><?php truncate(the_field('outcome'),50,'') ?></td>
+        <td><?php the_field('outcome') ?></td>
       </tr>
       
       <tr>
