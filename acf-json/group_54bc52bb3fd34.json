@@ -22,7 +22,7 @@
                 "pink": "Pink"
             },
             "default_value": {
-                "": ""
+                "blue": "blue"
             },
             "allow_null": 0,
             "multiple": 0,
@@ -40,6 +40,13 @@
                 "operator": "==",
                 "value": "page"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "courses"
+            }
         ]
     ],
     "menu_order": 0,
@@ -48,5 +55,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421641930
+    "modified": 1421804144
 }

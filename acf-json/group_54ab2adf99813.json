@@ -26,23 +26,6 @@
             "ui": 1
         },
         {
-            "key": "field_54ab2b2a481e5",
-            "label": "FAQs",
-            "name": "faqs",
-            "prefix": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
             "key": "field_54ab2b70481e6",
             "label": "Resources",
             "name": "resources",
@@ -60,23 +43,6 @@
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1
-        },
-        {
-            "key": "field_54ab2ca5481e7",
-            "label": "Cancellation Policy",
-            "name": "cancellation_policy",
-            "prefix": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
         },
         {
             "key": "field_54ab2d07481e8",
@@ -123,6 +89,93 @@
             "multiple": 1,
             "return_format": "object",
             "ui": 1
+        },
+        {
+            "key": "field_54ab2b2a481e5",
+            "label": "FAQs",
+            "name": "faqs",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_54bf03fa24b5a",
+                    "label": "Question",
+                    "name": "question",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54bf03ff24b5b",
+                    "label": "Answer",
+                    "name": "answer",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_54ab2ca5481e7",
+            "label": "Cancellation Policy",
+            "name": "cancellation_policy",
+            "prefix": "",
+            "type": "textarea",
+            "instructions": "If a participant registers for this program and for some unforeseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within seven (7) business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between eight (8) and thirty (30) business days prior to the program commencement date, then a 25% administration charge will apply.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "If a participant registers for this program and for some unforeseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within seven (7) business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between eight (8) and thirty (30) business days prior to the program commencement date, then a 25% administration charge will apply.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
         }
     ],
     "location": [
@@ -140,5 +193,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421639272
+    "modified": 1421804726
 }
