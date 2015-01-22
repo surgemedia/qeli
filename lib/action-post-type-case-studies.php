@@ -30,7 +30,7 @@ function case_studies() {
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 20,
-		'menu_icon'           => 'dashicons-megaphone',
+		'menu_icon'           => 'dashicons-clipboard',
 		'can_export'          => true,
 		'has_archive'         => true,
 		'exclude_from_search' => false,
