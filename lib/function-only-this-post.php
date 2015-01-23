@@ -9,9 +9,13 @@ function my_admin_notice() {
 =============================================*/
 function removeOtherPosts($post_type){
 	if(is_admin() && isset($_GET['post'])){
-	if(true == isset($_GET['post'])){ $post_id = $_GET['post']; }
-	//Check if the master field is selected @jwaterer 
-	if( 1 == get_field('remove_others',$post_id) ) {
+	if(true == isset($_GET['post'])){ 
+		$post_id = $_GET['post']; }
+
+		$post_type_check = get_post($post_id)->post_type;
+	//Check if the master field is selected & Check the post type is the same selected 
+	// This will prevent removing ALL master selections @jwaterer 
+	if( 1 == get_field('remove_others',$post_id) && $post_type == $post_type_check ) {
 		//Stores current course selected of the current post in admin. @jwaterer 
 		$GLOBALS['current_course'] = get_field('course',$post_id)->ID;
 		//Check all of the current post type for course value @jwaterer 
