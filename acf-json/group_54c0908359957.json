@@ -1,6 +1,6 @@
 {
     "key": "group_54c0908359957",
-    "title": "Post Type - Related Posts - Case Studies - Testimonial",
+    "title": "Post Type - Related Posts - Case Studies - Testimonial - Key People",
     "fields": [
         {
             "key": "field_54c085560f60a",
@@ -57,6 +57,13 @@
                 "operator": "==",
                 "value": "testimonial"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "key_people"
+            }
         ]
     ],
     "menu_order": 0,
@@ -65,5 +72,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421973093
+    "modified": 1421988279
 }
