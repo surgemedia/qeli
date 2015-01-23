@@ -18,17 +18,12 @@ Template Name: Media Releases
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6">
-				
 				<?php
-
 				// WP_Query arguments
 				$args = array (
 				'post_type'              => 'media_releases',
-				
 				'pagination'             => false,
 				'posts_per_page'         => '6',
-
-				
 				);
 				// The Query
 				$query = new WP_Query( $args );
@@ -43,14 +38,12 @@ Template Name: Media Releases
 						// Restore original Post Data
 					wp_reset_postdata();
 				?>
-				
 			</div>
 			<div class="col-xs-12 col-sm-6">
 				<?php
 				// WP_Query arguments
 				$args = array (
 				'post_type'              => 'media_releases',
-				
 				'pagination'             => true,
 				'posts_per_page'         => '6',
 				'offset'                 => '6',
@@ -71,7 +64,6 @@ Template Name: Media Releases
 						// Restore original Post Data
 					wp_reset_postdata();
 				?>
-				
 			</div>
 		</div>
 	</div>
