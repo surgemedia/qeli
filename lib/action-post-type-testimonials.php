@@ -31,7 +31,7 @@ function testimonials_posts() {
 		'show_in_menu'        => true,
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
-		'menu_position'       => 20,
+		'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-editor-quote',
 		'has_archive'         => true,
 		'exclude_from_search' => false,
@@ -44,3 +44,4 @@ function testimonials_posts() {
 
 // Hook into the 'init' action
 add_action( 'init', 'testimonials_posts', 0 );
+removeOtherPosts('testimonial');
