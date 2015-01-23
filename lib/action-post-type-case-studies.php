@@ -43,6 +43,4 @@ function case_studies() {
 
 // Hook into the 'init' action
 add_action( 'init', 'case_studies', 0 );
-
-
 removeOtherPosts('case_studies');
