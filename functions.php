@@ -40,9 +40,10 @@ $roots_includes = array(
   'lib/action-post-type-testimonials.php',        // Custom Post Type : News
                                               
                         
-
-
-
+/*=================================
+*      Qeli Json Import Page      *
+=================================*/
+	'lib/middleware-json.php',
 
 
 );
