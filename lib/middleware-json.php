@@ -263,21 +263,52 @@ function json_import_function(){
 				</tr>
 			</tfoot>
 			<tbody id="the-list">
-				<tr class="no-items">
-	';
-	
+				<tr class="no-items">';
+
+	// WP_Query arguments
+$WP_arrayName = array();
+$args = array (
+	'post_type'              => 'courses',
+	'status' 				=> 'public',
+	'order'                  => 'DESC',
+	'orderby'                => 'id',
+);
+//============ WP_QUERY =====ISSUE===============
+// The Query
+$json_import = new WP_Query( $args );
+
+// The Loop
+if ( $json_import->have_posts() ) {
+	while ( $json_import->have_posts() ) {
+		$json_import->the_post();
+		$the_id = get_the_id();
+		$the_title = get_the_title();
+		$the_post_array = get_post($the_id);
+		$the_meta = get_post_meta($the_id);
+		array_push($WP_arrayName, [$the_post_array->post_title,$the_post_array->ID,$the_meta ]);
+	}
+} else {
+	// no posts found
+}
+
+// Restore original Post Data
+wp_reset_postdata();
+//============ WP_QUERY =====ISSUE===============
+
 	$get_last_modified = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE '%json_%' AND post_content LIKE '%Successful%' ORDER BY post_modified DESC LIMIT 0, 1");
 	$get_last_modified_row = mysql_fetch_array($get_last_modified);
 	$sync_id = $get_last_modified_row['ID'];
 	
 	if($sync_id!=""){
+			// $Surge_json_page_contents .= ;
 			$Surge_json_page_contents .='<tr>';
 			$Surge_json_page_contents .=' <td>' . substr($get_last_modified_row['post_title'], 0, -5) . '</td>';
 			$Surge_json_page_contents .=' <td>' .$get_last_modified_row['post_modified'] . '</td>';
 			$Surge_json_page_contents .=' <td><a>'.$get_last_modified_row['post_content'].'</a></td>';
 			$Surge_json_page_contents .='</tr>';
 	} else {
-		$Surge_json_page_contents .='
+		//ISSUE - wp array name
+		$Surge_json_page_contents .= debug($WP_arrayName).'
 			<tr class="no-items">
 				<td class="colspanchange">Not found</td>
 			</tr>
