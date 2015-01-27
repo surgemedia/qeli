@@ -1,227 +1,249 @@
 {
-    "key": "group_54ab2436160e1",
-    "title": "Courses - Program Basics",
-    "fields": [
+  "key":"group_54ab2436160e1",
+  "title":"Courses - Program Basics",
+  "fields":[
+    {
+      "key":"field_54bf24134fed8",
+      "label":"Program ID",
+      "name":"programId",
+      "prefix":"",
+      "type":"text",
+      "instructions":"",
+      "required":1,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "default_value":"",
+      "placeholder":"",
+      "prepend":"",
+      "append":"",
+      "maxlength":"",
+      "readonly":0,
+      "disabled":0
+    },
+    {
+      "key":"field_54bf04ebe7cf4",
+      "label":"Facilitator",
+      "name":"facilitator",
+      "prefix":"",
+      "type":"repeater",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "min":1,
+      "max":1,
+      "layout":"table",
+      "button_label":"Add a facilitator",
+      "sub_fields":[
         {
-            "key": "field_54bf04ebe7cf4",
-            "label": "Facilitator",
-            "name": "facilitator",
-            "prefix": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "min": 1,
-            "max": 1,
-            "layout": "table",
-            "button_label": "Add a facilitator",
-            "sub_fields": [
-                {
-                    "key": "field_54bf0516e7cf5",
-                    "label": "Name",
-                    "name": "name",
-                    "prefix": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_54bf051ee7cf6",
-                    "label": "Biography",
-                    "name": "biography",
-                    "prefix": "",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "wpautop",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_54bf0528e7cf7",
-                    "label": "image",
-                    "name": "image",
-                    "prefix": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
-                }
-            ]
+          "key":"field_54bf0516e7cf5",
+          "label":"Name",
+          "name":"name",
+          "prefix":"",
+          "type":"text",
+          "instructions":"",
+          "required":0,
+          "conditional_logic":0,
+          "wrapper":{
+            "width":"",
+            "class":"",
+            "id":""
+          },
+          "default_value":"",
+          "placeholder":"",
+          "prepend":"",
+          "append":"",
+          "maxlength":"",
+          "readonly":0,
+          "disabled":0
         },
         {
-            "key": "field_54ab2484f6455",
-            "label": "Executive Summary",
-            "name": "executive_summary",
-            "prefix": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1
+          "key":"field_54bf051ee7cf6",
+          "label":"Biography",
+          "name":"biography",
+          "prefix":"",
+          "type":"textarea",
+          "instructions":"",
+          "required":0,
+          "conditional_logic":0,
+          "wrapper":{
+            "width":"",
+            "class":"",
+            "id":""
+          },
+          "default_value":"",
+          "placeholder":"",
+          "maxlength":"",
+          "rows":"",
+          "new_lines":"wpautop",
+          "readonly":0,
+          "disabled":0
         },
         {
-            "key": "field_54ab24a6f6457",
-            "label": "Outcome",
-            "name": "outcome",
-            "prefix": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1
-        },
-        {
-            "key": "field_54ab249af6456",
-            "label": "Audience",
-            "name": "audience",
-            "prefix": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1
-        },
-        {
-            "key": "field_54ab24b3f6458",
-            "label": "Articulation",
-            "name": "articulation",
-            "prefix": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1
-        },
-        {
-            "key": "field_54ab24bcf6459",
-            "label": "Program Outline",
-            "name": "program_outline",
-            "prefix": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1
-        },
-        {
-            "key": "field_54ab24d0f645a",
-            "label": "Pre-requisites",
-            "name": "pre-requisites",
-            "prefix": "",
-            "type": "post_object",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "courses"
-            ],
-            "taxonomy": "",
-            "allow_null": 1,
-            "multiple": 1,
-            "return_format": "object",
-            "ui": 1
+          "key":"field_54bf0528e7cf7",
+          "label":"image",
+          "name":"image",
+          "prefix":"",
+          "type":"text",
+          "instructions":"",
+          "required":0,
+          "conditional_logic":0,
+          "wrapper":{
+            "width":"",
+            "class":"",
+            "id":""
+          },
+          "default_value":"",
+          "placeholder":"",
+          "prepend":"",
+          "append":"",
+          "maxlength":"",
+          "readonly":0,
+          "disabled":0
         }
-    ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "courses"
-            }
-        ]
-    ],
-    "menu_order": 1,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "modified": 1421804866
+      ]
+    },
+    {
+      "key":"field_54ab2484f6455",
+      "label":"Executive Summary",
+      "name":"executive_summary",
+      "prefix":"",
+      "type":"wysiwyg",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "default_value":"",
+      "tabs":"all",
+      "toolbar":"full",
+      "media_upload":1
+    },
+    {
+      "key":"field_54ab24a6f6457",
+      "label":"Outcome",
+      "name":"outcome",
+      "prefix":"",
+      "type":"wysiwyg",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "default_value":"",
+      "tabs":"all",
+      "toolbar":"full",
+      "media_upload":1
+    },
+    {
+      "key":"field_54ab249af6456",
+      "label":"Audience",
+      "name":"audience",
+      "prefix":"",
+      "type":"wysiwyg",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "default_value":"",
+      "tabs":"all",
+      "toolbar":"full",
+      "media_upload":1
+    },
+    {
+      "key":"field_54ab24b3f6458",
+      "label":"Articulation",
+      "name":"articulation",
+      "prefix":"",
+      "type":"wysiwyg",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "default_value":"",
+      "tabs":"all",
+      "toolbar":"full",
+      "media_upload":1
+    },
+    {
+      "key":"field_54ab24bcf6459",
+      "label":"Program Outline",
+      "name":"program_outline",
+      "prefix":"",
+      "type":"wysiwyg",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "default_value":"",
+      "tabs":"all",
+      "toolbar":"full",
+      "media_upload":1
+    },
+    {
+      "key":"field_54ab24d0f645a",
+      "label":"Pre-requisites",
+      "name":"pre-requisites",
+      "prefix":"",
+      "type":"post_object",
+      "instructions":"",
+      "required":0,
+      "conditional_logic":0,
+      "wrapper":{
+        "width":"",
+        "class":"",
+        "id":""
+      },
+      "post_type":[
+        "courses"
+      ],
+      "taxonomy":"",
+      "allow_null":1,
+      "multiple":1,
+      "return_format":"object",
+      "ui":1
+    }
+  ],
+  "location":[
+    [
+      {
+        "param":"post_type",
+        "operator":"==",
+        "value":"courses"
+      }
+    ]
+  ],
+  "menu_order":1,
+  "position":"normal",
+  "style":"default",
+  "label_placement":"top",
+  "instruction_placement":"label",
+  "hide_on_screen":"",
+  "modified":1421812810
 }
