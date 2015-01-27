@@ -200,10 +200,9 @@ for($i=0; $i<$delete_other_course_num; $i++){
 		$trach_loop++;
 	}
 }
-	echo $add_to_trash;
-	if($add_to_trash!=""){
-		mysql_query($add_to_trash)or die(mysql_error()."update failed");
-	}
+if($trach_loop>=1){
+	mysql_query($add_to_trash)or die(mysql_error()."update failed");
+}
 
 //Below Script is make the page auto close while finish the file read.
 ?>

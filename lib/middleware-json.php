@@ -207,7 +207,7 @@ function json_import_function(){
 		$delete_other_course = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE 'courses' AND post_status LIKE 'publish'");// list all course active in database
 		$delete_other_course_num = mysql_num_rows($delete_other_course);
 		
-		$add_to_trash .= "UPDATE wp_posts SET post_status = 'trash' WHERE "; //query selected table and columns
+		$add_to_trash = "UPDATE wp_posts SET post_status = 'trash' WHERE "; //query selected table and columns
 		$trach_loop = 0;// set the first id with OR to make the query without error.
 		for($i=0; $i<$delete_other_course_num; $i++){
 			$delete_other_course_row = mysql_fetch_array($delete_other_course);
@@ -222,8 +222,7 @@ function json_import_function(){
 				$trach_loop++;
 			}
 		}
-		echo $add_to_trash;
-		if($add_to_trash!=""){
+		if($trach_loop>=1){
 			mysql_query($add_to_trash)or die(mysql_error()."update failed");
 		}
 
