@@ -9,32 +9,54 @@
 .feature-filters{
 	padding: 40px 0;
 	background-color: #999;
-	#filter-development h2{
+
+	#filter-primary h2{
 		color: #FFF;
 	}
 }
 
-.filter-col.months {
-    max-width: 20% !important;
-}
-
-.filter-col.months li{
-    width: 50%;
-    float: left;
+//temp
+#filter-no-results {
+	font-size: 4em;
+	text-align: center;
+	padding: 3em 0;
 }
 
 // jake to here
 
 .program-overview {
-	.selectors ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		float: left;
-	}
 
-	h3 {
-		color: @gray-dark;
+	.selectors {
+		background: #fff;
+		max-height: 0;
+		padding: 0 25px;
+		overflow: hidden;
+		.transition(all 0.5s);
+
+		&.open {
+			max-height: 800px;
+			padding: 25px;
+		}	
+
+		h3 {
+			color: @gray-dark;
+		}
+		
+		.filter-group {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			float: left;
+
+			a {
+				color: @gray;
+				
+				&.selected {
+					color: @green;
+					text-decoration: underline;
+				}
+			}
+		}	
 	}
 
 	.btn-filter {
@@ -42,17 +64,12 @@
 		border-radius: 0;
 		-webkit-border-radius: 0;
 		.button-variant(#fff; @gray-dark; @gray-dark);
-
 		color: #fff !important;
 
 		.graphic {
 			float: right;
 			margin-left: 5px;
 		}
-	}
-
-	.header {
-		margin-bottom: 25px;
 	}
 
 	.colored-background {
@@ -73,7 +90,6 @@
 			font-size: 2.4em;
 			color: @green;
 			line-height: 1;
-
 			height: 50%;
 			position: absolute;
 			top: 20%;
@@ -85,7 +101,7 @@
 		}
 	}
 
-	#filter-development {
+	#filter-primary {
 		.selectors .filter-group{
 			li {
 				width: 30%;
@@ -94,81 +110,38 @@
 		}
 	}
 
-	#filter-options {
-		max-height: 0;
-		overflow:  hidden;
-		.transition(all 0.5s);
-		position: relative;
-
-		&.open {
-			max-height: 800px;
-		}
-
-		.filter-select {
-			width: 100%;
-			background-color: #fff;
-
-			.filter-message {
-				font-size: 1.2em;
-				padding: 0 15px;
-			}
-
-			.filter-value {
-				background-color: @gray-lightest;
-				padding: 5px 10px;
-				border-radius: 5px;
-				-webkit-border-radius: 5px;
-			}
-
-			.filter-clear {
-				.icon-close-circle {
-					position: absolute;
-					margin-top: -2px;
-					margin-left: -6px;
-				}
-			}
-		}
-
+	#filter-extended {
 		.filter-col {
-			max-width: 12%;
+			width: 15%;
 			padding-right: 25px;
 			float: left;
-
-			&.development , &.skills {
-				max-width: 50%;
+			
+			&.months {
+			    max-width: 20% !important;
 			}
-		}
 
-		.filter-group {
-			a.selected {
-				color: @green;
-				text-decoration: underline;
-			}
-			&.development li , &.skills li {
-				width: 50%;
-				float: left;
+			&.months li{
+			    width: 50%;
+			    float: left;
 			}
 		}
 	}
 
-	.selectors {
-		background: #fff;
-		max-height: 0;
-		padding: 0 25px;
-		overflow: hidden;
-		.transition(all 0.5s);
-
-		a {
-			color: @gray;
+	#filter-view {
+		.filter-message {
+			font-size: 1.2em;
+			padding: 0 15px;
 		}
 
-		&.open {
-			max-height: 800px;
-			padding: 25px;
+		.filter-clear {
+			.icon-close-circle {
+				top: -12px;
+				right: -12px;
+			}
 		}
 	}
 
-	#courseOverview {
+	#course-overview {
 		max-height: 0;
 		transform: scale3d(0, 0, 0);
 		-webkit-transform: scale3d(0, 0, 0);

@@ -1,5 +1,5 @@
 <?php get_template_part('templates/head'); ?>
-<body <?php body_class( _e( get_the_title()) ); ?>>
+<body <?php body_class(); ?>>
 
   <!--[if lt IE 8]>
     <div class="alert alert-warning">

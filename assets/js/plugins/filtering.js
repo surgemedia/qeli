@@ -4,11 +4,12 @@ $("[data-target^=#outcome_]").click(function () {
 });
 
 $(document).ready(function () {
+	/*
 	var $container = $('.isotope').isotope({
 		itemSelector: '.course',
 		layoutMode: 'fitRows'
 	});
-
+	*/
 	// store filter for each group
 	/*
 	var filters = {};
@@ -103,32 +104,15 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 
-	var $dev = $('#filter-development'),
-		$devSelect = $('#filter-development .select'),
-		$devSelectors = $('#filter-development .selectors'),
-		$moreOptions = $('.btn-more-options'),
-		$optionsSelect = $('#filter-options'),
-		$optionsSelectors = $('#filter-options .selectors');
-
-	$devSelect.click(function() {
-		(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
-		$($optionsSelect).removeClass('open');
-		$($devSelectors).toggleClass('open');
-	});
-
+	var $primary = $('#filter-primary'),
+		$primarySelectors = $primary.find('.selectors'),
+		$extended = $('#filter-extended'),
+		$extendedSelectors = $extended.find('.selectors'),
+		$moreOptions = $('.btn-more-options');
 
 	$moreOptions.click(function() {
 		(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
-		$optionsSelect.toggleClass('open');
-		// $optionsSelectors.toggleClass('open');
-		// $($devSelectors).removeClass('open');
-		// $($dev).addClass('hidden');
-	});
-
-	$optionsSelect.find('a').click(function() {
-		(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
-		// $($devSelectors).removeClass('open');
-		// $($optionsSelectors).toggleClass('open');
+		$extendedSelectors.toggleClass('open');
 	});
 
 	$('#filters a').not('.btn-filter-toggle, .select, .btn-more-options').click(function() {
@@ -144,12 +128,31 @@ $(document).ready(function () {
 		layoutMode: 'fitRows'
 	});
 
+	$container.isotope( 'on', 'layoutComplete', function(isoInstance, laidOutItems) {
+		$('#filter-no-results').addClass('hidden');
+		console.dir($('#filter-no-results'));
+
+		if(laidOutItems.length == 0) {
+			$('#filter-no-results').removeClass('hidden');
+		}
+		
+		else {
+		}
+	});
+
+	$('.course th .icon-star').click(function() {
+	 	toggleFav($(this).parents('.course'));
+	});
+
+	function toggleFav($this) {
+		$this.toggleClass('favourite');
+	}
+
 	function showPrograms() {
 		$('html, body').animate({
-			scrollTop: $('#filters').offset().top
+			scrollTop: $('#filter-view').offset().top
 		}, 500);
-
-		$('#courseOverview').addClass('active');
+		$('#course-overview').addClass('active');
 	}
 
 	function singleFilter($this) {
@@ -162,12 +165,12 @@ $(document).ready(function () {
 
 		if (filterGroup === 'all') {
 	  		$('.filter-message').addClass('visuallyhidden');
-		}else{
+		}
+		else {
 			$('.filter-message').removeClass('visuallyhidden');
 		}
 
 		$('.filter-value').html(filterValurStr);
-		// $($devSelectors).removeClass('open');
 
 	  	// set filter for Isotope
 		$('.course.active').removeClass('active');
@@ -175,5 +178,8 @@ $(document).ready(function () {
 		$('.isotope').isotope({ filter: filterValue});
 
 		$('#filterOutput').html(filterValue);
+		
+		
+
 	}
 });
