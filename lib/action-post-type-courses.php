@@ -59,7 +59,7 @@ function courses() {
 		'description'         => __( 'Qeli Course Infomations ', 'text_domain' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'author', 'thumbnail', 'comments', 'revisions', ),
-		'taxonomies'          => array( 'category', 'post_tag' ),
+		'taxonomies'          => array( 'delivery_method' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
