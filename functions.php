@@ -42,13 +42,6 @@ $roots_includes = array(
 
 
 
-                                                  
-                                              
-                        
-
-
-
-
 
 );
 
