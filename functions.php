@@ -40,6 +40,11 @@ $roots_includes = array(
   'lib/action-post-type-people.php',               // Custom Post Type : Key People
 
 
+/*=================================
+*      Qeli Json Import Page      *
+=================================*/
+  'lib/middleware-json.php',
+  
 
 );
 
