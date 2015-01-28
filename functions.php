@@ -29,6 +29,7 @@ $roots_includes = array(
   'lib/function-truncate-content.php',   //Displays arrays in a pre for easy reading
   'lib/function-get-tax-names.php',   //Displays arrays in a pre for easy reading
   'lib/function-only-this-post.php',   //Displays arrays in a pre for easy reading                                      
+  
   //Post Types
   'lib/action-post-type-courses.php',              // Custom Post Type : Courses
   'lib/action-post-type-videos.php',               // Custom Post Type : Videos
@@ -37,10 +38,39 @@ $roots_includes = array(
   'lib/action-post-type-testimonials.php',         // Custom Post Type : Testimonial
   'lib/action-post-type-media-releases.php',       // Custom Post Type : Media Release
   'lib/action-post-type-people.php',               // Custom Post Type : Key People
-   
 
 
-                                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
