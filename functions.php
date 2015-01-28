@@ -38,8 +38,16 @@ $roots_includes = array(
   'lib/action-post-type-videos.php',        // Custom Post Type : Videos
   'lib/action-post-type-news.php',        // Custom Post Type : News
   'lib/action-post-type-testimonials.php',        // Custom Post Type : News
-                                              
-                        
+
+
+
+
+
+
+
+
+
+   
 /*=================================
 *      Qeli Json Import Page      *
 =================================*/
