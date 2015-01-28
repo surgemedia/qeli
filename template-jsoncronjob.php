@@ -51,15 +51,49 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 		for($i=0; $i< count($jsonIterator); $i++){
 			$course_num = $i+1;
 			//Review Here - @alex / @stagfoo - Depericated
-	/* ===============================================================================================================
-		WP_query and wpdb both not suppoprt below query. Please help to check with another Wordpress Function! 
-	=============================================================================================================== */
+
+			
+			// WP_Query arguments
+			$check_item = array (
+				'post_type'              => 'courses',
+				'post_status'            => 'Published',
+				'posts_per_page'         => '1',
+				'orderby'                => 'id',
+			);
+			
+			// The Query
+			$check_item_row = new WP_Query( $check_item );
+
+			// The Loop
+			if ( $check_item_row->have_posts() ) {
+				while ( $check_item_row->have_posts() ) {
+					$check_item_row->the_post();
+					$check_item_id = get_the_id();
+					$check_content = get_the_content();
+					$check_title = get_the_title();
+					echo $check_content;
+					echo $check_title;
+					if($check_content == $jsonIterator[$i]['programId'] && $check_title == $jsonIterator[$i]['title']){
+							$check_item_row_id = $check_item_id;
+					}
+				}
+			} else {
+				// no posts found
+				$check_item_row_id = "";
+			}
+			
+			// Restore original Post Data
+			wp_reset_postdata();
+
+
+/*			
+			//===================== More Fast way if using mysql_query ======================
+			
 			$check_item = mysql_query("SELECT * FROM wp_posts WHERE post_content = ".$jsonIterator[$i]['programId']." AND Post_title LIKE '".$jsonIterator[$i]['title']."' AND post_type LIKE 'courses' AND post_status NOT LIKE 'trash' ORDER BY ID  DESC LIMIT 0, 1");
-			//Review Here - @alex / @stagfoo - Depericated
 			$check_item_row = mysql_fetch_array($check_item);
-	/* ===============================================================================================================
-		WP_query and wpdb both not suppoprt this query. Please help to check with another Wordpress Function! 
-	=============================================================================================================== */
+			$check_item_row_id = $check_item_row['ID'];
+*/
+
 			echo '<h1>Course'.$course_num.':</h1></br>';
 			echo $jsonIterator[$i]['executiveSummary'].'</br>';
 			echo $jsonIterator[$i]['imageUrl'].'</br>';
@@ -69,6 +103,31 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			echo $jsonIterator[$i]['length'].'</br>';
 			echo $jsonIterator[$i]['deliveryMethod'].'</br>';
 			echo $jsonIterator[$i]['relatedProgramIds'].'</br>';
+			
+			
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
+			$tag_loop = 0;
+			for($j=0; $j<count($jsonIterator[$i]['tags']); $j++){
+				$tag_slug = $jsonIterator[$i]['tags'][$j]['id'];
+				$tag_name = str_replace(","," ",$jsonIterator[$i]['tags'][$j]['name']);
+				if($tag_slug!="" && $tag_name!=""){
+					wp_insert_term( $tag_name, 'post_tag', array('slug'=>$tag_slug));
+					if($tag_loop==0){
+						$add_to_tag = $tag_slug;// first one without, in the front of query code
+					}else{
+						$add_to_tag .= ", ".$tag_slug;//add the ID to delete query, If it's second one, add , to make it work with one query
+					}
+					$tag_loop++;
+				}
+			}
+			//echo 'addtotag:'.$add_to_tag."<br/>";
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
+			
+			
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 				echo '<h2>instances'.$j.':</h2></br>';
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
@@ -127,8 +186,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
-			echo $check_item_row['ID'];
-			if($check_item_row['ID']==""){
+			echo $check_item_row_id;
+			if($check_item_row_id==""){
 				$my_post = array(
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
@@ -139,17 +198,23 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				$post_ID = wp_insert_post( $my_post );
 			}else{
 				$my_post = array(
-					'ID' => $check_item_row['ID'],
+					'ID' => $check_item_row_id,
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
 					'post_content'  =>  $jsonIterator[$i]['programId'],
 					'post_status'   => 'publish',
 					'post_author'   => 1
 				);
-				$post_ID = $check_item_row['ID'];
+				$post_ID = $check_item_row_id;
 				wp_insert_post( $my_post );
 			}
-			
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
+			wp_set_post_tags( $post_ID, $add_to_tag, true );
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
 			update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
 			update_field('field_54ab2b2a481e5', $jsonIterator[$i]['faqs'], $post_ID);
 			update_field('field_54ab2ca5481e7', $jsonIterator[$i]['cancellationPolicy'], $post_ID);

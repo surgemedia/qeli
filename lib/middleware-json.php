@@ -102,16 +102,69 @@ function json_import_function(){
 		for($i=0; $i< count($jsonIterator); $i++){
 			$course_num = $i+1;
 			
-	/* ===============================================================================================================
-		WP_query and wpdb both not suppoprt below query. Please help to check with another Wordpress Function! 
-	=============================================================================================================== */
+			
+			// WP_Query arguments
+			$check_item = array (
+				'post_type'              => 'courses',
+				'post_status'            => 'Published',
+				'posts_per_page'         => '1',
+				'orderby'                => 'id',
+			);
+			
+			// The Query
+			$check_item_row = new WP_Query( $check_item );
+
+			// The Loop
+			if ( $check_item_row->have_posts() ) {
+				while ( $check_item_row->have_posts() ) {
+					$check_item_row->the_post();
+					$check_item_id = get_the_id();
+					$check_content = get_the_content();
+					$check_title = get_the_title();
+					echo $check_content;
+					echo $check_title;
+					if($check_content == $jsonIterator[$i]['programId'] && $check_title == $jsonIterator[$i]['title']){
+							$check_item_row_id = $check_item_id;
+					}
+				}
+			} else {
+				// no posts found
+				$check_item_row_id = "";
+			}
+			
+			// Restore original Post Data
+			wp_reset_postdata();
+
+/*			
+			//===================== More Fast way if using mysql_query ======================
+			
 			$check_item = mysql_query("SELECT * FROM wp_posts WHERE post_content = ".$jsonIterator[$i]['programId']." AND Post_title LIKE '".$jsonIterator[$i]['title']."' AND post_type LIKE 'courses' AND post_status NOT LIKE 'trash' ORDER BY ID  DESC LIMIT 0, 1");
 			$check_item_row = mysql_fetch_array($check_item);
 			$check_item_row_id = $check_item_row['ID'];
-	/* ===============================================================================================================
-		WP_query and wpdb both not suppoprt this query. Please help to check with another Wordpress Function! 
-	=============================================================================================================== */
+*/
 
+			
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
+			$tag_loop = 0;
+			for($j=0; $j<count($jsonIterator[$i]['tags']); $j++){
+				$tag_slug = $jsonIterator[$i]['tags'][$j]['id'];
+				$tag_name = str_replace(","," ",$jsonIterator[$i]['tags'][$j]['name']);
+				if($tag_slug!="" && $tag_name!=""){
+					wp_insert_term( $tag_name, 'post_tag', array('slug'=>$tag_slug));
+					if($tag_loop==0){
+						$add_to_tag = $tag_slug;// first one without, in the front of query code
+					}else{
+						$add_to_tag .= ", ".$tag_slug;//add the ID to delete query, If it's second one, add , to make it work with one query
+					}
+					$tag_loop++;
+				}
+			}
+			//echo 'addtotag:'.$add_to_tag."<br/>";
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
 
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
@@ -181,6 +234,13 @@ function json_import_function(){
 				$post_ID = $check_item_row_id;
 				wp_insert_post( $my_post );
 			}
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
+			wp_set_post_tags( $post_ID, $add_to_tag, true );
+	/* ===============================================================================================================
+														Add new Tag
+	=============================================================================================================== */
 			update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
 			update_field('field_54ab2b2a481e5', $jsonIterator[$i]['faqs'], $post_ID);
 			update_field('field_54ab2ca5481e7', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
@@ -310,6 +370,46 @@ endwhile;
 
 
 
+
+	// WP_Query arguments
+	$args = array (
+		'post_type'              => 'json_',
+		'order'                  => 'DESC',
+		'orderby'                => 'modified',
+	);
+	
+	// The Query
+	$get_last_modified_row = new WP_Query( $args );
+	
+	// The Loop
+	if ( $get_last_modified_row->have_posts() ) {
+		while ( $get_last_modified_row->have_posts() ) {
+			$get_last_modified_row->the_post();
+			$json_contents = get_the_content();
+			$json_title = get_the_title();
+			$json_m_d = get_the_modified_date('Y-mm-dd h:s');
+			if($json_l_mcount==0 && $json_contents == "Successful"){
+				$Surge_json_page_contents .='<tr>';
+				$Surge_json_page_contents .=' <td>' . substr($json_title, 0, -5) . '</td>';
+				$Surge_json_page_contents .=' <td>' .$json_m_d . '</td>';
+				$Surge_json_page_contents .=' <td><a>'.$json_contents.'</a></td>';
+				$Surge_json_page_contents .='</tr>';
+				$sync_id = get_the_id();
+				$json_l_mcount++;
+			}
+		}
+	} else {
+		// no posts found
+		$Surge_json_page_contents .= debug($WP_arrayName).'
+			<tr class="no-items">
+				<td class="colspanchange">Not found</td>
+			</tr>
+			';
+	}
+	
+	// Restore original Post Data
+	wp_reset_postdata();	
+/*
 	$get_last_modified = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE '%json_%' AND post_content LIKE '%Successful%' ORDER BY post_modified DESC LIMIT 0, 1");
 	$get_last_modified_row = mysql_fetch_array($get_last_modified);
 	$sync_id = $get_last_modified_row['ID'];
@@ -331,6 +431,8 @@ endwhile;
 		// no posts found
 	}
 	
+*/
+
 /*	$args = array( 'post_type' => 'json_', 'posts_per_page' => 1, 'post_content' => 'Successful', 'orderby' => 'modified', 'order' => 'DESC');
 	$loop = new WP_Query( $args );
 	
@@ -447,8 +549,61 @@ endwhile;
 	
 	echo $Surge_json_page_contents;
 	//Echo the Page Title
+	
+	
+	// WP_Query arguments
+	$args = array (
+		'post_type'              => 'page',
+		'post_status'            => 'publish',
+		's'                      => 'Json Cron job',
+		'posts_per_page'         => '1',
+		'order'                  => 'DESC',
+		'orderby'                => 'modified',
+	);
+	
+	// The Query
+	$check_cron_page = new WP_Query( $args );
+	$theme_root = site_url().'/wp-content/themes/';
+	// The Loop
+	if ( $check_cron_page->have_posts() ) {
+		while ( $check_cron_page->have_posts() ) {
+			$check_cron_page->the_post();
+			$cron_page_id = get_the_id();
+			// do something
+			echo '<h1>Json Cron job was created, Please check with page content for more details to create the cron job in your cpanel!</h1>
+			<p>Click to page: <a href="'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit">'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit</a></p>
+			<h2>Copy the permalink:[ <a>'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x</a>  ]to cpanel cron job to active it work import daliy or weekly.</h2>
+			<img src="'.$theme_root.'qeli/lecture/how_to_cron_job.jpg">';
 
 
+		}
+	} else {
+		// no posts found
+
+		$Auto_page = array(
+			'post_type' => 'page',
+			'post_name' => 'json-cron-job',
+			'post_title' => 'Json Cron job',
+			'page_template' => 'template-jsoncronjob.php',
+		);
+		
+		//If user first time chick to Course Sync. it will create the page
+		
+		// Update the post into the database
+		$cron_page_id = wp_update_post( $Auto_page );
+		
+		
+		echo '<h1>The page Json Cron job was created, Please check with page content for more details to create the cron job in your cpanel!</h1>
+		<p>Click to page: <a href="'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit">'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit</a></p>
+		<h2>Copy the permalink:[ <a>'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x</a>  ]to cpanel cron job to active it work import daliy or weekly.</h2>
+		<img src="'.$theme_root.'/qeli/lecture/how_to_cron_job.jpg">';
+	
+
+	}
+	
+	// Restore original Post Data
+	wp_reset_postdata();
+	wp_insert_term( 'brad3', 'post_tag', array('slug'=>'bbbedf'));
 }
 //end Json Import Function
 
