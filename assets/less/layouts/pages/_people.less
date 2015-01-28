@@ -1,0 +1,30 @@
+.people {
+	.person {
+			width: 150px;
+			height: 190px;
+
+		&.selected {
+			img {
+
+				border: 6px solid @pink;
+			}
+		}
+	}
+	.panel-info {
+		max-height: 0;
+		padding: 0 30px;
+
+		.icon-close {
+			display: block;
+			margin-top: 5px;
+		}
+
+		.transition(all 0.25s);
+		overflow: hidden;
+
+		&.show {
+			max-height: 500px;
+			padding: 60px 30px;
+		}
+	}
+}

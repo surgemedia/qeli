@@ -1,11 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 	var isMobile = false,
-		mobileBreakpoint = 768;
+    	mobileBreakpoint = 768;
 
-	if (window.innerWidth <= mobileBreakpoint) {
-		isMobile = true;
-	}
+    if (window.innerWidth <= mobileBreakpoint) {
+    	isMobile = true;
+    }
 
 	var homeEl = document.querySelector('.home-page'),
 		pageScroll,
@@ -16,77 +16,86 @@ $(document).ready(function() {
 		prevDeltaY = 0;
 
 	if (homeEl) {
-		init();
-
+		if (!isMobile) {
+			initScroll();
+		}
+		initVideo();
+		
 		//To do: tidy up resize
 		var timeout = null;
-
+		
 		window.onresize = function() {
 			if (timeout) {
 				clearTimeout(timeout);
 			}
 			timeout = setTimeout(function() {
 				if ($(window).width() <= mobileBreakpoint) {
-					isMobile = true;
-				} else {
-					isMobile = false;
+			    	isMobile = true;
+			    }
+			    else {
+			    	isMobile = false;
+			    }
+
+			    if (!isMobile) {
+					initScroll();
 				}
 
-				init();
+				initVideo();
 			}, 250);
 		};
 	}
 
 	function initVideo() {
 		// To do: tidy up
-		$(".video-modal").click(function(e) {
-			e.preventDefault();
+		$(".video-modal").click(function(e){
+            e.preventDefault();
 
-			var vidSrc = this.getAttribute('data-src');
-			var $frame = $("#videoModal").find('.embed-responsive > iframe');
+            var vidSrc = this.getAttribute('data-src');
+          	var $frame = $("#videoModal").find('.embed-responsive > iframe');
 
-			$frame.attr('src', '');
-			$frame.attr('src', vidSrc);
-			$($(this).attr('data-modal')).modal('show');
+            $frame.attr('src','');
+            $frame.attr('src', vidSrc);
+            $($(this).attr('data-modal')).modal('show');
 
-		});
+        });
 
-		$("#videoModal").on('hidden.bs.modal', function(e) {
-			var $frame = $(this).find('.embed-responsive > iframe');
+        $("#videoModal").on('hidden.bs.modal', function (e) {
+         	var $frame = $(this).find('.embed-responsive > iframe');
 
-			// saves the current iframe source
-			//var vidsrc = $frame.attr('src');
-			// sets the source to nothing, stopping the video
-			$frame.attr('src', '');
+            // saves the current iframe source
+            //var vidsrc = $frame.attr('src');
+            // sets the source to nothing, stopping the video
+            $frame.attr('src','');
 
-			// sets it back to the correct link so that it reloads immediately on the next window open
-			//$frame.attr('src', vidsrc);
-		});
+            // sets it back to the correct link so that it reloads immediately on the next window open
+            //$frame.attr('src', vidsrc);
+        });
 	}
 
-	function init() {
-		initVideo();
+	function initScroll() {
+		
 
 		var mainEl = document.getElementById('content-container'),
 			scrollerWrapperEl = document.querySelector('.scroller-wrapper'),
 			headerEl = document.getElementById('header'),
 			scrollerEl = document.querySelector('.scroller');
-		console.log(mainEl+scrollerWrapperEl+headerEl+scrollerEl)
-		sectionList = document.querySelectorAll('div.section');
-		sectionNext = document.querySelectorAll('div.section-footer');
 
-		sectionIdx = 0;
-		height = mainEl.offsetHeight;
+			sectionList = document.querySelectorAll('div.section');
+			sectionNext = document.querySelectorAll('div.section-footer');
+
+			sectionIdx = 0;
+			height = mainEl.offsetHeight;
 
 		// Calculate and set section dimensions
-		for (var i = 0; i < sectionList.length; i++) {
+		for(var i = 0; i < sectionList.length; i++) {
 			var section = sectionList[i];
 
 			section.style.width = mainEl.offsetWidth + 'px';
 
 			if (!isMobile) {
 				section.style.height = (window.innerHeight - headerEl.offsetHeight) + 'px';
-			} else {
+			}
+			else {
 				section.style.height = 'auto';
 				height += section.offsetHeight;
 				console.log(height);
@@ -102,14 +111,14 @@ $(document).ready(function() {
 		if (pageScroll) {
 			pageScroll.destroy();
 		}
-
+    
 		pageScroll = new IScroll('.scroller-wrapper', {
-			mouseWheel: !isMobile ? false : true,
-			deceleration: 0.01,
-			scrollY: true,
-			scrollX: false,
-			snap: !isMobile ? true : false
-		});
+										mouseWheel: !isMobile ? false : true,
+										deceleration: 0.01,
+										scrollY: true,
+	    								scrollX: false,
+	    								snap: !isMobile ? true : false
+									});
 
 		pageScroll.on('scrollStart', function() {
 			scrollLocked = true;
@@ -121,7 +130,7 @@ $(document).ready(function() {
 			}
 		});
 
-		for (var i = 0; i < sectionNext.length; i++) {
+		for(var i = 0; i < sectionNext.length; i++) {
 			var next = sectionNext[i];
 
 			next.onclick = function() {
@@ -135,7 +144,7 @@ $(document).ready(function() {
 		if (!isMobile) {
 			document.body.onmousewheel = function(e) {
 				e.preventDefault();
-
+				
 				if (scrollTimeout) {
 					clearTimeout(scrollTimeout);
 				}
@@ -152,19 +161,20 @@ $(document).ready(function() {
 
 						if (e.deltaY > 0) {
 							sectionIdx++;
-
+							
 							if (sectionIdx >= sectionList.length) {
 								sectionIdx = (sectionList.length - 1);
 							}
-
+							
 							pageScroll.scrollToElement(sectionList[sectionIdx], 750);
-						} else {
+						}
+						else {
 							sectionIdx--;
 
 							if (sectionIdx < 0) {
 								sectionIdx = 0;
 							}
-
+							
 							pageScroll.scrollToElement(sectionList[sectionIdx], 750);
 						}
 
