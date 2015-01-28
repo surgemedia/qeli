@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="http://breadcrumbdigital.com.au/projects/qeli-trials/">
+          <a href="/">
             <span class="graphic nav-home"></span>
             <span class="nav-label">Home</span>
           </a>
@@ -27,12 +27,12 @@
             <span class="graphic nav-menu-callout"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-           <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/board">CEO and board</a></li>
-           <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/ambassadors">Ambassadors</a></li>
+           <li><a href="/board">CEO and board</a></li>
+           <li><a href="/ambassadors">Ambassadors</a></li>
            <li><a href="">Results and outcomes</a></li>
            <li><a href="">Publications</a></li>
            <li><a href="">Contact QELi</a></li>
-           <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/people">People</a></li>
+           <li><a href="/people">People</a></li>
          </ul>
        </li>
        <li class="dropdown">
@@ -42,9 +42,9 @@
           <span class="graphic nav-menu-callout"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/courses/">Programs Overview</a></li>
-          <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/course-detail/">Program Example</a></li>
-          <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/cart/">Program Cart</a></li>
+          <li><a href="/courses/">Programs Overview</a></li>
+          <li><a href="/course-detail/">Program Example</a></li>
+          <li><a href="/cart/">Program Cart</a></li>
         </ul>
       </li>
       <li class="dropdown">
@@ -55,9 +55,9 @@
         </a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="">QELi Newsletters</a></li>
-          <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/media">QELi Media Releases</a></li>
-          <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/talks">QELi Talks</a></li>
-          <li><a href="http://breadcrumbdigital.com.au/projects/qeli-trials/news">Sector News</a></li>
+          <li><a href="/media">QELi Media Releases</a></li>
+          <li><a href="/talks">QELi Talks</a></li>
+          <li><a href="/news">Sector News</a></li>
         </ul>
       </li>
        <li>

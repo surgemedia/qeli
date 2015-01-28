@@ -31,11 +31,10 @@ Template Name: About - People
 						$i++;
 						$term_list .= '<li><a href="' . get_term_link( $term ) . '" title="' . sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) . '">' . $term->name . '</a></li>';
 						if ( $count != $i ) {
-						
 						}
 						else {
-					
-					}
+						
+						}
 					}
 					echo $term_list;
 					}
