@@ -1,154 +1,197 @@
 {
-  "key":"group_54ab2adf99813",
-  "title":"Courses - Additional Course Info",
-  "fields":[
-    {
-      "key":"field_54ab2aea481e4",
-      "label":"Related Programs",
-      "name":"related_programs",
-      "prefix":"",
-      "type":"post_object",
-      "instructions":"",
-      "required":0,
-      "conditional_logic":0,
-      "wrapper":{
-        "width":"",
-        "class":"",
-        "id":""
-      },
-      "post_type":[
-        "courses"
-      ],
-      "taxonomy":"",
-      "allow_null":1,
-      "multiple":1,
-      "return_format":"object",
-      "ui":1
-    },
-    {
-      "key":"field_54ab2b70481e6",
-      "label":"Resources",
-      "name":"resources",
-      "prefix":"",
-      "type":"wysiwyg",
-      "instructions":"",
-      "required":0,
-      "conditional_logic":0,
-      "wrapper":{
-        "width":"",
-        "class":"",
-        "id":""
-      },
-      "default_value":"",
-      "tabs":"all",
-      "toolbar":"full",
-      "media_upload":1
-    },
-    {
-      "key":"field_54ab2d07481e8",
-      "label":"Testimonials",
-      "name":"testimonials",
-      "prefix":"",
-      "type":"post_object",
-      "instructions":"",
-      "required":0,
-      "conditional_logic":0,
-      "wrapper":{
-        "width":"",
-        "class":"",
-        "id":""
-      },
-      "post_type":[
-        "testimonial"
-      ],
-      "taxonomy":"",
-      "allow_null":0,
-      "multiple":1,
-      "return_format":"id",
-      "ui":1
-    },
-    {
-      "key":"field_54ab2d93481ec",
-      "label":"Case Study",
-      "name":"case_study",
-      "prefix":"",
-      "type":"post_object",
-      "instructions":"",
-      "required":0,
-      "conditional_logic":0,
-      "wrapper":{
-        "width":"",
-        "class":"",
-        "id":""
-      },
-      "post_type":[
-        "case_studies"
-      ],
-      "taxonomy":"",
-      "allow_null":1,
-      "multiple":1,
-      "return_format":"object",
-      "ui":1
-    },
-    {
-      "key":"field_54ab2b2a481e5",
-      "label":"FAQs",
-      "name":"faqs",
-      "prefix":"",
-      "type":"textarea",
-      "instructions":"",
-      "required":0,
-      "conditional_logic":0,
-      "wrapper":{
-        "width":"",
-        "class":"",
-        "id":""
-      },
-      "default_value":"",
-      "placeholder":"",
-      "maxlength":"",
-      "rows":"",
-      "new_lines":"wpautop",
-      "readonly":0,
-      "disabled":0
-    },
-    {
-      "key":"field_54ab2ca5481e7",
-      "label":"Cancellation Policy",
-      "name":"cancellation_policy",
-      "prefix":"",
-      "type":"textarea",
-      "instructions":"If a participant registers for this program and for some unforeseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within seven (7) business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between eight (8) and thirty (30) business days prior to the program commencement date, then a 25% administration charge will apply.",
-      "required":1,
-      "conditional_logic":0,
-      "wrapper":{
-        "width":"",
-        "class":"",
-        "id":""
-      },
-      "default_value":"If a participant registers for this program and for some unforeseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within seven (7) business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between eight (8) and thirty (30) business days prior to the program commencement date, then a 25% administration charge will apply.",
-      "placeholder":"",
-      "maxlength":"",
-      "rows":"",
-      "new_lines":"wpautop",
-      "readonly":0,
-      "disabled":0
-    }
-  ],
-  "location":[
-    [
-      {
-        "param":"post_type",
-        "operator":"==",
-        "value":"courses"
-      }
-    ]
-  ],
-  "menu_order":3,
-  "position":"normal",
-  "style":"default",
-  "label_placement":"top",
-  "instruction_placement":"label",
-  "hide_on_screen":"",
-  "modified":1421812948
+    "key": "group_54ab2adf99813",
+    "title": "Courses - Additional Course Info",
+    "fields": [
+        {
+            "key": "field_54ab2aea481e4",
+            "label": "Related Programs",
+            "name": "related_programs",
+            "prefix": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "courses"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_54ab2b70481e6",
+            "label": "Resources",
+            "name": "resources",
+            "prefix": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1
+        },
+        {
+            "key": "field_54ab2d07481e8",
+            "label": "Testimonials",
+            "name": "testimonials",
+            "prefix": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "testimonial"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_54ab2d93481ec",
+            "label": "Case Study",
+            "name": "case_study",
+            "prefix": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "case_studies"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_54ab2b2a481e5",
+            "label": "FAQs",
+            "name": "faqs",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_54bf03fa24b5a",
+                    "label": "Question",
+                    "name": "question",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54bf03ff24b5b",
+                    "label": "Answer",
+                    "name": "answer",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_54ab2ca5481e7",
+            "label": "Cancellation Policy",
+            "name": "cancellation_policy",
+            "prefix": "",
+            "type": "textarea",
+            "instructions": "If a participant registers for this program and for some unforeseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within seven (7) business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between eight (8) and thirty (30) business days prior to the program commencement date, then a 25% administration charge will apply.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "If a participant registers for this program and for some unforeseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within seven (7) business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between eight (8) and thirty (30) business days prior to the program commencement date, then a 25% administration charge will apply.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "courses"
+            }
+        ]
+    ],
+    "menu_order": 3,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1421804726
 }
