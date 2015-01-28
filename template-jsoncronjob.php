@@ -51,9 +51,15 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 		for($i=0; $i< count($jsonIterator); $i++){
 			$course_num = $i+1;
 			//Review Here - @alex / @stagfoo - Depericated
+	/* ===============================================================================================================
+		WP_query and wpdb both not suppoprt below query. Please help to check with another Wordpress Function! 
+	=============================================================================================================== */
 			$check_item = mysql_query("SELECT * FROM wp_posts WHERE post_content = ".$jsonIterator[$i]['programId']." AND Post_title LIKE '".$jsonIterator[$i]['title']."' AND post_type LIKE 'courses' AND post_status NOT LIKE 'trash' ORDER BY ID  DESC LIMIT 0, 1");
 			//Review Here - @alex / @stagfoo - Depericated
 			$check_item_row = mysql_fetch_array($check_item);
+	/* ===============================================================================================================
+		WP_query and wpdb both not suppoprt this query. Please help to check with another Wordpress Function! 
+	=============================================================================================================== */
 			echo '<h1>Course'.$course_num.':</h1></br>';
 			echo $jsonIterator[$i]['executiveSummary'].'</br>';
 			echo $jsonIterator[$i]['imageUrl'].'</br>';
@@ -182,6 +188,43 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 	}
 }
 
+
+
+/*===========================================
+			Delete Post Function
+===========================================*/
+
+// WP_Query arguments to check all course which avaliable in Web system.
+$delete_other_course = array (
+'post_type'              => 'courses',
+'post_status'            => 'publish',
+);
+
+// The Query
+$delete_other_course_row = new WP_Query( $delete_other_course );
+while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post(); 
+
+//echo print_r(array_keys($all_courses_id)).'<br/>';
+$delete_other_course_id = get_the_id();
+//echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>';
+if($all_courses_id[$delete_other_course_id]=='on'){
+	echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
+}else{
+	echo $delete_other_course_id.' will delete.<br/>';
+	wp_trash_post( $delete_other_course_id );
+}
+endwhile;
+
+
+
+
+/*
+
+
+
+//============================Mysql_code for enable if request to improve del post speed within just two query! But will make system not safe.============================//
+
+
 $delete_other_course = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE 'courses' AND post_status LIKE 'publish'");// list all course active in database
 $delete_other_course_num = mysql_num_rows($delete_other_course);
 
@@ -203,7 +246,7 @@ for($i=0; $i<$delete_other_course_num; $i++){
 if($trach_loop>=1){
 	mysql_query($add_to_trash)or die(mysql_error()."update failed");
 }
-
+*/
 //Below Script is make the page auto close while finish the file read.
 ?>
 

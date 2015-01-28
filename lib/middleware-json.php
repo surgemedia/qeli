@@ -101,8 +101,18 @@ function json_import_function(){
 
 		for($i=0; $i< count($jsonIterator); $i++){
 			$course_num = $i+1;
+			
+	/* ===============================================================================================================
+		WP_query and wpdb both not suppoprt below query. Please help to check with another Wordpress Function! 
+	=============================================================================================================== */
 			$check_item = mysql_query("SELECT * FROM wp_posts WHERE post_content = ".$jsonIterator[$i]['programId']." AND Post_title LIKE '".$jsonIterator[$i]['title']."' AND post_type LIKE 'courses' AND post_status NOT LIKE 'trash' ORDER BY ID  DESC LIMIT 0, 1");
 			$check_item_row = mysql_fetch_array($check_item);
+			$check_item_row_id = $check_item_row['ID'];
+	/* ===============================================================================================================
+		WP_query and wpdb both not suppoprt this query. Please help to check with another Wordpress Function! 
+	=============================================================================================================== */
+
+
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
@@ -150,7 +160,7 @@ function json_import_function(){
 														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
-			if($check_item_row['ID']==""){
+			if($check_item_row_id==""){
 				$my_post = array(
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
@@ -161,14 +171,14 @@ function json_import_function(){
 				$post_ID = wp_insert_post( $my_post );
 			}else{
 				$my_post = array(
-					'ID' => $check_item_row['ID'],
+					'ID' => $check_item_row_id,
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
 					'post_content'  =>  $jsonIterator[$i]['programId'],
 					'post_status'   => 'publish',
 					'post_author'   => 1
 				);
-				$post_ID = $check_item_row['ID'];
+				$post_ID = $check_item_row_id;
 				wp_insert_post( $my_post );
 			}
 			update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
@@ -203,7 +213,40 @@ function json_import_function(){
 		);
 		// Update the post into the database
 		wp_update_post( $Complete_update );
+		
+		
+		
+/*===========================================
+			Delete Post Function
+===========================================*/
 
+// WP_Query arguments to check all course which avaliable in Web system.
+$delete_other_course = array (
+'post_type'              => 'courses',
+'post_status'            => 'publish',
+);
+
+// The Query
+$delete_other_course_row = new WP_Query( $delete_other_course );
+while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post(); 
+
+//echo print_r(array_keys($all_courses_id)).'<br/>';
+$delete_other_course_id = get_the_id();
+//echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>';
+if($all_courses_id[$delete_other_course_id]=='on'){
+	echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
+}else{
+	echo $delete_other_course_id.' will delete.<br/>';
+	wp_trash_post( $delete_other_course_id );
+}
+endwhile;
+		
+		
+
+/*		
+		//============================Mysql_code for enable if request to improve del post speed within just two query! But will make system not safe.============================//
+		
+		
 		$delete_other_course = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE 'courses' AND post_status LIKE 'publish'");// list all course active in database
 		$delete_other_course_num = mysql_num_rows($delete_other_course);
 		
@@ -225,7 +268,7 @@ function json_import_function(){
 		if($trach_loop>=1){
 			mysql_query($add_to_trash)or die(mysql_error()."update failed");
 		}
-
+*/
 	}
 	
 	
@@ -265,40 +308,12 @@ function json_import_function(){
 			<tbody id="the-list">
 				<tr class="no-items">';
 
-	// WP_Query arguments
-$WP_arrayName = array();
-$args = array (
-	'post_type'              => 'courses',
-	'status' 				=> 'public',
-	'order'                  => 'DESC',
-	'orderby'                => 'id',
-);
-//============ WP_QUERY =====ISSUE===============
-// The Query
-$json_import = new WP_Query( $args );
 
-// The Loop
-if ( $json_import->have_posts() ) {
-	while ( $json_import->have_posts() ) {
-		$json_import->the_post();
-		$the_id = get_the_id();
-		$the_title = get_the_title();
-		$the_post_array = get_post($the_id);
-		$the_meta = get_post_meta($the_id);
-		array_push($WP_arrayName, [$the_post_array->post_title,$the_post_array->ID,$the_meta ]);
-	}
-} else {
-	// no posts found
-}
-
-// Restore original Post Data
-wp_reset_postdata();
-//============ WP_QUERY =====ISSUE===============
 
 	$get_last_modified = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE '%json_%' AND post_content LIKE '%Successful%' ORDER BY post_modified DESC LIMIT 0, 1");
 	$get_last_modified_row = mysql_fetch_array($get_last_modified);
 	$sync_id = $get_last_modified_row['ID'];
-	
+
 	if($sync_id!=""){
 			// $Surge_json_page_contents .= ;
 			$Surge_json_page_contents .='<tr>';
