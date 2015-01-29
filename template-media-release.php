@@ -68,4 +68,4 @@ Template Name: Media Releases
 		</div>
 	</div>
 </article>
-<?php endwhile;
+<?php endwhile;?>

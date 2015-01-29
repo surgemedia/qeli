@@ -13,20 +13,22 @@
   ?>
 
   <div id="content-container" class="<?php the_field('color_scheme') ?>">
-    <div class="content row">
-      <main class="main" role="main">
+    <div class="col-xs-12">
+      <main class="row" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
       <?php if (roots_display_sidebar()) : ?>
         <aside class="sidebar" role="complementary">
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
-          <?php get_template_part('templates/footer'); ?>
+         
   <?php endif; ?>
-  <?php wp_footer(); ?>
-  </div><!-- /.content -->
-  </div><!-- /.wrap -->
 
-  
+
+
+  </div><!-- /.content -->
+</div><!-- /.wrap -->
+<?php get_template_part('templates/footer'); ?>
+<?php wp_footer(); ?>
 </body>
 </html>

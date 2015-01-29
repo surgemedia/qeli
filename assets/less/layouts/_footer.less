@@ -1,24 +1,39 @@
 footer {
+	background-color: @gray-lightest;
 	margin-top: 2em;
 
 	h2 {
+		border-top: 1px solid @gray-lighter;
 		font-size: 1em;
+		line-height: 1;
 		text-transform: initial;
 		color: @gray !important;
 		margin: 5px 0;
+		padding: 10px 0;
 
 		a, a:link {
 			color: @gray !important;
 		}
+
+		.graphic {
+			vertical-align: -8px;
+			margin-right: 5px;
+		}
 	}
 
 	ul {
+		border-top: 1px solid @gray-lighter;
 		list-style: none;
 		margin: 0;
 		padding: 0;
 
 		a, a:link {
 			color: @gray !important;
+		}
+
+		li {
+			border-bottom: 1px solid @gray-lighter;
+			padding: 5px 0;
 		}
 	}
 
@@ -38,25 +53,22 @@ footer {
 		margin-top: 35px;
 	}
 
-	.row {
-		border-top: 1px solid @green;
-		padding-top: 15px;
-		padding-bottom: 15px;
-	}
-
-	.container {
-		max-width: 625px;
-	}
-
 	.container .row:first-child {
 		border-top: 0;
 	}
 
 	.copyright {
-		background-color: @gray-lightest;
+		margin-top: 55px;
+		padding-bottom: 15px;
+		
+		.footer-logo {
+			margin-top: -55px;
+		}	
 	}
+	
+	
 }
 
 .content-info {
-	border-top: 1px solid @green;
+	
 }
