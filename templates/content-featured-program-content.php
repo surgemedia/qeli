@@ -1,3 +1,4 @@
-<h3><?php echo  the_title(); ?></h3>
-<?php the_field('executive_summary',$post->ID); ?>
-<a href="?php the_permalink(); ?>">Read More</a>
+<div class="col-xs-12 col-sm-4 text-blue">
+	<?php echo  the_title(); ?>
+	<br><a href="<?php the_permalink(); ?>" class="btn btn-default">More about this program</a>
+</div>

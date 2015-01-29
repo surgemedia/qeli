@@ -287,7 +287,7 @@
     <?php
     //Gets a templated post from the ID
     $args = array (
-    'post_type'                 => 'courses',
+    'post_type'     => 'courses',
     );
     // The Query
     $query = new WP_Query( $args );
