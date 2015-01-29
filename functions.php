@@ -19,7 +19,7 @@ $roots_includes = array(
   'lib/titles.php',          // Page titles
   'lib/nav.php',             // Custom nav modifications
   'lib/action-registor-menu-locations.php', // Custom nav modifications
-  
+  'lib/function_enable_session.php', //Enable the Session Function to Cart
   'lib/gallery.php',         // Custom [gallery] modifications
   'lib/scripts.php',         // Scripts and stylesheets
   'lib/extras.php',          // Custom functions
