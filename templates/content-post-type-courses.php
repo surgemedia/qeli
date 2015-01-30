@@ -3,7 +3,9 @@
     <thead>
       <tr>
         <th colspan="2">
-          <?php the_title(); ?>
+          <?php the_title(); 
+		  		$courseid = get_the_ID();
+		  ?>
           <span class="graphic icon-star pull-right"></span>
         </th>
       </tr>
@@ -54,7 +56,20 @@
       
       <tr>
         <td>
-          <a href="<?php echo site_url(); ?>/cart/" class="btn btn-program"><span class="graphic icon-cart"></span> Add to cart</a>
+        
+        <?php
+			$program_id = get_field('programId'); //output the Program ID
+        	if($program_id){
+				echo '
+					<form action="'.site_url().'/cart/" method="post" id="course-'.$program_id.'">
+						<input type="hidden" name="programid" value="'.$program_id.'" /> 
+						<input type="hidden" name="postid" value="'.$courseid.'" /> 
+					</form>
+				'; // If have this Program, Print the form to active add-to-cart
+				$sumbit_id = "onclick=\"document.getElementById('course-".$program_id."').submit();\" "; //add the function to button.
+			}
+		?>
+          <a href="#" class="btn btn-program" <?php echo $sumbit_id; ?>><span class="graphic icon-cart"></span> Add to cart</a>
         </td>
         <td>
           <a href="<?php echo the_permalink(); ?>" class="btn btn-program  "><span class="graphic icon-read-more"></span> Read More</a>
