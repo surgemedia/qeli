@@ -9,16 +9,6 @@
 ============================================*/
 
 
-add_action('init', 'myStartSession', 1);
-add_action('wp_logout', 'myEndSession');
-add_action('wp_login', 'myEndSession');
+//Request Install "WP Session Manager", more details: http://jumping-duck.com/wordpress/plugins/wp-session-manager/ 
 
-function myStartSession() {
-    if(!session_id()) {
-        session_start();
-    }
-}
-
-function myEndSession() {
-    session_destroy ();
-}
+add_filter( 'wp_session_expiration', function() { return 60 * 60; } ); // Set expiration to 1 hour
