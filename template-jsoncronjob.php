@@ -243,9 +243,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
 			update_field('field_54ab2b2a481e5', $jsonIterator[$i]['faqs'], $post_ID);
 			update_field('field_54ab2ca5481e7', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
-	
-			update_field('field_54bf24134fed8', $jsonIterator[$i]['programId'], $post_ID);
-			update_field('field_54bf0516e7cf5', $jsonIterator[$i]['title'], $post_ID);
+			update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
+			update_field('field_54c9889071a6e', $jsonIterator[$i]['programId'], $post_ID);
 			update_field('field_54ab2484f6455', $jsonIterator[$i]['executiveSummary'], $post_ID);
 			update_field('field_54ab24a6f6457', $jsonIterator[$i]['outcome'], $post_ID);
 			update_field('field_54ab249af6456', $jsonIterator[$i]['audience'], $post_ID);

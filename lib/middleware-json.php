@@ -622,7 +622,7 @@ endwhile;
 		echo '<h1>The page Json Cron job was created, Please check with page content for more details to create the cron job in your cpanel!</h1>
 		<p>Click to page: <a href="'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit">'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit</a></p>
 		<h2>Copy the permalink:[ <a>'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x</a>  ]to cpanel cron job to active it work import daliy or weekly.</h2>
-		<img src="'.$theme_root.'/qeli/lecture/how_to_cron_job.jpg">';
+		<img src="'.$theme_root.'/qeli/assets/img/how_to_cron_job.jpg">';
 	
 
 	}
