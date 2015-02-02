@@ -182,12 +182,7 @@
 								</div>
 								<div id="collapse-prereq" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-prereq">
 									<div class="panel-body">
-										<?php
-										for ($i=0; $i < sizeof(get_field('prerequisites')); $i++) { ?>
-										<li>
-											<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('prerequisites')[$i]); ?></a>
-										</li>
-										<?php } // for loop ?>
+										<?php get_field('prerequisites'); ?>
 									</div>
 								</div>
 							</div>
@@ -231,11 +226,15 @@
 									<div class="panel-body">
 										<ul>
 											<?php
-											for ($i=0; $i < sizeof(get_field('prerequisites')); $i++) { ?>
-											<li>
-												<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('prerequisites')[$i]); ?></a>
-											</li>
-											<?php } // for loop ?>
+										for ($i=0; $i < sizeof(get_field('related_programs')); $i++) { ?>
+										<?php if(isset(get_field('related_programs')[$i])) { ?>
+										<li>
+											<a href="<?php echo get_permalink(get_field('related_programs')[$i]); ?>"><?php echo get_the_title(get_field('related_programs')[$i]); ?></a>
+										</li>
+										<?php } else {
+											get_template_part('templates/content', 'no-posts');
+											} ?>
+										<?php } // for loop ?>
 										</ul>
 									</div>
 								</div>
@@ -248,7 +247,8 @@
 			<div class="row">
 				<div class="container">
 					<div class="col-sm-8">
-					
+					<div class="case-study section">
+						<h2>Case Study</h2>
 						<?php
 						// WP_Query arguments
 						$args = array (
@@ -273,7 +273,7 @@
 						// WP_Query arguments
 
 						?>
-						
+						</div>
 				
 					</div>
 				</div>
