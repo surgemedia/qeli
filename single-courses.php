@@ -7,18 +7,33 @@
 				</div>
 			</div>
 			<div class="container">
-				<div class="row facilitator-item">
-					<div class="hidden-xs col-sm-2">
-						<img src="<?php echo get_field('facilitator')[0]['image']['url'] ?>" alt="200x200" class="img-circle img-responsive" data-src="<?php echo get_field('facilitator')[0]['image']['url'] ?>" data-holder-rendered="true">
-					</div>
-					<div class="col-xs-12 col-sm-8">
-						<h2>Facilitator</h2>
-						<h3 class="author-name"><?php echo get_field('facilitator')[0]['name'] ?></h3>
-						<div class="item-text">
-							<?php echo get_field('facilitator')[0]['biography']?>
-						</div>
-					</div>
-				</div>		</div>
+				<h2>Facilitator</h2>
+						<?php
+						$course_id = get_the_ID();
+						// WP_Query arguments
+						$args = array (
+						'post_type'     => 'key_people',
+						'meta_query'    => array( 
+						array( 'key' => 'remove_others', 'value'     => '1',),
+						array( 'key' => 'course', 'value'     => $course_id,),
+							),
+						);
+						// The Query
+						$query = new WP_Query( $args );
+						if ( $query->have_posts() ) {
+						while ( $query->have_posts() ) {
+						$query->the_post();
+						get_template_part('templates/content-post-type', 'course-facilitator');
+						$GLOBALS['course-facilitator'] = get_the_title();
+						}
+						} else {
+						get_template_part('templates/content', 'no-posts');
+						}
+						// Restore original Post Data
+						wp_reset_postdata();
+						// WP_Query arguments
+						?>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -60,7 +75,7 @@
 											</tr>
 											<tr>
 												<td><strong>Facilitator: </strong></td>
-												<td><?php echo get_field('facilitator')[0]['name'] ?></td>
+												<td><?php echo $GLOBALS['course-facilitator'] ?></td>
 											</tr>
 										</tbody>
 									</table>
@@ -96,7 +111,7 @@
 						<h2>Featured Person</h2>
 						<?php
 						// WP_Query arguments
-						$course_id = get_the_ID();
+						
 						$args = array (
 						'post_type'     => 'testimonial',
 						'meta_query'    => array( 
@@ -271,8 +286,13 @@
 						<div class="panel-group" id="accordion-faq" role="tablist">
 							<?php
 							for ($i=0; $i < sizeof(get_field('faqs')); $i++) {
-							$GLOBALS['FAQ_count'] = $i; //extends scope for the instance loop
+							$GLOBALS['FAQ_count'] = $i; 
+							//extends scope for the instance loop
+							 if(isset(get_field('faqs')[$GLOBALS['FAQ_count']]['question'])){
 							get_template_part('templates/content-post-type', 'course-acf-FAQ');
+							} else { 
+								get_template_part('templates/content', 'no-posts');
+							}
 							}
 							unset($GLOBALS['FAQ_count']);
 							?>
@@ -291,3 +311,4 @@
 			</div>
 			<hr>
 		</article>
+		<?php unset($GLOBALS['course-facilitator']); ?>
