@@ -175,7 +175,7 @@ function json_import_function(){
 				$cata_slug = $jsonIterator[$i]['categories'][$j]['id'];
 				$cata_name = str_replace(","," ",$jsonIterator[$i]['categories'][$j]['name']);
 				if($cata_slug!="" && $cata_name!=""){
-					wp_insert_term( $cata_name, 'post_tag', array('slug'=>$cata_slug));
+					wp_insert_term( $cata_name, 'category', array('slug'=>$cata_slug));
 					if($cata_loop==0){
 						$add_to_cata = $cata_slug;// first one without, in the front of query code
 					}else{
@@ -263,7 +263,7 @@ function json_import_function(){
 											    Add new Tag and Catagories
 	=============================================================================================================== */
 			wp_set_post_tags( $post_ID, $add_to_tag, true );
-			wp_set_post_tags( $post_ID, $add_to_cata, true );
+			wp_set_post_categories( $post_ID, $add_to_cata, true );
 	/* ===============================================================================================================
 												Add new Tag and Catagories
 	=============================================================================================================== */
