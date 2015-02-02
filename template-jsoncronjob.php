@@ -126,6 +126,30 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 	/* ===============================================================================================================
 														Add new Tag
 	=============================================================================================================== */
+
+
+
+	/* ===============================================================================================================
+												     Add new Catagories
+	=============================================================================================================== */
+			$cata_loop = 0;
+			for($j=0; $j<count($jsonIterator[$i]['categories']); $j++){
+				$cata_slug = $jsonIterator[$i]['categories'][$j]['id'];
+				$cata_name = str_replace(","," ",$jsonIterator[$i]['categories'][$j]['name']);
+				if($cata_slug!="" && $cata_name!=""){
+					wp_insert_term( $cata_name, 'post_tag', array('slug'=>$cata_slug));
+					if($cata_loop==0){
+						$add_to_cata = $cata_slug;// first one without, in the front of query code
+					}else{
+						$add_to_cata .= ", ".$cata_slug;//add the ID to delete query, If it's second one, add , to make it work with one query
+					}
+					$cata_loop++;
+				}
+			}
+			//echo 'addtotag:'.$add_to_tag."<br/>";
+	/* ===============================================================================================================
+													  Add new Catagories
+	=============================================================================================================== */
 			
 			
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
@@ -209,11 +233,12 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				wp_insert_post( $my_post );
 			}
 	/* ===============================================================================================================
-														Add new Tag
+											    Add new Tag and Catagories
 	=============================================================================================================== */
 			wp_set_post_tags( $post_ID, $add_to_tag, true );
+			wp_set_post_tags( $post_ID, $add_to_cata, true );
 	/* ===============================================================================================================
-														Add new Tag
+												Add new Tag and Catagories
 	=============================================================================================================== */
 			update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
 			update_field('field_54ab2b2a481e5', $jsonIterator[$i]['faqs'], $post_ID);
