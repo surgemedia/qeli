@@ -140,7 +140,7 @@ $(document).ready(function () {
 		}
 	});
 
-	$('.course th .icon-star').click(function() {
+	$('.course .icon-star').click(function() {
 	 	toggleFav($(this).parents('.course'));
 	});
 
@@ -160,7 +160,7 @@ $(document).ready(function () {
 		$this.parent('li').addClass('active');
 
 		var filterGroup = $this.attr('data-filter-group');
-		var filterValurStr = $this.attr('data-value-str');
+		var filterValurStr = 'Showing results for: ' + $this.attr('data-value-str');
 		var filterValue = $this.attr('data-filter');
 
 		if (filterGroup === 'all') {
