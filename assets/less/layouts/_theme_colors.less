@@ -20,18 +20,24 @@
 		margin-bottom: 30px;
 		padding-bottom: 30px;
 
+		&.dark {
+			background-color: lighten(@color, @lighten * 0.6);
+		}
+
 		h1 {
-			padding-top: 45px;
+			padding-top: 28px;
+			margin-bottom: 18px;
 		}
 	}
 	
 	.header {
+		//padding-top: 30px;
+
 		h1 {
 			color: #fff;
 			line-height: 1;
-			margin-bottom: -0.3em;
+		
 		}
-		padding-top: 30px;
 	}
 
 	.numbering {

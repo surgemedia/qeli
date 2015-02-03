@@ -6,7 +6,7 @@
 }
 
 .navbar {
-	padding: 40px 0 0;
+	//padding: 20px 0 0;
 	margin-bottom: 0;
 
 	.logo {
@@ -23,6 +23,14 @@
 	}
 
 	a {
+		font-family: @font-book;
+		font-size: 14px;
+		text-transform: lowercase;
+		color: #000;
+		line-height: 1;
+		text-align: center;
+		display: block;
+		margin-top: 10px;
 		padding: 0 8px !important;
 
 		&:hover,
@@ -30,26 +38,47 @@
 			text-decoration: none !important;
 		}
 
-		.graphic {
-			margin: 0 auto;
+		.nav-menu-callout {
+			opacity: 0;
+			margin: 0 auto 0;
 			display: block;
 			position: relative;
 		}
+	}
 
-		.nav-label {
-			font-family: @font-book;
-			font-size: 14px;
-			text-transform: lowercase;
-			color: #000;
-			line-height: 1;
-			text-align: center;
-			display: block;
-			margin-top: 10px;
+	.nav-icon {
+		margin: 0 auto 10px;
+		display: block;
+		position: relative;
+	}
+
+	.menu-home {
+		.nav-icon {
+			.graphic.nav-home;
 		}
+	}
 
-		.nav-menu-callout {
-			opacity: 0;
-			margin-top: 8px;
+	.menu-about {
+		.nav-icon {
+			.graphic.nav-about;
+		}
+	}
+
+	.menu-programs {
+		.nav-icon {
+			.graphic.nav-courses;
+		}
+	}
+
+	.menu-news {
+		.nav-icon {
+			.graphic.nav-news;
+		}
+	}
+
+	.menu-contact {
+		.nav-icon {
+			.graphic.nav-contact;
 		}
 	}
 
@@ -127,6 +156,8 @@
 
 			a {
 				color: #fff !important;
+				text-align: left;
+				margin: 0;
 			}
 		}
 	}
