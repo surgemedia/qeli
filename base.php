@@ -12,7 +12,7 @@
     get_template_part('templates/header');
   ?>
 
-  <div id="content-container" class="<?php the_field('color_scheme') ?>">
+  <div id="content-container" class="<?php if(get_field('color_scheme')){ the_field('color_scheme'); } else { echo 'blue';} ?>">
     <div class="content row">
       <main class="main" role="main">
         <?php include roots_template_path(); ?>

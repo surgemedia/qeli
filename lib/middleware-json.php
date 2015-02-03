@@ -166,6 +166,31 @@ function json_import_function(){
 														Add new Tag
 	=============================================================================================================== */
 
+
+	/* ===============================================================================================================
+												     Add new Catagories
+	=============================================================================================================== */
+			$cata_loop = 0;
+			for($j=0; $j<count($jsonIterator[$i]['categories']); $j++){
+				$cata_slug = $jsonIterator[$i]['categories'][$j]['id'];
+				$cata_name = str_replace(","," ",$jsonIterator[$i]['categories'][$j]['name']);
+				if($cata_slug!="" && $cata_name!=""){
+					wp_insert_term( $cata_name, 'category', array('slug'=>$cata_slug));
+					if($cata_loop==0){
+						$add_to_cata = $cata_slug;// first one without, in the front of query code
+					}else{
+						$add_to_cata .= ", ".$cata_slug;//add the ID to delete query, If it's second one, add , to make it work with one query
+					}
+					$cata_loop++;
+				}
+			}
+			//echo 'addtotag:'.$add_to_tag."<br/>";
+	/* ===============================================================================================================
+													  Add new Catagories
+	=============================================================================================================== */
+			
+
+
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
@@ -235,11 +260,12 @@ function json_import_function(){
 				wp_insert_post( $my_post );
 			}
 	/* ===============================================================================================================
-														Add new Tag
+											    Add new Tag and Catagories
 	=============================================================================================================== */
 			wp_set_post_tags( $post_ID, $add_to_tag, true );
+			wp_set_post_categories( $post_ID, $add_to_cata, true );
 	/* ===============================================================================================================
-														Add new Tag
+												Add new Tag and Catagories
 	=============================================================================================================== */
 			update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
 			update_field('field_54ab2b2a481e5', $jsonIterator[$i]['faqs'], $post_ID);
@@ -596,7 +622,7 @@ endwhile;
 		echo '<h1>The page Json Cron job was created, Please check with page content for more details to create the cron job in your cpanel!</h1>
 		<p>Click to page: <a href="'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit">'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit</a></p>
 		<h2>Copy the permalink:[ <a>'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x</a>  ]to cpanel cron job to active it work import daliy or weekly.</h2>
-		<img src="'.$theme_root.'/qeli/lecture/how_to_cron_job.jpg">';
+		<img src="'.$theme_root.'/qeli/assets/img/how_to_cron_job.jpg">';
 	
 
 	}
