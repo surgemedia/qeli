@@ -5,6 +5,7 @@ Template Name: Courses Page
 ?>
 <?php while (have_posts()) : the_post(); ?>
 <div class="colored-background">
+
 	<?php get_template_part('templates/page', 'colored-header'); ?>
 	<div class="featured-image">
 		<div class="container">

@@ -29,7 +29,7 @@ function courses_delivery_method() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'delivery_method', array( 'post' ), $args );
+	register_taxonomy( 'delivery_method', array( 'courses' ), $args );
 
 }
 add_action( 'init', 'courses_delivery_method', 0 );
@@ -63,7 +63,7 @@ function courses_categories() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'courses_categories', array( 'post' ), $args );
+	register_taxonomy( 'courses_categories', array( 'courses' ), $args );
 
 // Hook into the 'init' action
 
@@ -99,7 +99,7 @@ function courses_tags() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 	);
-	register_taxonomy( 'courses_tags', array( 'post' ), $args );
+	register_taxonomy( 'courses_tags', array( 'courses' ), $args );
 
 }
 

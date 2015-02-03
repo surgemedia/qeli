@@ -103,83 +103,84 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-
-	var $primary = $('#filter-primary'),
-		$primarySelectors = $primary.find('.selectors'),
-		$extended = $('#filter-extended'),
-		$extendedSelectors = $extended.find('.selectors'),
-		$moreOptions = $('.btn-more-options');
-
-	$moreOptions.click(function() {
-		(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
-		$extendedSelectors.toggleClass('open');
-	});
-
-	$('#filters a').not('.btn-filter-toggle, .select, .btn-more-options').click(function() {
-		(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
-		$('#filters a').removeClass('selected');
-		$(this).addClass('selected');
-	 	singleFilter($(this));
-	 	showPrograms();
-	});
-
-	var $container = $('.isotope').isotope({
-		itemSelector: '.course',
-		layoutMode: 'fitRows'
-	});
-
-	$container.isotope( 'on', 'layoutComplete', function(isoInstance, laidOutItems) {
-		$('#filter-no-results').addClass('hidden');
-		console.dir($('#filter-no-results'));
-
-		if(laidOutItems.length == 0) {
-			$('#filter-no-results').removeClass('hidden');
+	if($('body.program-overview').length>0) {
+		var $primary = $('#filter-primary'),
+			$primarySelectors = $primary.find('.selectors'),
+			$extended = $('#filter-extended'),
+			$extendedSelectors = $extended.find('.selectors'),
+			$moreOptions = $('.btn-more-options');
+	
+		$moreOptions.click(function() {
+			(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+			$extendedSelectors.toggleClass('open');
+		});
+	
+		$('#filters a').not('.btn-filter-toggle, .select, .btn-more-options').click(function() {
+			(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+			$('#filters a').removeClass('selected');
+			$(this).addClass('selected');
+		 	singleFilter($(this));
+		 	showPrograms();
+		});
+	
+		var $container = $('.isotope').isotope({
+			itemSelector: '.course',
+			layoutMode: 'fitRows'
+		});
+	
+		$container.isotope( 'on', 'layoutComplete', function(isoInstance, laidOutItems) {
+			$('#filter-no-results').addClass('hidden');
+			console.dir($('#filter-no-results'));
+	
+			if(laidOutItems.length == 0) {
+				$('#filter-no-results').removeClass('hidden');
+			}
+			
+			else {
+			}
+		});
+	
+		$('.course .icon-star').click(function() {
+		 	toggleFav($(this).parents('.course'));
+		});
+	
+		function toggleFav($this) {
+			$this.toggleClass('favourite');
 		}
-		
-		else {
+	
+		function showPrograms() {
+			$('html, body').animate({
+				scrollTop: $('#filter-view').offset().top
+			}, 500);
+			$('#course-overview').addClass('active');
 		}
-	});
-
-	$('.course .icon-star').click(function() {
-	 	toggleFav($(this).parents('.course'));
-	});
-
-	function toggleFav($this) {
-		$this.toggleClass('favourite');
-	}
-
-	function showPrograms() {
-		$('html, body').animate({
-			scrollTop: $('#filter-view').offset().top
-		}, 500);
-		$('#course-overview').addClass('active');
-	}
-
-	function singleFilter($this) {
-		$this.parents('#filters').find('.active').removeClass('active');
-		$this.parent('li').addClass('active');
-
-		var filterGroup = $this.attr('data-filter-group');
-		var filterValurStr = 'Showing results for: ' + $this.attr('data-value-str');
-		var filterValue = $this.attr('data-filter');
-
-		if (filterGroup === 'all') {
-	  		$('.filter-message').addClass('visuallyhidden');
+	
+		function singleFilter($this) {
+			$this.parents('#filters').find('.active').removeClass('active');
+			$this.parent('li').addClass('active');
+	
+			var filterGroup = $this.attr('data-filter-group');
+			var filterValurStr = 'Showing results for: ' + $this.attr('data-value-str');
+			var filterValue = $this.attr('data-filter');
+	
+			if (filterGroup === 'all') {
+		  		$('.filter-message').addClass('visuallyhidden');
+			}
+			else {
+				$('.filter-message').removeClass('visuallyhidden');
+			}
+	
+			$('.filter-value').html(filterValurStr);
+	
+		  	// set filter for Isotope
+			$('.course.active').removeClass('active');
+			$('.collapse.in').removeClass('in');
+			$('.isotope').isotope({ filter: filterValue});
+	
+			$('#filterOutput').html(filterValue);
+			
+			
+	
 		}
-		else {
-			$('.filter-message').removeClass('visuallyhidden');
-		}
-
-		$('.filter-value').html(filterValurStr);
-
-	  	// set filter for Isotope
-		$('.course.active').removeClass('active');
-		$('.collapse.in').removeClass('in');
-		$('.isotope').isotope({ filter: filterValue});
-
-		$('#filterOutput').html(filterValue);
-		
-		
-
 	}
 });

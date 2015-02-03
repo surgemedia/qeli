@@ -19,6 +19,11 @@ function people_groups() {
 		'choose_from_most_used'      => __( 'Choose from the most used items', 'text_domain' ),
 		'not_found'                  => __( 'Not Found', 'text_domain' ),
 	);
+$rewrite = array(
+		'slug'                       => 'people_group',
+		'with_front'                 => true,
+		'hierarchical'               => false,
+	);
 	$args = array(
 		'labels'                     => $labels,
 		'hierarchical'               => false,
@@ -26,9 +31,10 @@ function people_groups() {
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
+		'show_tagcloud'              => false,
+		'rewrite'                    => $rewrite,
 	);
-	register_taxonomy( 'people_group', array( 'post' ), $args );
+	register_taxonomy( 'people_group', array( 'key_people' ), $args );
 
 }
 

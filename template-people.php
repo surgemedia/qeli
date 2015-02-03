@@ -16,6 +16,13 @@ Template Name: About - People
 		</div>
 	</div>
 	
+	<div id="panel-info" class="col-xs-12 panel-info colored-background">
+	<div class="container">
+		<button class="graphic icon-close"></button>
+		Dr Lyn Bishop is the Principal and Founder of Sheldon College, an independent, co-educational, non-denominational College in the Redland Shire. Dr Bishop has over 30 years’ experience in the field of education and holds Masters Degrees in Educational Administration, Educational Studies and Business Administration as well as a Doctor of Philosophy in Education. She is a fully qualified Psychologist and has been a part-time lecturer in the Master of Business Administration at the Queensland University of Technology. She is a Fellow of the Australian Institute of Management and a Fellow of the Australian College of Education. In July 2013, Dr Bishop received the prestigious QUT Outstanding Alumni Award for the Faculty of Education.
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="">
 			<div class="col-sm-2">
