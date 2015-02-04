@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
 	var panelEl = document.getElementById('panel-info'),
+		panelTitleEl = panelEl.querySelector('.panel-title'),
+		panelTextEl = panelEl.querySelector('.panel-text'),
 		peopleList,
 		groupList,
 		peopleFilterList;
@@ -17,6 +19,8 @@ $(document).ready(function () {
 		$(panelEl).find('.icon-close').click(function() {
 			$(peopleList).removeClass('selected');
 			$(panelEl).removeClass('show');
+			$(panelTitleEl).html(''); 
+			$(panelTextEl).html(''); 
 		});
 
 		for(var i = 0; i < peopleList.length; i++) {
@@ -30,8 +34,14 @@ $(document).ready(function () {
 				else {
 					$(peopleList[peopleList.length - 1]).after(panelEl);
 				}
+			
+				var title = $(this).attr('data-title'),
+					desc = $(this).attr('data-description');
+
 				setTimeout(function() {
 					$(panelEl).addClass('show');
+					$(panelTitleEl).html(title); 
+					$(panelTextEl).html(desc); 
 				}, 25);
 
 				$(peopleList).removeClass('selected');
@@ -54,8 +64,8 @@ $(document).ready(function () {
 	
 				$(panelEl).removeClass('show');
 
-				var person = this.getAttribute('data-item');
-				var personEl = $('.person[data-item="' + person + '"]')[0];
+				var person = this.getAttribute('data-title');
+				var personEl = $('.person[data-title="' + person + '"]')[0];
 				var last = findLastinRow(personEl);
 				
 				if (last) {

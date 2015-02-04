@@ -16,79 +16,78 @@ Template Name: About - People
 		</div>
 	</div>
 	
-	<div id="panel-info" class="col-xs-12 panel-info colored-background">
-	<div class="container">
-		<button class="graphic icon-close"></button>
-		Dr Lyn Bishop is the Principal and Founder of Sheldon College, an independent, co-educational, non-denominational College in the Redland Shire. Dr Bishop has over 30 years’ experience in the field of education and holds Masters Degrees in Educational Administration, Educational Studies and Business Administration as well as a Doctor of Philosophy in Education. She is a fully qualified Psychologist and has been a part-time lecturer in the Master of Business Administration at the Queensland University of Technology. She is a Fellow of the Australian Institute of Management and a Fellow of the Australian College of Education. In July 2013, Dr Bishop received the prestigious QUT Outstanding Alumni Award for the Faculty of Education.
+	<div id="panel-info" class="col-xs-12 panel-info">
+		<div class="panel-header clearfix">
+			<button class="graphic icon-close pull-right"></button>
+			<h2 class="panel-title pull-left"></h2>
 		</div>
+		<div class="panel-text clearfix"></div>
 	</div>
 
 	<div class="row">
-		<div class="">
+		<div class="container">
 			<div class="col-sm-2">
-				<ul>
-					<?php
-					$args = array( 'hide_empty=0' );
-					$terms = get_terms( 'people_group', $args );
-					if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-					$count = count( $terms );
-					$i = 0;
-					$term_list = "";
-						foreach ( $terms as $term ) {
-						$i++;
-						$term_list .= '<li><a href="' . get_term_link( $term ) . '" title="' . sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) . '">' . $term->name . '</a></li>';
-						if ( $count != $i ) {
-						
-						}
-						else {
-					
-					}
-					}
-					echo $term_list;
-					}
-					?>
-				</ul>
-				<hr>
-				<ul>
-				<?php
-				$acf_people = get_field('key_people');
-				 for ($i=0; $i < sizeof($acf_people); $i++) { ?>
-				 <?php 
-				 	$acf_person = get_post(get_field('key_people')[$i]);
-				 	$acf_person_link = get_permalink(get_field('key_people')[$i]); ;
-					
-				?>
-					<li><a href="<?php echo $acf_person_link; ?>" class="person-control" data-item="person-<?php echo $i+1; ?> "><?php echo $acf_person->post_title;  ?></a></li>
+				<div class="row">
+					<ul>
+						<?php
+							$args = array( 'hide_empty=0' );
+							$terms = get_terms( 'people_group', $args );
+							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+							$count = count( $terms );
+							$i = 0;
+							$term_list = "";
+								foreach ( $terms as $term ) {
+								$i++;
+								$term_list .= '<li><a data-term="' . $term->name . '" href="' . get_term_link( $term ) . '" title="' . sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) . '">' . $term->name . '</a></li>';
+								if ( $count != $i ) {
+								
+								}
+								else {
+							
+								}
+							}
+							echo $term_list;
+						}?>
+					</ul>
+					<hr>
+					<ul>
+						<?php
+							$acf_people = get_field('key_people');
 
+						 	for ($i=0; $i < sizeof($acf_people); $i++) { ?>
+							 <?php 
+							 	$acf_person = get_post(get_field('key_people')[$i]);
+							 	$acf_person_link = get_permalink(get_field('key_people')[$i]); ;
+							?>
+							<li><a href="<?php echo $acf_person_link; ?>" class="person-control" data-title="<?php echo $acf_person->post_title; ?>" data-item="person-<?php echo $i+1; ?> "><?php echo $acf_person->post_title;  ?></a></li>
 
-
-				<?php } ?>
-					
-				</ul>
+						<?php } ?>
+					</ul>
+				</div>
 			</div>
 			<div class="col-sm-10">
 				<?php // WP_Query arguments
-				$args = array (
-				'post_type'              => 'key_people',
-				//'tag_name'               => 'test',
-				'pagination'             => true,
-				'posts_per_page'         => '25',
-				'order'                  => 'DESC',
-				'orderby'                => 'title',
-				);
-				// The Query
-				$query = new WP_Query( $args );
-						if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-						$query->the_post();
-						get_template_part('templates/content-post-type','people');
-						}
-						} else {
-						get_template_part('templates/content', 'no-posts');
-						}
-						// Restore original Post Data
-						wp_reset_postdata();
-						// WP_Query arguments
+					$args = array (
+					'post_type'              => 'key_people',
+					//'tag_name'               => 'test',
+					'pagination'             => true,
+					'posts_per_page'         => '25',
+					'order'                  => 'DESC',
+					'orderby'                => 'title',
+					);
+					// The Query
+					$query = new WP_Query( $args );
+							if ( $query->have_posts() ) {
+							while ( $query->have_posts() ) {
+							$query->the_post();
+							get_template_part('templates/content-post-type','people');
+							}
+							} else {
+							get_template_part('templates/content', 'no-posts');
+							}
+							// Restore original Post Data
+							wp_reset_postdata();
+							// WP_Query arguments
 				?>
 			</div>
 		</div>

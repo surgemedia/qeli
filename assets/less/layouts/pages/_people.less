@@ -1,32 +1,66 @@
 .page-template-template-people {
 	.person {
-			width: 150px;
-			height: 190px;
-
+		position: relative;	
+		cursor: pointer;
+		
 		&:hover,
 		&:focus,
 		&.selected {
 			img {
-
-				border: 6px solid @pink;
+				border: 4px solid @pink;
 			}
+		}
+
+		&.selected {
+			.panel-info-callout {
+				opacity: 1;
+			}
+		}
+
+		h3 {
+			color: @gray-dark;
+			margin-top: 50%;
+		}
+
+		.panel-info-callout {
+			opacity: 0;
+			.transition(all 0.25s);
+			display: block;
+			position: relative;
+			margin: 10px auto 0;
+			z-index: 10;
 		}
 	}
 	.panel-info {
 		max-height: 0;
 		padding: 0 30px;
-
-		.icon-close {
-			display: block;
-			margin-top: 5px;
-		}
+		border: 1px solid @gray-lighter;
+		opacity: 0;
+		margin: 0;
 
 		.transition(all 0.25s);
 		overflow: hidden;
 
+		.icon-close {
+			display: block;
+			margin-top: 5px;
+			margin-right: -15px;
+		}
+
+		h2 {
+			color: @gray-dark;
+		}
+
 		&.show {
 			max-height: 500px;
-			padding: 60px 30px;
+			opacity: 1;
+			margin: -1px 0 10px;;
+			padding: 10px 30px;
+		}
+
+
+		.panel-title {
+			margin-top: 30px;
 		}
 	}
 }
