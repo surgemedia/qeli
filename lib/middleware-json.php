@@ -121,8 +121,8 @@ function json_import_function(){
 					$check_item_id = get_the_id();
 					$check_content = get_the_content();
 					$check_title = get_the_title();
-					echo $check_content;
-					echo $check_title;
+					//echo $check_content;
+					//echo $check_title;
 					if($check_content == $jsonIterator[$i]['programId'] && $check_title == $jsonIterator[$i]['title']){
 							$check_item_row_id = $check_item_id;
 					}
@@ -221,22 +221,22 @@ function json_import_function(){
 					}
 	
 					
-					$instances[$j] = array("field_54bf286520b96" => $jsonIterator[$i]['instances'][$j]['programInstanceId'], 
-										"field_54bf285420b95" => $jsonIterator[$i]['instances'][$j]['name'], 
+					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['programInstanceId'], 
+										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
 										"field_54ab312929435" => $jsonIterator[$i]['instances'][$j]['facilitator'], 
 										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering'],
 										"field_54ab29cb28d6c" => $jsonIterator[$i]['instances'][$j]['venues'][0]['name'],
 										"field_54ab271828d67" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['state'],
 										"field_54beed5199e1b" => $add_address_insert
 										);
-				}
-				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
-														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
-														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
-				}
+					}
+					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
+						//echo '<h2>phases'.$k.':</h2></br>';
+						$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
+															"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
+															"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
+															"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
+					}
 			}
 			if($check_item_row_id==""){
 				$my_post = array(
@@ -270,9 +270,8 @@ function json_import_function(){
 			update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
 			update_field('field_54ab2b2a481e5', $jsonIterator[$i]['faqs'], $post_ID);
 			update_field('field_54ab2ca5481e7', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
-	
-			update_field('field_54bf24134fed8', $jsonIterator[$i]['programId'], $post_ID);
-			update_field('field_54bf0516e7cf5', $jsonIterator[$i]['title'], $post_ID);
+			update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
+			update_field('field_54c9889071a6e', $jsonIterator[$i]['programId'], $post_ID);
 			update_field('field_54ab2484f6455', $jsonIterator[$i]['executiveSummary'], $post_ID);
 			update_field('field_54ab24a6f6457', $jsonIterator[$i]['outcome'], $post_ID);
 			update_field('field_54ab249af6456', $jsonIterator[$i]['audience'], $post_ID);
@@ -320,9 +319,9 @@ while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the
 $delete_other_course_id = get_the_id();
 //echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>';
 if($all_courses_id[$delete_other_course_id]=='on'){
-	echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
+	//echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
 }else{
-	echo $delete_other_course_id.' will delete.<br/>';
+	//echo $delete_other_course_id.' will delete.<br/>';
 	wp_trash_post( $delete_other_course_id );
 }
 endwhile;
@@ -413,7 +412,7 @@ endwhile;
 			$get_last_modified_row->the_post();
 			$json_contents = get_the_content();
 			$json_title = get_the_title();
-			$json_m_d = get_the_modified_date('Y-mm-dd h:s');
+			$json_m_d = get_the_modified_date('Y-m-d h:s');
 			if($json_l_mcount==0 && $json_contents == "Successful"){
 				$Surge_json_page_contents .='<tr>';
 				$Surge_json_page_contents .=' <td>' . substr($json_title, 0, -5) . '</td>';
@@ -599,7 +598,7 @@ endwhile;
 			echo '<h1>Json Cron job was created, Please check with page content for more details to create the cron job in your cpanel!</h1>
 			<p>Click to page: <a href="'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit">'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit</a></p>
 			<h2>Copy the permalink:[ <a>'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x</a>  ]to cpanel cron job to active it work import daliy or weekly.</h2>
-			<img src="'.$theme_root.'qeli/lecture/how_to_cron_job.jpg">';
+			<img src="'.$theme_root.'/qeli/assets/img/how_to_cron_job.jpg">';
 
 
 		}

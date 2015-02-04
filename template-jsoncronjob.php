@@ -192,24 +192,23 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					}
 	
 					
-					$instances[$j] = array("field_54bf286520b96" => $jsonIterator[$i]['instances'][$j]['programInstanceId'], 
-										"field_54bf285420b95" => $jsonIterator[$i]['instances'][$j]['name'], 
+					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['programInstanceId'], 
+										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
 										"field_54ab312929435" => $jsonIterator[$i]['instances'][$j]['facilitator'], 
 										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering'],
 										"field_54ab29cb28d6c" => $jsonIterator[$i]['instances'][$j]['venues'][0]['name'],
 										"field_54ab271828d67" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['state'],
 										"field_54beed5199e1b" => $add_address_insert
 										);
+					}
+					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
+						echo '<h2>phases'.$k.':</h2></br>';
+						$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
+															"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
+															"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
+															"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
+					}
 				}
-				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-					echo '<h2>phases'.$k.':</h2></br>';
-					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
-														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
-														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'], //@Cindy:DUPLICATED
-														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
-				}
-			}
 			echo $check_item_row_id;
 			if($check_item_row_id==""){
 				$my_post = array(
@@ -253,6 +252,9 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			update_field('field_54ab2682baefe', $jsonIterator[$i]['rrp'], $post_ID);
 			update_field('field_54ab26b1baeff', $jsonIterator[$i]['maxClassSize'], $post_ID);
 			update_field('field_54ab286628d69', $jsonIterator[$i]['length'], $post_ID);
+			
+			//relatedProgramIds request data in Json file to test the import with format of array
+			
 			$all_courses_id[$post_ID] =  'on';//add the ID to array key for delete the course not list in JSON file
 			$value = get_field('field_54ab26dabaf00', $post_ID);
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
