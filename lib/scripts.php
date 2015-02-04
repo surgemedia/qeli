@@ -35,8 +35,8 @@ function roots_scripts() {
       'css'       => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
       'js'        => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
-      'isotope'        => '/assets/js/vendor/isotope.min.js',
-      'iscroll'        => '/assets/js/vendor/iscroll.min.js',
+      'isotope'   => '/assets/js/vendor/isotope.js',
+      'iscroll'   => '/assets/js/vendor/iscroll.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
     );
   }

@@ -28,7 +28,7 @@ Template Name: About - People
 		<div class="container">
 			<div class="col-sm-2">
 				<div class="row">
-					<ul>
+					<ul class="people-filter">
 						<?php
 							$args = array( 'hide_empty=0' );
 							$terms = get_terms( 'people_group', $args );
@@ -48,10 +48,13 @@ Template Name: About - People
 							}
 							echo $term_list;
 						}?>
+						<li><a href="#" data-term="clear">Clear</a></li>
 					</ul>
 					<hr>
-					<ul>
+					<ul class="people-nav">
 						<?php
+
+						/*
 							$acf_people = get_field('key_people');
 
 						 	for ($i=0; $i < sizeof($acf_people); $i++) { ?>
@@ -61,7 +64,29 @@ Template Name: About - People
 							?>
 							<li><a href="<?php echo $acf_person_link; ?>" class="person-control" data-title="<?php echo $acf_person->post_title; ?>" data-item="person-<?php echo $i+1; ?> "><?php echo $acf_person->post_title;  ?></a></li>
 
-						<?php } ?>
+						<?php } */?>
+
+						<?php // WP_Query arguments
+							$args = array (
+							'post_type'              => 'key_people',
+							//'tag_name'               => 'test',
+							'pagination'             => true,
+							'posts_per_page'         => '25',
+							'order'                  => 'DESC',
+							'orderby'                => 'title',
+							);
+							// The Query
+							$query = new WP_Query( $args );
+								
+							if ( $query->have_posts() ): ?>
+								<?php while ( $query->have_posts() ): ?>
+									<?php $query->the_post(); ?>
+									
+									<li><a href="#" data-title="<?php the_title();?>" data-description="<?php the_field('short_description');?>"><?php the_title(); ?></a></li>
+									<?php wp_reset_postdata(); ?>
+									 
+								<?php endwhile; ?>
+						<?php endif; ?>
 					</ul>
 				</div>
 			</div>

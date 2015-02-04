@@ -1,4 +1,10 @@
-<div class="person col-xs-12 col-sm-6 col-md-4" data-group="group-a" data-title="<?php the_title();?>" data-description="<?php the_field('short_description');?>">
+<div class="person col-xs-12 col-sm-6 col-md-4" 
+	data-group="group-a" 
+	data-title="<?php the_title();?>" 
+	data-description="<?php the_field('short_description');?>"
+	data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); echo $terms[0]->name; ?>"
+>
+
 	<div class="row">
 		<div class="col-xs-6">
 			<div class="row">

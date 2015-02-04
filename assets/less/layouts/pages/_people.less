@@ -11,6 +11,10 @@
 			}
 		}
 
+		&.out {
+			opacity: 0.2;
+		}
+
 		&.selected {
 			.panel-info-callout {
 				opacity: 1;
@@ -24,7 +28,7 @@
 
 		.panel-info-callout {
 			opacity: 0;
-			.transition(all 0.25s);
+			.transition(all 0.5s);
 			display: block;
 			position: relative;
 			margin: 10px auto 0;
@@ -38,7 +42,7 @@
 		opacity: 0;
 		margin: 0;
 
-		.transition(all 0.25s);
+		.transition(all 0.5s);
 		overflow: hidden;
 
 		.icon-close {

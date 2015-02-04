@@ -4,8 +4,8 @@ $(document).ready(function () {
 		panelTitleEl = panelEl.querySelector('.panel-title'),
 		panelTextEl = panelEl.querySelector('.panel-text'),
 		peopleList,
-		groupList,
-		peopleFilterList;
+		filterList,
+		peopleNavList;
 
 	if (panelEl) {
 		init();
@@ -13,8 +13,8 @@ $(document).ready(function () {
 
 	function init() {
 		peopleList = document.querySelectorAll('div.person');
-		groupList = document.querySelectorAll('a.group-control');
-		peopleFilterList = document.querySelectorAll('a.person-control');
+		filterList = document.querySelectorAll('.people-filter a');
+		peopleNavList = document.querySelectorAll('.people-nav a');
 		
 		$(panelEl).find('.icon-close').click(function() {
 			$(peopleList).removeClass('selected');
@@ -25,67 +25,84 @@ $(document).ready(function () {
 
 		for(var i = 0; i < peopleList.length; i++) {
 			peopleList[i].onclick = function() {
-				$(panelEl).removeClass('show');
-				var last = findLastinRow(this);
-
-				if (last) {
-					$(last).before(panelEl);
-				}
-				else {
-					$(peopleList[peopleList.length - 1]).after(panelEl);
-				}
-			
-				var title = $(this).attr('data-title'),
-					desc = $(this).attr('data-description');
-
-				setTimeout(function() {
-					$(panelEl).addClass('show');
-					$(panelTitleEl).html(title); 
-					$(panelTextEl).html(desc); 
-				}, 25);
-
-				$(peopleList).removeClass('selected');
-				$(this).addClass('selected');
+				showPerson(this);
 			}
 		}
 
-		for(var i = 0; i < groupList.length; i++) {
+		for(var i = 0; i < filterList.length; i++) {
 
-			groupList[i].onclick = function(event) {
+			filterList[i].onclick = function(event) {
 				(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
 
-				filterGroup(this.getAttribute('data-group'));
+				var term = this.getAttribute('data-term');
+				
+				if (term !== 'clear') {
+					$('.person').addClass('out');
+					for(var i = 0; i < peopleList.length; i++) {
+						if (term === peopleList[i].getAttribute('data-term')) {
+							$(peopleList[i]).removeClass('out');
+						}
+					}
+				}
+				else {
+					$('.person').removeClass('out');
+				}
 			}
 		}
 
-		for(var i = 0; i < peopleFilterList.length; i++) {
-			peopleFilterList[i].onclick = function(event) {
+		for(var i = 0; i < peopleNavList.length; i++) {
+			peopleNavList[i].onclick = function(event) {
 				(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
 	
-				$(panelEl).removeClass('show');
+				var person = findPerson(this.getAttribute('data-title'));
 
-				var person = this.getAttribute('data-title');
-				var personEl = $('.person[data-title="' + person + '"]')[0];
-				var last = findLastinRow(personEl);
-				
-				if (last) {
-					$(last).before(panelEl);
-				}
-				else {
-					$(peopleList[peopleList.length - 1]).after(panelEl);
-				}
-
-				setTimeout(function() {
-					$(panelEl).addClass('show');
-				}, 25);
-
-				$(peopleList).removeClass('selected');
-				$(personEl).addClass('selected');
+				showPerson(person);
 			}
 		}
 	}
 
-	function selectPerson() {
+	function findPerson(title) {
+		for(var i = 0; i < peopleList.length; i++) {
+			if (title === peopleList[i].getAttribute('data-title')) {
+				return peopleList[i];
+			}
+		}
+
+		return false;
+	}
+
+	function showPerson(person) {
+		$(panelEl).removeClass('show');
+
+		var last = findLastinRow(person);
+
+		if (last) {
+			$(last).before(panelEl);
+		}
+		else {
+			$(peopleList[peopleList.length - 1]).after(panelEl);
+		}
+	
+		var title = $(person).attr('data-title'),
+			desc = $(person).attr('data-description');
+
+
+		$('html, body').animate({
+			scrollTop: $(person).offset().top
+		}, 500, 'linear', function() {
+
+
+		});
+
+		setTimeout(function() {
+				$(panelEl).addClass('show');
+				$(panelTitleEl).html(title); 
+				$(panelTextEl).html(desc); 
+			}, 25);
+	
+
+		$(peopleList).removeClass('selected');
+		$(person).addClass('selected');
 	}
 
 	function filterGroup(group) {
