@@ -62,7 +62,7 @@ add_action( 'init', 'custom_post_type', 0 );
 ===========================================*/
 function JsonImporter(){
 
-add_menu_page('Course Import', 'Course sync', 'manage_options', 'Surge_media_json_slug', 'json_import_function','',22);
+add_menu_page('Course Import', 'Update Courses', 'manage_options', 'Surge_media_json_slug', 'json_import_function','dashicons-update',81);
 //Field 1: Page Title.
 //Field 2: Menu Title.
 //Field 3: Function type.
@@ -360,32 +360,32 @@ endwhile;
 	//add any form processing code here in PHP:
 	$Surge_json_page_contents .='
 	<div style="width:90%;">
-		<h1>Course Import</h1>
-		<p>Press the Sync Button to update all the course on the site with the date in your BMS system.</p>
+		<h1>Update Courses</h1>
+		<p>Press the Sync Button to update any out of date information. This will sync update the courses with the data in your BMS system.</p>
 		<h2>Lastest Sync</h2>
 		<table class="wp-list-table widefat fixed posts">
 			<thead>
 				<tr>
-					<th id="date" class="manage-column column-date sortable asc" style="" scope="col">
+					<th id="date" class="manage-column column-date  asc" style="" scope="col">
 						<span>Date</span>
 					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score sortable desc" style="" scope="col">
+					<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
 						<span>Time</span>
 					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc sortable desc" style="" scope="col">
+					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
 						<span>Status</span>
 					</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th id="date" class="manage-column column-date sortable asc" style="" scope="col">
+					<th id="date" class="manage-column column-date  asc" style="" scope="col">
 						<span>Date</span>
 					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score sortable desc" style="" scope="col">
+					<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
 						<span>Time</span>
 					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc sortable desc" style="" scope="col">
+					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
 						<span>Status</span>
 					</th>
 				</tr>
@@ -427,7 +427,7 @@ endwhile;
 		// no posts found
 		$Surge_json_page_contents .= debug($WP_arrayName).'
 			<tr class="no-items">
-				<td class="colspanchange">Not found</td>
+				<td class="colspanchange">Nothing Synced Yet</td>
 			</tr>
 			';
 	}
@@ -509,26 +509,26 @@ endwhile;
 		<table class="wp-list-table widefat fixed posts">
 			<thead>
 				<tr>
-					<th id="date" class="manage-column column-date sortable asc" style="" scope="col">
+					<th id="date" class="manage-column column-date  asc" style="" scope="col">
 						<span>Date</span>
 					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score sortable desc" style="" scope="col">
+					<th id="wpseo-score" class="manage-column column-wpseo-score desc" style="" scope="col">
 						<span>Time</span>
 					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc sortable desc" style="" scope="col">
+					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
 						<span>Active</span>
 					</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th id="date" class="manage-column column-date sortable asc" style="" scope="col">
+					<th id="date" class="manage-column column-date  asc" style="" scope="col">
 						<span>Date</span>
 					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score sortable desc" style="" scope="col">
+					<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
 						<span>Time</span>
 					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc sortable desc" style="" scope="col">
+					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
 						<span>Active</span>
 					</th>
 				</tr>
@@ -595,9 +595,9 @@ endwhile;
 			$check_cron_page->the_post();
 			$cron_page_id = get_the_id();
 			// do something
-			echo '<h1>Json Cron job was created, Please check with page content for more details to create the cron job in your cpanel!</h1>
-			<p>Click to page: <a href="'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit">'.site_url().'/wp-admin/post.php?post='.$cron_page_id.'&action=edit</a></p>
-			<h2>Copy the permalink:[ <a>'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x</a>  ]to cpanel cron job to active it work import daliy or weekly.</h2>
+			echo '<h1>Setup Instructions</h1><h4>This will only have to be done <u>once</u></h4>
+			<p>Copy the link below </p>
+			<input value="'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x" /><p>Add the link to cpanel cron job to active a daliy or weekly import.</p>
 			<img src="'.$theme_root.'/qeli/assets/img/how_to_cron_job.jpg">';
 
 
