@@ -38,8 +38,8 @@ $roots_includes = array(
   'lib/action-post-type-testimonials.php',         // Custom Post Type : Testimonial
   'lib/action-post-type-media-releases.php',       // Custom Post Type : Media Release
   'lib/action-post-type-people.php',               // Custom Post Type : Key People
-
-
+  'lib/action-hide-course-field.php', 			   // Disappear some of custom post type input area in admin page
+  'lib/wp-session-manager/wp-session-manager.php', //Wp session move from plug-in to internal
 /*=================================
 *      Qeli Json Import Page      *
 =================================*/
