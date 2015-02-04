@@ -34,6 +34,7 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 - Wordfence Security : *Installed*
 - WordPress SEO : *Installed*
 - WP Super Cache : *Installed*
+- wp-session-manager(Required for Cart) : 
 
 <h2>Custom Post Types</h2>
 - Case studies
