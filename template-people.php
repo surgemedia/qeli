@@ -6,7 +6,7 @@ Template Name: About - People
 <?php while (have_posts()) : the_post(); ?>
 <article id="content" class="col-xs-12">
 	<div class="row">
-		<div class="colored-background">
+		<div class="page-header colored-background">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
 			<div class="container">
 				<p>

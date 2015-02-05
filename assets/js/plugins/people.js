@@ -1,13 +1,18 @@
 $(document).ready(function () {
 
 	var panelEl = document.getElementById('panel-info'),
-		panelTitleEl = panelEl.querySelector('.panel-title'),
-		panelTextEl = panelEl.querySelector('.panel-text'),
+		panelTitleEl,
+		panelTextEl,
 		peopleList,
 		filterList,
 		peopleNavList;
 
 	if (panelEl) {
+
+		panelTitleEl = panelEl.querySelector('.panel-title'),
+		panelTextEl = panelEl.querySelector('.panel-text'),
+
+
 		init();
 	}
 

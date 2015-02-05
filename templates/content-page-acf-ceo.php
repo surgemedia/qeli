@@ -1,5 +1,5 @@
 <div class="person ceo">
-	<div class="colored-background">
+	<div class="page-header colored-background">
 		<?php get_template_part('templates/page', 'colored-header'); ?>
 		<div class="container">
 			<div class="col-xs-12 col-sm-3">
