@@ -37,6 +37,10 @@ footer {
 		}
 	}
 
+	.visible-xs-block {
+		margin-bottom: 20px;
+	}
+
 	.back-to-top {
 		color: @gray-dark;
 		text-transform: uppercase;
@@ -58,12 +62,24 @@ footer {
 	}
 
 	.copyright {
-		margin-top: 55px;
+		margin-top: 255px;
 		padding-bottom: 15px;
 		
-		.footer-logo {
-			margin-top: -55px;
-		}	
+		.hero-overlay {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+
+		@media (max-width: @screen-xs-max) {
+
+			margin-top: 20px;
+
+			.hero-overlay {
+				display: none;
+			}
+		}
+
 	}
 	
 	

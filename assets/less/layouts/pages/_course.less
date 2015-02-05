@@ -1,8 +1,12 @@
 .single-courses {
+
+
+
 	.facilitator-item {
 		h2 {
 			font-size: 0.8em;
 			color: @gray;
+			margin-top: 0;
 		}
 		
 		h3 {
@@ -26,48 +30,125 @@
 		padding-left: 0;
 	}
 */
+	.colored-background h2 {
+		margin-top: 30px;
+	}
+
+
+	.h2-course {
+		font-family: @font-agile-book;
+		font-size: 21px;
+		color: @gray-dark;
+		text-transform: initial;
+	}
+
 	.panel-summary {
 		.affix-this {
 			border: 0;
 		}
 
 		.panel {
-			border: 3px solid @gray-lightest;
-			box-shadow: none;
-			border-radius: 8px;
-			-webkit-border-radius: 8px;
+			//border-radius: 8px;
+			//-webkit-border-radius: 8px;
 		}
-
-		hr {
-			margin: 10px 0;
-			border-top: 1px dotted @gray-lighter;
-		}
-
+	
 		.panel-heading {
-			padding-top: 15px;
-			padding-bottom: 10px;
+			padding-top: 10px;
+			padding-bottom: 5px;
 
 			h2 {
-				//font-size: 18px;
+				color: #fff;
 				margin-bottom: 0;
 			}
 		}
 
 		.panel-body {
-			padding-top: 0;
-			padding-bottom: 0;
+			padding: 0;
 
 			h3 {
 				color: @gray;
-				margin-top: 5px;
-				margin-bottom: 0;
+				margin: 0;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+
+				li {
+					margin: 0;
+					padding: 10px 15px;
+				}
 			}
 		}
 
 		.panel-footer {
 			border: 0;
 			background-color: transparent;
-			padding-top: 0;
+			padding: 10px 15px;
+
+			.link-purchase {
+				font-family: @font-bold;
+				color: @gray-dark;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.panel-group {
+		.panel {
+			border: 0;
+			-webkit-box-shadow: 3px 3px 0px 0px rgba(124, 133, 140, 0.6);
+			-moz-box-shadow: 3px 3px 0px 0px rgba(124, 133, 140, 0.6);
+			box-shadow: 3px 3px 0px 0px rgba(124, 133, 140, 0.6);
+		}
+
+		.panel:hover,
+		.panel:focus {
+			.panel-heading {
+				background: @gray-dark;
+
+				a {
+					color: #fff;
+					text-decoration: none;
+				}
+			}
+
+			.arrow-panel-gray {
+				.graphic.arrow-panel-white;
+			}
+
+			.icon-toggle {
+				.graphic.icon-collapse-white;
+			}
+			
+			a.collapsed {
+				.icon-toggle {
+					.graphic.icon-expand-white;
+				}	
+			}
+		}
+
+		.panel-heading {
+			border: 0;
+
+			.arrow-panel-gray {
+				margin-right: 10px;
+			}
+
+			.icon-toggle {
+				.graphic.icon-collapse;
+			}
+			
+			a.collapsed {
+				.icon-toggle {
+					.graphic.icon-expand;
+				}
+			}
+		}
+
+		.panel-collapse > .panel-body {
+			border: 0;
 		}
 	}
 }

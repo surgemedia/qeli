@@ -1,7 +1,7 @@
 <footer class="col-xs-12" role="contentinfo">
      <div class="container">
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-6">
                 <a id="back-to-top" href="#" class="back-to-top"><span class="graphic nav-back-to-top"></span> Back to top</a>
             </div>
              <div class="col-xs-3 pull-right">
@@ -30,7 +30,7 @@
                     <li><a href="#">Contact QELi</a></li>
                 </ul>
             </div>
-            <div class="clearfix visible-sm-block"></div>
+            <div class="clearfix visible-xs-block"></div>
             <div class="col-xs-6 col-md-3">
                 <h2><span class="graphic footer-courses"></span>Our programs</h2>
                 <ul>

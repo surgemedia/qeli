@@ -1,8 +1,8 @@
 .theme(@color, @lighten) {
 	//#content {
-
-	h1, h2, h3, 
-	.h1, .h2, .h3, 
+	h1, h2,
+	.h1, .h2,
+	.colored-text,
 	a,
 	a:link,
 	a:hover,
@@ -61,6 +61,26 @@
 			
 		}
 	}
+	.panel-aside {
+		.panel {
+			border: 1px solid @color;
+			box-shadow: none;
+
+			.panel-heading {
+				background-color: @color;
+			}
+		}
+	}
+
+	.list-striped {
+		li {
+			background-color: lighten(@color, @lighten);
+		}
+
+		li:nth-child(2n) {
+			background-color: #fff;
+		}
+	}
 }
 
 .green {
@@ -72,6 +92,10 @@
 
 	.arrow-link {
 		.graphic.arrow-link-green;
+	}
+
+	.arrow-right-sm {
+		.graphic.arrow-right-sm-green;
 	}
 }
 
@@ -85,6 +109,10 @@
 	.arrow-link {
 		.graphic.arrow-link-blue;
 	}
+
+	.arrow-right-sm {
+		.graphic.arrow-right-sm-blue;
+	}
 }
 
 .pink {
@@ -96,5 +124,9 @@
 
 	.arrow-link {
 		.graphic.arrow-link-pink;
+	}
+
+	.arrow-right-sm {
+		.graphic.arrow-right-sm-pink;
 	}
 }

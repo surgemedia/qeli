@@ -19,49 +19,53 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="container">
+		<div class="container ">
 			<div class="col-sm-9">
-				<h2>Executive Summary</h2>
+				<h2 class="h2-course">Executive Summary</h2>
 				<?php the_field('executive_summary') ?>
+				
 				<h2>Outcome</h2>
 				<?php the_field('outcome'); ?>
+				
 				<h2>Audience</h2>
 				<?php the_field('audience') ?>
 				<?php edit_post_link(); ?>
 			</div>
 			<div class="col-sm-3">
-				<div id="aside" class="panel-summary">
+				<div id="aside" class="panel-aside panel-summary">
 					<div class="affix-this affix-top" data-spy="affix" data-offset-top="200" data-offset-bottom="200" style="width: 281px;">
 						<div class="panel">
 							<div class="panel-heading">
 								<h2>Program Summary</h2>
 							</div>
 							<div class="panel-body">
-								
-								<h3>Cost (incl discounts): </h3>
-								<?php the_field('cost') ?>
-								<hr>
-
-								<h3>Class size: </h3>
-								<?php the_field('class_size') ?>
-								<hr>
-
-								<h3>Length </h3>
-								<?php the_field('length') ?>
-								<hr>
-
-								<h3>Delivery method: </h3>
-								<?php getTaxNames(get_field('delivery_method')); ?>
-								<hr>
-							
-								<h3>Facilitator: </h3>
-								<?php echo get_field('facilitator')[0]['name'] ?>
-								<hr>
+								<ul class="list-striped">
+								<li>
+									<h3>Cost (incl discounts): </h3>
+									<?php the_field('cost') ?>
+								</li>
+								<li>
+									<h3>Class size: </h3>
+									<?php the_field('class_size') ?>
+								</li>
+								<li>
+									<h3>Length </h3>
+									<?php the_field('length') ?>
+								</li>
+								<li>
+									<h3>Delivery method: </h3>
+									<?php getTaxNames(get_field('delivery_method')); ?>
+								</li>
+								<li>
+									<h3>Facilitator: </h3>
+									<?php echo get_field('facilitator')[0]['name'] ?>
+								</li>
+								</ul>
 
 							</div>
 
 							<div class="panel-footer">
-								<a href="http://breadcrumbdigital.com.au/projects/qeli-trials/cart/" class="btn btn-program"><span class="graphic icon-cart"></span> Add to cart</a>
+								<a href="http://breadcrumbdigital.com.au/projects/qeli-trials/cart/" class="link-purchase"><span class="graphic arrow-right-sm"></span> Purchase <span class="graphic icon-cart pull-right"></span></a>
 							</div>
 						</div>
 					</div>
@@ -69,24 +73,24 @@
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="row">
-		<div class="container">
-			<div class="col-sm-8">
-				<h2>Dates &amp; Locations</h2>
-				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					<?php
-					for ($i=0; $i < sizeof(get_field('instances')); $i++) {
-					$GLOBALS['instance_count'] = $i; //extends scope for the instance loop
-						get_template_part('templates/content-post-type', 'course-acf-instance');
-					}
-					unset($GLOBALS['instance_count']);
-					?>
+		<div class="colored-background">
+			<div class="container">
+				<div class="col-sm-8">
+					<h2>Dates &amp; Locations</h2>
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<?php
+						for ($i=0; $i < sizeof(get_field('instances')); $i++) {
+						$GLOBALS['instance_count'] = $i; //extends scope for the instance loop
+							get_template_part('templates/content-post-type', 'course-acf-instance');
+						}
+						unset($GLOBALS['instance_count']);
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
@@ -119,106 +123,107 @@
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="row">
-		<div class="container">
-			<div class="col-sm-8">
-				<h2>Program Outline</h2>
-				<div class="panel-group" id="accordion-outline" role="tablist">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading-features">
-							<h3 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-features" aria-expanded="true" aria-controls="collapse-features">
-								Program features<span class="fa fa-caret-square-o-down pull-right"></span>
-							</a>
-							</h3>
-						</div>
-						<div id="collapse-features" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-features">
-							<div class="panel-body">
-								<?php the_field('program_outline') ?>
+		<div class="colored-background">
+			<div class="container">
+				<div class="col-sm-8">
+					<h2>Program Outline</h2>
+					<div class="panel-group" id="accordion-outline" role="tablist">
+						<div class="panel">
+							<div class="panel-heading" role="tab" id="heading-features">
+								<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-features" aria-expanded="true" aria-controls="collapse-features">
+									<h3 class="panel-title">
+										<span class="graphic arrow-panel-gray"></span>Program features <span class="graphic icon-toggle pull-right"></span>
+									</h3>
+								</a>
+							</div>
+							<div id="collapse-features" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-features">
+								<div class="panel-body">
+									<?php the_field('program_outline') ?>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading-modules">
-							<h3 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-modules" aria-expanded="true" aria-controls="collapse-modules">
-								Modules<span class="fa fa-caret-square-o-down pull-right"></span>
-							</a>
-							</h3>
-						</div>
-						<div id="collapse-modules" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-modules">
-							<div class="panel-body">
-								???
+						<div class="panel">
+							<div class="panel-heading" role="tab" id="heading-modules">
+								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-modules" aria-expanded="true" aria-controls="collapse-modules">
+									<h3 class="panel-title">
+										<span class="graphic arrow-panel-gray"></span>Modules <span class="graphic icon-toggle pull-right"></span>
+									</h3>
+								</a>
+							</div>
+							<div id="collapse-modules" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-modules">
+								<div class="panel-body">
+									???
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading-prereq">
-							<h3 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-prereq" aria-expanded="true" aria-controls="collapse-prereq">
-								Prerequisites<span class="fa fa-caret-square-o-down pull-right"></span>
-							</a>
-							</h3>
-						</div>
-						<div id="collapse-prereq" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-prereq">
-							<div class="panel-body">
-								<?php
-								for ($i=0; $i < sizeof(get_field('prerequisites')); $i++) { ?>
-								<li>
-									<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('prerequisites')[$i]); ?></a>
-								</li>
-								<?php } // for loop ?>
-
+						<div class="panel">
+							<div class="panel-heading" role="tab" id="heading-prereq">
+								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-prereq" aria-expanded="true" aria-controls="collapse-prereq">
+									<h3 class="panel-title">
+										<span class="graphic arrow-panel-gray"></span>Prerequisites <span class="graphic icon-toggle pull-right"></span>
+									</h3>
+								</a>
 							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading-resources">
-							<h3 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-resources" aria-expanded="true" aria-controls="collapse-resources">
-								Resources<span class="fa fa-caret-square-o-down pull-right"></span>
-							</a>
-							</h3>
-						</div>
-						<div id="collapse-resources" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-resources">
-							<div class="panel-body">
-								<?php the_field('resources'); ?>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading-articulation">
-							<h3 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-articulation" aria-expanded="true" aria-controls="collapse-articulation">
-								Articulation<span class="fa fa-caret-square-o-down pull-right"></span>
-							</a>
-							</h3>
-						</div>
-						<div id="collapse-articulation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-articulation">
-							<div class="panel-body">
-								<?php the_field('articulation'); ?>
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading-related">
-							<h3 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-related" aria-expanded="true" aria-controls="collapse-related">
-								Related Courses<span class="fa fa-caret-square-o-down pull-right"></span>
-							</a>
-							</h3>
-						</div>
-						<div id="collapse-related" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-related">
-							<div class="panel-body">
-								<ul>
+							<div id="collapse-prereq" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-prereq">
+								<div class="panel-body">
 									<?php
 									for ($i=0; $i < sizeof(get_field('prerequisites')); $i++) { ?>
 									<li>
 										<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('prerequisites')[$i]); ?></a>
 									</li>
 									<?php } // for loop ?>
-								</ul>
+
+								</div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="panel-heading" role="tab" id="heading-resources">
+								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-resources" aria-expanded="true" aria-controls="collapse-resources">
+									<h3 class="panel-title">
+										<span class="graphic arrow-panel-gray"></span>Resources <span class="graphic icon-toggle pull-right"></span>
+									</h3>
+								</a>
+							</div>
+							<div id="collapse-resources" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-resources">
+								<div class="panel-body">
+									<?php the_field('resources'); ?>
+								</div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="panel-heading" role="tab" id="heading-articulation">
+								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-articulation" aria-expanded="true" aria-controls="collapse-articulation">
+									<h3 class="panel-title">
+										<span class="graphic arrow-panel-gray"></span>Articulation <span class="graphic icon-toggle pull-right"></span>
+									</h3>
+								</a>
+							</div>
+							<div id="collapse-articulation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-articulation">
+								<div class="panel-body">
+									<?php the_field('articulation'); ?>
+								</div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="panel-heading" role="tab" id="heading-related">
+								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-related" aria-expanded="true" aria-controls="collapse-related">
+									<h3 class="panel-title">
+										<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
+									</h3>
+								</a>
+							</div>
+							<div id="collapse-related" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-related">
+								<div class="panel-body">
+									<ul>
+										<?php
+										for ($i=0; $i < sizeof(get_field('prerequisites')); $i++) { ?>
+										<li>
+											<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('prerequisites')[$i]); ?></a>
+										</li>
+										<?php } // for loop ?>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -226,7 +231,6 @@
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
@@ -257,24 +261,24 @@
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="row">
-		<div class="container">
-			<div class="col-sm-8">
-				<h2>FAQs</h2>
-				<div class="panel-group" id="accordion-faq" role="tablist">
-					<?php
-						for ($i=0; $i < sizeof(get_field('faqs')); $i++) {
-							$GLOBALS['FAQ_count'] = $i; //extends scope for the instance loop
-							get_template_part('templates/content-post-type', 'course-acf-FAQ');
-						}
-						unset($GLOBALS['FAQ_count']);
-					?>
+		<div class="colored-background">
+			<div class="container">
+				<div class="col-sm-8">
+					<h2>FAQs</h2>
+					<div class="panel-group" id="accordion-faq" role="tablist">
+						<?php
+							for ($i=0; $i < sizeof(get_field('faqs')); $i++) {
+								$GLOBALS['FAQ_count'] = $i; //extends scope for the instance loop
+								get_template_part('templates/content-post-type', 'course-acf-FAQ');
+							}
+							unset($GLOBALS['FAQ_count']);
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
@@ -283,6 +287,5 @@
 			</div>
 		</div>
 	</div>
-	<hr>
 </article>
 

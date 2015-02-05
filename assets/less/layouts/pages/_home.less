@@ -16,32 +16,7 @@
 		}
 	}
 
-	.hero-overlay {
-		width: 456px;
-		height: 326px;
-		background: url('../img/hero-overlay.png') 0 0 no-repeat;
-		display: inline-block;
-		position: absolute;
-		top: 0;
-		left: 0;
-
-		@media
-		only screen and (-webkit-min-device-pixel-ratio: 2),
-		only screen and (   min--moz-device-pixel-ratio: 2),
-		only screen and (     -o-min-device-pixel-ratio: 2/1),
-		only screen and (        min-device-pixel-ratio: 2),
-		only screen and (                min-resolution: 192dpi),
-		only screen and (                min-resolution: 2dppx) {
-			background: url('../img/hero-overlay@2x.png') 0 0 no-repeat;
-			background-size: 456px 326px;
-	  	}
-
-
-		@media (max-width: @screen-xs-max) {
-			display: none;
-		}
-	}
-
+	
 	#content {
 		padding: 0;
 	}
@@ -109,6 +84,16 @@
 
 		&.hero {
 			padding-top: 0;
+
+			.hero-overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				@media (max-width: @screen-xs-max) {
+					display: none;
+				}
+			}
 
 			.container {
 				position: relative;
@@ -185,10 +170,11 @@
 		}
 
 		&.case-studies {
+			/*
 			h3 {
 				color: @gray;
 			}
-
+			*/
 			ul {
 				margin-bottom: 15px;
 			}
