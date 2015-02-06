@@ -28,7 +28,9 @@ Template Name: About - People
 		<div class="container">
 			<div class="col-sm-2">
 				<div class="row">
+			
 					<ul class="people-filter">
+						<li><a href="#" class="selected" data-term="clear">All Staff</a></li>
 						<?php
 							$args = array( 'hide_empty=0' );
 							$terms = get_terms( 'people_group', $args );
@@ -48,7 +50,7 @@ Template Name: About - People
 							}
 							echo $term_list;
 						}?>
-						<li><a href="#" data-term="clear">Clear</a></li>
+						
 					</ul>
 					<hr>
 					<ul class="people-nav">
@@ -82,7 +84,7 @@ Template Name: About - People
 								<?php while ( $query->have_posts() ): ?>
 									<?php $query->the_post(); ?>
 									
-									<li><a href="#" data-title="<?php the_title();?>" data-description="<?php the_field('short_description');?>"><?php the_title(); ?></a></li>
+									<li><a href="#" data-title="<?php the_title();?>" data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); echo $terms[0]->name; ?>"><?php the_title(); ?></a></li>
 									<?php wp_reset_postdata(); ?>
 									 
 								<?php endwhile; ?>

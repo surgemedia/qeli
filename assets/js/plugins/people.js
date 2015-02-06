@@ -22,35 +22,46 @@ $(document).ready(function () {
 		peopleNavList = document.querySelectorAll('.people-nav a');
 		
 		$(panelEl).find('.icon-close').click(function() {
-			$(peopleList).removeClass('selected');
-			$(panelEl).removeClass('show');
-			$(panelTitleEl).html(''); 
-			$(panelTextEl).html(''); 
+			hidePerson();
 		});
 
 		for(var i = 0; i < peopleList.length; i++) {
 			peopleList[i].onclick = function() {
-				showPerson(this);
+
+				if (!($(this).hasClass('out'))) {
+					showPerson(this);
+				}
 			}
 		}
 
 		for(var i = 0; i < filterList.length; i++) {
-
 			filterList[i].onclick = function(event) {
 				(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+
+				hidePerson();
+				$(filterList).removeClass('selected');
+				$(this).addClass('selected');
 
 				var term = this.getAttribute('data-term');
 				
 				if (term !== 'clear') {
-					$('.person').addClass('out');
+					$(peopleList).addClass('out');
 					for(var i = 0; i < peopleList.length; i++) {
 						if (term === peopleList[i].getAttribute('data-term')) {
 							$(peopleList[i]).removeClass('out');
 						}
 					}
+
+					$(peopleNavList).addClass('out');
+					for(var i = 0; i < peopleNavList.length; i++) {
+						if (term === peopleNavList[i].getAttribute('data-term')) {
+							$(peopleNavList[i]).removeClass('out');
+						}
+					}
 				}
 				else {
-					$('.person').removeClass('out');
+					$(peopleList).removeClass('out');
+					$(peopleNavList).removeClass('out');
 				}
 			}
 		}
@@ -58,10 +69,12 @@ $(document).ready(function () {
 		for(var i = 0; i < peopleNavList.length; i++) {
 			peopleNavList[i].onclick = function(event) {
 				(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
-	
-				var person = findPerson(this.getAttribute('data-title'));
 
-				showPerson(person);
+				var person = findPerson(this.getAttribute('data-title'));
+				
+				if (!($(person).hasClass('out'))) {
+					showPerson(person);
+				}
 			}
 		}
 	}
@@ -94,10 +107,7 @@ $(document).ready(function () {
 
 		$('html, body').animate({
 			scrollTop: $(person).offset().top
-		}, 500, 'linear', function() {
-
-
-		});
+		}, 500, 'linear', function() {});
 
 		setTimeout(function() {
 				$(panelEl).addClass('show');
@@ -110,30 +120,11 @@ $(document).ready(function () {
 		$(person).addClass('selected');
 	}
 
-	function filterGroup(group) {
+	function hidePerson() {
 		$(peopleList).removeClass('selected');
-
-		if ($(panelEl).hasClass('show')) {
-			$(panelEl).removeClass('show');
-
-			$(panelEl).one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function() {
-				$('#content').before(panelEl);
-				$('.person').removeClass('hidden');
-				$('.person:not([data-group="' + group + '"])').addClass('hidden');
-
-				if (group == 'all') {
-					$('.person').removeClass('hidden');
-				}
-			});
-		}
-		else {
-			$('.person').removeClass('hidden');
-			$('.person:not([data-group="' + group + '"])').addClass('hidden');
-
-			if (group == 'all') {
-				$('.person').removeClass('hidden');
-			}
-		}
+		$(panelEl).removeClass('show');
+		$(panelTitleEl).html(''); 
+		$(panelTextEl).html(''); 
 	}
 
 	function findLastinRow(person) {
