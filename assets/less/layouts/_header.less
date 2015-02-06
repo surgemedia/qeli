@@ -6,26 +6,23 @@
 }
 
 .navbar {
-	//padding: 20px 0 0;
 	margin-bottom: 0;
+	padding-top: 20px;
 
-	.logo {
-		margin-left: 0 !important;
+	.navbar-brand.logo {
+		margin-left: 0;
 		margin-right: 115px;
 
 		@media (max-width: @screen-xs-max) {
-			position: absolute;
-			top: 50px;
-			left: 20px
+			margin-left: 15px;
+			margin-right: 0;
+			margin-bottom: 15px;
 		}
 	}
 
-	.nav {
-		margin-top: 8px;
-	}
-
-	.navbar-brand {
-		
+	/*Temp*/
+	.menu-incomplete {
+		display: none;
 	}
 
 	a {
@@ -89,12 +86,12 @@
 	}
 
 	li:first-child {
-		border-left: 1px dotted #000;
+		border-left: 1px dashed @gray;
 		padding-left: 10px;
 	}
 
 	li:last-child {
-		border-right: 1px dotted #000;
+		border-right: 1px dashed @gray;
 		padding-right: 10px;
 	}
 
@@ -103,7 +100,7 @@
 	}
 	
 	.navbar-right li {
-		border-right: 1px dotted #000;
+		border-right: 1px dashed @gray;
 		padding-left: 5px;
 		padding-right: 5px;
 	}
@@ -117,6 +114,17 @@
 		opacity: 1;
 	}
 
+	@media (max-width: @screen-lg-min) {
+	
+		.navbar-brand.logo {
+			margin-right: 30px;
+		}
+
+		.navbar-right {
+			margin-right: 0;
+		}
+	}
+
 	@media (max-width: @screen-xs-max) {
 		li {
 			width: 100%;
@@ -127,18 +135,24 @@
 		li:nth-child(even) {
 			background-color: @gray-lightest;
 		}
+
 		a {
-			.graphic {
-				margin: 0;
+			text-align: left;
+
+			.nav-icon {
+				margin: 0 10px 0 0;
 				display: inline-block;
 				vertical-align: -10px;
 			}
 
-			.nav-label {
-				font-size: 18px;
-				display: inline-block;
-				margin: 0 0 0 10px;
+			.nav-menu-callout {
+				margin: 0 60px 0;
 			}
+		}
+
+		.navbar-right {
+			margin-right: -15px;
+			margin-left: -15px;
 		}
 	}
 
@@ -150,15 +164,7 @@
 		-webkit-border-radius: 0;
 		margin-top: 0 !important;
 		padding: 20px 10px;
-		/*
-		&:before {
-			content: '';
-			.graphic;
-			.graphic.nav-menu-callout;
-			position: absolute;
-			top: -10px;
-		}
-		*/
+		
 		li {
 			padding: 0;
 			border: 0;

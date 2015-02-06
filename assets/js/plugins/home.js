@@ -142,16 +142,20 @@ $(document).ready(function () {
 		var scrollTimeout;
 
 		if (!isMobile) {
-			document.body.onmousewheel = function(e) {
-				e.preventDefault();
-				
+			$(document).on( "mousewheel DOMMouseScroll", function(event){
+				(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+
+				var e = event.originalEvent;
+
 				if (scrollTimeout) {
 					clearTimeout(scrollTimeout);
 				}
 
 				scrollTimeout = setTimeout(function() {
 					// check if scrolling direction is different
-					if ((e.deltaY <= 0 && prevDeltaY > 0) || (e.deltaY >= 0 && prevDeltaY <= 0)) {
+					var deltaY = e.deltaY ? e.deltaY : e.detail;
+
+					if ((deltaY <= 0 && prevDeltaY > 0) || (deltaY >= 0 && prevDeltaY <= 0)) {
 						scrollLocked = false;
 					}
 
@@ -159,13 +163,12 @@ $(document).ready(function () {
 						//lock scroll right before animation, 'scrollStart' event cannot be used because of prevent default
 						scrollLocked = true;
 
-						if (e.deltaY > 0) {
+						if (deltaY > 0) {
 							sectionIdx++;
 							
 							if (sectionIdx >= sectionList.length) {
 								sectionIdx = (sectionList.length - 1);
 							}
-							
 							pageScroll.scrollToElement(sectionList[sectionIdx], 750);
 						}
 						else {
@@ -174,14 +177,13 @@ $(document).ready(function () {
 							if (sectionIdx < 0) {
 								sectionIdx = 0;
 							}
-							
 							pageScroll.scrollToElement(sectionList[sectionIdx], 750);
 						}
 
-						prevDeltaY = e.deltaY;
+						prevDeltaY = deltaY;
 					}
 				}, 50);
-			}
+			});
 		}
 	}
 });
