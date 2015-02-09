@@ -4,8 +4,8 @@ function news_posts() {
 
 	$labels = array(
 		'name'                => _x( 'News Articles', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Article', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'News Articles', 'text_domain' ),
+		'singular_name'       => _x( 'News Article', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'           => __( 'Sector News', 'text_domain' ),
 		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
 		'all_items'           => __( 'All Items', 'text_domain' ),
 		'view_item'           => __( 'View Item', 'text_domain' ),
