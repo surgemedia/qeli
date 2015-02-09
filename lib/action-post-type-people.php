@@ -85,5 +85,5 @@ function people_post() {
 
 // Hook into the 'init' action
 add_action( 'init', 'people_post', 0 );
-removeOtherPosts('key_people');
+//removeOtherPosts('key_people');
 
