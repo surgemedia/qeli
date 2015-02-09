@@ -1,6 +1,6 @@
 {
     "key": "group_54c051f4acb29",
-    "title": "Post Type - Media Release",
+    "title": "Post Type - Media Release & Publications",
     "fields": [
         {
             "key": "field_54c0522dfef1a",
@@ -53,5 +53,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421890696
+    "modified": 1423460401
 }
