@@ -51,8 +51,8 @@ function roots_display_sidebar() {
       array(
         'is_404',
         'is_front_page',
-        'is_archive',
-        'is_page',
+        //'is_archive',
+       // 'is_page',
         'is_single',
 
       ),
@@ -63,7 +63,6 @@ function roots_display_sidebar() {
       array(
         'template-custom.php',
         'template-courses.php'
-
 
       )
     );
