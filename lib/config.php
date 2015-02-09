@@ -51,7 +51,7 @@ function roots_display_sidebar() {
       array(
         'is_404',
         'is_front_page',
-        'is_archive',
+        // 'is_archive', TODO JW check with alex if other areas use this
         'is_page',
         'is_single',
 
@@ -68,7 +68,7 @@ function roots_display_sidebar() {
       )
     );
     $display = apply_filters('roots/display_sidebar', $sidebar_config->display);
-  }  
+  }
 
   return $display;
 }

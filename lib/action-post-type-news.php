@@ -1,10 +1,10 @@
-<?php 
+<?php
 // Register Custom Post Type
 function news_posts() {
-
+	// JW Updated title to sector news as this works automagically with the Archives function :-)
 	$labels = array(
-		'name'                => _x( 'News Articles', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'News Article', 'Post Type Singular Name', 'text_domain' ),
+		'name'                => _x( 'Sector News', 'Post Type General Name', 'text_domain' ),
+		'singular_name'       => _x( 'Sector New', 'Post Type Singular Name', 'text_domain' ),
 		'menu_name'           => __( 'Sector News', 'text_domain' ),
 		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
 		'all_items'           => __( 'All Items', 'text_domain' ),
