@@ -1,5 +1,22 @@
-<div class="course  principals 500 cairns hosted october feedbackonskills col-xs-12 col-sm-6" data-audience="principals" data-fee="500" data-location="cairns" data-delivery="hosted" data-month="october" data-development="feedbackonskills" style="">
-  <div class="row">
+<div class="course col-xs-12 col-sm-6" 
+    data-audience="<?php the_field('audience'); ?>"
+    data-fee="<?php the_field('cost'); ?>"
+    data-location="<?php the_field('instances')[0]['state']; ?>"
+    data-delivery="<?php
+                $terms = get_field('delivery_method');
+                for ($i=0; $i < sizeof($terms); $i++) {
+                  if($i == 0) {
+                    echo $terms[$i]->name;
+                  }
+                  else {
+                    echo ", ".$terms[$i]->name;
+                  }
+                } 
+              ?>" 
+    data-month="<?php echo get_field('instances')[0]['date']; ?>" 
+    data-development="<?php the_field('development'); ?>" 
+    >
+    <div class="row">
     <div class="col-xs-12">   
       <h2><?php the_title(); ?></h2>
       <!--
@@ -8,11 +25,8 @@
       -->
       <span class="graphic icon-star pull-right"></span>
     </div>
-  </div>
-  <div class="row">
-    <hr>
-  </div>
-  <div class="row">
+
+    <hr class="col-xs-12">
     <div class="col-xs-12 col-sm-6">
       <?php truncate(get_field('executive_summary'),50,"...");?>
       <a href="<?php echo the_permalink(); ?>" class="btn btn-program"><span class="graphic icon-read-more"></span> Read More</a>
@@ -22,7 +36,6 @@
         <tbody>
           <tr>
             <td><b>Delivery</b></td>
-            
             <td>
               <?php
                 $terms = get_field('delivery_method');
@@ -60,6 +73,6 @@
         </tbody>
       </table>
     </div>
+  <hr class="col-xs-12">
   </div>
-  <div class="row"><hr></div>
 </div>

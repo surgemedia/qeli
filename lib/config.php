@@ -52,7 +52,7 @@ function roots_display_sidebar() {
         'is_404',
         'is_front_page',
         // 'is_archive', TODO JW check with alex if other areas use this
-        'is_page',
+        // 'is_page',  TODO JW check with alex if other areas use this
         'is_single',
 
       ),
@@ -63,7 +63,6 @@ function roots_display_sidebar() {
       array(
         'template-custom.php',
         'template-courses.php'
-
 
       )
     );

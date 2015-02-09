@@ -18,7 +18,6 @@
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
 
-
       <?php // TODO the templates could do with a restructure to get the sidebar back up in here. ?>
 
   </div><!-- /.content -->

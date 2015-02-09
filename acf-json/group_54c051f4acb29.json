@@ -45,6 +45,13 @@
                 "operator": "==",
                 "value": "media_releases"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "publication"
+            }
         ]
     ],
     "menu_order": 0,
@@ -53,5 +60,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1423460401
+    "modified": 1423462616
 }
