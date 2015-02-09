@@ -24,7 +24,7 @@ Template Name: Publications
 				<?php
 				// WP_Query arguments
 				$args = array (
-				'post_type'              => 'media_releases',
+				'post_type'              => 'publication',
 				'pagination'             => false,
 				'posts_per_page'         => '6',
 				);
@@ -33,7 +33,7 @@ Template Name: Publications
 				if ( $query->have_posts() ) {
 						while ( $query->have_posts() ) {
 						$query->the_post();
-						get_template_part('templates/content-post-type', 'publication');
+						get_template_part('templates/content-post-type', 'media-release');
 						}
 						} else {
 						get_template_part('templates/content', 'no-posts');
@@ -46,7 +46,7 @@ Template Name: Publications
 				<?php
 				// WP_Query arguments
 				$args = array (
-				'post_type'              => 'media_releases',
+				'post_type'              => 'publication',
 				'pagination'             => true,
 				'posts_per_page'         => '6',
 				'offset'                 => '6',
@@ -59,7 +59,7 @@ Template Name: Publications
 				if ( $query->have_posts() ) {
 						while ( $query->have_posts() ) {
 						$query->the_post();
-						get_template_part('templates/content-post-type', 'publication');
+						get_template_part('templates/content-post-type', 'media-release');
 						}
 						} else {
 						get_template_part('templates/content', 'no-posts');
