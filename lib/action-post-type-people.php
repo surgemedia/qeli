@@ -45,9 +45,9 @@ add_action( 'init', 'people_groups', 0 );
 function people_post() {
 
 	$labels = array(
-		'name'                => _x( 'Key Peoples', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Key People', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Key People', 'text_domain' ),
+		'name'                => _x( 'Our Community', 'Post Type General Name', 'text_domain' ),
+		'singular_name'       => _x( 'Community Person', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'           => __( 'Our Community', 'text_domain' ),
 		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
 		'all_items'           => __( 'All Items', 'text_domain' ),
 		'view_item'           => __( 'View Item', 'text_domain' ),
@@ -85,5 +85,5 @@ function people_post() {
 
 // Hook into the 'init' action
 add_action( 'init', 'people_post', 0 );
-//removeOtherPosts('key_people');
+//wremoveOtherPosts('key_people');
 
