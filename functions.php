@@ -28,7 +28,9 @@ $roots_includes = array(
   'lib/function-clean-youtube-link.php',   //Displays arrays in a pre for easy reading
   'lib/function-truncate-content.php',   //Displays arrays in a pre for easy reading
   'lib/function-get-tax-names.php',   //Displays arrays in a pre for easy reading
-  'lib/function-only-this-post.php',   //Displays arrays in a pre for easy reading                                      
+  'lib/function-only-this-post.php',   //Displays arrays in a pre for easy reading
+  'lib/action-hide-course-field.php',           // Disappear some of custom post type input area in admin page
+  'lib/wp-session-manager/wp-session-manager.php', //Wp session move from plug-in to internal                                      
   
   //Post Types
   'lib/action-post-type-courses.php',              // Custom Post Type : Courses
@@ -38,8 +40,8 @@ $roots_includes = array(
   'lib/action-post-type-testimonials.php',         // Custom Post Type : Testimonial
   'lib/action-post-type-media-releases.php',       // Custom Post Type : Media Release
   'lib/action-post-type-people.php',               // Custom Post Type : Key People
-  'lib/action-hide-course-field.php', 			   // Disappear some of custom post type input area in admin page
-  'lib/wp-session-manager/wp-session-manager.php', //Wp session move from plug-in to internal
+  'lib/action-post-type-publications.php',               // Custom Post Type : Key People
+
 /*=================================
 *      Qeli Json Import Page      *
 =================================*/
