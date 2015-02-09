@@ -1,4 +1,4 @@
-<div class="testimonial-item">
+<div class="testimonial-item col-xs-12 col-md-6">
   <div class="hidden-xs col-sm-3">
     <img src="<?php  echo getFeaturedUrl(); ?>" alt="<?php the_title(); ?>" class="img-circle img-responsive" data-src="<?php  echo getFeaturedUrl(); ?>" data-holder-rendered="true">
   </div>

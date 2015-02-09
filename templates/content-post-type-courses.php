@@ -2,8 +2,10 @@
   <div class="row">
     <div class="col-xs-12">   
       <h2><?php the_title(); ?></h2>
+      <!--
       <a href="<?php echo site_url(); ?>/cart/" class="graphic icon-cart pull-right"></a>
       <span class="sep pull-right"></span>
+      -->
       <span class="graphic icon-star pull-right"></span>
     </div>
   </div>
@@ -11,11 +13,11 @@
     <hr>
   </div>
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <?php truncate(get_field('executive_summary'),50,"...");?>
       <a href="<?php echo the_permalink(); ?>" class="btn btn-program"><span class="graphic icon-read-more"></span> Read More</a>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <table class="table">
         <tbody>
           <tr>

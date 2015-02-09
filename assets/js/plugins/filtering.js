@@ -122,7 +122,26 @@ $(document).ready(function () {
 		 	singleFilter($(this));
 		 	showPrograms();
 		});
+		/*
+		var el = document.querySelector('.isotope');
+
+		var iso = new Isotope(el, {
+			itemSelector: '.course',
+			layoutMode: 'fitRows'
+		});
+
+		iso.on('layoutComplete', function(isoInstance, laidOutItems) {
+			$('#filter-no-results').addClass('hidden');
+			console.dir($('#filter-no-results'));
 	
+			if(laidOutItems.length == 0) {
+				$('#filter-no-results').removeClass('hidden');
+			}
+			
+			else {
+			}
+		});
+*/	
 		var $container = $('.isotope').isotope({
 			itemSelector: '.course',
 			layoutMode: 'fitRows'
@@ -135,11 +154,10 @@ $(document).ready(function () {
 			if(laidOutItems.length == 0) {
 				$('#filter-no-results').removeClass('hidden');
 			}
-			
 			else {
 			}
 		});
-	
+
 		$('.course .icon-star').click(function() {
 		 	toggleFav($(this).parents('.course'));
 		});

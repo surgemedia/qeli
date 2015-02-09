@@ -1,4 +1,4 @@
-<div class="section news green" style="width: 1680px; height: 806px;">
+<div class="section news green">
   <div class="container center-all">
     <h2>QELi SECTOR NEWS</h2>
     <div class="row">

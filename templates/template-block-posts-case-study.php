@@ -1,4 +1,4 @@
-<div class="section case-studies" style="width: 1680px; height: 806px;">
+<div class="section case-studies">
   <div class="container center-all">
     <div class="row">
     
