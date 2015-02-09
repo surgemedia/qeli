@@ -125,7 +125,7 @@ class QELi_Nav_Menu extends Walker_Nav_Menu {
     // depth dependent classes
     $depth_classes = array(
         ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
-        ( $depth >=2 ? 'sub-sub-menu-item' : '' ),
+        ( $depth >= 2 ? 'sub-sub-menu-item' : '' ),
         'menu-item-depth-' . $depth
       );
     $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
@@ -174,10 +174,8 @@ class QELi_Footer_Menu extends Walker_Nav_Menu {
       $indent = ( $depth > 0  ? str_repeat( "\t", $depth ) : '' ); // code indent
       $display_depth = ( $depth + 1); // because it counts the first submenu as 0
       $classes = array(
-          'sub-menu',
-          ( $display_depth >= 1  ? 'dropdown-menu' : '' ),
-          ( $display_depth >=2 ? 'sub-sub-menu' : '' ),
-          'menu-depth-' . $display_depth
+            'sub-menu',
+            'menu-depth-' . $display_depth
           );
       $class_names = implode( ' ', $classes );
 
@@ -190,13 +188,12 @@ class QELi_Footer_Menu extends Walker_Nav_Menu {
     global $wp_query;
 
     $indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
-    $link_before = ($depth == 0) ? '<span class="graphic nav-icon"></span>' : '';
-    $link_after = ($depth > 0) ? '' : '<span class="graphic nav-menu-callout"></span>';
+    $link_before = ($depth == 0) ? '<span class="graphic footer-icon"></span>' : '';
 
     // depth dependent classes
     $depth_classes = array(
-        ( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
-        ( $depth >=2 ? 'sub-sub-menu-item' : '' ),
+        ( $depth == 0 ? 'col-xs-12 col-sm-3' : 'sub-menu-item' ),
+        ( $depth >= 2 ? 'sub-sub-menu-item' : '' ),
         'menu-item-depth-' . $depth
       );
     $depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
@@ -213,8 +210,7 @@ class QELi_Footer_Menu extends Walker_Nav_Menu {
     $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
     $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
     $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-    $attributes .= ' class="menu-link ' . ( ($item->url === "#") ? 'sub-menu-link dropdown-toggle ' : 'main-menu-link' ) . '"';
-    $attributes .= ($item->url === "#") ? ' data-toggle="dropdown"' : '';
+    $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link h2' ) . '"';
 
     $item_output = sprintf('%1$s<a%2$s>
                               %3$s%4$s%5$s

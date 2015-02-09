@@ -9,6 +9,20 @@
             </div>
         </div>
         <div class="row">
+            <?php 
+                    wp_nav_menu(array('theme_location' => 'footer',
+                                    'container' => false,
+                                    'menu'=> 'footer',
+                                    'menu_id' => 'footer-nav',
+                                    'menu_class' => 'footer', 
+                                    'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                                    'walker' => new QELi_Footer_Menu()
+                                )
+                            );
+                    ?>
+        </div>
+        <!--
+        <div class="row">
             <div class="col-xs-6 col-md-3">
                 <h2><span class="graphic footer-qeli"></span>QELI</h2>
                 <ul>
@@ -48,7 +62,8 @@
                     <li><a href="#">Sector News</a></li>
                 </ul>
             </div>
-        </div>       
+        </div>
+        -->
     </div>
     <div class="copyright">
         <div class="container"> 
