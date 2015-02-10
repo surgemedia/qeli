@@ -280,6 +280,10 @@ function json_import_function(){
 			$checkLastModifyDate = get_field('dateLastUpdated', $post_ID);// check the last modify date to reduce query.
 			
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
+				global $wpdb;
+				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID;
+				$result = $wpdb->get_results( $del_all_postmate);
+				print_r($result);
 				update_field('field_54c9889071a6e', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('field_54ab2484f6455', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
