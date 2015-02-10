@@ -12,16 +12,6 @@
     get_template_part('templates/header');
   ?>
 
-<div class="modal fade in" id="videoModal" ><div class="modal-backdrop fade in"></div>
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
   <div id="content-container" class="">
   <article id="content" class="col-xs-12">
   <div class="scroller-wrapper" >
@@ -31,6 +21,13 @@
   </div><!-- /.wrap -->
   </article>
   </div>
-
+  <div class="modal fade in" id="videoModal" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="embed-responsive embed-responsive-16by9">
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
