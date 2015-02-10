@@ -31,7 +31,7 @@ Template Name: Partners
 						<div class="numbering"><?php echo $i; ?></div>
 						<h2><?php the_sub_field('name'); ?></h2>
 						<?php the_sub_field('description'); ?>
-						<a href="<?php the_sub_field('homepage'); ?>" target="_blank"><span class="graphic arrow-link"></span><?php the_sub_field('homepage'); ?></a>
+						<a href="<?php the_sub_field('homepage'); ?>" target="_blank"><span class="graphic arrow-right-outline"></span><?php the_sub_field('homepage'); ?></a>
 					</div>
 				</div>
 			</div>
