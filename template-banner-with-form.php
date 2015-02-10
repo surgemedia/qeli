@@ -11,17 +11,14 @@ Template Name: Default - Banner with Form
 			echo wp_get_attachment_image_src($id, 'full')[0];
 		?>')">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
-			<div class="container header-text">
-				<?php if (get_field('header_text')): ?>
-				<?php the_field('header_text'); ?>
-				<?php endif; ?>
-			</div>
+			<?php get_template_part('templates/content-header', 'text'); ?>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row">
 
 			<div class="col-xs-8">
+				<?php get_template_part('templates/content', 'lead'); ?>
 				<?php the_content(); ?>
 
 			</div>
