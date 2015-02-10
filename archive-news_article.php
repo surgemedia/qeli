@@ -1,17 +1,4 @@
-<article id="content" class="col-xs-12">
-	<div class="row">
-		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
-			$id = get_post_thumbnail_id();
-			echo wp_get_attachment_image_src($id, 'full')[0];
-		?>')">
-			<?php get_template_part('templates/page', 'colored-header'); ?>
-			<div class="container">
-				<p>
-				<?php the_content(); ?>
-				</p>
-			</div>
-		</div>
-	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-9">
@@ -29,7 +16,7 @@
 				if ( $query->have_posts() ) {
 						while ( $query->have_posts() ) {
 						$query->the_post();
-						get_template_part('templates/content-post-type-post-block', 'news');
+						get_template_part('templates/content-post-type-post-block-news', 'listing');
 						}
 						} else {
 						get_template_part('templates/content', 'no-posts');
@@ -47,4 +34,3 @@
 			</div>
 		</div>
 	</div>
-</article>
