@@ -35,3 +35,35 @@
 		}
 	}
 }
+
+.search-form {
+	input {
+		border: 0;
+		border-radius: 0;
+		box-shadow: none;
+		background: @gray-lightest;
+	}
+
+	.btn-search {
+		text-transform: uppercase;
+		border-radius: 0;
+		.button-variant(@gray-dark; @gray-lightest; @gray-lightest);
+	}
+}
+
+.nav-search {
+	position: relative;
+
+	.search-form {
+		width: 200px;
+		box-shadow: none;
+		position: absolute;
+		top: -20px;
+		right: 0;
+		
+		.panel-body {
+			padding: 0;
+		}
+	}
+
+}

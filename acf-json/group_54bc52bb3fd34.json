@@ -19,7 +19,8 @@
             "choices": {
                 "green": "Green",
                 "blue": "Blue",
-                "pink": "Pink"
+                "pink": "Pink",
+                "gray": "gray"
             },
             "default_value": {
                 "blue": "blue"
@@ -55,5 +56,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421889172
+    "modified": 1423531916
 }

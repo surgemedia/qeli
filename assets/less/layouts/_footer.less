@@ -32,7 +32,6 @@ footer {
 			color: @gray !important;
 		}
 
-
 		&.sub-menu {
 			border-top: 1px solid @gray-lighter;
 			
@@ -43,6 +42,18 @@ footer {
 		}
 	}
 
+	@media (max-width: @screen-xs-max) {
+		margin-top: 20px;
+
+		.h2 {
+			border: 0;
+		}
+
+		ul {
+			margin-bottom: 15px;
+		}
+	}
+		
 	.visible-xs-block {
 		margin-bottom: 20px;
 	}
@@ -63,11 +74,6 @@ footer {
 		margin-top: 35px;
 	}
 
-	.footer-icon {
-
-	}
-
-
 	.menu-home .footer-icon {
 		.graphic.footer-qeli;
 	}
@@ -84,7 +90,6 @@ footer {
 		.graphic.footer-news;
 	}
 
-
 	.container .row:first-child {
 		border-top: 0;
 	}
@@ -100,11 +105,15 @@ footer {
 		}
 
 		@media (max-width: @screen-xs-max) {
-
 			margin-top: 20px;
 
 			.hero-overlay {
 				display: none;
+			}
+
+			.footer-logo {
+				display: block;
+				margin-bottom: 20px;
 			}
 		}
 	}

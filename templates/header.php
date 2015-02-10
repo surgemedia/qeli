@@ -24,15 +24,20 @@
 							);
 					?>
 				<ul class="nav navbar navbar-nav navbar-right" role="search">
-					<li class="main-menu-item">
-						<a href="#" class="menu-link">
+					<li class="main-menu-item nav-search">
+						<a href="#search-collapse" class="menu-link" data-toggle="collapse" aria-expanded="false" aria-controls="search-collapse">
 							<span class="graphic nav-icon nav-search"></span>
 							Search
 							<span class="graphic nav-menu-callout"></span>
 						</a>
+						<div id="search-collapse" class="panel search-form collapse">
+							<div class="panel-body">
+								<?php get_template_part('templates/searchform'); ?>
+							</div>
+						</div>
 					</li>
 					<li class="main-menu-item nav-subscribe ">
-						<a href="#subscribe-collapse" class="menu-link btn-subscribe"  data-toggle="collapse" aria-expanded="false" aria-controls="subscribe-collapse">
+						<a href="#subscribe-collapse" class="menu-link btn-subscribe" data-toggle="collapse" aria-expanded="false" aria-controls="subscribe-collapse">
 							<span class="graphic nav-icon nav-e-news"></span>
 							subscribe
 							<span class="graphic nav-menu-callout"></span>
