@@ -23,7 +23,7 @@ Template Name: Contact
 
 						<h3>Visit</h3>
 						<?php the_field('homepage'); ?>
-						
+
 						<div class="social-icons">
 							<span class="graphic arrow-right-circle"></span>
 							<?php if (get_field('facebook_link')): ?>
@@ -40,7 +40,7 @@ Template Name: Contact
 				</div>
 				<div class="col-xs-12 col-sm-6">
 					<div class="row">
-						<?php 
+						<?php
 							$location = get_field('map_location');
 							if( !empty($location) ):
 						?>
@@ -57,12 +57,14 @@ Template Name: Contact
 		<div class="container">
 			<div class="col-xs-12 col-sm-6">
 				<div class="row">
+					<h3>Send us an email</h3>
+					<?php echo do_shortcode('[gravityform id=1 title=false description=false ajax=true]');?>
 				</div>
 			</div>
 
 			<div class="col-xs-12 col-sm-6">
 				<div class="row">
-					<img src="<?php 
+					<img src="<?php
 								$id = get_post_thumbnail_id();
 								echo wp_get_attachment_image_src($id, 'full')[0];
 							?>" class="img-responsive feat-img"/>
