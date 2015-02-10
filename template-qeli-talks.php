@@ -24,6 +24,9 @@ Template Name: Qeli Talks/Videos
 			// WP_Query arguments
 			$args = array (
 				'post_type' => 'videoes',
+				'pagination'             => true,
+				'posts_per_page'         => '6',
+
 			);
 			// The Query
 			$query = new WP_Query( $args );
@@ -35,7 +38,7 @@ Template Name: Qeli Talks/Videos
 			} else {
 			}
 			// Restore original Post Data
-			wp_reset_postdata()
+			wp_reset_postdata();
 			?>
 		</div>
 	</div>
