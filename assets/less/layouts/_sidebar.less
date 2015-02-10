@@ -1,10 +1,31 @@
-.sidebar {
+.sidebar(@color) {
+	border: 1px solid @color;
+
 	.widget {
-		margin-bottom: 20px;
+		background-color: lighten(@color, @lighten);
+
+		.input-group {
+			width: 100%;
+		}
+
+		.input-group-btn {
+			width: 1%;
+		}
+
+		h3 {
+			color: @gray;
+			padding: 10px 15px 5px;
+			margin: 0;
+		}
+	}
+
+	.widget:nth-child(2n) {
+		background-color: #fff;
 	}
 
 	ul {
+		list-style: none;
+		padding: 0 15px 10px;
 		margin: 0;
-		padding: 0 0 0 1.5em;
 	}
 }

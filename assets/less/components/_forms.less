@@ -34,6 +34,16 @@
 			cursor: pointer;
 		}
 	}
+
+	@media (max-width: @screen-xs-max) {
+		.subscribe-form {
+			width: 100%;
+			top: initial;
+			right: 0;
+			bottom: 0;
+			z-index: 1010;
+		}
+	}
 }
 
 .search-form {
@@ -64,6 +74,14 @@
 		.panel-body {
 			padding: 0;
 		}
+		.transition(all 0.05s);
 	}
 
+	@media (max-width: @screen-xs-max) {
+		.search-form {
+			top: 12px;
+			left: 35px;
+			.collapse.in;
+		}
+	}
 }
