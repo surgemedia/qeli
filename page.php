@@ -22,7 +22,7 @@
 			</div>
 
 			<?php if (roots_display_sidebar()) : ?>
-			<div class="col-sm-4">
+			<div class="col-xs-12 col-sm-4">
 		        <aside class="sidebar" role="complementary">
 		          <?php include roots_sidebar_path(); ?>
 		        </aside><!-- /.sidebar -->
