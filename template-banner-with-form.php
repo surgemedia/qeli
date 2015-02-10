@@ -17,17 +17,15 @@ Template Name: Default - Banner with Form
 	<div class="container">
 		<div class="row">
 
-			<div class="col-xs-8">
+			<div class="col-xs-12 col-sm-8">
 				<?php get_template_part('templates/content', 'lead'); ?>
 				<?php the_content(); ?>
 
 			</div>
 
 
-			<div class="col-sm-4">
-		        <aside class="sidebar" role="complementary">
-		          <?php dynamic_sidebar('sidebar-contact'); ?>
-		        </aside><!-- /.sidebar -->
+			<div class="col-xs-12 col-sm-4 panel-aside">
+		        <?php get_template_part('templates/sidebar', 'contact'); ?>
 		    </div>
 		</div>
 	</div>
