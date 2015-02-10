@@ -27,7 +27,16 @@
 	.person {
 		position: relative;	
 		cursor: pointer;
-		
+		.transition(all 0.5s);
+
+		.person-content {
+			.transition(all 0.25s 0.25s);
+		}
+
+		.person-info {
+			.transition(all 0.5s 0.5s);
+		}
+
 		&:hover,
 		&:focus,
 		&.selected {
@@ -37,8 +46,19 @@
 		}
 
 		&.out {
-			opacity: 0.2;
-			cursor: default;
+			width: 0;
+			height: 0;
+			min-width: 0;
+			min-height: 0;
+			overflow: hidden;
+
+			.person-content {
+				transform: scale3d(0, 0, 0);
+			}
+
+			.person-info {
+				opacity: 0;
+			}
 		}
 
 		&.out:hover {
@@ -70,6 +90,7 @@
 
 	.panel-info {
 		max-height: 0;
+		min-height: 0;
 		padding: 0 30px;
 		border: 1px solid @gray-lighter;
 		opacity: 0;

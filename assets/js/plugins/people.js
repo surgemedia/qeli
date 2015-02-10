@@ -28,6 +28,8 @@ $(document).ready(function () {
 		for(var i = 0; i < peopleList.length; i++) {
 			peopleList[i].onclick = function() {
 
+				hidePerson();
+
 				if (!($(this).hasClass('out'))) {
 					showPerson(this);
 				}
@@ -39,6 +41,7 @@ $(document).ready(function () {
 				(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
 
 				hidePerson();
+
 				$(filterList).removeClass('selected');
 				$(this).addClass('selected');
 
@@ -69,6 +72,8 @@ $(document).ready(function () {
 		for(var i = 0; i < peopleNavList.length; i++) {
 			peopleNavList[i].onclick = function(event) {
 				(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
+				
+				hidePerson();
 
 				var person = findPerson(this.getAttribute('data-title'));
 				
@@ -104,7 +109,6 @@ $(document).ready(function () {
 		var title = $(person).attr('data-title'),
 			desc = $(person).attr('data-description');
 
-
 		$('html, body').animate({
 			scrollTop: $(person).offset().top
 		}, 500, 'linear', function() {});
@@ -114,7 +118,6 @@ $(document).ready(function () {
 				$(panelTitleEl).html(title); 
 				$(panelTextEl).html(desc); 
 			}, 25);
-	
 
 		$(peopleList).removeClass('selected');
 		$(person).addClass('selected');
@@ -125,6 +128,12 @@ $(document).ready(function () {
 		$(panelEl).removeClass('show');
 		$(panelTitleEl).html(''); 
 		$(panelTextEl).html(''); 
+
+		$(panelEl).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
+	    	if (!$(this).hasClass('show')) {
+	    		$(this).appendTo(document.body);
+	    	}
+	    });
 	}
 
 	function findLastinRow(person) {
