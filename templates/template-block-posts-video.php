@@ -2,7 +2,7 @@
 <div class="section videos blue">
   <div class="container center-all">
     <div class="col-xs-12 col-md-9">
-      <div class="row">     
+      <div class="row">
         <?php
           // WP_Query arguments
           $count = 0;
@@ -37,4 +37,3 @@
     <span class="graphic arrow-section-down"></span>
   </div>
 </div>
-      

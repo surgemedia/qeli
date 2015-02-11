@@ -15,7 +15,7 @@ Template Name: About - People
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="panel-info" class="col-xs-12 panel-info">
 		<div class="panel-header clearfix">
 			<button class="graphic icon-close pull-right"></button>
@@ -28,7 +28,7 @@ Template Name: About - People
 		<div class="container">
 			<div class="col-sm-2">
 				<div class="row">
-			
+
 					<ul class="people-filter">
 						<li><a href="#" class="selected" data-term="clear">All Staff</a></li>
 						<?php
@@ -42,15 +42,15 @@ Template Name: About - People
 								$i++;
 								$term_list .= '<li><a data-term="' . $term->name . '" href="' . get_term_link( $term ) . '" title="' . sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) . '">' . $term->name . '</a></li>';
 								if ( $count != $i ) {
-								
+
 								}
 								else {
-							
+
 								}
 							}
 							echo $term_list;
 						}?>
-						
+
 					</ul>
 					<hr>
 					<ul class="people-nav">
@@ -60,7 +60,7 @@ Template Name: About - People
 							$acf_people = get_field('key_people');
 
 						 	for ($i=0; $i < sizeof($acf_people); $i++) { ?>
-							 <?php 
+							 <?php
 							 	$acf_person = get_post(get_field('key_people')[$i]);
 							 	$acf_person_link = get_permalink(get_field('key_people')[$i]); ;
 							?>
@@ -72,21 +72,21 @@ Template Name: About - People
 							$args = array (
 							'post_type'              => 'key_people',
 							//'tag_name'               => 'test',
-							'pagination'             => true,
-							'posts_per_page'         => '25',
+							'pagination'             => false,
+							'posts_per_page'         => '-1',
 							'order'                  => 'DESC',
 							'orderby'                => 'title',
 							);
 							// The Query
 							$query = new WP_Query( $args );
-								
+
 							if ( $query->have_posts() ): ?>
 								<?php while ( $query->have_posts() ): ?>
 									<?php $query->the_post(); ?>
-									
+
 									<li><a href="#" data-title="<?php the_title();?>" data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); echo $terms[0]->name; ?>"><?php the_title(); ?></a></li>
 									<?php wp_reset_postdata(); ?>
-									 
+
 								<?php endwhile; ?>
 						<?php endif; ?>
 					</ul>
@@ -97,8 +97,8 @@ Template Name: About - People
 					$args = array (
 					'post_type'              => 'key_people',
 					//'tag_name'               => 'test',
-					'pagination'             => true,
-					'posts_per_page'         => '25',
+					'pagination'             => false,
+					'posts_per_page'         => '-1',
 					'order'                  => 'DESC',
 					'orderby'                => 'title',
 					);

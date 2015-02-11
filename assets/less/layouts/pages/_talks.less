@@ -1,10 +1,55 @@
-.talks {
+.page-template-template-qeli-talks {
+	.video-name{
+		margin-bottom: 0;
+	}
+
 	.video-item {
+
+		padding-right: 0;
 		margin-bottom: 25px;
-		border-bottom: 1px solid @gray-lighter;
-		
+		.video-popup-thumbnail{
+				position: relative;
+			}
+		.overlay{
+			position:absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			&:hover{
+				background-color: fade(@pink, 50%);
+			}
+			.graphic{
+				margin-top: -19px;
+				margin-left: -19px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+			}
+		}
 		.embed-responsive {
 			margin-bottom: 15px;
 		}
+
+		img{
+			border-radius: 50%;
+		}
 	}
+	.page-header{
+		.btn-play-lg{
+			margin-top: -61px;
+			margin-left: -61px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+		.video-popup-thumbnail{
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+		}
+	}
+
 }

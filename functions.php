@@ -1,8 +1,5 @@
 <?php
 
-update_option('siteurl','http://localhost:8888/qeli/');
-update_option('home','http://localhost:8888/qeli/');
-
 /**
  * Roots includes
  *
@@ -34,7 +31,7 @@ $roots_includes = array(
   'lib/function-get-tax-names.php',   //Displays arrays in a pre for easy reading
   'lib/function-only-this-post.php',   //Displays arrays in a pre for easy reading
   'lib/action-hide-course-field.php',           // Disappear some of custom post type input area in admin page
-  
+
   //Post Types
   'lib/action-post-type-courses.php',              // Custom Post Type : Courses
   'lib/action-post-type-videos.php',               // Custom Post Type : Videos
@@ -45,13 +42,13 @@ $roots_includes = array(
   'lib/action-post-type-people.php',               // Custom Post Type : Key People
   'lib/action-post-type-publications.php',         // Custom Post Type : Publications
   'lib/action-post-type-newsletter.php',           // Custom Post Type : Newsletter
-  
+
 
 /*=================================
 *      Qeli Json Import Page      *
 =================================*/
   'lib/middleware-json.php',
-  
+
 
 );
 
