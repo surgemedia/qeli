@@ -25,30 +25,6 @@
             "disabled": 0
         },
         {
-            "key": "field_54ab26b1baeff",
-            "label": "Class size",
-            "name": "class_size",
-            "prefix": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_54ab286628d69",
             "label": "Length",
             "name": "length",
@@ -89,6 +65,72 @@
             "layout": "block",
             "button_label": "Add Instance",
             "sub_fields": [
+                {
+                    "key": "field_54ceda6053402",
+                    "label": "Program Instance Id",
+                    "name": "programinstanceid",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": "acf-disable"
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54d176cac1d70",
+                    "label": "Instances name",
+                    "name": "instances_name",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54ab312929435",
+                    "label": "Facilitator",
+                    "name": "facilitator",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
                 {
                     "key": "field_54ab271828d67",
                     "label": "State",
@@ -172,28 +214,6 @@
                     "display_format": "d\/m\/Y",
                     "return_format": "d\/m\/Y",
                     "first_day": 1
-                },
-                {
-                    "key": "field_54ab312929435",
-                    "label": "Facilitator",
-                    "name": "facilitator",
-                    "prefix": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
                 },
                 {
                     "key": "field_54ab313029436",
@@ -325,52 +345,32 @@
                             "disabled": 0
                         }
                     ]
-                },
-                {
-                    "key": "field_54ceda6053402",
-                    "label": "Program Instance Id",
-                    "name": "programinstanceid",
-                    "prefix": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": "acf-disable"
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_54d176cac1d70",
-                    "label": "Instances name",
-                    "name": "instances_name",
-                    "prefix": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
                 }
             ]
+        },
+        {
+            "key": "field_54ab26b1baeff",
+            "label": "Class size",
+            "name": "class_size",
+            "prefix": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": "",
+            "readonly": 0,
+            "disabled": 0
         },
         {
             "key": "field_54d82f9e80ba3",
@@ -410,6 +410,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1423614733,
-    "local": "json"
+    "modified": 1423615873
 }

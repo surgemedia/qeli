@@ -45,52 +45,6 @@
             "media_upload": 1
         },
         {
-            "key": "field_54ab2d07481e8",
-            "label": "Testimonials",
-            "name": "testimonials",
-            "prefix": "",
-            "type": "post_object",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "testimonial"
-            ],
-            "taxonomy": "",
-            "allow_null": 0,
-            "multiple": 1,
-            "return_format": "id",
-            "ui": 1
-        },
-        {
-            "key": "field_54ab2d93481ec",
-            "label": "Case Study",
-            "name": "case_study",
-            "prefix": "",
-            "type": "post_object",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "case_studies"
-            ],
-            "taxonomy": "",
-            "allow_null": 1,
-            "multiple": 1,
-            "return_format": "object",
-            "ui": 1
-        },
-        {
             "key": "field_54ab2b2a481e5",
             "label": "FAQs",
             "name": "faqs",
@@ -109,6 +63,28 @@
             "layout": "table",
             "button_label": "Add Row",
             "sub_fields": [
+                {
+                    "key": "field_54bf03fa24b5a",
+                    "label": "Question",
+                    "name": "question",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
                 {
                     "key": "field_54bf03fa24b5a",
                     "label": "Question",
@@ -152,8 +128,52 @@
                     "new_lines": "wpautop",
                     "readonly": 0,
                     "disabled": 0
+                },
+                {
+                    "key": "field_54bf03ff24b5b",
+                    "label": "Answer",
+                    "name": "answer",
+                    "prefix": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "wpautop",
+                    "readonly": 0,
+                    "disabled": 0
                 }
             ]
+        },
+        {
+            "key": "field_54ab2d6a481eb",
+            "label": "Testimonial Text",
+            "name": "testimonial_text",
+            "prefix": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "wpautop",
+            "readonly": 0,
+            "disabled": 0
         },
         {
             "key": "field_54ab2ca5481e7",
@@ -193,6 +213,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1423614733,
-    "local": "json"
+    "modified": 1423615821
 }
