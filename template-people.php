@@ -72,8 +72,8 @@ Template Name: About - People
 							$args = array (
 							'post_type'              => 'key_people',
 							//'tag_name'               => 'test',
-							'pagination'             => true,
-							'posts_per_page'         => '25',
+							'pagination'             => false,
+							'posts_per_page'         => '-1',
 							'order'                  => 'DESC',
 							'orderby'                => 'title',
 							);
@@ -97,8 +97,8 @@ Template Name: About - People
 					$args = array (
 					'post_type'              => 'key_people',
 					//'tag_name'               => 'test',
-					'pagination'             => true,
-					'posts_per_page'         => '25',
+					'pagination'             => false,
+					'posts_per_page'         => '-1',
 					'order'                  => 'DESC',
 					'orderby'                => 'title',
 					);

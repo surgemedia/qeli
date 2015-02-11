@@ -110,12 +110,12 @@ $(document).ready(function () {
 			$extendedSelectors = $extended.find('.selectors'),
 			$moreOptions = $('.btn-more-options');
 	
-		$moreOptions.click(function() {
+		$moreOptions.click(function(event) {
 			(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
 			$extendedSelectors.toggleClass('open');
 		});
 	
-		$('#filters a').not('.btn-filter-toggle, .select, .btn-more-options').click(function() {
+		$('#filters a').not('.btn-filter-toggle, .select, .btn-more-options').click(function(event) {
 			(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
 			$('#filters a').removeClass('selected');
 			$(this).addClass('selected');

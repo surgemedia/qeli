@@ -1,8 +1,9 @@
 <div class="person col-xs-12 col-sm-6 col-md-4" 
-	data-group="group-a" 
 	data-title="<?php the_title();?>" 
 	data-description="<?php the_field('short_description');?>"
-	data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); echo $terms[0]->name; ?>"
+	data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); 
+					foreach($terms as $term) {echo $term->name . ' ';  }
+				?>"
 >
 	<div class="person-content">
 		<div class="row">

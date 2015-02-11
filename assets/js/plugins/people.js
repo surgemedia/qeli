@@ -50,14 +50,16 @@ $(document).ready(function () {
 				if (term !== 'clear') {
 					$(peopleList).addClass('out');
 					for(var i = 0; i < peopleList.length; i++) {
-						if (term === peopleList[i].getAttribute('data-term')) {
+						//if (term === peopleList[i].getAttribute('data-term')) {
+						if ((peopleList[i].getAttribute('data-term')).indexOf(term) != -1) {
 							$(peopleList[i]).removeClass('out');
 						}
 					}
 
 					$(peopleNavList).addClass('out');
 					for(var i = 0; i < peopleNavList.length; i++) {
-						if (term === peopleNavList[i].getAttribute('data-term')) {
+						//if (term === peopleNavList[i].getAttribute('data-term')) {
+						if ((peopleNavList[i].getAttribute('data-term')).indexOf(term) != -1) {
 							$(peopleNavList[i]).removeClass('out');
 						}
 					}

@@ -124,9 +124,12 @@
                         "posts-news": "New Posts",
                         "posts-video": "Video Posts",
                         "posts-testimonials": "Testimonial Posts",
-                        "posts-case-study": "Case Studies Block"
+                        "posts-case-study": "Case Studies Block",
+                        "featured-program": "Featured Program"
                     },
-                    "default_value": [],
+                    "default_value": {
+                        "": ""
+                    },
                     "allow_null": 0,
                     "multiple": 0,
                     "ui": 0,
@@ -153,5 +156,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1421363547
+    "modified": 1423641631
 }
