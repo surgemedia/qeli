@@ -9,11 +9,11 @@ $wp_session = WP_Session::get_instance();
 		}
 		//If user click delete, it will delete the session value.
 		if($_POST['programid']!=""){
-			echo $_POST['programid'];
+			//echo $_POST['programid'];
 			if($wp_session[$_POST['programid']] == $_POST['programid']){
 				$wp_session[$_POST['programid'].'qty'] = $wp_session[$_POST['programid'].'qty'] + 1;
 				
-				echo 'here';
+				//echo 'here';
 				//if the item already in cart, just add value only.
 			}else{
 				if($wp_session['count']==""){
@@ -25,6 +25,7 @@ $wp_session = WP_Session::get_instance();
 				$wp_session[$_POST['programid'].'qty'] = $wp_session[$_POST['programid'].'qty'] + 1;
 				$wp_session['count'] = $wp_session['count'] + 1;
 				//setup new session to programs.
+				//echo 'add';
 			}
 		}
 
@@ -45,11 +46,11 @@ $wp_session = WP_Session::get_instance();
                         <?
 							$input_start = 1;
 							for($i=0; $i<=$wp_session['count']; $i++){
-								echo $wp_session['count'].'<br/>';
+								//echo $wp_session['count'].'<br/>';
 								$course_post_id = $wp_session['postid'.$i];
 								$prog_id = $wp_session['programid'.$i];
-								echo $prog_id.'<br/>';
-								echo $course_post_id.'<br/>';
+								//echo $prog_id.'<br/>';
+								//echo $course_post_id.'<br/>';
 								$total = $wp_session[$prog_id.'qty'] * get_field('cost', $course_post_id);
 								$amount = $amount + $total;
 								if($wp_session[$prog_id.'qty']>0){
@@ -61,26 +62,22 @@ $wp_session = WP_Session::get_instance();
 											<input name="unset_values" value="'.$i.'" type="hidden">
 										</form>
 									';
+									if( get_field('instances', $course_post_id) ){										
+										while( has_sub_field('instances', $course_post_id) )
+										{ 
+											$programinstanceid = get_sub_field('programinstanceid', $course_post_id);
+											$instances_name = get_sub_field('instances_name', $course_post_id);
+											if($prog_id==$programinstanceid){
+												$show_instances_name =  $instances_name;
+											}
+										}
+									}
 									$table_display .= '
 									
 										<tr>
 											<td>
 											<img src="" class="img-cart"></td>
-												<td><strong>'.get_the_title($course_post_id).'</strong><p>
-												';
-												$instances_details = get_field('instances', $course_post_id);
-												for($j=0; $j<count($instances_details); $j++){
-													if($j==0){
-														$showcheck = ' checked="checked"';	
-													}else{
-														$showcheck = '';	
-													}
-													$table_display .= '<input type="radio"'.$showcheck.' name="instancesid'.$input_start.'" value="'.$instances_details[$j]['programInstanceId'].'"> '.$instances_details[$j]['venue_name'].'<br/>';
-												}
-												//echo print_r(get_field('instances', $course_post_id));
-													
-									$table_display .= '</p>
-												</td>
+												<td><strong>'.get_the_title($course_post_id).'</strong><br/>'.$show_instances_name.'</td>
 												<td>
 													<input class="form-control" name="value'.$input_start.'" type="text" value="'.$wp_session[$prog_id.'qty'].'">
 													<button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
@@ -114,7 +111,7 @@ $wp_session = WP_Session::get_instance();
                         	<?php echo $table_display;?>
                             
 							<tr>
-								<td colspan="6">&nbsp;<?php echo $input_start."array"; ?><input type="hidden" value="<?php echo $input_start;?>" name="array_time" /></td>
+								<td colspan="6">&nbsp;<?php //echo $input_start."array"; ?><input type="hidden" value="<?php echo $input_start;?>" name="array_time" /></td>
 							</tr>
 							<tr>
 								<td colspan="4" class="text-right">Total Product</td>
@@ -128,7 +125,7 @@ $wp_session = WP_Session::get_instance();
 						</tbody>
 					</table>
                     </form>
-                    <?php echo json_encode($array); ?>
+                    <?php //echo json_encode($array); ?>
 				</div>
 			</div>
 		</div>

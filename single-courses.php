@@ -63,12 +63,28 @@
 									<h3>Facilitator: </h3>
 									<?php echo get_field('facilitator')[0]['name'] ?>
 								</li>
+								<li>
+                                	<form action="<?php echo site_url();?>/cart/" method="post" id="course_add_to_cart">
+                                    <input type="hidden" name="postid" value="<?php the_ID();?>" /> 
+                                	<?php
+									if( get_field('instances') ){										
+										while( has_sub_field('instances') )
+										{ 
+											$programinstanceid = get_sub_field('programinstanceid');
+											$instances_name = get_sub_field('instances_name');
+											echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name.'</label></p>';
+										}
+									}
+									?>
+                                    </form>
+ 
+								</li>
 								</ul>
 
 							</div>
 
 							<div class="panel-footer">
-								<a href="http://breadcrumbdigital.com.au/projects/qeli-trials/cart/" class="link-purchase"><span class="graphic arrow-right-sm"></span> Purchase <span class="graphic icon-cart pull-right"></span></a>
+								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Purchase <span class="graphic icon-cart pull-right"></span></a>
 							</div>
 						</div>
 					</div>
