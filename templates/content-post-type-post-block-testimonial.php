@@ -19,4 +19,5 @@
       </p>
     </div>
   </div>
+  <?php edit_post_link(); ?>
 </div>
