@@ -206,10 +206,10 @@ function json_import_function(){
 
 
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
-					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
-										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
-										"field_54ab312929435" => $jsonIterator[$i]['instances'][$j]['facilitators'], 
-										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
+					$instances[$j] = array("programinstanceid" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
+										"instances_name" => $jsonIterator[$i]['instances'][$j]['name'], 
+										"facilitator" => $jsonIterator[$i]['instances'][$j]['facilitatorIds'], 
+										"catering" => $jsonIterator[$i]['instances'][$j]['catering']);
 					echo print_r($instances[$j]);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
@@ -241,10 +241,10 @@ function json_import_function(){
 					
 				}
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
-														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
-														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
+					$instances[$j]['phases'][$k] = array("name" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
+														"type" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
+														"start" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
+														"end" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
 			if($check_item_row_id==""){
@@ -284,23 +284,23 @@ function json_import_function(){
 				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
 				$result = $wpdb->get_results( $del_all_postmate);
 				print_r($result);
-				update_field('field_54c9889071a6e', $jsonIterator[$i]['programId'], $post_ID);
-				update_field('field_54ab2484f6455', $jsonIterator[$i]['executiveSummary'], $post_ID);
+				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
+				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
-				update_field('field_54ab249af6456', $jsonIterator[$i]['audience'], $post_ID);
-				update_field('field_54ab24a6f6457', $jsonIterator[$i]['outcome'], $post_ID);
-				update_field('field_54ab24b3f6458', $jsonIterator[$i]['articulation'], $post_ID);
-				update_field('field_54ab24bcf6459', $jsonIterator[$i]['programOutline'], $post_ID);
-				update_field('field_54ab24d0f645a', $jsonIterator[$i]['preRequisites'], $post_ID);
-				update_field('field_54ab2682baefe', $jsonIterator[$i]['rrp'], $post_ID);
-				update_field('field_54ab26b1baeff', $jsonIterator[$i]['maxClassSize'], $post_ID);
-				update_field('field_54d82f9e80ba3', $jsonIterator[$i]['currentClassSize'], $post_ID);
-				update_field('field_54ab286628d69', $jsonIterator[$i]['length'], $post_ID);
-				update_field('field_54d8303569356', $jsonIterator[$i]['deliveryMethod'], $post_ID);
-				update_field('field_54ab2b2a481e5', $jsonIterator[$i]['faqs'], $post_ID);
-				update_field('field_54ab2b70481e6', $jsonIterator[$i]['resources'], $post_ID);
-				update_field('field_54ab2ca5481e7', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
-				update_field('field_54d8306d63470', $jsonIterator[$i]['dateLastUpdated'], $post_ID);
+				update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
+				update_field('outcome', $jsonIterator[$i]['outcome'], $post_ID);
+				update_field('articulation', $jsonIterator[$i]['articulation'], $post_ID);
+				update_field('program_outline', $jsonIterator[$i]['programOutline'], $post_ID);
+				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
+				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
+				update_field('class_size', $jsonIterator[$i]['maxClassSize'], $post_ID);
+				update_field('currentClassSize', $jsonIterator[$i]['currentClassSize'], $post_ID);
+				update_field('length', $jsonIterator[$i]['length'], $post_ID);
+				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);
+				update_field('faqs', $jsonIterator[$i]['faqs'], $post_ID);
+				update_field('resources', $jsonIterator[$i]['resources'], $post_ID);
+				update_field('cancellation_policy', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
+				update_field('dateLastUpdated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);
 	/* ===============================================================================================================
 											 Add Related Program ID Part 2
 	=============================================================================================================== */
@@ -315,16 +315,15 @@ function json_import_function(){
 				
 				//relatedProgramIds request data in Json file to test the import with format of array
 				
-				$value = get_field('field_54ab26dabaf00', $post_ID);
+				$value = get_field('instances', $post_ID);
 				for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
-					echo "<h1>UPDATE ".count($jsonIterator[$i]['instances'])." INSTANCE</h1>";
 					$value[] = $instances[$j];
-					update_field( 'field_54ab26dabaf00', $value, $post_ID );
-					$value2 = get_sub_field('field_54bee8a23269c', $post_ID);
+					update_field( 'instances', $value, $post_ID );
+					$value2 = get_sub_field('phases', $post_ID);
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
 						echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value2[] = $instances[$j]['phases'][$k];
-						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
+						update_sub_field( 'phases', $value2, $post_ID );
 					}
 				}	
 			}
@@ -355,7 +354,7 @@ for($i=0; $i<count($related_program_course_id); $i++){
 		}
 	}
 	if($add_to_rel_prog[$i]!=""){
-		update_field('field_54ab2aea481e4', $add_to_rel_prog[$i], $related_program_course_id[$i]);
+		update_field('related_programs', $add_to_rel_prog[$i], $related_program_course_id[$i]);
 	}
 }
 
