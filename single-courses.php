@@ -1,9 +1,9 @@
 <article id="content" class="col-xs-12">
 	<div class="row">
-		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php 
-			$id = get_post_thumbnail_id();
-			echo wp_get_attachment_image_src($id, 'full')[0];
-		?>')">
+		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
+								$id = get_post_thumbnail_id();
+								echo wp_get_attachment_image_src($id, 'full')[0];
+			?>')">
 			<div class="facilitator-item">
 				<div class="header">
 					<div class="container">
@@ -11,32 +11,28 @@
 					</div>
 				</div>
 				<div class="container">
-				<h2>Facilitator</h2>
-						<?php
-						// TODO @Alex - Like onces
-						debug(get_sub_field('Facilitator'));
-						// WP_Query arguments
-						$args = array (
-						'post_type'     => 'key_people',
-						'meta_query'    => array( 
-						array( 'key' => 'course', 'value'     => $course_id,)
-							),
-						);
-						// The Query
-						$query = new WP_Query( $args );
-						if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-						$query->the_post();
-						get_template_part('templates/content-post-type', 'course-facilitator');
-						$GLOBALS['course-facilitator'] = get_the_title();
+					<h2>Facilitator</h2>
+					<?php
+					$facil_array;
+					//defined out of loop scope
+					$instanes = get_field('instances');
+					for ($i=0; $i < sizeof($instanes); $i++) {
+						$facil = $instanes[$i]['facilitator'];
+						$facil_array = explode(',', $facil);
+						//slit into array
+						
+					}
+					//use array of facilactors to get template
+						for ($i=0; $i < sizeof($facil_array); $i++) {
+						$GLOBALS['facilitator'] = $facil_array[$i]; 
+						//extends scope for the facil loop
+							get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
 						}
-						} else {
-						get_template_part('templates/content', 'no-posts');
-						}
-						// Restore original Post Data
-						wp_reset_postdata();
-						// WP_Query arguments
-						?>
+						unset($GLOBALS['facilitator']);
+					?>
+					
+					
+					
 				</div>
 			</div>
 		</div>
@@ -63,51 +59,48 @@
 							</div>
 							<div class="panel-body">
 								<ul class="list-striped">
-								<li>
-									<h3>Cost (incl discounts): </h3>
-									<?php echo'$'; the_field('cost'); ?>
-								</li>
-								<li>
-									<h3>Class size: </h3>
-									<?php the_field('class_size') ?>
-								</li>
-								<li>
-									<h3>Length </h3>
-									<?php the_field('length') ?>
-								</li>
-								<li>
-									<h3>Delivery method: </h3>
-									<?php getTaxNames(get_field('delivery_method')); ?>
-								</li>
-								<li>
-									<h3>Facilitator: </h3>
-									<?php echo get_field('facilitator')[0]['name'] ?>
-								</li>
-								<li>
-                                	<form action="<?php echo site_url();?>/cart/" method="post" id="course_add_to_cart">
-                                    <input type="hidden" name="postid" value="<?php the_ID();?>" /> 
-                                	<?php
-									if( get_field('instances') ){										
-										while( has_sub_field('instances') )
-										{ 
-											$programinstanceid = get_sub_field('programinstanceid');
-											$instances_name = get_sub_field('instances_name')." - ".get_sub_field('state');
-
-											if(0 < strlen(get_sub_field('instances_name'))){
-											echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name.'</label></p>';
-											}
-										}
-									}
-									?>
-                                    </form>
- 
-								</li>
+									<li>
+										<h3>Cost (incl discounts): </h3>
+										<?php echo'$'; the_field('cost'); ?>
+									</li>
+									<li>
+										<h3>Class size: </h3>
+										<?php the_field('class_size') ?>
+									</li>
+									<li>
+										<h3>Length </h3>
+										<?php the_field('length') ?>
+									</li>
+									<li>
+										<h3>Delivery method: </h3>
+										<?php getTaxNames(get_field('delivery_method')); ?>
+									</li>
+									<li>
+										<h3>Facilitator: </h3>
+										<?php echo get_field('facilitator')[0]['name'] ?>
+									</li>
+									<li>
+										<form action="<?php echo site_url();?>/cart/" method="post" id="course_add_to_cart">
+											<input type="hidden" name="postid" value="<?php the_ID();?>" />
+											<?php
+																													if( get_field('instances') ){
+																				while( has_sub_field('instances') )
+																				{
+																					$programinstanceid = get_sub_field('programinstanceid');
+																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('state');
+																					if(0 < strlen(get_sub_field('instances_name'))){
+																					echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name.'</label></p>';
+																					}
+																				}
+																			}
+											?>
+										</form>
+										
+									</li>
 								</ul>
-
 							</div>
-
 							<div class="panel-footer">
-							<?php if( get_field('currentClassSize') < get_field('class_size')) { ?>
+								<?php if( get_field('currentClassSize') < get_field('class_size')) { ?>
 								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
 								<?php } ?>
 							</div>
@@ -139,32 +132,31 @@
 		<div class="container">
 			<div class="col-sm-8">
 				<div class="case-study section">
-						<h2>Case Study</h2>
-						<?php
-						// WP_Query arguments
-						$args = array (
-						'post_type'     => 'case_studies',
-						'meta_query'    => array( 
-						array( 'key' => 'remove_others', 'value'     => '1',),
-						array( 'key' => 'course', 'value'     => $course_id,),
-												),
-						);
-						// The Query
-						$query = new WP_Query( $args );
-						if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-						$query->the_post();
-						get_template_part('templates/content-post-type', 'case-study-landscape');
-						}
-						} else {
-						get_template_part('templates/content', 'no-posts');
-						}
-						// Restore original Post Data
-						wp_reset_postdata();
-						// WP_Query arguments
-
-						?>
-						</div>
+					<h2>Case Study</h2>
+					<?php
+					// WP_Query arguments
+					$args = array (
+					'post_type'     => 'case_studies',
+					'meta_query'    => array(
+					array( 'key' => 'remove_others', 'value'     => '1',),
+					array( 'key' => 'course', 'value'     => $course_id,),
+											),
+					);
+					// The Query
+					$query = new WP_Query( $args );
+					if ( $query->have_posts() ) {
+					while ( $query->have_posts() ) {
+					$query->the_post();
+					get_template_part('templates/content-post-type', 'case-study-landscape');
+					}
+					} else {
+					get_template_part('templates/content', 'no-posts');
+					}
+					// Restore original Post Data
+					wp_reset_postdata();
+					// WP_Query arguments
+					?>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -179,7 +171,7 @@
 					$course_id = get_the_ID();
 					$args = array (
 								'post_type'     => 'testimonial',
-								'meta_query'    => array( 
+								'meta_query'    => array(
 								array( 'key' => 'remove_others', 'value'     => '1',),
 								array( 'key' => 'course', 'value'     => $course_id,),
 														),
@@ -213,7 +205,7 @@
 							<div class="panel-heading" role="tab" id="heading-features">
 								<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-features" aria-expanded="true" aria-controls="collapse-features">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Program features <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Program features <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -227,7 +219,7 @@
 							<div class="panel-heading" role="tab" id="heading-modules">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-modules" aria-expanded="true" aria-controls="collapse-modules">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Modules <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Modules <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -241,14 +233,13 @@
 							<div class="panel-heading" role="tab" id="heading-prereq">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-prereq" aria-expanded="true" aria-controls="collapse-prereq">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Prerequisites <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Prerequisites <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
 							<div id="collapse-prereq" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-prereq">
 								<div class="panel-body">
 									<?php the_field('prerequisites'); ?>
-
 								</div>
 							</div>
 						</div>
@@ -256,7 +247,7 @@
 							<div class="panel-heading" role="tab" id="heading-resources">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-resources" aria-expanded="true" aria-controls="collapse-resources">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Resources <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Resources <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -270,7 +261,7 @@
 							<div class="panel-heading" role="tab" id="heading-articulation">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-articulation" aria-expanded="true" aria-controls="collapse-articulation">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Articulation <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Articulation <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -284,7 +275,7 @@
 							<div class="panel-heading" role="tab" id="heading-related">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-related" aria-expanded="true" aria-controls="collapse-related">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 									<ul>
 										<?php
@@ -343,4 +334,3 @@
 		</div>
 	</div>
 </article>
-
