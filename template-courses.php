@@ -12,9 +12,10 @@ Template Name: Courses Page
 	<?php get_template_part('templates/page', 'colored-header'); ?>
 		<div class="container">
 			<div class="featured-text">
-				The Middle Leadership Program from QELi fast-tracked my development.
+				<?php the_content(); ?>
 				<br>
-				<a href="#" class="circle-more">
+				
+				<a href="<?php echo get_permalink(get_field('featured_program')); ?>" class="circle-more">
 					More
 				</a>
 			</div>
