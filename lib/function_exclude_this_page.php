@@ -16,14 +16,11 @@ function exclude_this_page( $query ) {
 
     global $pagenow;
 
-    // WordPress 2.9
-    if( 'edit-pages.php' == $pagenow )
-        $query->set( 'post__not_in', array(23) );
-
+   
     // WordPress 3.0
-    /*
+    
     if( 'edit.php' == $pagenow && ( get_query_var('post_type') && 'page' == get_query_var('post_type') ) )
         $query->set( 'post__not_in', array(23) );
-    */
+    
     return $query;
 }
