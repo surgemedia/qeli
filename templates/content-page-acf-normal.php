@@ -7,7 +7,7 @@
 		<?php endif; ?>
 
 		<div class="meta-title h3 colored-text">Board Chair</div>
-		<?php echo get_field('short_description',$GLOBALS['people_id']) ?>
+		<?php echo get_field('biography',$GLOBALS['people_id']) ?>
 
 		<?php if (get_field('special_responsibilities')): ?>
 			<div class="meta-special">
