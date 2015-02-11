@@ -2,8 +2,8 @@
 <div class="section videos blue">
   <div class="container center-all">
     <div class="col-xs-12 col-md-9">
-      <div class="row">
         <?php
+          // TODO JW - this needs to be seperated into a query that returns the main video (brand video) and then these others.
           // WP_Query arguments
           $count = 0;
           $args = array (
@@ -19,7 +19,6 @@
               <?php if(0 == $count) : ?>
                <?php // checks if 1st post, then counts ?>
                 <?php  get_template_part('templates/content-post-type-post-block', 'big-video');  $count++;?>
-      </div>
     </div>
     <div class="col-xs-12 col-md-3">
       <?php // end of big video call, count is more then 1 ?>

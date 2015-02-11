@@ -31,7 +31,7 @@ $roots_includes = array(
   'lib/function-get-tax-names.php',   //Displays arrays in a pre for easy reading
   'lib/function-only-this-post.php',   //Displays arrays in a pre for easy reading
   'lib/action-hide-course-field.php',           // Disappear some of custom post type input area in admin page
-
+  'lib/function_exclude_this_page.php',           // Create Function to hide the function if not admin
   //Post Types
   'lib/action-post-type-courses.php',              // Custom Post Type : Courses
   'lib/action-post-type-videos.php',               // Custom Post Type : Videos

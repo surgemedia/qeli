@@ -1,13 +1,14 @@
-<?php 
-if( 0 <= strlen(get_field('attachment')['id']) ){
-$filesize_kb = filesize(get_attached_file(get_field('attachment')['id']));
-$filesize = size_format($filesize_kb, 2);
+<?php
+// JW - edited this to remove part of an unrequired check.
+if( get_field('attachment') ){
+	$filesize_kb = filesize(get_attached_file(get_field('attachment')['id']));
+	$filesize = size_format($filesize_kb, 2);
 };
  ?>
 <div class="media-item">
 	<h2><a href="<?php the_permalink(); ?>"><span class="graphic arrow-link"></span><?php the_title(); ?></a></h2>
 	<p>
-		<?php the_excerpt(); 
+		<?php the_excerpt();
 		?>
 	</p>
 	<?php if(!isset( get_field('attachment')['url'] ) ) { ?>

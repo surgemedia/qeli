@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 		scrollerWrapperEl.style.height = window.innerHeight + 'px';
 
-		scrollerEl.style.height = !isMobile ? (sectionList.length * window.innerHeight) + 'px' : height + 'px';
+		//scrollerEl.style.height = !isMobile ? (sectionList.length * window.innerHeight) + 'px' : height + 'px';
 
 
 
@@ -113,13 +113,13 @@ $(document).ready(function () {
 		}
     
 		pageScroll = new IScroll('.scroller-wrapper', {
-										mouseWheel: !isMobile ? false : true,
+										mouseWheel: !isMobile ? true : true,
 										deceleration: 0.01,
 										scrollY: true,
 	    								scrollX: false,
-	    								snap: !isMobile ? true : false
+	    								snap: !isMobile ? false : false
 									});
-
+		/*
 		pageScroll.on('scrollStart', function() {
 			scrollLocked = true;
 		});
@@ -129,7 +129,7 @@ $(document).ready(function () {
 				scrollLocked = false;
 			}
 		});
-
+		*/
 		for(var i = 0; i < sectionNext.length; i++) {
 			var next = sectionNext[i];
 
@@ -137,7 +137,7 @@ $(document).ready(function () {
 				pageScroll.scrollBy(0, -(window.innerHeight - headerEl.offsetHeight), 500);
 			}
 		}
-
+		/*
 		//debounce timeout prevent event from firing consecutively
 		var scrollTimeout;
 
@@ -185,5 +185,6 @@ $(document).ready(function () {
 				}, 50);
 			});
 		}
+		*/
 	}
 });

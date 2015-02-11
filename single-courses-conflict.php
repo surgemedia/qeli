@@ -40,7 +40,7 @@
 							<div class="panel-body">
 								
 								<h3>Cost (incl discounts): </h3>
-								<?php the_field('cost') ?>
+								<?php echo'$'; the_field('cost'); ?>
 								<hr>
 
 								<h3>Class size: </h3>

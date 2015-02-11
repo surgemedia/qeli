@@ -1,5 +1,5 @@
-<div class="testimonial-item col-xs-12 col-md-6">
-  <div class="hidden-xs col-sm-3">
+<div class="testimonial-item col-xs-12 col-md-6 row">
+  <div class="col-xs-4 col-sm-3">
     <img src="<?php  echo getFeaturedUrl(); ?>" alt="<?php the_title(); ?>" class="img-circle img-responsive" data-src="<?php  echo getFeaturedUrl(); ?>" data-holder-rendered="true">
   </div>
   <div class="col-xs-12 col-sm-7">
@@ -7,11 +7,11 @@
 
     <span class="author-role"><?php the_field('author_role') ?></span>
   <?php if (0 < strlen(get_field('author_institution'))) { ?>
-  , 
+  ,
     <span class="author-institution"><?php the_field('author_institution') ?></span>
-    
+
  <?php } ?>
-    
+
   </div>
   <div class="col-xs-12">
     <div class="item-text">
