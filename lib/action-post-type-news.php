@@ -30,7 +30,7 @@ function news_posts() {
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 3,
-		'slug'                => 'news-articles',
+		'slug'                => 'sector-news',
 		'menu_icon'           => 'dashicons-media-document',
 		'can_export'          => true,
 		'has_archive'         => true,
