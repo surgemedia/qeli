@@ -4,7 +4,13 @@
   </div>
   <div class="col-xs-12 col-sm-7">
     <h3 class="author-name"><?php the_title(); ?></h3>
-    <span class="author-role"><?php the_field('author_role') ?></span>, <span class="author-institution"><?php the_field('author_institution') ?></span>
+
+    <span class="author-role"><?php the_field('author_role') ?></span>
+  <?php if (0 < strlen(get_field('author_institution'))) { ?>
+  , 
+    <span class="author-institution"><?php the_field('author_institution') ?></span>
+    
+ <?php } ?>
     
   </div>
   <div class="col-xs-12">
