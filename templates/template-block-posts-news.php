@@ -58,7 +58,7 @@
         ?>
       </div>
     </div>
-    <a href="<?php echo site_url(); ?>/news-articles/" class="big-link"><span class="graphic arrow-link-sq"></span> View all news articles</a>
+    <a href="<?php echo site_url(); ?>/sector-news/" class="big-link"><span class="graphic arrow-link-sq"></span> View all news articles</a>
   </div>
   <div class="section-footer">
     <span class="graphic arrow-section-down"></span>
