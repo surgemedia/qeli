@@ -40,7 +40,9 @@ $roots_includes = array(
   'lib/action-post-type-testimonials.php',         // Custom Post Type : Testimonial
   'lib/action-post-type-media-releases.php',       // Custom Post Type : Media Release
   'lib/action-post-type-people.php',               // Custom Post Type : Key People
-  'lib/action-post-type-publications.php',               // Custom Post Type : Key People
+  'lib/action-post-type-publications.php',         // Custom Post Type : Publications
+  'lib/action-post-type-newsletter.php',           // Custom Post Type : Newsletter
+  
 
 /*=================================
 *      Qeli Json Import Page      *
