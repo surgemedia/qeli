@@ -3,7 +3,7 @@
     <div class="panel-heading" role="tab" id="heading<?Php echo $GLOBALS['instance_count'] ?>">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?Php echo $GLOBALS['instance_count'] ?>" aria-expanded="true" aria-controls="collapse<?Php echo $GLOBALS['instance_count'] ?>">
           <h3 class="panel-title">
-            <span class="graphic arrow-panel-gray"></span><?php echo get_field('instances')[$GLOBALS['instance_count']]['state'] ?><span class="graphic icon-toggle pull-right"></span>
+            <span class="graphic arrow-panel-gray"></span><?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name']; ?> - <?php echo get_field('instances')[$GLOBALS['instance_count']]['state'] ?><span class="graphic icon-toggle pull-right"></span>
           </h3>
         </a>
     </div>

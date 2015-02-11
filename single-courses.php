@@ -11,12 +11,32 @@
 					</div>
 				</div>
 				<div class="container">
-					<h2>Facilitator</h2>	
-					<div class="text">
-						<?php echo get_field('facilitator')[0]['biography']?>
-					</div>
-					<h3 class="author-name"><?php echo get_field('facilitator')[0]['name'] ?></h3>
-					<img src="<?php echo get_field('facilitator')[0]['image']['url'] ?>" alt="200x200" class="img-circle img-responsive" data-src="<?php echo get_field('facilitator')[0]['image']['url'] ?>" data-holder-rendered="true">
+				<h2>Facilitator</h2>
+						<?php
+						// TODO @Alex - Like onces
+						debug(get_sub_field('Facilitator'));
+						// WP_Query arguments
+						$args = array (
+						'post_type'     => 'key_people',
+						'meta_query'    => array( 
+						array( 'key' => 'course', 'value'     => $course_id,)
+							),
+						);
+						// The Query
+						$query = new WP_Query( $args );
+						if ( $query->have_posts() ) {
+						while ( $query->have_posts() ) {
+						$query->the_post();
+						get_template_part('templates/content-post-type', 'course-facilitator');
+						$GLOBALS['course-facilitator'] = get_the_title();
+						}
+						} else {
+						get_template_part('templates/content', 'no-posts');
+						}
+						// Restore original Post Data
+						wp_reset_postdata();
+						// WP_Query arguments
+						?>
 				</div>
 			</div>
 		</div>
@@ -45,7 +65,7 @@
 								<ul class="list-striped">
 								<li>
 									<h3>Cost (incl discounts): </h3>
-									<?php the_field('cost') ?>
+									<?php echo'$'; the_field('cost'); ?>
 								</li>
 								<li>
 									<h3>Class size: </h3>
@@ -71,8 +91,11 @@
 										while( has_sub_field('instances') )
 										{ 
 											$programinstanceid = get_sub_field('programinstanceid');
-											$instances_name = get_sub_field('instances_name');
+											$instances_name = get_sub_field('instances_name')." - ".get_sub_field('state');
+
+											if(0 < strlen(get_sub_field('instances_name'))){
 											echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name.'</label></p>';
+											}
 										}
 									}
 									?>
@@ -84,7 +107,9 @@
 							</div>
 
 							<div class="panel-footer">
-								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Purchase <span class="graphic icon-cart pull-right"></span></a>
+							<?php if( get_field('currentClassSize') < get_field('class_size')) { ?>
+								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
+								<?php } ?>
 							</div>
 						</div>
 					</div>
@@ -110,6 +135,41 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="container">
+			<div class="col-sm-8">
+				<div class="case-study section">
+						<h2>Case Study</h2>
+						<?php
+						// WP_Query arguments
+						$args = array (
+						'post_type'     => 'case_studies',
+						'meta_query'    => array( 
+						array( 'key' => 'remove_others', 'value'     => '1',),
+						array( 'key' => 'course', 'value'     => $course_id,),
+												),
+						);
+						// The Query
+						$query = new WP_Query( $args );
+						if ( $query->have_posts() ) {
+						while ( $query->have_posts() ) {
+						$query->the_post();
+						get_template_part('templates/content-post-type', 'case-study-landscape');
+						}
+						} else {
+						get_template_part('templates/content', 'no-posts');
+						}
+						// Restore original Post Data
+						wp_reset_postdata();
+						// WP_Query arguments
+
+						?>
+						</div>
+			</div>
+		</div>
+	</div>
+	<?php /* ?>
+	//Removed For Now
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
@@ -142,6 +202,7 @@
 			</div>
 		</div>
 	</div>
+	<?php */ ?>
 	<div class="row">
 		<div class="colored-background">
 			<div class="container">
@@ -186,12 +247,7 @@
 							</div>
 							<div id="collapse-prereq" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-prereq">
 								<div class="panel-body">
-									<?php
-									for ($i=0; $i < sizeof(get_field('prerequisites')); $i++) { ?>
-									<li>
-										<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('prerequisites')[$i]); ?></a>
-									</li>
-									<?php } // for loop ?>
+									<?php the_field('prerequisites'); ?>
 
 								</div>
 							</div>
@@ -230,15 +286,24 @@
 									<h3 class="panel-title">
 										<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
 									</h3>
+									<ul>
+										<?php
+										for ($i=0; $i < sizeof(get_field('related_programs')); $i++) { ?>
+										<li>
+											<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('related_programs')[$i]); ?></a>
+										</li>
+										<?php } // for loop ?>
+									</ul>
 								</a>
 							</div>
 							<div id="collapse-related" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-related">
 								<div class="panel-body">
+									
 									<ul>
 										<?php
-										for ($i=0; $i < sizeof(get_field('prerequisites')); $i++) { ?>
+										for ($i=0; $i < sizeof(get_field('related_programs')); $i++) { ?>
 										<li>
-											<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('prerequisites')[$i]); ?></a>
+											<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('related_programs')[$i]); ?></a>
 										</li>
 										<?php } // for loop ?>
 									</ul>
@@ -250,36 +315,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="container">
-			<div class="col-sm-8">
-				<?php
-				// WP_Query arguments
-				$args = array (
-							'post_type'     => 'case_studies',
-							'meta_query'    => array( 
-							array( 'key' => 'remove_others', 'value'     => '1',),
-							array( 'key' => 'course', 'value'     => $course_id,),
-													),
-							);
-				// The Query
-				$query = new WP_Query( $args );
-				if ( $query->have_posts() ) {
-					while ( $query->have_posts() ) {
-					$query->the_post();
-					get_template_part('templates/content-post-type', 'case-study-landscape');
-					}
-				}
-				else {
-					get_template_part('templates/content', 'no-posts');
-				}
-				// Restore original Post Data
-				wp_reset_postdata();
-				// WP_Query arguments
-				?>		
-			</div>
-		</div>
-	</div>
+	
 	<div class="row">
 		<div class="colored-background">
 			<div class="container">
