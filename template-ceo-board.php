@@ -31,6 +31,11 @@ Template Name: Ceo and Board
 	<?php for ($i=0; $i < sizeof(get_field('people_repeater')); $i++) {
 		$GLOBALS['people_id'] = get_field('people_repeater')[$i]['board_member']->ID;
 		get_template_part('templates/content-page', 'acf-normal');
+
+
+		if (($i + 1)%2 == 0) {
+			echo '<div class="clearfix"></div>';
+		}
 	} //For Loop ?>
 </div>
 
