@@ -15,6 +15,6 @@
 				<?php echo get_field('special_responsibilities',$GLOBALS['people_id']) ?>
 			</div>
 		<?php endif; ?>
-		<?php edit_post_link(); ?>
+		
 	</div>
 </div>
