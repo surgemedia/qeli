@@ -326,11 +326,17 @@
 					<h2>FAQs</h2>
 					<div class="panel-group" id="accordion-faq" role="tablist">
 						<?php
+
+						if(get_field('faqs') != 0){
 							for ($i=0; $i < sizeof(get_field('faqs')); $i++) {
 								$GLOBALS['FAQ_count'] = $i; //extends scope for the instance loop
 								get_template_part('templates/content-post-type', 'course-acf-FAQ');
 							}
 							unset($GLOBALS['FAQ_count']);
+							} else {
+				 	get_template_part('templates/content', 'no-posts'); 
+
+							}
 						?>
 					</div>
 				</div>
