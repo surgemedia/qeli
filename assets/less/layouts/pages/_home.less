@@ -78,10 +78,11 @@
 	}
 
 	.section {
+		height: auto;
 		position: relative;
 		padding: 60px 0;
 
-		@media (min-width: @screen-lg-min) {
+		@media (min-width: @screen-lg-min) or (min-height: 720px) {
 			.container.center-all {
 				position: absolute;
 				top: 50%;
@@ -128,7 +129,6 @@
 				font-size: 1em;
 				text-transform: initial;
 			}
-
 
 			ul {
 				list-style: disc;

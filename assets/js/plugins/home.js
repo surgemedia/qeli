@@ -97,7 +97,7 @@ $(document).ready(function () {
 			section.style.width = mainEl.offsetWidth + 'px';
 
 			if (!isMobile) {
-				section.style.height = (window.innerHeight - headerEl.offsetHeight) + 'px';
+				section.style.minHeight = (window.innerHeight - headerEl.offsetHeight) + 'px';
 			}
 			else {
 				section.style.height = 'auto';
@@ -135,6 +135,7 @@ $(document).ready(function () {
 			}
 		});
 		*/
+		/*
 		for(var i = 0; i < sectionNext.length; i++) {
 			var next = sectionNext[i];
 
@@ -142,6 +143,7 @@ $(document).ready(function () {
 				pageScroll.scrollBy(0, -(window.innerHeight - headerEl.offsetHeight), 500);
 			}
 		}
+		*/
 		/*
 		//debounce timeout prevent event from firing consecutively
 		var scrollTimeout;
