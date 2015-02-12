@@ -1,8 +1,8 @@
 <article id="content" class="col-xs-12">
 	<div class="row">
 		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
-								$id = get_post_thumbnail_id();
-								echo wp_get_attachment_image_src($id, 'full')[0];
+									$id = get_post_thumbnail_id();
+									echo wp_get_attachment_image_src($id, 'full')[0];
 			?>')">
 			<div class="facilitator-item">
 				<div class="header">
@@ -16,8 +16,10 @@
 					
 					$facil_array = false;
 					//defined out of loop scope
-				
+					
 					$instanes = get_field('instances');
+					$this_post = get_post(get_the_ID());
+					//debug( get_post_meta( get_the_ID() ));
 					for ($i=0; $i < sizeof($instanes); $i++) {
 						if( 0 < strlen($instanes[$i]['facilitator'])){
 						$facil = $instanes[$i]['facilitator'];
@@ -33,14 +35,14 @@
 					if(false != $facil_array){
 					//use array of facilactors to get template
 						for ($i=0; $i < sizeof($facil_array); $i++) {
-						$GLOBALS['facilitator'] = $facil_array[$i]; 
+						$GLOBALS['facilitator'] = $facil_array[$i];
+
 						//extends scope for the facil loop
 							get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
 						}
 						unset($GLOBALS['facilitator']);
-					} 
-				 	else {	get_template_part('templates/content', 'no-posts'); }
-
+					}
+						else {	get_template_part('templates/content', 'no-posts'); }
 					?>
 					
 					
@@ -52,12 +54,15 @@
 	<div class="row">
 		<div class="container ">
 			<div class="col-sm-9">
+				<?php if(get_field('executive_summary')) { ?>
 				<h2 class="h2-course">Executive Summary</h2>
-				<?php the_field('executive_summary') ?>
 				
+				<?php the_field('executive_summary') ?>
+				<?php } ?>
+				<?php if(get_field('outcome')) { ?>
 				<h2>Outcome</h2>
 				<?php the_field('outcome'); ?>
-				
+				<?php } ?>
 				<h2>Audience</h2>
 				<?php the_field('audience') ?>
 				<?php edit_post_link(); ?>
@@ -75,20 +80,18 @@
 										<h3>Cost (incl discounts): </h3>
 										<?php echo'$'; the_field('cost'); ?>
 									</li>
-									<li>
-										<h3>Class size: </h3>
-										<?php the_field('class_size') ?>
-									</li>
+									
 									<li>
 										<h3>Length </h3>
 										<?php the_field('length') ?>
 									</li>
 									<li>
 										<h3>Delivery method: </h3>
-										<?php getTaxNames(get_field('delivery_method')); ?>
+										<?php the_field('deliveryMethod'); ?>
 									</li>
 									<li>
 										<h3>Facilitator: </h3>
+
 										<?php echo get_field('facilitator')[0]['name'] ?>
 									</li>
 									<li>
@@ -140,6 +143,7 @@
 			</div>
 		</div>
 	</div>
+	<?php /* ?>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
@@ -172,12 +176,24 @@
 			</div>
 		</div>
 	</div>
-	<?php /* ?>
-	//Removed For Now
+	<?php */ ?>
+	<?php if(get_field('testimonial_text')) { ?>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
-				<h2>Featured Person</h2>
+				<h2>Testimonial</h2>
+				<?php
+					the_field('testimonial_text');
+				?>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
+		<?php /* ?>
+	<div class="row">
+		<div class="container">
+			<div class="col-sm-8">
+				<h2>Testimonial</h2>
 				<?php
 					// WP_Query arguments
 					$course_id = get_the_ID();
@@ -212,7 +228,9 @@
 			<div class="container">
 				<div class="col-sm-8">
 					<h2>Program Outline</h2>
+
 					<div class="panel-group" id="accordion-outline" role="tablist">
+					<?php if(get_field('program_outline')){ ?>
 						<div class="panel">
 							<div class="panel-heading" role="tab" id="heading-features">
 								<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-features" aria-expanded="true" aria-controls="collapse-features">
@@ -227,20 +245,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel">
-							<div class="panel-heading" role="tab" id="heading-modules">
-								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-modules" aria-expanded="true" aria-controls="collapse-modules">
-									<h3 class="panel-title">
-									<span class="graphic arrow-panel-gray"></span>Modules <span class="graphic icon-toggle pull-right"></span>
-									</h3>
-								</a>
-							</div>
-							<div id="collapse-modules" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-modules">
-								<div class="panel-body">
-									???
-								</div>
-							</div>
-						</div>
+						<?php } ?>
+					
 						<div class="panel">
 							<div class="panel-heading" role="tab" id="heading-prereq">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-prereq" aria-expanded="true" aria-controls="collapse-prereq">
@@ -311,31 +317,24 @@
 			</div>
 		</div>
 	</div>
-	
+	<?php if(get_field('faqs')){ ?>
 	<div class="row">
 		<div class="colored-background">
 			<div class="container">
 				<div class="col-sm-8">
+					
 					<h2>FAQs</h2>
 					<div class="panel-group" id="accordion-faq" role="tablist">
 						<?php
-
-						if(get_field('faqs') != 0){
-							for ($i=0; $i < sizeof(get_field('faqs')); $i++) {
-								$GLOBALS['FAQ_count'] = $i; //extends scope for the instance loop
-								get_template_part('templates/content-post-type', 'course-acf-FAQ');
-							}
-							unset($GLOBALS['FAQ_count']);
-							} else {
-				 	get_template_part('templates/content', 'no-posts'); 
-
-							}
+						the_field('faqs');
 						?>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<?php } ?>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
