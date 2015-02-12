@@ -14,7 +14,6 @@ Course Import - Json Cron to Save in Web locally
 ==============================================*/
 
 
-
 if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron jobs
 	echo 'Hello World!';
 	//If someone try to view this page without password, it will just display Hello World, make it look like is the test page only.
@@ -240,12 +239,12 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			$related_program_course_id[$i] = $post_ID;
 	
 			$checkLastModifyDate = get_field('dateLastUpdated', $post_ID);// check the last modify date to reduce query.
+			echo $checkLastModifyDate.'<br/>';
+			echo $jsonIterator[$i]['dateLastUpdated'];
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
-				global $wpdb;
+
 				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
-				$result = $wpdb->get_results( $del_all_postmate);
-				print_r($result);
-				
+				surge_run_query('%u3fi2yjdgifg3', $del_all_postmate);
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	

@@ -102,14 +102,15 @@ function json_import_function(){
 
 		for($i=0; $i< count($jsonIterator); $i++){
 			$course_num = $i+1;
-			
+			//Review Here - @alex / @stagfoo - Depericated
+
 			
 			// WP_Query arguments
 			$check_item = array (
 				'post_type'              => 'courses',
 				'post_status'            => 'Published',
-				'posts_per_page'         => '1',
 				'orderby'                => 'id',
+				'order'                => 'DESC',
 			);
 			
 			// The Query
@@ -135,6 +136,8 @@ function json_import_function(){
 				$check_item_row_id = "";
 			}
 			
+			
+			//echo '<h1>'.$check_item_row_id.'</h1>';
 			// Restore original Post Data
 			wp_reset_postdata();
 
