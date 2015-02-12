@@ -133,8 +133,8 @@
                 },
                 {
                     "key": "field_54ab271828d67",
-                    "label": "State",
-                    "name": "state",
+                    "label": "City",
+                    "name": "city",
                     "prefix": "",
                     "type": "text",
                     "instructions": "",
@@ -154,9 +154,9 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_54ab29cb28d6c",
-                    "label": "Venue Name",
-                    "name": "venue_name",
+                    "key": "field_54ab312929435",
+                    "label": "Facilitator",
+                    "name": "facilitator",
                     "prefix": "",
                     "type": "text",
                     "instructions": "",
@@ -174,53 +174,13 @@
                     "maxlength": "",
                     "readonly": 0,
                     "disabled": 0
-                },
-                {
-                    "key": "field_54beed5199e1b",
-                    "label": "Venue Address",
-                    "name": "venue_address",
-                    "prefix": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_54ab275528d68",
-                    "label": "Date",
-                    "name": "date",
-                    "prefix": "",
-                    "type": "date_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "display_format": "d\/m\/Y",
-                    "return_format": "d\/m\/Y",
-                    "first_day": 1
                 },
                 {
                     "key": "field_54ab313029436",
                     "label": "Catering",
                     "name": "catering",
                     "prefix": "",
-                    "type": "textarea",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -230,12 +190,9 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "wpautop",
-                    "readonly": 0,
-                    "disabled": 0
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1
                 },
                 {
                     "key": "field_54bee8a23269c",
@@ -345,54 +302,78 @@
                             "disabled": 0
                         }
                     ]
+                },
+                {
+                    "key": "field_54dc24517ca32",
+                    "label": "Type",
+                    "name": "type",
+                    "prefix": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54ab26b1baeff",
+                    "label": "Class size",
+                    "name": "class_size",
+                    "prefix": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": "",
+                    "max": "",
+                    "step": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_54d82f9e80ba3",
+                    "label": "Current Class Size",
+                    "name": "currentClassSize",
+                    "prefix": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
                 }
             ]
-        },
-        {
-            "key": "field_54ab26b1baeff",
-            "label": "Class size",
-            "name": "class_size",
-            "prefix": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": "",
-            "max": "",
-            "step": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_54d82f9e80ba3",
-            "label": "Current Class Size",
-            "name": "currentClassSize",
-            "prefix": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
         }
     ],
     "location": [
@@ -410,5 +391,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1823615873
+    "modified": 1423714418
 }

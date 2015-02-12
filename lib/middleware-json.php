@@ -574,11 +574,34 @@ endwhile;
 		<div class="tablenav bottom">
 		';
 	if($sync_id!=""){
-	$Surge_json_page_contents .='
-			<form action="#" method="post">
-				<input name="sync_file_id" type="hidden" value="'.$sync_id.'">
-				<input class="button action" type="submit" value="Re-sync Course from BMS" name="">
-			</form>';
+		$args = array (
+		'post_type'              => 'page',
+		'post_status'            => 'publish',
+		's'                      => 'Json Cron job',
+		'posts_per_page'         => '1',
+		'order'                  => 'DESC',
+		'orderby'                => 'modified',
+		);
+		
+		// The Query
+		$check_cron_page = new WP_Query( $args );
+		$theme_root = site_url().'/wp-content/themes/';
+		// The Loop
+		if ( $check_cron_page->have_posts() ) {
+			while ( $check_cron_page->have_posts() ) {
+				$check_cron_page->the_post();
+				$cron_page_id = get_the_id();
+				// do something
+				$resync_link = '<a href="'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x" class="button action">';	
+				$resync_link2 = '</a>';
+			}
+		}
+		wp_reset_postdata();
+		$Surge_json_page_contents .=$resync_link;
+		$Surge_json_page_contents .='
+			Re-sync Course from BMS
+		';
+		$Surge_json_page_contents .=$resync_link2;
 	}
 	$Surge_json_page_contents .='
 		</div>

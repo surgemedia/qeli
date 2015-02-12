@@ -3,28 +3,6 @@
     "title": "Post Type - Courses - Program Basics",
     "fields": [
         {
-            "key": "field_54daabeefb4a6",
-            "label": "Program ID",
-            "name": "programId",
-            "prefix": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_54ab2484f6455",
             "label": "Executive Summary",
             "name": "executive_summary",
@@ -101,25 +79,6 @@
             "media_upload": 1
         },
         {
-            "key": "field_54ab24d0f645a",
-            "label": "Prerequisites",
-            "name": "prerequisites",
-            "prefix": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "text",
-            "toolbar": "full",
-            "media_upload": 1
-        },
-        {
             "key": "field_54ab24bcf6459",
             "label": "Program Outline",
             "name": "program_outline",
@@ -139,11 +98,11 @@
             "media_upload": 1
         },
         {
-            "key": "field_54daf605d6af4",
-            "label": "Last Updated Time",
-            "name": "datelastupdated",
+            "key": "field_54ab24d0f645a",
+            "label": "Prerequisites",
+            "name": "prerequisites",
             "prefix": "",
-            "type": "text",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -153,34 +112,9 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_54daf62cd6af5",
-            "label": "delivery Method",
-            "name": "deliveryMethod",
-            "prefix": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
+            "tabs": "text",
+            "toolbar": "full",
+            "media_upload": 1
         }
     ],
     "location": [
@@ -198,5 +132,6 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1423636020
+    "modified": 1423711526,
+    "local": "json"
 }
