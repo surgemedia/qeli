@@ -85,7 +85,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			}
 			
 			
-			echo '<h1>'.$check_item_row_id.'</h1>';
+			//echo '<h1>'.$check_item_row_id.'</h1>';
 			// Restore original Post Data
 			wp_reset_postdata();
 
@@ -152,11 +152,23 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 		
 			//echo print_r($jsonIterator[$i]['instances']);
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
-					$instances[$j] = array("programinstanceid" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
-										"instances_name" => $jsonIterator[$i]['instances'][$j]['name'], 
-										"facilitator" => $jsonIterator[$i]['instances'][$j]['facilitatorIds'], 
-										"catering" => $jsonIterator[$i]['instances'][$j]['catering']);
-					echo print_r($instances[$j]);
+				//echo print_r($jsonIterator[$i]['instances'][$j]['facilitatorIds']).'<br/>';
+				$array_count = 0;
+				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['facilitatorIds']); $k++){
+					$facilitator = $jsonIterator[$i]['instances'][$j]['facilitatorIds'][$k];
+					if($facilitator!=""){
+						if($array_count==0){
+							$facilitatorIds_array_output = $facilitator;
+							$array_count = $array_count+1;
+						}else{
+							$facilitatorIds_array_output .= ', '.$facilitator;						
+						}
+					}
+				}
+					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
+										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
+										"field_54ab312929435" => $facilitatorIds_array_output, 
+										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
 					if($add_address_insert!=""){
@@ -187,10 +199,10 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					
 				}
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-					$instances[$j]['phases'][$k] = array("name" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
-														"type" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
-														"start" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"end" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
+					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
+														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
+														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
+														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
 			if($check_item_row_id==""){
@@ -233,6 +245,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
 				$result = $wpdb->get_results( $del_all_postmate);
 				print_r($result);
+				
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
@@ -263,16 +276,16 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				
 				//relatedProgramIds request data in Json file to test the import with format of array
 				
-				$value = get_field('instances', $post_ID);
-
+				$value = get_field('field_54ab26dabaf00', $post_ID);
+				
 				for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 					$value[] = $instances[$j];
-					update_field( 'instances', $value, $post_ID );
-					$value2 = get_sub_field('phases', $post_ID);
+					update_field('field_54ab26dabaf00', $value, $post_ID );
+					$value2 = get_sub_field('field_54bee8a23269c', $post_ID);
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-						echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
+						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value2[] = $instances[$j]['phases'][$k];
-						update_sub_field( 'phases', $value2, $post_ID );
+						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
 					}
 				}	
 			}

@@ -78,6 +78,7 @@ add_menu_page('Course Import', 'Update Courses', 'manage_options', 'Surge_media_
 			  Function Coding
 ===========================================*/
 function json_import_function(){
+	exclude_this_page();
 	if(!current_user_can('manage_options')){
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}//end if user is allowed.
@@ -206,10 +207,22 @@ function json_import_function(){
 
 
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
-					$instances[$j] = array("programinstanceid" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
-										"instances_name" => $jsonIterator[$i]['instances'][$j]['name'], 
-										"facilitator" => $jsonIterator[$i]['instances'][$j]['facilitatorIds'], 
-										"catering" => $jsonIterator[$i]['instances'][$j]['catering']);
+					$array_count = 0;
+					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['facilitatorIds']); $k++){
+						$facilitator = $jsonIterator[$i]['instances'][$j]['facilitatorIds'][$k];
+						if($facilitator!=""){
+							if($array_count==0){
+								$facilitatorIds_array_output[$i][$j] = $facilitator;
+								$array_count = $array_count+1;
+							}else{
+								$facilitatorIds_array_output[$i][$j] .= ', '.$facilitator;						
+							}
+						}
+					}
+					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
+										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
+										"field_54ab312929435" => $facilitatorIds_array_output, 
+										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 					echo print_r($instances[$j]);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
@@ -241,10 +254,10 @@ function json_import_function(){
 					
 				}
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-					$instances[$j]['phases'][$k] = array("name" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
-														"type" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
-														"start" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"end" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
+					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
+														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
+														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
+														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
 			if($check_item_row_id==""){
@@ -315,15 +328,16 @@ function json_import_function(){
 				
 				//relatedProgramIds request data in Json file to test the import with format of array
 				
-				$value = get_field('instances', $post_ID);
+				$value = get_field('field_54ab26dabaf00', $post_ID);
+				
 				for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 					$value[] = $instances[$j];
-					update_field( 'instances', $value, $post_ID );
-					$value2 = get_sub_field('phases', $post_ID);
+					update_field('field_54ab26dabaf00', $value, $post_ID );
+					$value2 = get_sub_field('field_54bee8a23269c', $post_ID);
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-						echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
+						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value2[] = $instances[$j]['phases'][$k];
-						update_sub_field( 'phases', $value2, $post_ID );
+						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
 					}
 				}	
 			}
