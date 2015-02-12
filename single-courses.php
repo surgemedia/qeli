@@ -16,7 +16,7 @@
 					
 					$facil_array = false;
 					//defined out of loop scope
-					if()
+				
 					$instanes = get_field('instances');
 					for ($i=0; $i < sizeof($instanes); $i++) {
 						if( 0 < strlen($instanes[$i]['facilitator'])){
