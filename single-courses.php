@@ -13,12 +13,15 @@
 				<div class="container">
 					<h2>Facilitator</h2>
 					<?php
-					
+					if( -1 ){
+						echo 'false';
+					};
 					$facil_array = false;
 					//defined out of loop scope
 					
 					$instanes = get_field('instances');
 					$this_post = get_post(get_the_ID());
+
 					//debug( get_post_meta( get_the_ID() ));
 					for ($i=0; $i < sizeof($instanes); $i++) {
 						if( 0 < strlen($instanes[$i]['facilitator'])){
@@ -36,7 +39,7 @@
 					//use array of facilactors to get template
 						for ($i=0; $i < sizeof($facil_array); $i++) {
 						$GLOBALS['facilitator'] = $facil_array[$i];
-
+						$GLOBALS['facilitator_names'] = 
 						//extends scope for the facil loop
 							get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
 						}
@@ -102,9 +105,11 @@
 																				while( has_sub_field('instances') )
 																				{
 																					$programinstanceid = get_sub_field('programinstanceid');
+																					$programinstance_city = get_sub_field('city');
+
 																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('state');
 																					if(0 < strlen(get_sub_field('instances_name'))){
-																					echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name.'</label></p>';
+																					echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name." - ".$programinstance_city.'</label></p>';
 																					}
 																				}
 																			}

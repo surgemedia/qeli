@@ -4,14 +4,7 @@
             <p>
 
               <span class="h1" style="color:#fff;">QELi is</span>
-              <ul>
-                <li>Exceptional at developing leadership capability in educators</li>
-                <li>Committed to your personal and professional growth</li>
-                <li>Connected to educators needs</li>
-                <li>Quality contextualised content, facilitators and delivery methods</li>
-                <li>Building powerful communities for change</li>
-                <li>Offering programs and services accessible and affordable to all.</li>
-              </ul>
+              <?php the_field('home_blurb'); ?>
             </p>
             <br class="hidden-xs">
             <p>
@@ -19,7 +12,7 @@
             </p>
             <br class="hidden-xs">
             <p>
-              <a href="#" class="big-link"><span class="graphic arrow-link-sq"></span> See which program is best for you</a>
+              <a href="<?php the_field('home_link'); ?>" class="big-link"><span class="graphic arrow-link-sq"></span> See which program is best for you</a>
             </p>
           </div>
           <div class="section-footer">
