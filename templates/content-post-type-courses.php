@@ -56,7 +56,7 @@
           </tr>
           <tr>
             <td><b>Fees</b></td>
-            <td><?php the_field('cost'); ?></td>
+            <td><?php echo '$'.get_field('cost'); ?></td>
           </tr>
           <tr>
             <td><b>Location</b></td>
