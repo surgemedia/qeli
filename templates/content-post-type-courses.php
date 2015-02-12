@@ -18,7 +18,7 @@
     >
     <div class="row">
     <div class="col-xs-12">   
-      <h2><?php the_title(); ?></h2>
+      <h2><a href="<?php the_permalink() ?> "><?php the_title(); ?></a></h2>
       <!--
       <a href="<?php echo site_url(); ?>/cart/" class="graphic icon-cart pull-right"></a>
       <span class="sep pull-right"></span>
