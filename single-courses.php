@@ -21,7 +21,7 @@
 					for ($i=0; $i < sizeof($instanes); $i++) {
 						if( 0 < strlen($instanes[$i]['facilitator'])){
 						$facil = $instanes[$i]['facilitator'];
-						if(strpos(',',$facil)){
+						if(0 < strpos(',',$facil)){
 						$facil_array = explode(',', $facil);
 							} else {
 								$facil_array = array($facil);
