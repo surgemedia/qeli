@@ -13,15 +13,20 @@
 				<div class="container">
 					<h2>Facilitator</h2>
 					<?php
-					$facil_array;
+					
+					$facil_array = false;
 					//defined out of loop scope
+					if()
 					$instanes = get_field('instances');
 					for ($i=0; $i < sizeof($instanes); $i++) {
+						if( 0 < strlen($instanes[$i]['facilitator'])){
 						$facil = $instanes[$i]['facilitator'];
 						$facil_array = explode(',', $facil);
+						}
 						//slit into array
 						
 					}
+					if(false != $facil_array){
 					//use array of facilactors to get template
 						for ($i=0; $i < sizeof($facil_array); $i++) {
 						$GLOBALS['facilitator'] = $facil_array[$i]; 
@@ -29,6 +34,9 @@
 							get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
 						}
 						unset($GLOBALS['facilitator']);
+					} 
+				 	else {	get_template_part('templates/content', 'no-posts'); }
+
 					?>
 					
 					
