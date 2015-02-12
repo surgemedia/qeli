@@ -20,10 +20,10 @@ $(document).ready(function () {
 			initScroll();
 		}
 		initVideo();
-		
+
 		//To do: tidy up resize
 		var timeout = null;
-		
+
 		window.onresize = function() {
 			if (timeout) {
 				clearTimeout(timeout);
@@ -73,7 +73,7 @@ $(document).ready(function () {
 	}
 
 	function initScroll() {
-		
+
 
 		var mainEl = document.getElementById('content-container'),
 			scrollerWrapperEl = document.querySelector('.scroller-wrapper'),
@@ -82,9 +82,13 @@ $(document).ready(function () {
 
 			sectionList = document.querySelectorAll('div.section');
 			sectionNext = document.querySelectorAll('div.section-footer');
+			heroFooterEl = document.getElementById('hero-footer'),
+			homeImages = document.querySelectorAll('div.home-images');
 
 			sectionIdx = 0;
 			height = mainEl.offsetHeight;
+
+			homeImages[0].style.height = (window.innerHeight - headerEl.offsetHeight - heroFooterEl.offsetHeight) + "px";
 
 		// Calculate and set section dimensions
 		for(var i = 0; i < sectionList.length; i++) {
@@ -102,6 +106,7 @@ $(document).ready(function () {
 			}
 		}
 
+
 		scrollerWrapperEl.style.height = window.innerHeight + 'px';
 
 		//scrollerEl.style.height = !isMobile ? (sectionList.length * window.innerHeight) + 'px' : height + 'px';
@@ -111,7 +116,7 @@ $(document).ready(function () {
 		if (pageScroll) {
 			pageScroll.destroy();
 		}
-    
+
 		pageScroll = new IScroll('.scroller-wrapper', {
 										mouseWheel: !isMobile ? true : true,
 										deceleration: 0.01,
@@ -165,7 +170,7 @@ $(document).ready(function () {
 
 						if (deltaY > 0) {
 							sectionIdx++;
-							
+
 							if (sectionIdx >= sectionList.length) {
 								sectionIdx = (sectionList.length - 1);
 							}

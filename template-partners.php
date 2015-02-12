@@ -6,7 +6,7 @@ Template Name: Partners
 <?php while (have_posts()) : the_post(); ?>
  <article id="content" class="col-xs-12">
 	<div class="row">
-		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php 
+		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
 			$id = get_post_thumbnail_id();
 			echo wp_get_attachment_image_src($id, 'full')[0];
 		?>')">
@@ -16,7 +16,7 @@ Template Name: Partners
 			</div>
 		</div>
 	</div>
-	
+
 	<?php if(have_rows('partners')): $i = 0; ?>
 		<?php while(have_rows('partners')): the_row();?>
 			<div class="container">

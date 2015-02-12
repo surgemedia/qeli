@@ -13,9 +13,11 @@
                 <li>Offering programs and services accessible and affordable to all.</li>
               </ul>
             </p>
+            <br class="hidden-xs">
             <p>
               QELi is a vital investment.
             </p>
+            <br class="hidden-xs">
             <p>
               <a href="#" class="big-link"><span class="graphic arrow-link-sq"></span> See which program is best for you</a>
             </p>
