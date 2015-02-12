@@ -29,7 +29,11 @@
             <div class="row">
             <span class="hero-overlay"></span>
             <span class="graphic footer-logo"></span>
-            ©2014 QELi. All rights reserved  |  credits / breadcrumb digital (build) /  volt (design)
+            <?php
+            // these need to be setup so they reference the links to the pages via a query;
+            ?>
+            <p class="pink"><a href="http://54.79.72.151/~qeliedu/privacy-policy/">Privacy Policy</a> | <a href="http://54.79.72.151/~qeliedu/sitemap/">Sitemap</a> | <a href="http://54.79.72.151/~qeliedu/terms-of-use/">Terms of Use</a> | <a href="http://54.79.72.151/~qeliedu/disclaimer/">Disclaimer</a></p>
+            <p>©2014 QELi. All rights reserved  |  credits / surge media / breadcrumb digital /  volt design</p>
             </div>
         </div>
     </div>
