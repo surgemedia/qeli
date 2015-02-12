@@ -289,14 +289,7 @@
 									<h3 class="panel-title">
 									<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
 									</h3>
-									<ul>
-										<?php
-										for ($i=0; $i < sizeof(get_field('related_programs')); $i++) { ?>
-										<li>
-											<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('related_programs')[$i]); ?></a>
-										</li>
-										<?php } // for loop ?>
-									</ul>
+									
 								</a>
 							</div>
 							<div id="collapse-related" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-related">
