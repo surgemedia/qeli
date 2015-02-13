@@ -99,11 +99,30 @@
 																				{
 																					$programinstanceid = get_sub_field('programinstanceid');
 																					$programinstance_city = get_sub_field('city');
-
-																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('city');
-																					if(0 < strlen(get_sub_field('instances_name'))){
-																					echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name." - ".$programinstance_city.'</label></p>';
+																					$programinstance_type;
+																					switch(get_sub_field('type')) {
+																					    case 1:
+																					        $programinstance_type = 'Scheduled Instance';
+																					        break;
+																					    case 2:
+																					        $programinstance_type = 'Expression Of Interest';
+																					 
+																					        break;
+																					    case 3:
+																					        $programinstance_type = 'On Demand';
+																		
+																					        break;
+																					    default:
+																					        $programinstance_type = 'Scheduled Instance';
 																					}
+																					
+																					
+
+																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('city')."[".$programinstance_type."]";
+																					if(0 < strlen(get_sub_field('instances_name'))){ ?>
+																					<p><input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
+																					<label for="programid"><?php echo $instances_name ?></label></p>
+																					<?php }
 																				}
 																			}
 											?>
