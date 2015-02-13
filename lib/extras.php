@@ -21,4 +21,4 @@ function roots_wp_title($title) {
 }
 add_filter('wp_title', 'roots_wp_title', 10);
 
-add_image_size('qeli-talks-square', 200, 200, crop );
+add_image_size('qeli-talks-square', 200, 200, true );
