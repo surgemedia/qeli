@@ -13,18 +13,14 @@
 				<div class="container">
 					<h2>Facilitator</h2>
 					<?php
-					$instanes = get_field('instances');
-					
+					$instanes = get_field('instances');				
 					$facil_array = false;
-					//defined out of loop scope
-					
-
-					//debug( get_post_meta( get_the_ID() ));
 					for ($i=0; $i < sizeof($instanes); $i++) {
 						if( 0 < strlen($instanes[$i]['facilitator'])){
 						$facil = $instanes[$i]['facilitator'];
-						if(0 < strpos(',',$facil)){
+						if(-1 != strpos(',',$facil)){
 						$facil_array = explode(',', $facil);
+						
 							} else {
 								$facil_array = array($facil);
 							}
