@@ -117,7 +117,7 @@
 								</ul>
 							</div>
 							<div class="panel-footer">
-								<?php if( get_field('currentClassSize') < get_field('class_size')) { ?>
+								<?php if( get_field('currentClassSize') < get_field('class_size') || get_field('currentClassSize') == NULL ) { ?>
 								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
 								<?php } ?>
 							</div>
