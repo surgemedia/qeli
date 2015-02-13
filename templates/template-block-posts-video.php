@@ -5,7 +5,7 @@
       <?php
           // TODO JW - this needs to be seperated into a query that returns the main video (brand video) and then these others.
           // WP_Query arguments
-   
+    $count = 0;
       $args = array (
         'post_type'              => 'videoes',
         'post_count'            => 4,
@@ -17,13 +17,12 @@
       if ( $query->have_posts() ) :
         while ( $query->have_posts() ) : $query->the_post();  ?>
       <?php  $featured = get_field('talks',get_the_id())[0]['featured']; ?>
-     
-      <?php if(1 == $featured) : ?>
+      <?php if(1 == $featured || $count == 0) : ?>
       <?php // checks if 1st post, then counts ?>
       <?php  get_template_part('templates/content-post-type-post-block', 'big-video');  $count++;?>
     </div>
     <div class="col-xs-12 col-md-3 row">
-      <?php // end of big video call, count is more then 1 ?>
+      <?php  ?>
     <?php  else :?>
     <div class="col-xs-12 col-sm-4 col-md-12">
       <?php get_template_part('templates/content-post-type-post-block', 'video');?>
