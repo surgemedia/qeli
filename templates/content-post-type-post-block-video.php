@@ -3,4 +3,6 @@
 		<img alt="400x225" class="img-responsive" src="<?php echo getFeaturedUrl(); ?>" data-holder-rendered="true">
 		<div class="overlay"><span class="video-modal graphic btn-play-sm"></span></div>
 	</a>
+	<p><?php the_title(); ?></p>
 </div>
+

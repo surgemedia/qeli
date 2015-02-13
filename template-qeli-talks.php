@@ -32,15 +32,20 @@ Template Name: Qeli Talks/Videos
 							<span class="graphic btn-play-lg"></span>
 						</a>
 						<?php } ?>
-				</div>
-				<?php if(get_field('featured_video')) {?>
-				<div class="container">
-						<h2 class="video-name"><?php echo get_the_title($featured_id); ?></h2>
-						<span class="date-time"><?php echo get_the_date('F j');  ?></span>
+						<?php if(get_field('featured_video')) {?>
+						<div class="banner-video-title">
+							<div class="container">
+								<h2 class="video-name"><?php echo get_the_title($featured_id); ?></h2>
+								<span class="date-time"><?php echo get_the_date('F j');  ?></span>
+							</div>
+						</div>
 				<?php } ?>
+				</div>
+				<div class="container">
 					<div class="row">
-
-						<?php the_content(); ?>
+						<div class="col-xs-12">
+							<?php the_content(); ?>
+						</div>
 						<hr class="spacer">
 
 						<?php
