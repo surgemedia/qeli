@@ -11,6 +11,7 @@
 
           ?>
           <?php
+          if(get_field('featured_program')){
           //Gets a templated post from the ID
           $args = array (
             'post_type' => 'courses',
@@ -28,8 +29,10 @@
           }
           // Restore original Post Data
           wp_reset_postdata();
+          }
         ?>
         <?php
+        if(get_field('featured_testimonial')){
           //Gets a templated post from the ID
           $args = array (
             'post_type' => 'testimonial',
@@ -47,11 +50,13 @@
           }
           // Restore original Post Data
           wp_reset_postdata();
+          }
         ?>
 
 
           </div>
           <?php
+           if(get_field('featured_testimonial')){
           //Gets a templated post from the ID
           $args = array (
             'post_type' => 'courses',
@@ -69,10 +74,11 @@
           }
           // Restore original Post Data
           wp_reset_postdata();
+        }
         ?>
           
           <div class="col-xs-12">
-            <a href="<?php echo site_url() ?>/program-overview/" class="big-link text-green"><span class="graphic arrow-link-sq"></span> visit program profile</a>
+            <a href="<?php echo get_permalink($GLOBALS['program_id']); ?>" class="big-link text-green"><span class="graphic arrow-link-sq"></span> visit program profile</a>
           </div>
         </div>
       </div>
@@ -82,3 +88,4 @@
     <span class="graphic arrow-section-down"></span>
   </div>
 </div>
+<?php unset($GLOBALS['program_id']); unset($GLOBALS['testimonial_id']) ?>
