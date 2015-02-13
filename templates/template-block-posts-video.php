@@ -7,8 +7,7 @@
       $count = 0;
       $args = array (
       'post_type'              => 'videoes',
-      'post_count'            => 4,
-      'posts_per_page'        => 4,
+
       );
       // The Query
       $query = new WP_Query( $args );
@@ -19,7 +18,9 @@
       
       <?php if($featured == 1 && $count == 0) { ?>
       <?php  get_template_part('templates/content-post-type-post-block', 'big-video');  $count++; $featured = 0;?>
-      <?php } ?>
+      <?php } else {
+         get_template_part('templates/content', 'no-posts'); 
+        } ?>
        <?php endwhile; //while ?>
      <?php } //if have posts ?>
 
