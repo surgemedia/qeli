@@ -26,6 +26,7 @@ function newsletter_posts() {
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
+		'rewrite'            => array( 'slug' => 'newsletter' ),
 		'show_in_menu'        => true,
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
