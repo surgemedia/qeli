@@ -1,7 +1,22 @@
 .home-page {
+	/*
 	@media (min-width: @screen-sm-max) {
 		overflow: hidden;
 		position: relative;
+	}
+	*/
+	#header {
+		width: 100%;
+		position: fixed;
+		z-index: 100;
+	}
+
+	#content-container {
+		padding-top: 134px;
+
+		@media (max-width: @screen-sm-max) {
+			padding-top: 92px;
+		}
 	}
 
 	.home-images {
@@ -37,17 +52,20 @@
 	}
 
 	.scroller-wrapper {
+		/*
 		@media (min-width: @screen-sm-max) {
 			overflow: hidden;
 			position: relative;
 		}
+		*/
 	}
 
 	.scroller {
+		/*
 		position: absolute;
 		top: 0;
 		left: 0;
-
+		*/
 		> ul {
 			list-style: none;
 			margin: 0;
@@ -80,7 +98,7 @@
 	.section {
 		height: auto;
 		position: relative;
-		padding: 60px 0;
+		padding: 60px 0 0;
 
 		@media (min-width: @screen-lg-min) or (min-height: 720px) {
 			.container.center-all {
@@ -293,8 +311,9 @@
 			width: 100%;
 			height: 60px;
 			background-color: @gray-lightest;
-			position: absolute;
-			bottom: 0;
+			//position: absolute;
+			//bottom: 0;
+			margin-top: 60px;
 			border-top: 1px solid #CDCDCD;
 			border-bottom: 1px solid #CDCDCD;
 			.arrow-section-down  {

@@ -17,7 +17,7 @@ $(document).ready(function () {
 
 	if (homeEl) {
 		if (!isMobile) {
-			initScroll();
+			//initSections();
 		}
 		initVideo();
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
 			    }
 
 			    if (!isMobile) {
-					initScroll();
+					//initSections();
 				}
 
 				initVideo();
@@ -72,9 +72,24 @@ $(document).ready(function () {
         });
 	}
 
+	function initSections() {
+
+		var sectionList = document.querySelectorAll('div.section'),
+			headerEl = document.getElementById('header');
+
+		for(var i = 0; i < sectionList.length; i++) {
+			var section = sectionList[i];
+
+			if (!isMobile) {
+				section.style.minHeight = (window.innerHeight - headerEl.offsetHeight) + 'px';
+			}
+			else {
+				section.style.height = 'auto';
+			}
+		}
+	}
+	
 	function initScroll() {
-
-
 		var mainEl = document.getElementById('content-container'),
 			scrollerWrapperEl = document.querySelector('.scroller-wrapper'),
 			headerEl = document.getElementById('header'),

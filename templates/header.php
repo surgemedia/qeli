@@ -1,5 +1,5 @@
-<?php get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
 <div id="header" role="banner" aria-labelledby="landmark-label-2">
+	<?php get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
