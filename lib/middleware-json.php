@@ -222,9 +222,19 @@ function json_import_function(){
 							}
 						}
 					}
+					
+					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['type']); $k++){
+						$course_type = $jsonIterator[$i]['instances'][$j]['type'][$k];
+						if($course_type!=""){
+								$type_array_output[$i][$j] = $course_type;
+								$array_count = $array_count+1;
+							
+						}
+					}
 					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
 										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
-										"field_54ab312929435" => $facilitatorIds_array_output, 
+										"field_54ab312929435" => $facilitatorIds_array_output,
+										"field_54ab312929435" => $facilitatorIds_array_output,  
 										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 					echo print_r($instances[$j]);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
@@ -592,7 +602,7 @@ endwhile;
 				$check_cron_page->the_post();
 				$cron_page_id = get_the_id();
 				// do something
-				$resync_link = '<a href="'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x" class="button action">';	
+				$resync_link = '<a target="_blank" href="'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x" class="button action">';	
 				$resync_link2 = '</a>';
 			}
 		}
