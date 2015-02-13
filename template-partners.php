@@ -22,8 +22,9 @@ Template Name: Partners
 			<div class="container">
 				<div class="row">
 					<?php $i++; ?>
-					<div class="col-xs-12 col-sm-3">
+					<div class="col-xs-6 col-sm-3">
 						<img src="<?php $id = get_sub_field('image');
+								// TODO this is not returning the correct sized image
 									echo wp_get_attachment_image_src($id, 'thumnbnail')[0];
 						?>" class="img-responsive"/>
 					</div>

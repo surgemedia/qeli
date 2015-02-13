@@ -5,7 +5,7 @@
         <div class="col-xs-12">
         <div class="row">
           <div class="col-xs-12 col-sm-6">
-          <?php 
+          <?php
           $GLOBALS['program_id'] = get_field('featured_program');
           $GLOBALS['testimonial_id'] = get_field('featured_testimonial');
 
@@ -70,9 +70,9 @@
           // Restore original Post Data
           wp_reset_postdata();
         ?>
-          
+
           <div class="col-xs-12">
-            <a href="<?php the_siteurl() ?>/program-overview/" class="big-link text-green"><span class="graphic arrow-link-sq"></span> visit program profile</a>
+            <a href="#" class="big-link text-green"><span class="graphic arrow-link-sq"></span> visit program profile</a>
           </div>
         </div>
       </div>

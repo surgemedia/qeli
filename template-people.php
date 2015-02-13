@@ -74,7 +74,7 @@ Template Name: About - People
 							//'tag_name'               => 'test',
 							'pagination'             => false,
 							'posts_per_page'         => '-1',
-							'order'                  => 'DESC',
+							'order'                  => 'ASC',
 							'orderby'                => 'title',
 							);
 							// The Query
@@ -99,7 +99,7 @@ Template Name: About - People
 					//'tag_name'               => 'test',
 					'pagination'             => false,
 					'posts_per_page'         => '-1',
-					'order'                  => 'DESC',
+					'order'                  => 'ASC',
 					'orderby'                => 'title',
 					);
 					// The Query
