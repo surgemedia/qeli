@@ -202,7 +202,7 @@ function json_import_function(){
 			for($j=0; $j<count($jsonIterator[$i]['relatedProgramIds']); $j++){
 				$rp_slug = $jsonIterator[$i]['relatedProgramIds'][$j];
 				$add_to_related_program[$i][$j] = $rp_slug;
-				//echo $rp_slug.'<br/>';
+				echo $rp_slug.'<br/>';
 			}
 	/* ===============================================================================================================
 											 Add Related Program ID Part 1
@@ -222,16 +222,21 @@ function json_import_function(){
 							}
 						}
 					}
-				
-					//debug(($jsonIterator[$i]['instances'][$j]['maxClassSize']));
+					
+					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['type']); $k++){
+						$course_type = $jsonIterator[$i]['instances'][$j]['type'][$k];
+						if($course_type!=""){
+								$type_array_output[$i][$j] = $course_type;
+								$array_count = $array_count+1;
+							
+						}
+					}
 					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
-										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'],
-										"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'], 
-										"field_54d82f9e80ba3" => $jsonIterator[$i]['instances'][$j]['currentClassSize'],  
+										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
 										"field_54ab312929435" => $facilitatorIds_array_output,
-										"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],  
+										"field_54ab312929435" => $facilitatorIds_array_output,  
 										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
-					//echo print_r($instances[$j]);
+					echo print_r($instances[$j]);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
 					if($add_address_insert!=""){
@@ -304,7 +309,7 @@ function json_import_function(){
 				global $wpdb;
 				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
 				$result = $wpdb->get_results( $del_all_postmate);
-				//print_r($result);
+				print_r($result);
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
@@ -314,8 +319,8 @@ function json_import_function(){
 				update_field('program_outline', $jsonIterator[$i]['programOutline'], $post_ID);
 				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
 				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
-				//update_field('class_size', $jsonIterator[$i]['maxClassSize'], $post_ID);
-				//update_field('currentClassSize', $jsonIterator[$i]['currentClassSize'], $post_ID);
+				update_field('class_size', $jsonIterator[$i]['maxClassSize'], $post_ID);
+				update_field('currentClassSize', $jsonIterator[$i]['currentClassSize'], $post_ID);
 				update_field('length', $jsonIterator[$i]['length'], $post_ID);
 				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);
 				update_field('faqs', $jsonIterator[$i]['faqs'], $post_ID);
