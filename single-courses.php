@@ -118,7 +118,7 @@
 																					
 																					
 
-																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('city')."[".$programinstance_type."]";
+																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('city')." [".$programinstance_type."]";
 																					if(0 < strlen(get_sub_field('instances_name'))){ ?>
 																					<p><input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
 																					<label for="programid"><?php echo $instances_name ?></label></p>

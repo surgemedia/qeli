@@ -17,7 +17,7 @@
       if ( $query->have_posts() ) :
         while ( $query->have_posts() ) : $query->the_post();  ?>
       <?php  $featured = get_field('talks',get_the_id())[0]['featured']; ?>
-      <?php if(1 == $featured || $count == 0) : ?>
+      <?php if(1 == $featured) : ?>
       <?php // checks if 1st post, then counts ?>
       <?php  get_template_part('templates/content-post-type-post-block', 'big-video');  $count++;?>
     </div>
