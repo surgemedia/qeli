@@ -13,14 +13,11 @@
 				<div class="container">
 					<h2>Facilitator</h2>
 					<?php
-					if( -1 ){
-						echo 'false';
-					};
+					$instanes = get_field('instances');
+					
 					$facil_array = false;
 					//defined out of loop scope
 					
-					$instanes = get_field('instances');
-					$this_post = get_post(get_the_ID());
 
 					//debug( get_post_meta( get_the_ID() ));
 					for ($i=0; $i < sizeof($instanes); $i++) {
@@ -39,7 +36,7 @@
 					//use array of facilactors to get template
 						for ($i=0; $i < sizeof($facil_array); $i++) {
 						$GLOBALS['facilitator'] = $facil_array[$i];
-						$GLOBALS['facilitator_names'] = 
+						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.",";
 						//extends scope for the facil loop
 							get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
 						}
@@ -95,7 +92,7 @@
 									<li>
 										<h3>Facilitator: </h3>
 
-										<?php echo get_field('facilitator')[0]['name'] ?>
+										<?php echo $GLOBALS['facilitator_names']; ?>
 									</li>
 									<li>
 										<form action="<?php echo site_url();?>/cart/" method="post" id="course_add_to_cart">
