@@ -72,7 +72,7 @@
         ?>
           
           <div class="col-xs-12">
-            <a href="<?php the_siteurl() ?>/program-overview/" class="big-link text-green"><span class="graphic arrow-link-sq"></span> visit program profile</a>
+            <a href="<?php echo site_url() ?>/program-overview/" class="big-link text-green"><span class="graphic arrow-link-sq"></span> visit program profile</a>
           </div>
         </div>
       </div>
