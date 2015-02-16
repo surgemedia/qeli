@@ -1,6 +1,4 @@
-<div class="person ceo">
-	<div class="page-header colored-background">
-		<?php get_template_part('templates/page', 'colored-header'); ?>
+
 		<div class="container">
 			<div class="col-xs-12 col-sm-3">
 				<img class="img-responsive img-circle hidden-xs" src="<?php echo getFeaturedUrl(); ?>" alt="<?php the_field('name') ?>">
@@ -23,4 +21,3 @@
 		</div>
 	</div>
 	<?php edit_post_link(); ?>
-</div>

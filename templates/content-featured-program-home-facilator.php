@@ -1,5 +1,6 @@
 <?php
 $fac_ids = get_field('instances')[0]['facilitator'];
+if($fac_ids){
 $facil_array = false;
 					//defined out of loop scope
 					
@@ -23,3 +24,4 @@ $facil_array = false;
 	<h3 class="underline">Program Facilitator</h3>
 	<p><?php the_field('short_description',$fac_post) ?></p>
 </div>
+<?php } ?>

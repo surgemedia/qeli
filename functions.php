@@ -42,6 +42,8 @@ $roots_includes = array(
   'lib/action-post-type-people.php',               // Custom Post Type : Key People
   'lib/action-post-type-publications.php',         // Custom Post Type : Publications
   'lib/action-post-type-newsletter.php',           // Custom Post Type : Newsletter
+  'lib/action-post-type-resourses.php',           // Custom Post Type : Newsletter
+                                                   
 
 
 /*=================================

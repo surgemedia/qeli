@@ -14,7 +14,6 @@ Course Import - Json Cron to Save in Web locally
 ==============================================*/
 
 
-
 if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron jobs
 	echo 'Hello World!';
 	//If someone try to view this page without password, it will just display Hello World, make it look like is the test page only.
@@ -240,11 +239,18 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			$related_program_course_id[$i] = $post_ID;
 	
 			$checkLastModifyDate = get_field('dateLastUpdated', $post_ID);// check the last modify date to reduce query.
-			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
-				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key = _instances% OR  post_id = ".$post_ID." AND meta_key = instances%";
-				$result = $GLOBALS['wpdb']->delete( $wpdb->prepare( $del_all_postmate));
+			//if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
+				$table_name = $table_prefix."postmeta";
 				
 				
+				$del_query = "DELETE FROM ".$table_name." WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
+//				mysql_query($del_query) or die(mysql_error());
+				global $wpdb;
+				$db_item =  $wpdb->get_results($wpdb->prepare(
+					$del_query
+				));
+				echo $del_query;
+				echo '<br/>';
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
@@ -287,7 +293,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
 					}
 				}	
-			}
+			//}
 		}
 		$Complete_update = array(
 			'ID'           => $Files_id,
@@ -361,5 +367,6 @@ endwhile;
 </script>
 
 <?
+mysql_close();
 exit;
 ?>

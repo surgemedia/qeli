@@ -13,18 +13,14 @@
 				<div class="container">
 					<h2>Facilitator</h2>
 					<?php
-					$instanes = get_field('instances');
-					
+					$instanes = get_field('instances');				
 					$facil_array = false;
-					//defined out of loop scope
-					
-
-					//debug( get_post_meta( get_the_ID() ));
 					for ($i=0; $i < sizeof($instanes); $i++) {
 						if( 0 < strlen($instanes[$i]['facilitator'])){
 						$facil = $instanes[$i]['facilitator'];
-						if(0 < strpos(',',$facil)){
+						if(-1 != strpos(',',$facil)){
 						$facil_array = explode(',', $facil);
+						
 							} else {
 								$facil_array = array($facil);
 							}
@@ -103,11 +99,30 @@
 																				{
 																					$programinstanceid = get_sub_field('programinstanceid');
 																					$programinstance_city = get_sub_field('city');
-
-																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('city');
-																					if(0 < strlen(get_sub_field('instances_name'))){
-																					echo '<p><input type="radio" name="programid" checked="checked" value="'.$programinstanceid.'"/><label for="programid">'.$instances_name." - ".$programinstance_city.'</label></p>';
+																					$programinstance_type;
+																					switch(get_sub_field('type')) {
+																					    case 1:
+																					        $programinstance_type = 'Scheduled Instance';
+																					        break;
+																					    case 2:
+																					        $programinstance_type = 'Expression Of Interest';
+																					 
+																					        break;
+																					    case 3:
+																					        $programinstance_type = 'On Demand';
+																		
+																					        break;
+																					    default:
+																					        $programinstance_type = 'Scheduled Instance';
 																					}
+																					
+																					
+
+																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('city')." [".$programinstance_type."]";
+																					if(0 < strlen(get_sub_field('instances_name'))){ ?>
+																					<p><input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
+																					<label for="programid"><?php echo $instances_name ?></label></p>
+																					<?php }
 																				}
 																			}
 											?>
@@ -117,9 +132,11 @@
 								</ul>
 							</div>
 							<div class="panel-footer">
-								<?php if( get_field('currentClassSize') < get_field('class_size')) { ?>
-								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
-								<?php } ?>
+							
+									
+									<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
+									
+
 							</div>
 						</div>
 					</div>

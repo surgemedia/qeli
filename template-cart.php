@@ -129,7 +129,7 @@ $wp_session = WP_Session::get_instance();
 				</div>
 			</div>
 		</div>
-		<a href="http://breadcrumbdigital.com.au/projects/qeli-trials/courses/" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
+		<a href="<?php echo site_url(); ?>/program-catalogue/" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
 		<a href="#" class="btn btn-primary pull-right" onclick="document.getElementById('post_json').submit();">Next<span class="glyphicon glyphicon-chevron-right"></span></a>
 	</div>    </article>
 <?php endwhile; ?>
