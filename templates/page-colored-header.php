@@ -1,5 +1,8 @@
 <div class="header">
 	<div class="container">
-		<h1><?php echo roots_title(); ?></h1>
+		<?php
+			$new_title = QELify(roots_title());
+			echo '<h1 class="text-uppercase">' . $new_title . '</h1>';
+		?>
 	</div>
 </div>

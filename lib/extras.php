@@ -22,3 +22,11 @@ function roots_wp_title($title) {
 add_filter('wp_title', 'roots_wp_title', 10);
 
 add_image_size('qeli-talks-square', 200, 200, true );
+
+function QELify($the_string){
+	if(strrpos($the_string, 'QELi')!==false){
+		return str_replace("QELi", "<span class='text-uppercase'>QEL</span><span class='text-lowercase'>i</span>", $the_string);
+	}else{
+		return $the_string;
+	}
+}

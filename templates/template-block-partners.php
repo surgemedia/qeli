@@ -1,9 +1,9 @@
-	<div class="section pink partners">
+	<div class="section blue our-partners">
 		<div class="center-all">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-3">
-						<h2>Our Partners</h2>
+						<h2 class="text-uppercase">Our Partners</h2>
 					</div>
 				</div>
 				<hr>

@@ -96,7 +96,7 @@ add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
  *
  */
 class QELi_Nav_Menu extends Walker_Nav_Menu {
-  
+
   // add classes to ul sub-menus
   function start_lvl( &$output, $depth = 0, $args = array() ) {
       // depth dependent classes
@@ -113,7 +113,7 @@ class QELi_Nav_Menu extends Walker_Nav_Menu {
       // build html
       $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
   }
-  
+
   // add main/sub classes to li's and links
   function start_el(  &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
     global $wp_query;
@@ -151,7 +151,7 @@ class QELi_Nav_Menu extends Walker_Nav_Menu {
                             $args->before,
                             $attributes,
                             $link_before,
-                            apply_filters( 'the_title', $item->title, $item->ID ),
+                            QELify(apply_filters( 'the_title', $item->title, $item->ID )),
                             $link_after,
                             $args->after
                           );
@@ -167,7 +167,7 @@ class QELi_Nav_Menu extends Walker_Nav_Menu {
  *
  */
 class QELi_Footer_Menu extends Walker_Nav_Menu {
-  
+
   // add classes to ul sub-menus
   function start_lvl( &$output, $depth = 0, $args = array() ) {
       // depth dependent classes
@@ -182,7 +182,7 @@ class QELi_Footer_Menu extends Walker_Nav_Menu {
       // build html
       $output .= "\n" . $indent . '<ul class="' . $class_names . '">' . "\n";
   }
-  
+
   // add main/sub classes to li's and links
   function start_el(  &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
     global $wp_query;
