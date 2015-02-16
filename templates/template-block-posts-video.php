@@ -23,7 +23,7 @@
     <div class="col-xs-12 col-md-3 row">
       <?php // end of big video call, count is more then 1 ?>
     <?php  else :?>
-    <div class="col-xs-12 col-sm-4 col-md-12">
+    <div class="col-xs-6 col-md-12">
       <?php get_template_part('templates/content-post-type-post-block', 'video');?>
     </div>
   <?php endif; ?>

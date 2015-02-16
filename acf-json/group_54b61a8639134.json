@@ -125,7 +125,8 @@
                         "posts-video": "Video Posts",
                         "posts-testimonials": "Testimonial Posts",
                         "posts-case-study": "Case Studies Block",
-                        "featured-program": "Featured Program"
+                        "featured-program": "Featured Program",
+                        "big-video": "Just One Video"
                     },
                     "default_value": {
                         "": ""
@@ -156,6 +157,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1423711534,
-    "local": "json"
+    "modified": 1423810752
 }

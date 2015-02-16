@@ -230,7 +230,27 @@
 					margin-left: -60px;
 				}
 			}
+			&.alt{
+				color: #d0d3d5;
+				background-color: #333e48;
+				> .container{
+					z-index: 2;
+					position: relative;
+				}
+				.hero-overlay{
+					position: absolute;
+					&.left{
+						top: 140px;
+						left: 0;
+					}
+					&.right{
+						bottom: 180px;
+						right: 0;
+					}
+				}
+			}
 		}
+
 
 		&.case-studies {
 			/*
