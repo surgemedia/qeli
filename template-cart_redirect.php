@@ -30,6 +30,6 @@ $json_guid = json_decode($result, true);
 $link_gid = 'http://qeli.systina.net/mycart#/checkout/'.$json_guid['cartGuid'];
 echo $link_gid;
 ?>
-<?php /*?><script type="text/javascript">
+<script type="text/javascript">
 window.location= <?php echo "'" . $link_gid . "'"; ?>;
-</script><?php */?>
+</script>
