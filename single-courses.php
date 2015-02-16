@@ -1,8 +1,8 @@
 <article id="content" class="col-xs-12">
 	<div class="row">
 		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
-			$id = get_post_thumbnail_id();
-			echo wp_get_attachment_image_src($id, 'full')[0];
+				$id = get_post_thumbnail_id();
+				echo wp_get_attachment_image_src($id, 'full')[0];
 			?>')">
 			<div class="facilitator-item">
 				<div class="header">
@@ -20,13 +20,11 @@
 							$facil = $instanes[$i]['facilitator'];
 							if(-1 != strpos(',',$facil)){
 								$facil_array = explode(',', $facil);
-
 							} else {
 								$facil_array = array($facil);
 							}
 						}
 						//slit into array
-
 					}
 					if(false != $facil_array){
 					//use array of facilactors to get template
@@ -38,11 +36,8 @@
 						}
 						unset($GLOBALS['facilitator']);
 					}
-					else {	get_template_part('templates/content', 'no-posts'); }
+						else {	get_template_part('templates/content', 'no-posts'); }
 					?>
-
-
-
 				</div>
 			</div>
 		</div>
@@ -73,9 +68,11 @@
 								<ul class="list-striped">
 									<li>
 										<h3>Cost (incl discounts): </h3>
-										<?php echo'$'; the_field('cost'); ?>
+										<p>
+										<?php $cost = strip_tags(get_field('cost')); ?>
+										<?php echo'$'.$cost; ?>
+										</p>
 									</li>
-
 									<li>
 										<h3>Length </h3>
 										<?php the_field('length') ?>
@@ -104,35 +101,27 @@
 														break;
 														case 2:
 														$programinstance_type = 'Expression Of Interest';
-
 														break;
 														case 3:
 														$programinstance_type = 'On Demand';
-
 														break;
 														default:
 														$programinstance_type = 'Scheduled Instance';
 													}
-
-
 													$instances_name = get_sub_field('instances_name');
-													if((get_sub_field('instances_name'))){ ?>
-													<input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
-													<label for="programid"><?php echo $instances_name ?></label>
-													<?php }
-												}
+											if((get_sub_field('instances_name'))){ ?>
+											<input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
+											<label for="programid"><?php echo $instances_name ?></label>
+											<?php }
+											}
 											}
 											?>
 										</form>
-
 									</li>
 								</ul>
 							</div>
 							<div class="panel-footer">
-
-
 								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
-
 							</div>
 						</div>
 					</div>
@@ -150,14 +139,14 @@
 						for ($i=0; $i < sizeof(get_field('instances')); $i++) {
 						$GLOBALS['instance_count'] = $i; //extends scope for the instance loop
 						get_template_part('templates/content-post-type', 'course-acf-instance');
-					}
-					unset($GLOBALS['instance_count']);
-					?>
+						}
+						unset($GLOBALS['instance_count']);
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 	<?php /* ?>
 	<div class="row">
 		<div class="container">
@@ -237,7 +226,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="row">
 		<div class="colored-background">
 			<div class="container">
@@ -249,7 +237,7 @@
 							<div class="panel-heading" role="tab" id="heading-features">
 								<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-features" aria-expanded="true" aria-controls="collapse-features">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Program features <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Program features <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -260,12 +248,11 @@
 							</div>
 						</div>
 						<?php } ?>
-
 						<div class="panel">
 							<div class="panel-heading" role="tab" id="heading-prereq">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-prereq" aria-expanded="true" aria-controls="collapse-prereq">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Prerequisites <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Prerequisites <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -279,7 +266,7 @@
 							<div class="panel-heading" role="tab" id="heading-resources">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-resources" aria-expanded="true" aria-controls="collapse-resources">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Resources <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Resources <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -293,7 +280,7 @@
 							<div class="panel-heading" role="tab" id="heading-articulation">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-articulation" aria-expanded="true" aria-controls="collapse-articulation">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Articulation <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Articulation <span class="graphic icon-toggle pull-right"></span>
 									</h3>
 								</a>
 							</div>
@@ -307,14 +294,12 @@
 							<div class="panel-heading" role="tab" id="heading-related">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-related" aria-expanded="true" aria-controls="collapse-related">
 									<h3 class="panel-title">
-										<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
+									<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
 									</h3>
-
 								</a>
 							</div>
 							<div id="collapse-related" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-related">
 								<div class="panel-body">
-
 									<ul>
 										<?php
 										for ($i=0; $i < sizeof(get_field('related_programs')); $i++) { ?>
@@ -336,13 +321,11 @@
 		<div class="colored-background">
 			<div class="container">
 				<div class="col-sm-8">
-
 					<h2>FAQs</h2>
 					<div class="panel-group" id="accordion-faq" role="tablist">
 						<?php
 						the_field('faqs');
 						?>
-
 					</div>
 				</div>
 			</div>

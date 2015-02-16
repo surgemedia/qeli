@@ -37,17 +37,7 @@
           <tr>
             <td><b>Delivery</b></td>
             <td>
-              <?php
-                $terms = get_field('delivery_method');
-                for ($i=0; $i < sizeof($terms); $i++) {
-                  if($i == 0) {
-                    echo $terms[$i]->name;
-                  }
-                  else {
-                    echo ", ".$terms[$i]->name;
-                  }
-                } 
-              ?>
+              <?php the_field('deliveryMethod'); ?>
             </td>
           </tr>
           <tr>
@@ -56,20 +46,22 @@
           </tr>
           <tr>
             <td><b>Fees</b></td>
-            <td><?php echo '$'.get_field('cost'); ?></td>
+            <td><?php echo '$'.strip_tags(get_field('cost')); ?></td>
           </tr>
           <tr>
             <td><b>Location</b></td>
-            <td><?php echo get_field('instances')[0]['state']; ?></td>
+            <td><?php echo get_field('locations'); ?></td>
           </tr>
           <tr>
             <td><b>Month</b></td>
-            <td><?php echo get_field('instances')[0]['date']; ?></td>
+            <td><?php echo get_field('instances')[0]['instances_name']; ?></td>
           </tr>
+          <?php /* ?>
           <tr>
             <td><b>Development</b></td>
             <td><?php truncate(get_field('outcome'),9,"..."); ?></td>
           </tr>
+          <?php */ ?>
         </tbody>
       </table>
     </div>
