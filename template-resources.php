@@ -26,7 +26,7 @@ Template Name: resources
 				// WP_Query arguments
 				$args = array (
 				'post_type'              => 'resource',
-				'type'          => 'prospectus',
+				'type'          => 'annual report',
 				);
 				// The Query
 				$query = new WP_Query( $args );
