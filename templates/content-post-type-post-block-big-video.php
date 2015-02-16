@@ -6,4 +6,4 @@
 </div>
 <h3><?php the_title(); ?></h3>
 <?php echo get_field('talks')[0]['description']; ?>
-<a href="<?php echo site_url(); ?>/qeli-talks" class="big-link"><span class="graphic arrow-link-sq"></span> View all videos</a>
+<a href="<?php echo site_url(); ?>/qeli-talks" class="big-link"><span class="graphic arrow-link-sq"></span> View all QELi Talks</a>
