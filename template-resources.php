@@ -6,10 +6,10 @@ Template Name: resources
 <?php while (have_posts()) : the_post(); ?>
 <article id="content" class="col-xs-12">
 	<div class="row">
-		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php 
-			$id = get_post_thumbnail_id();
-			echo wp_get_attachment_image_src($id, 'full')[0];
-		?>')">
+		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
+				$id = get_post_thumbnail_id();
+				echo wp_get_attachment_image_src($id, 'full')[0];
+			?>')">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
 			<div class="container">
 				<p>
@@ -23,49 +23,47 @@ Template Name: resources
 			<div class="col-xs-12 col-sm-6">
 				<?php
 				// WP_Query arguments
+				// WP_Query arguments
 				$args = array (
-				'post_type'              => 'media_releases',
-				'pagination'             => false,
-				'posts_per_page'         => '6',
+				'post_type'              => 'resource',
+				'type'          => 'prospectus',
 				);
 				// The Query
 				$query = new WP_Query( $args );
+				// The Loop
 				if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-						$query->the_post();
-						get_template_part('templates/content-post-type', 'media-release');
-						}
-						} else {
-						get_template_part('templates/content', 'no-posts');
-						}
-						// Restore original Post Data
-					wp_reset_postdata();
+				while ( $query->have_posts() ) {
+				$query->the_post();
+				get_template_part('templates/content-post-type', 'media-release');
+				}
+				} else {
+				// no posts found
+				}
+				// Restore original Post Data
+				wp_reset_postdata();
 				?>
 			</div>
 			<div class="col-xs-12 col-sm-6">
-				<?php
+			<?php
+				// WP_Query arguments
 				// WP_Query arguments
 				$args = array (
-				'post_type'              => 'media_releases',
-				'pagination'             => true,
-				'posts_per_page'         => '6',
-				'offset'                 => '6',
-				'orderby'                => 'date',
+				'post_type'              => 'resource',
+				'type'          => 'prospectus',
 				);
 				// The Query
 				$query = new WP_Query( $args );
-				// The Query
-				$query = new WP_Query( $args );
+				// The Loop
 				if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-						$query->the_post();
-						get_template_part('templates/content-post-type', 'media-release');
-						}
-						} else {
-						get_template_part('templates/content', 'no-posts');
-						}
-						// Restore original Post Data
-					wp_reset_postdata();
+				while ( $query->have_posts() ) {
+				$query->the_post();
+				get_template_part('templates/content-post-type', 'media-release');
+				}
+				} else {
+				// no posts found
+				}
+				// Restore original Post Data
+				wp_reset_postdata();
 				?>
 			</div>
 		</div>
