@@ -68,6 +68,7 @@ $wp_session = WP_Session::get_instance();
 											$programinstanceid = get_sub_field('programinstanceid', $course_post_id);
 											$instances_name = get_sub_field('instances_name', $course_post_id);
 											if($prog_id==$programinstanceid){
+												$get_piid = $prog_id;
 												$show_instances_name =  $instances_name;
 											}
 										}
@@ -80,6 +81,7 @@ $wp_session = WP_Session::get_instance();
 												<td><strong>'.get_the_title($course_post_id).'</strong><br/>'.$show_instances_name.'</td>
 												<td>
 													<input class="form-control" name="value'.$input_start.'" type="text" value="'.$wp_session[$prog_id.'qty'].'">
+													<input class="form-control" name="instancesid'.$input_start.'" type="hidden" value="'.$get_piid.'">
 													<button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
 													<a href="#" class="btn btn-primary" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();"><i class="fa fa-trash-o"></i></a>
 												</td>
@@ -88,7 +90,7 @@ $wp_session = WP_Session::get_instance();
 										</tr>
 									';
 									$input_start = $input_start + 1;
-									$array[] = array("programInstanceId" => $prog_id, "quantity" => $wp_session[$prog_id.'qty']);	
+									$array[] = array("programInstanceId" => $get_piid, "quantity" => $wp_session[$prog_id.'qty']);	
 									
 									
 								}
@@ -125,7 +127,7 @@ $wp_session = WP_Session::get_instance();
 						</tbody>
 					</table>
                     </form>
-                    <?php //echo json_encode($array); ?>
+                    <?php echo json_encode($array); ?>
 				</div>
 			</div>
 		</div>
