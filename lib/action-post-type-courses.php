@@ -39,8 +39,8 @@
 function courses_categories() {
 
 	$labels = array(
-		'name'                       => _x( 'Course Categories', 'Taxonomy General Name', 'text_domain' ),
-		'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'text_domain' ),
+		'name'                       => _x( 'Audience', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Audience', 'Taxonomy Singular Name', 'text_domain' ),
 		'menu_name'                  => __( 'Audience', 'text_domain' ),
 		'all_items'                  => __( 'All Items', 'text_domain' ),
 		'parent_item'                => __( 'Parent Item', 'text_domain' ),
@@ -75,7 +75,7 @@ add_action( 'init', 'courses_categories', 0 );
 function courses_tags() {
 
 	$labels = array(
-		'name'                       => _x( 'Course Tags', 'Taxonomy General Name', 'text_domain' ),
+		'name'                       => _x( 'Tags', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Tag', 'Taxonomy Singular Name', 'text_domain' ),
 		'menu_name'                  => __( 'Tags', 'text_domain' ),
 		'all_items'                  => __( 'All Items', 'text_domain' ),
