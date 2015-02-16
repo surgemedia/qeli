@@ -277,6 +277,18 @@ function json_import_function(){
 					}
 					
 				}
+				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
+					$instances[$j]['venues'][$k] = array("field_54e192fc2d5a8" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'],
+														"field_54e1930b2d5a9" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'],
+														"field_54e1932b2d5ab" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'],
+														"field_54e1933b2d5ac" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine2'],
+														"field_54e193442d5ad" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['surburb'],
+														"field_54e1934f2d5ae" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['city'],
+														"field_54e193562d5af" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['state'],
+														"field_54e193612d5b0" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode'],
+														"field_54e1936b2d5b1" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country']);
+					
+				}
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
 					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
 														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
@@ -314,7 +326,7 @@ function json_import_function(){
 
 
 
-			$checkLastModifyDate = get_field('dateLastUpdated', $post_ID);// check the last modify date to reduce query.
+			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
 			
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
 				// global $wpdb;
@@ -330,13 +342,13 @@ function json_import_function(){
 				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
 				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
 				update_field('length', $jsonIterator[$i]['length'], $post_ID);
-				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);//Missing
+				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);
 				update_field('faqs', $jsonIterator[$i]['faqs'], $post_ID);
 				update_field('resources', $jsonIterator[$i]['resources'], $post_ID);
 				update_field('cancellation_policy', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
-				update_field('dateLastUpdated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);//Missing
+				update_field('date_last_updated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);
 				update_field('related_programs', $rp_slug[$i], $post_ID);
-				
+				update_field('locations', $add_to_location[$i], $post_ID);
 				
 				//relatedProgramIds request data in Json file to test the import with format of array
 				
@@ -350,6 +362,12 @@ function json_import_function(){
 						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value2[] = $instances[$j]['phases'][$k];
 						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
+					}
+					$value3 = get_sub_field('field_54e192a62d5a7', $post_ID);
+					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
+						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
+						$value3[] = $instances[$j]['venues'][$k];
+						update_sub_field( 'field_54e192a62d5a7', $value3, $post_ID );
 					}
 				}	
 			}

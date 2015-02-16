@@ -112,6 +112,40 @@
 	.sidebar {
 		.sidebar(@color);
 	}
+
+	.table-themed {
+		border: 1px solid @color;
+
+		thead {
+			background-color: @color;
+			color: #fff;
+
+			th {
+				border-top: 0;
+				border-bottom: 0;
+			}
+		}
+
+		tbody {
+			tr {
+				background-color: lighten(@color, @lighten);
+			}
+
+			tr:nth-child(2n) {
+				background-color: #fff;
+			}
+
+
+			td {
+				border-top: 0;
+				border-bottom: 0;
+			}
+
+			td:last-child {
+				border-right: 1px solid @color;
+			}
+		}
+	}
 }
 
 .green {

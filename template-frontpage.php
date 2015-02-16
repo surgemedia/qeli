@@ -6,12 +6,12 @@ Template Name: Home Page
 <?php while (have_posts()) : the_post(); ?>
 <ul>
 <?php
-$repeater = get_field('template_selector');
-for ($i=0; $i < sizeof($repeater); $i++) {
-	echo "<li>";
-	get_template_part('templates/template-block',$repeater[$i]['template_blocks']);
-	echo "</li>";
-}
+	$repeater = get_field('template_selector');
+	for ($i=0; $i < sizeof($repeater); $i++) {
+		echo "<li>";
+		get_template_part('templates/template-block',$repeater[$i]['template_blocks']);
+		echo "</li>";
+	}
 ?>
 
 	<li>

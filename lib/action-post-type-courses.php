@@ -111,9 +111,9 @@ add_action( 'init', 'courses_tags', 0 );
 function courses() {
 
 	$labels = array(
-		'name'                => _x( 'Courses', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Course', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Courses', 'text_domain' ),
+		'name'                => _x( 'Programs', 'Post Type General Name', 'text_domain' ),
+		'singular_name'       => _x( 'Program', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'           => __( 'Programs', 'text_domain' ),
 		'parent_item_colon'   => __( 'Parent Course:', 'text_domain' ),
 		'all_items'           => __( 'All Courses', 'text_domain' ),
 		'view_item'           => __( 'View Course', 'text_domain' ),

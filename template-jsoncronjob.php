@@ -129,6 +129,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 			}
 			//echo print_r($add_to_cata[$i]);
+
+
 	
 	
 	/* ===============================================================================================================
@@ -154,6 +156,22 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			}
 			//echo $locations_slug[$i].'<br/>';
 			
+
+	/* ===============================================================================================================
+												     List all Location
+	=============================================================================================================== */
+			for($j=0; $j<count($jsonIterator[$i]['locations']); $j++){
+				$location_name = $jsonIterator[$i]['locations'][$j];
+				if($location_name!=""){
+					if($j==0){
+						$add_to_location[$i] = $location_name;// first one without, in the front of query code
+					}else{
+						$add_to_location[$i] .= ', '.$location_name;// first one without, in the front of query code
+					}
+				}
+			}
+			//echo $add_to_location[$i];
+
 		
 			//echo print_r($jsonIterator[$i]['instances']);
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
@@ -183,45 +201,34 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			}
 			//echo $city_slug[$i][$j].'<br/>';
 
-
+				
+				if($jsonIterator[$i]['instances'][$j]['currentClassSize']==NULL){
+					$addtocurrentclasssize = 0;	
+				}else{
+					$addtocurrentclasssize = $jsonIterator[$i]['instances'][$j]['currentClassSize'];						
+				}
+				
 				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
 									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'], 
 									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
 									"field_54ab271828d67" => $city_slug[$i][$j], 
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'], 
-									"field_54d82f9e80ba3" => $jsonIterator[$i]['instances'][$j]['currentClassSize'], 
+									"field_54d82f9e80ba3" => $addtocurrentclasssize, 
 									"field_54ab312929435" => $facilitatorIds_array_output, 
 									"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 				//echo print_r($instances[$j])."<br/>";
 				
 				
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
-					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
-					if($add_address_insert!=""){
-						$add_address_insert .= ', '.$jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine2'];
-					}else{
-						$add_address_insert .= $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine2'];
-					}
-					if($add_address_insert!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine2']!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['surburb']!=""){
-						$add_address_insert .= ', '.$jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['surburb'];
-					}else{
-						$add_address_insert .= $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['surburb'];
-					}
-					if($add_address_insert!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['surburb']!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['city']!=""){
-						$add_address_insert .= ', '.$jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['city'];
-					}else{
-						$add_address_insert .= $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['city'];
-					}
-					if($add_address_insert!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['city']!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode']!=""){
-						$add_address_insert .= ', '.$jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode'];
-					}else{
-						$add_address_insert .= $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode'];
-					}
-					if($add_address_insert!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode']!="" && $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country']!=""){
-						$add_address_insert .= ', '.$jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country'];
-					}else{
-						$add_address_insert .= $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country'];
-					}
+					$instances[$j]['venues'][$k] = array("field_54e192fc2d5a8" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'],
+														"field_54e1930b2d5a9" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'],
+														"field_54e1932b2d5ab" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'],
+														"field_54e1933b2d5ac" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine2'],
+														"field_54e193442d5ad" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['surburb'],
+														"field_54e1934f2d5ae" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['city'],
+														"field_54e193562d5af" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['state'],
+														"field_54e193612d5b0" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode'],
+														"field_54e1936b2d5b1" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country']);
 					
 				}
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
@@ -264,7 +271,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 
 			$related_program_course_id[$i] = $post_ID;
 	
-			$checkLastModifyDate = get_field('dateLastUpdated', $post_ID);// check the last modify date to reduce query.
+			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
 			//if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
 				$table_name = $table_prefix."postmeta";
 				
@@ -286,12 +293,13 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
 				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
 				update_field('length', $jsonIterator[$i]['length'], $post_ID);
-				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);//Missing
+				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);
 				update_field('faqs', $jsonIterator[$i]['faqs'], $post_ID);
 				update_field('resources', $jsonIterator[$i]['resources'], $post_ID);
 				update_field('cancellation_policy', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
-				update_field('dateLastUpdated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);//Missing
+				update_field('date_last_updated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);
 				update_field('related_programs', $rp_slug[$i], $post_ID);
+				update_field('locations', $add_to_location[$i], $post_ID);
 				
 				
 				$value = get_field('field_54ab26dabaf00', $post_ID);
@@ -304,6 +312,12 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value2[] = $instances[$j]['phases'][$k];
 						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
+					}
+					$value3 = get_sub_field('field_54e192a62d5a7', $post_ID);
+					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
+						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
+						$value3[] = $instances[$j]['venues'][$k];
+						update_sub_field( 'field_54e192a62d5a7', $value3, $post_ID );
 					}
 				}	
 			//}

@@ -9,11 +9,11 @@ for($i=1; $i<$_POST['array_time']; $i++){
 	//echo 'test';
 	//echo $_POST['instancesid'.$i];
 	//echo $_POST['value'.$i];
-	$array[] = array("programInstanceId" =>  $_POST['instancesid'.$i], "quantity" => $_POST['value'.$i]);	
+	$array[] = array("Id" =>  $_POST['instancesid'.$i], "quantity" => $_POST['value'.$i]);	
 	
 }
 $CURLOPT_POSTFIELDS =  json_encode($array);
-	//echo $CURLOPT_POSTFIELDS;
+echo $CURLOPT_POSTFIELDS;
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL,            "http://qeli.systina.net/api/cart" );
@@ -27,11 +27,9 @@ $result=curl_exec ($ch);
 
 $json_guid = json_decode($result, true);
 //echo print_r($json_guid);
-$link_gid = 'http://qeli.systina.net/home/cart/'.$json_guid['cartGuid'];
+$link_gid = 'http://qeli.systina.net/mycart#/checkout/'.$json_guid['cartGuid'];
 echo $link_gid;
 ?>
 <script type="text/javascript">
-   <!--
-      window.location= <?php echo "'" . $link_gid . "'"; ?>;
-   //-->
-   </script>
+window.location= <?php echo "'" . $link_gid . "'"; ?>;
+</script>
