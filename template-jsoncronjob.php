@@ -16,6 +16,7 @@ Course Import - Json Cron to Save in Web locally
 
 if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron jobs
 	echo 'Hello World!';
+	exit;
 	//If someone try to view this page without password, it will just display Hello World, make it look like is the test page only.
 }else{
 	$json_test = file_get_contents('http://qeli.systina.net/api/catalog');
@@ -96,10 +97,12 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 	=============================================================================================================== */
 			$tag_loop = 0;
 			for($j=0; $j<count($jsonIterator[$i]['tags']); $j++){
-				$tag_slug = $jsonIterator[$i]['tags'][$j]['id'];
-				$tag_name = str_replace(","," ",$jsonIterator[$i]['tags'][$j]['name']);
+				$Addid = str_replace(" ","-", $jsonIterator[$i]['tags'][$j]);
+				$Addid2 = str_replace(",","_", $Addid);
+				$tag_slug = strtolower($Addid2);
+				$tag_name = str_replace(","," ",$jsonIterator[$i]['tags'][$j]);
 				if($tag_slug!="" && $tag_name!=""){
-					wp_insert_term( $tag_name, 'post_tag', array('slug'=>$tag_slug));
+					wp_insert_term( $tag_name, 'courses_tags', array('slug'=>$tag_slug));
 					if($tag_loop==0){
 						$add_to_tag = $tag_slug;// first one without, in the front of query code
 					}else{
@@ -109,45 +112,48 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 			}
 			//echo 'addtotag:'.$add_to_tag."<br/>";
-	/* ===============================================================================================================
-														Add new Tag
-	=============================================================================================================== */
 
 
 
 	/* ===============================================================================================================
 												     Add new Catagories
 	=============================================================================================================== */
-			$cata_loop = 0;
 			for($j=0; $j<count($jsonIterator[$i]['categories']); $j++){
-				$cata_slug = $jsonIterator[$i]['categories'][$j]['id'];
-				$cata_name = str_replace(","," ",$jsonIterator[$i]['categories'][$j]['name']);
+				$cata_slug1 = str_replace(" ","-", $jsonIterator[$i]['categories'][$j]);
+				$cata_slug2 = str_replace(",","_", $cata_slug1);
+				$cata_slug = strtolower($cata_slug2);
+				$cata_name = str_replace(","," ",$jsonIterator[$i]['categories'][$j]);
 				if($cata_slug!="" && $cata_name!=""){
-					wp_insert_term( $cata_name, 'category', array('slug'=>$cata_slug));
-					if($cata_loop==0){
-						$add_to_cata = $cata_slug;// first one without, in the front of query code
-					}else{
-						$add_to_cata .= ", ".$cata_slug;//add the ID to delete query, If it's second one, add , to make it work with one query
-					}
-					$cata_loop++;
+					wp_insert_term( $cata_name, 'courses_categories', array('slug'=>$cata_slug));
+						$add_to_cata[$i][] = $cata_slug;// first one without, in the front of query code
 				}
 			}
-			//echo 'addtotag:'.$add_to_tag."<br/>";
-	/* ===============================================================================================================
-													  Add new Catagories
-	=============================================================================================================== */
+			//echo print_r($add_to_cata[$i]);
 	
 	
 	/* ===============================================================================================================
 											 Add Related Program ID Part 1
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['relatedProgramIds']); $j++){
-				$rp_slug = $jsonIterator[$i]['relatedProgramIds'][$j];
-				$add_to_related_program[$i][$j] = $rp_slug;
+				if($j==0){
+					$rp_slug[$i] .= $jsonIterator[$i]['relatedProgramIds'][$j];
+				}else{
+					$rp_slug[$i] .= ', '.$jsonIterator[$i]['relatedProgramIds'][$j];
+				}
 			}
+			//echo $rp_slug[$i].'<br/>';
 	/* ===============================================================================================================
-											 Add Related Program ID Part 1
+											    Add Course Locations
 	=============================================================================================================== */
+			for($j=0; $j<count($jsonIterator[$i]['locations']); $j++){
+				if($j==0){
+					$locations_slug[$i] .= $jsonIterator[$i]['locations'][$j];
+				}else{
+					$locations_slug[$i] .= ', '.$jsonIterator[$i]['locations'][$j];
+				}
+			}
+			//echo $locations_slug[$i].'<br/>';
+			
 		
 			//echo print_r($jsonIterator[$i]['instances']);
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
@@ -164,10 +170,31 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 						}
 					}
 				}
-					$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
-										"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
-										"field_54ab312929435" => $facilitatorIds_array_output, 
-										"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
+					
+	/* ===============================================================================================================
+											    Add Course city
+	=============================================================================================================== */
+			for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['cities']); $k++){
+				if($k==0){
+					$city_slug[$i][$j] .= $jsonIterator[$i]['instances'][$j]['cities'][$k];
+				}else{
+					$city_slug[$i][$j] .= ', '.$jsonIterator[$i]['instances'][$j]['cities'][$k];
+				}
+			}
+			//echo $city_slug[$i][$j].'<br/>';
+
+
+				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
+									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'], 
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
+									"field_54ab271828d67" => $city_slug[$i][$j], 
+									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'], 
+									"field_54d82f9e80ba3" => $jsonIterator[$i]['instances'][$j]['currentClassSize'], 
+									"field_54ab312929435" => $facilitatorIds_array_output, 
+									"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
+				//echo print_r($instances[$j])."<br/>";
+				
+				
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$add_address_insert = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
 					if($add_address_insert!=""){
@@ -231,11 +258,10 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 	/* ===============================================================================================================
 											    Add new Tag and Catagories
 	=============================================================================================================== */
-			wp_set_post_tags( $post_ID, $add_to_tag, true );
-			wp_set_post_categories( $post_ID, $add_to_cata, true );
-	/* ===============================================================================================================
-												Add new Tag and Catagories
-	=============================================================================================================== */
+			wp_set_post_terms( $post_ID, $add_to_tag, 'courses_tags', false );
+			wp_set_object_terms( $post_ID, $add_to_cata[$i], 'courses_categories');
+
+
 			$related_program_course_id[$i] = $post_ID;
 	
 			$checkLastModifyDate = get_field('dateLastUpdated', $post_ID);// check the last modify date to reduce query.
@@ -253,33 +279,20 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				echo '<br/>';
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
-				update_field('field_54cedcc8ec025', $jsonIterator[$i]['imageUrl'], $post_ID);	
 				update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
 				update_field('outcome', $jsonIterator[$i]['outcome'], $post_ID);
 				update_field('articulation', $jsonIterator[$i]['articulation'], $post_ID);
 				update_field('program_outline', $jsonIterator[$i]['programOutline'], $post_ID);
 				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
 				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
-				update_field('class_size', $jsonIterator[$i]['maxClassSize'], $post_ID);
-				update_field('currentClassSize', $jsonIterator[$i]['currentClassSize'], $post_ID);
 				update_field('length', $jsonIterator[$i]['length'], $post_ID);
-				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);
+				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);//Missing
 				update_field('faqs', $jsonIterator[$i]['faqs'], $post_ID);
 				update_field('resources', $jsonIterator[$i]['resources'], $post_ID);
 				update_field('cancellation_policy', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
-				update_field('dateLastUpdated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);
-	/* ===============================================================================================================
-											 Add Related Program ID Part 2
-	=============================================================================================================== */
+				update_field('dateLastUpdated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);//Missing
+				update_field('related_programs', $rp_slug[$i], $post_ID);
 				
-				$program_id_for_rp[$jsonIterator[$i]['programId']] = $post_ID;
-
-
-	/* ===============================================================================================================
-											 Add Related Program ID Part 2
-	=============================================================================================================== */
-				
-				//relatedProgramIds request data in Json file to test the import with format of array
 				
 				$value = get_field('field_54ab26dabaf00', $post_ID);
 				
@@ -304,32 +317,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 		wp_update_post( $Complete_update );
 	}
 }
-/* ===============================================================================================================
-										 Add Related Program ID Part 3
-=============================================================================================================== */
-
-for($i=0; $i<count($related_program_course_id); $i++){
-	//echo $related_program_course_id[$i];
-	$rp_loop = 0;
-	for($j=0; $j<count($add_to_related_program[$i]); $j++){
-		$pid_arry_get = $add_to_related_program[$i][$j];
-		if($program_id_for_rp[$pid_arry_get]!=""){
-			if($rp_loop==0){
-				$add_to_rel_prog[$i] = $program_id_for_rp[$pid_arry_get];
-			}else{
-				$add_to_rel_prog[$i] = ', '.$program_id_for_rp[$pid_arry_get];
-			}
-			$rp_loop = $rp_loop + 1;
-		}
-	}
-	if($add_to_rel_prog[$i]!=""){
-		update_field('related_programs', $add_to_rel_prog[$i], $related_program_course_id[$i]);
-	}
-}
-
-/* ===============================================================================================================
-										 Add Related Program ID Part 3
-=============================================================================================================== */
 
 /*===========================================
 			Delete Post Function
