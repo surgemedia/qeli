@@ -1,8 +1,8 @@
 <article id="content" class="col-xs-12">
 	<div class="row">
 		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
-									$id = get_post_thumbnail_id();
-									echo wp_get_attachment_image_src($id, 'full')[0];
+										$id = get_post_thumbnail_id();
+										echo wp_get_attachment_image_src($id, 'full')[0];
 			?>')">
 			<div class="facilitator-item">
 				<div class="header">
@@ -13,7 +13,7 @@
 				<div class="container">
 					<h2>Facilitator</h2>
 					<?php
-					$instanes = get_field('instances');				
+									$instanes = get_field('instances');
 					$facil_array = false;
 					for ($i=0; $i < sizeof($instanes); $i++) {
 						if( 0 < strlen($instanes[$i]['facilitator'])){
@@ -38,7 +38,7 @@
 						}
 						unset($GLOBALS['facilitator']);
 					}
-						else {	get_template_part('templates/content', 'no-posts'); }
+							else {	get_template_part('templates/content', 'no-posts'); }
 					?>
 					
 					
@@ -52,7 +52,6 @@
 			<div class="col-sm-9">
 				<?php if(get_field('executive_summary')) { ?>
 				<h2 class="h2-course">Executive Summary</h2>
-				
 				<?php the_field('executive_summary') ?>
 				<?php } ?>
 				<?php if(get_field('outcome')) { ?>
@@ -87,7 +86,6 @@
 									</li>
 									<li>
 										<h3>Facilitator: </h3>
-
 										<?php echo $GLOBALS['facilitator_names']; ?>
 									</li>
 									<li>
@@ -101,30 +99,29 @@
 																					$programinstance_city = get_sub_field('city');
 																					$programinstance_type;
 																					switch(get_sub_field('type')) {
-																					    case 1:
-																					        $programinstance_type = 'Scheduled Instance';
-																					        break;
-																					    case 2:
-																					        $programinstance_type = 'Expression Of Interest';
-																					 
-																					        break;
-																					    case 3:
-																					        $programinstance_type = 'On Demand';
+																					case 1:
+																					$programinstance_type = 'Scheduled Instance';
+																					break;
+																					case 2:
+																					$programinstance_type = 'Expression Of Interest';
+																					
+																					break;
+																					case 3:
+																					$programinstance_type = 'On Demand';
 																		
-																					        break;
-																					    default:
-																					        $programinstance_type = 'Scheduled Instance';
+																					break;
+																					default:
+																					$programinstance_type = 'Scheduled Instance';
 																					}
 																					
 																					
-
 																					$instances_name = get_sub_field('instances_name')." - ".get_sub_field('city')." [".$programinstance_type."]";
-																					if(0 < strlen(get_sub_field('instances_name'))){ ?>
-																					<p><input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
-																					<label for="programid"><?php echo $instances_name ?></label></p>
-																					<?php }
-																				}
-																			}
+											if(0 < strlen(get_sub_field('instances_name'))){ ?>
+											<p><input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
+											<label for="programid"><?php echo $instances_name ?></label></p>
+											<?php }
+											}
+											}
 											?>
 										</form>
 										
@@ -132,11 +129,10 @@
 								</ul>
 							</div>
 							<div class="panel-footer">
-							
-									
-									<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
-									
-
+								
+								
+								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
+								
 							</div>
 						</div>
 					</div>
@@ -195,7 +191,7 @@
 			</div>
 		</div>
 	</div>
-	<?php */ ?>
+	<?php / ?>
 	<?php if(get_field('testimonial_text')) { ?>
 	<div class="row">
 		<div class="container">
@@ -208,7 +204,7 @@
 		</div>
 	</div>
 	<?php } ?>
-		<?php /* ?>
+	<?php */ ?>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
@@ -228,7 +224,7 @@
 					if ( $query->have_posts() ) {
 						while ( $query->have_posts() ) {
 							$query->the_post();
-							get_template_part('templates/content-post-type-post-block','testimonial');
+							get_template_part('templates/content-post-type','testimonial-landscape');
 						}
 					}
 					else {
@@ -241,15 +237,14 @@
 			</div>
 		</div>
 	</div>
-	<?php */ ?>
+
 	<div class="row">
 		<div class="colored-background">
 			<div class="container">
 				<div class="col-sm-8">
 					<h2>Program Outline</h2>
-
 					<div class="panel-group" id="accordion-outline" role="tablist">
-					<?php if(get_field('program_outline')){ ?>
+						<?php if(get_field('program_outline')){ ?>
 						<div class="panel">
 							<div class="panel-heading" role="tab" id="heading-features">
 								<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-features" aria-expanded="true" aria-controls="collapse-features">
@@ -265,7 +260,7 @@
 							</div>
 						</div>
 						<?php } ?>
-					
+						
 						<div class="panel">
 							<div class="panel-heading" role="tab" id="heading-prereq">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-prereq" aria-expanded="true" aria-controls="collapse-prereq">
