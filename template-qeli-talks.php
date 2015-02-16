@@ -19,8 +19,8 @@ Template Name: Qeli Talks/Videos
 				<?php // output the text in the banner
 				if( get_field( "banner_text" ) ):
 				?>
-				<div class="container">
-					<p><?php the_field( "banner_text" ); ?></p>
+				<div class="container header-text">
+					<?php the_field( "banner_text" ); ?>
 				</div>
 				<?php endif;?>
 				<?php if(get_field('featured_video')) {
@@ -49,7 +49,7 @@ Template Name: Qeli Talks/Videos
 					// WP_Query arguments
 					$args = array (
 						'post_type' => 'videoes',
-					
+
 						);
 					// The Query
 					$query = new WP_Query( $args );
