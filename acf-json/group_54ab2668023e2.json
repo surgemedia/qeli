@@ -437,11 +437,11 @@
                             "disabled": 0
                         },
                         {
-                            "key": "field_54e1931c2d5aa",
-                            "label": "Address",
-                            "name": "address",
+                            "key": "field_54e1932b2d5ab",
+                            "label": "addressLine1",
+                            "name": "addressline1",
                             "prefix": "",
-                            "type": "repeater",
+                            "type": "text",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -450,166 +450,145 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "min": "",
-                            "max": "",
-                            "layout": "table",
-                            "button_label": "Add Row",
-                            "sub_fields": [
-                                {
-                                    "key": "field_54e1932b2d5ab",
-                                    "label": "addressLine1",
-                                    "name": "addressline1",
-                                    "prefix": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_54e1933b2d5ac",
-                                    "label": "addressLine2",
-                                    "name": "addressline2",
-                                    "prefix": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_54e193442d5ad",
-                                    "label": "surburb",
-                                    "name": "surburb",
-                                    "prefix": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_54e1934f2d5ae",
-                                    "label": "city",
-                                    "name": "city",
-                                    "prefix": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_54e193562d5af",
-                                    "label": "state",
-                                    "name": "state",
-                                    "prefix": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_54e193612d5b0",
-                                    "label": "postcode",
-                                    "name": "postcode",
-                                    "prefix": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                },
-                                {
-                                    "key": "field_54e1936b2d5b1",
-                                    "label": "country",
-                                    "name": "country",
-                                    "prefix": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": "",
-                                    "readonly": 0,
-                                    "disabled": 0
-                                }
-                            ]
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_54e1933b2d5ac",
+                            "label": "addressLine2",
+                            "name": "addressline2",
+                            "prefix": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_54e193442d5ad",
+                            "label": "surburb",
+                            "name": "surburb",
+                            "prefix": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_54e1934f2d5ae",
+                            "label": "city",
+                            "name": "city",
+                            "prefix": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_54e193562d5af",
+                            "label": "state",
+                            "name": "state",
+                            "prefix": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_54e193612d5b0",
+                            "label": "postcode",
+                            "name": "postcode",
+                            "prefix": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_54e1936b2d5b1",
+                            "label": "country",
+                            "name": "country",
+                            "prefix": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
                         }
                     ]
                 }
@@ -631,5 +610,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1424069492
+    "modified": 1424070859
 }

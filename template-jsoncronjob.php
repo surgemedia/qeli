@@ -220,9 +220,9 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				
 				
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
-					echo count($jsonIterator[$i]['instances'][$j]['venues'][$k]['address']);
+					echo print_r($jsonIterator[$i]['instances'][$j]['venues'][$k]['address']);
 					for($l=0; $l<count($jsonIterator[$i]['instances'][$j]['venues'][$k]['address']); $l++){
-						echo $jsonIterator[$i]['instances'][$j]['venues'][$k]['address'][$l]['addressLine1'];
+						echo $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1'];
 						echo $jsonIterator[$i]['instances'][$j]['venues'][$k]['address'][$l]['addressLine2'];
 						echo $jsonIterator[$i]['instances'][$j]['venues'][$k]['address'][$l]['surburb'];
 						echo $jsonIterator[$i]['instances'][$j]['venues'][$k]['address'][$l]['city'];
@@ -232,10 +232,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					}
 					$instances[$j]['venues'][$k] = array("field_54e192fc2d5a8" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'],
 														"field_54e1930b2d5a9" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['room']);
-														print_r($instances[$j]['venues'][$k]);
 					
 				}
-				echo count($jsonIterator[$i]['instances'][$j]['venues'][$k]['address']);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
 					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
 														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
