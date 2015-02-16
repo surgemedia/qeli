@@ -113,6 +113,13 @@ $(document).ready(function () {
 		$moreOptions.click(function(event) {
 			(event.preventDefault) ? event.preventDefault() : event.returnValue = false;
 			$extendedSelectors.toggleClass('open');
+			
+			if ($extendedSelectors.hasClass('open')) {
+				$moreOptions.html('less options');
+			}
+			else {
+				$moreOptions.html('more options');
+			}
 		});
 	
 		$('#filters a').not('.btn-filter-toggle, .select, .btn-more-options').click(function(event) {

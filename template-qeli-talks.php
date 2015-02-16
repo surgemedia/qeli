@@ -32,7 +32,7 @@ Template Name: Qeli Talks/Videos
 				<?php } ?>
 				<?php if(get_field('featured_video')) {?>
 				<div class="banner-video-title">
-					<div class="container">
+					<div class="container header-text">
 						<h2 class="video-name"><?php echo get_the_title($featured_id); ?></h2>
 						<?php /* <span class="date-time"><?php echo get_the_date('F j');  ?></span> */ ?>
 					</div>
