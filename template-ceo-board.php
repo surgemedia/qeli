@@ -4,7 +4,13 @@ Template Name: Ceo and Board
 */
 ?>
 <?php while (have_posts()) : the_post(); ?>
-<?php
+<div class="person ceo">
+	<div class="page-header colored-background">
+		<?php get_template_part('templates/page', 'colored-header'); ?>
+
+
+
+		<?php
 	//Gets a templated post from the ID
 	$args = array (
 	'post_type'                 => 'key_people',
@@ -25,6 +31,7 @@ Template Name: Ceo and Board
 	// Restore original Post Data
 	wp_reset_postdata()
 ?>
+</div>
 <hr>
 
 <div class="container">
