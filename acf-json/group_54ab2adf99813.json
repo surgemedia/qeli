@@ -26,28 +26,6 @@
             "ui": 1
         },
         {
-            "key": "field_54ab2d20481e9",
-            "label": "Title",
-            "name": "title",
-            "prefix": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_54ab2b70481e6",
             "label": "Resources",
             "name": "resources",
@@ -67,46 +45,9 @@
             "media_upload": 1
         },
         {
-            "key": "field_54ab2d49481ea",
-            "label": "Picture",
-            "name": "picture",
-            "prefix": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all"
-        },
-        {
             "key": "field_54ab2b2a481e5",
             "label": "FAQs",
             "name": "faqs",
-            "prefix": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1
-        },
-        {
-            "key": "field_54ab2d6a481eb",
-            "label": "Testimonial Text",
-            "name": "testimonial_text",
             "prefix": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -160,5 +101,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1423720213
+    "modified": 1424063892
 }

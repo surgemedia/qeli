@@ -154,28 +154,6 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_54ab312929435",
-                    "label": "Facilitator",
-                    "name": "facilitator",
-                    "prefix": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
                     "key": "field_54ab313029436",
                     "label": "Catering",
                     "name": "catering",
@@ -391,5 +369,6 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1423797688
+    "modified": 1424063607,
+    "local": "json"
 }
