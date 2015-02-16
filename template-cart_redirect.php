@@ -9,7 +9,7 @@ for($i=1; $i<$_POST['array_time']; $i++){
 	//echo 'test';
 	//echo $_POST['instancesid'.$i];
 	//echo $_POST['value'.$i];
-	$array[] = array("programInstanceId" =>  $_POST['instancesid'.$i], "quantity" => $_POST['value'.$i]);	
+	$array[] = array("Id" =>  $_POST['instancesid'.$i], "quantity" => $_POST['value'.$i]);	
 	
 }
 $CURLOPT_POSTFIELDS =  json_encode($array);
