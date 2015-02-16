@@ -32,11 +32,13 @@
           }
         ?>
         <?php
+
         if(get_field('featured_testimonial')){
           //Gets a templated post from the ID
           $args = array (
             'post_type' => 'testimonial',
             'p' => $GLOBALS['testimonial_id'],
+
 
           );
           // The Query
@@ -56,11 +58,14 @@
 
           </div>
           <?php
+
            if(get_field('featured_testimonial')){
           //Gets a templated post from the ID
           $args = array (
             'post_type' => 'courses',
             'p' => $GLOBALS['program_id'],
+            'paged'                  => '1',
+            'posts_per_page'         => '1',
 
           );
           // The Query
