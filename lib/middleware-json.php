@@ -314,7 +314,7 @@ function json_import_function(){
 
 
 
-			$checkLastModifyDate = get_field('dateLastUpdated', $post_ID);// check the last modify date to reduce query.
+			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
 			
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
 				// global $wpdb;
@@ -330,13 +330,13 @@ function json_import_function(){
 				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
 				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
 				update_field('length', $jsonIterator[$i]['length'], $post_ID);
-				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);//Missing
+				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);
 				update_field('faqs', $jsonIterator[$i]['faqs'], $post_ID);
 				update_field('resources', $jsonIterator[$i]['resources'], $post_ID);
 				update_field('cancellation_policy', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
-				update_field('dateLastUpdated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);//Missing
+				update_field('date_last_updated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);
 				update_field('related_programs', $rp_slug[$i], $post_ID);
-				
+				update_field('locations', $add_to_location[$i], $post_ID);
 				
 				//relatedProgramIds request data in Json file to test the import with format of array
 				
