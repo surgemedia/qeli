@@ -329,7 +329,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6">  
           <div class="row">
-            <span class="filter-message visuallyhidden">
+            <span class="filter-message hidden">
               <span class="circle-arrow"><span class="graphic arrow-right-gray"></span></span>
               <span class="filter-value"></span>
               <a class="filter-clear" href="#" data-filter="" data-filter-group="all">

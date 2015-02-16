@@ -185,14 +185,14 @@ $(document).ready(function () {
 			$this.parent('li').addClass('active');
 	
 			var filterGroup = $this.attr('data-filter-group');
-			var filterValurStr = 'Showing results for: ' + $this.attr('data-value-str');
+			var filterValurStr = 'Showing results for: ' + '<span class="selected-value">' + $this.attr('data-value-str') + '</span>';
 			var filterValue = $this.attr('data-filter');
 	
 			if (filterGroup === 'all') {
-		  		$('.filter-message').addClass('visuallyhidden');
+		  		$('.filter-message').addClass('hidden');
 			}
 			else {
-				$('.filter-message').removeClass('visuallyhidden');
+				$('.filter-message').removeClass('hidden');
 			}
 	
 			$('.filter-value').html(filterValurStr);
