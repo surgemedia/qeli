@@ -5,9 +5,11 @@
 				<div class="meta-qualifications"><?php echo get_field('qualifications') ?></div>
 				<div class="meta-title h3">Board Chair</div>
 				<?php echo get_field('short_description') ?>
+				<?php /* ?>
 				<div class="meta-special">
 					<h3>Special Responsibilities:</h3>
 					<?php echo get_field('special_responsibilities') ?>
 				</div>
+				<?php */ ?>
 			</div>
 		</div>
