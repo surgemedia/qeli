@@ -17,7 +17,7 @@ $(document).ready(function () {
 
 	if (homeEl) {
 		if (!isMobile) {
-			//initSections();
+			initSections();
 		}
 		initVideo();
 
@@ -37,7 +37,7 @@ $(document).ready(function () {
 			    }
 
 			    if (!isMobile) {
-					//initSections();
+					initSections();
 				}
 
 				initVideo();

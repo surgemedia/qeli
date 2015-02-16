@@ -1,5 +1,5 @@
 <div class="section videos blue">
-  <div class="container center-all">
+  <div class="container">
     <div class="col-xs-12 col-md-9">
       <?php
       // TODO JW - this needs to be seperated into a query that returns the main video (brand video) and then these others.
