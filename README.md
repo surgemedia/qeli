@@ -69,3 +69,9 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 - No deployment tools at this time.
 - Ensure final deployed files are minimised once site has bedded down.
 - Remove all build files from the server.
+
+<h2>PHP request (php.ini)</h2>
+	-max_execution_time = 30000     ; Maximum execution time of each script, in seconds
+	-max_input_time = 100000	; Maximum amount of time each script may spend parsing request data
+	-memory_limit = 256M      ; Maximum amount of memory a script may consume (8MB)
+	-max_input_vars = 10000;
