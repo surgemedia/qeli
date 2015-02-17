@@ -12,7 +12,7 @@ $wp_session = WP_Session::get_instance();
 			//echo $_POST['programid'];
 			if($wp_session[$_POST['programid']] == $_POST['programid']){
 				$wp_session[$_POST['programid'].'qty'] = $wp_session[$_POST['programid'].'qty'] + 1;
-				
+
 				//echo 'here';
 				//if the item already in cart, just add value only.
 			}else{
@@ -36,7 +36,7 @@ $wp_session = WP_Session::get_instance();
 		<div class="page-header colored-background">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
 		</div>
-	</div> 	
+	</div>
 	<div class="container">
 		<div class="table-responsive">
                 <?php
@@ -58,9 +58,9 @@ $wp_session = WP_Session::get_instance();
 									<input name="unset_values" value="'.$i.'" type="hidden">
 								</form>
 							';
-							if( get_field('instances', $course_post_id) ){										
+							if( get_field('instances', $course_post_id) ){
 								while( has_sub_field('instances', $course_post_id) )
-								{ 
+								{
 									$programinstanceid = get_sub_field('programinstanceid', $course_post_id);
 									$instances_name = get_sub_field('instances_name', $course_post_id);
 									if($prog_id==$programinstanceid){
@@ -70,7 +70,7 @@ $wp_session = WP_Session::get_instance();
 								}
 							}
 							$table_display .= '
-							
+
 								<tr>
 									<td>
 									<img src="" class="img-cart"></td>
@@ -86,9 +86,9 @@ $wp_session = WP_Session::get_instance();
 								</tr>
 							';
 							$input_start = $input_start + 1;
-							$array[] = array("programInstanceId" => $get_piid, "quantity" => $wp_session[$prog_id.'qty']);	
-							
-							
+							$array[] = array("programInstanceId" => $get_piid, "quantity" => $wp_session[$prog_id.'qty']);
+
+
 						}
 					}
 					echo $delete_hidden_form;
@@ -107,7 +107,7 @@ $wp_session = WP_Session::get_instance();
 				</thead>
 				<tbody>
                 	<?php echo $table_display;?>
-                    
+
 					<tr>
 						<td colspan="6">&nbsp;<?php //echo $input_start."array"; ?><input type="hidden" value="<?php echo $input_start;?>" name="array_time" /></td>
 					</tr>
@@ -125,9 +125,9 @@ $wp_session = WP_Session::get_instance();
             </form>
             <?php echo json_encode($array); ?>
 		</div>
-		<a href="<?php echo site_url(); ?>/program-catalogue/" class="btn btn-success"><span class="graphic arrow-left-black"></span>Continue Shopping</a>
-		<a href="#" class="btn btn-primary pull-right" onclick="document.getElementById('post_json').submit();">Next<span class="graphic arrow-right-black"></span></a>
+		<a href="<?php echo site_url(); ?>/program-catalogue/" class="btn btn-simple"><span class="graphic arrow-left-black"></span>Continue Shopping</a>
+		<a href="#" class="btn btn-simple pull-right" onclick="document.getElementById('post_json').submit();">Next<span class="graphic arrow-right-black"></span></a>
 	</div>
-		
+
 </article>
 <?php endwhile; ?>

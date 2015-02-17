@@ -18,3 +18,18 @@ button {
 	background: #333;
 	color: #FFF;
 }
+
+.btn-simple {
+	color: @gray-dark!important;
+	.button-variant(@gray-dark, #fff, @gray-lighter);
+
+	.arrow-left-black {
+		margin-right: 5px;
+		vertical-align: -1px;
+	}
+
+	.arrow-right-black {
+		margin-left: 5px;
+		vertical-align: -1px;
+	}
+}
