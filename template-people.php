@@ -83,10 +83,10 @@ Template Name: About - People
 							if ( $query->have_posts() ): ?>
 								<?php while ( $query->have_posts() ): ?>
 									<?php $query->the_post(); ?>
-									<?php 
-									$new_name = explode(" ",get_the_title());
-									$size = sizeof($new_name)-1;
-									update_field('last_name',$new_name[$size]);
+									<?php //Used to add base value of last name to our commnunity
+									//$new_name = explode(" ",get_the_title());
+									//$size = sizeof($new_name)-1;
+									//update_field('last_name',$new_name[$size]);
 									?>
 									<li><a href="#" data-lastname="<?php the_field('last_name'); ?>" data-title="<?php the_title(); ?>" data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); echo $terms[0]->name; ?>"><?php the_title(); ?></a></li>
 									<?php wp_reset_postdata(); ?>
