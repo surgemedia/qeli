@@ -75,6 +75,7 @@ $(document).ready(function () {
 	function initSections() {
 
 		var sectionList = document.querySelectorAll('div.section'),
+			sectionMaxList = document.querySelectorAll('.max-height'),
 			headerEl = document.getElementById('header');
 
 		for(var i = 0; i < sectionList.length; i++) {
@@ -87,8 +88,20 @@ $(document).ready(function () {
 				section.style.height = 'auto';
 			}
 		}
+
+		for(var i = 0; i < sectionMaxList.length; i++) {
+			var section = sectionMaxList[i];
+
+			if (!isMobile) {
+				section.style.minHeight = 0;
+				section.style.maxHeight = (window.innerHeight - headerEl.offsetHeight) + 'px';
+			}
+			else {
+				section.style.height = 'auto';
+			}
+		}
 	}
-	
+
 	function initScroll() {
 		var mainEl = document.getElementById('content-container'),
 			scrollerWrapperEl = document.querySelector('.scroller-wrapper'),
