@@ -1,11 +1,9 @@
 <?php 
-$new_name = explode(" ",get_the_title());
-$size = sizeof($new_name)-1;
 									 ?>
 <div class="person col-xs-12 col-sm-6 col-md-4"
 	data-title="<?php the_title();?>"
 	data-description="<?php the_field('short_description');?>"
-	data-lastname="<?php echo $new_name[$size]; ?>"
+	data-lastname="<?php the_field('last_name') ?>"
 	data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group');
 					foreach($terms as $term) {echo $term->name . ' ';  }
 				?>">
