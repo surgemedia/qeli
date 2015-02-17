@@ -1,22 +1,14 @@
-<?php 
+<?php
 /* ==========================================
-
-		    Surge Media PTY LTD.
-
+		Surge Media PTY LTD.
 		MiddleWare Function for Qeli
 			
-			    Course Import 
-
+			Course Import
 ============================================*/
-
-
-
-
 /* ==========================================
-         Register Custom Post Type
+Register Custom Post Type
 ============================================*/
 function custom_post_type() {
-
 	$labels = array(
 		'name'                => _x( 'Json files', 'Post Type General Name', 'text_domain' ),
 		'singular_name'       => _x( 'Course Json Files', 'Post Type Singular Name', 'text_domain' ),
@@ -51,17 +43,13 @@ function custom_post_type() {
 		'capability_type'     => 'page',
 	);
 	register_post_type( 'json_', $args );
-
 }
-
 // Hook into the 'init' action
 add_action( 'init', 'custom_post_type', 0 );
-
 /*===========================================
 				Menu Display
 ===========================================*/
 function JsonImporter(){
-
 add_menu_page('Course Import', 'Update Courses', 'manage_options', 'Surge_media_json_slug', 'json_import_function','dashicons-update',81);
 //Field 1: Page Title.
 //Field 2: Menu Title.
@@ -72,10 +60,8 @@ add_menu_page('Course Import', 'Update Courses', 'manage_options', 'Surge_media_
 //Field 7: Position
 }
 //end addCustomMenuItem function. and call function to display in page.
-
-
 /*===========================================
-			  Function Coding
+			Function Coding
 ===========================================*/
 function json_import_function(){
 	exclude_this_page();
@@ -85,25 +71,23 @@ function json_import_function(){
 	
 	$args = array( 'post_type' => 'json_', 'posts_per_page' => 3, 'order' => 'DESC');
 	$loop = new WP_Query( $args );
-	while ( $loop->have_posts() ) : $loop->the_post(); 
+	while ( $loop->have_posts() ) : $loop->the_post();
 		
 	endwhile;
 	//Read the Files Post
 	
 	/* ==========================================
-		 Run Function to Sync files
+		Run Function to Sync files
 	============================================*/
 	
 	if($_POST['sync_file_id']!=""){
-		$Files_id = get_the_title($_POST['sync_file_id']);	//insert new file and get the post id in same time.
+			$Files_id = get_the_title($_POST['sync_file_id']);	//insert new file and get the post id in same time.
 		$theme_root = get_theme_root();
 		$json = file_get_contents($theme_root."/qeli/course-json/".get_the_title($_POST['sync_file_id']));
 		$jsonIterator = json_decode($json, true);
-
 		for($i=0; $i< count($jsonIterator); $i++){
 			$course_num = $i+1;
 			//Review Here - @alex / @stagfoo - Depericated
-
 			
 			// WP_Query arguments
 			$check_item = array (
@@ -115,7 +99,6 @@ function json_import_function(){
 			
 			// The Query
 			$check_item_row = new WP_Query( $check_item );
-
 			// The Loop
 			if ( $check_item_row->have_posts() ) {
 				$first_while_item_get = 0;
@@ -140,8 +123,7 @@ function json_import_function(){
 			//echo '<h1>'.$check_item_row_id.'</h1>';
 			// Restore original Post Data
 			wp_reset_postdata();
-
-/*			
+			/*
 			//===================== More Fast way if using mysql_query ======================
 			
 			$check_item = mysql_query("SELECT * FROM wp_posts WHERE post_content = ".$jsonIterator[$i]['programId']." AND Post_title LIKE '".$jsonIterator[$i]['title']."' AND post_type LIKE 'courses' AND post_status NOT LIKE 'trash' ORDER BY ID  DESC LIMIT 0, 1");
@@ -168,11 +150,8 @@ function json_import_function(){
 				}
 			}
 			//echo 'addtotag:'.$add_to_tag."<br/>";
-
-
-
 	/* ===============================================================================================================
-												     Add new Catagories
+												Add new Catagories
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['categories']); $j++){
 				$cata_slug1 = str_replace(" ","-", $jsonIterator[$i]['categories'][$j]);
@@ -185,9 +164,8 @@ function json_import_function(){
 				}
 			}
 			//echo print_r($add_to_cata[$i]);
-
 	/* ===============================================================================================================
-											 Add Related Program ID Part 1
+											Add Related Program ID Part 1
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['relatedProgramIds']); $j++){
 				if($j==0){
@@ -198,7 +176,7 @@ function json_import_function(){
 			}
 			//echo $rp_slug[$i].'<br/>';
 	/* ===============================================================================================================
-											    Add Course Locations
+											Add Course Locations
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['locations']); $j++){
 				if($j==0){
@@ -208,8 +186,6 @@ function json_import_function(){
 				}
 			}
 			//echo $locations_slug[$i].'<br/>';
-
-
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 					$array_count = 0;
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['facilitatorIds']); $k++){
@@ -219,14 +195,14 @@ function json_import_function(){
 								$facilitatorIds_array_output[$i][$j] = $facilitator;
 								$array_count = $array_count+1;
 							}else{
-								$facilitatorIds_array_output[$i][$j] .= ', '.$facilitator;						
+														$facilitatorIds_array_output[$i][$j] .= ', '.$facilitator;
 							}
 						}
 					}
 					
 				
 	/* ===============================================================================================================
-											    Add Course city
+											Add Course city
 	=============================================================================================================== */
 			for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['cities']); $k++){
 				if($k==0){
@@ -236,15 +212,13 @@ function json_import_function(){
 				}
 			}
 			//echo $city_slug[$i][$j].'<br/>';
-
-
-				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
-									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'], 
-									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
-									"field_54ab271828d67" => $city_slug[$i][$j], 
-									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'], 
-									"field_54d82f9e80ba3" => $jsonIterator[$i]['instances'][$j]['currentClassSize'], 
-									"field_54ab312929435" => $facilitatorIds_array_output, 
+				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
+									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'],
+									"field_54ab271828d67" => $city_slug[$i][$j],
+									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
+									"field_54d82f9e80ba3" => $jsonIterator[$i]['instances'][$j]['currentClassSize'],
+									"field_54ab312929435" => $facilitatorIds_array_output,
 									"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 				//echo print_r($instances[$j])."<br/>";
 					//echo print_r($instances[$j]);
@@ -318,13 +292,10 @@ function json_import_function(){
 			}
 				$all_courses_id[$post_ID] =  'on';//add the ID to array key for delete the course not list in JSON file
 	/* ===============================================================================================================
-											    Add new Tag and Catagories
+											Add new Tag and Catagories
 	=============================================================================================================== */
 			wp_set_post_terms( $post_ID, $add_to_tag, 'courses_tags', false );
 			wp_set_object_terms( $post_ID, $add_to_cata[$i], 'courses_categories');
-
-
-
 			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
 			
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
@@ -368,7 +339,7 @@ function json_import_function(){
 						$value3[] = $instances[$j]['venues'][$k];
 						update_sub_field( 'field_54e192a62d5a7', $value3, $post_ID );
 					}
-				}	
+					}
 			}
 		}
 		$Complete_update = array(
@@ -382,17 +353,14 @@ function json_import_function(){
 /*===========================================
 			Delete Post Function
 ===========================================*/
-
 // WP_Query arguments to check all course which avaliable in Web system.
 $delete_other_course = array (
 'post_type'              => 'courses',
 'post_status'            => 'publish',
 );
-
 // The Query
 $delete_other_course_row = new WP_Query( $delete_other_course );
-while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post(); 
-
+while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post();
 //echo print_r(array_keys($all_courses_id)).'<br/>';
 $delete_other_course_id = get_the_id();
 //echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>';
@@ -405,8 +373,7 @@ if($all_courses_id[$delete_other_course_id]=='on'){
 endwhile;
 		
 		
-
-/*		
+		/*
 		//============================Mysql_code for enable if request to improve del post speed within just two query! But will make system not safe.============================//
 		
 		
@@ -438,236 +405,230 @@ endwhile;
 	//add any form processing code here in PHP:
 	$Surge_json_page_contents .='
 	<div style="width:90%;">
-		<h1>Update Courses</h1>
-		<p>Press the Sync Button to update any out of date information. This will sync update the courses with the data in your BMS system.</p>
-		<h2>Lastest Sync</h2>
-		<table class="wp-list-table widefat fixed posts">
-			<thead>
-				<tr>
-					<th id="date" class="manage-column column-date  asc" style="" scope="col">
-						<span>Date</span>
-					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
-						<span>Time</span>
-					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
-						<span>Status</span>
-					</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<th id="date" class="manage-column column-date  asc" style="" scope="col">
-						<span>Date</span>
-					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
-						<span>Time</span>
-					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
-						<span>Status</span>
-					</th>
-				</tr>
-			</tfoot>
-			<tbody id="the-list">
-				<tr class="no-items">';
-
-
-
-
-	// WP_Query arguments
-	$args = array (
-		'post_type'              => 'json_',
-		'order'                  => 'DESC',
-		'orderby'                => 'modified',
-	);
-	
-	// The Query
-	$get_last_modified_row = new WP_Query( $args );
-	
-	// The Loop
-	if ( $get_last_modified_row->have_posts() ) {
-		while ( $get_last_modified_row->have_posts() ) {
-			$get_last_modified_row->the_post();
-			$json_contents = get_the_content();
-			$json_title = get_the_title();
-			$json_m_d = get_the_modified_date('Y-m-d h:s');
-			if($json_l_mcount==0 && $json_contents == "Successful"){
-				$Surge_json_page_contents .='<tr>';
-				$Surge_json_page_contents .=' <td>' . substr($json_title, 0, -5) . '</td>';
-				$Surge_json_page_contents .=' <td>' .$json_m_d . '</td>';
-				$Surge_json_page_contents .=' <td><a>'.$json_contents.'</a></td>';
-				$Surge_json_page_contents .='</tr>';
-				$sync_id = get_the_id();
-				$json_l_mcount++;
-			}
-		}
-	} else {
-		// no posts found
-		$Surge_json_page_contents .= debug($WP_arrayName).'
-			<tr class="no-items">
-				<td class="colspanchange">Nothing Synced Yet</td>
-			</tr>
-			';
-	}
-	
-	// Restore original Post Data
-	wp_reset_postdata();	
-/*
-	$get_last_modified = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE '%json_%' AND post_content LIKE '%Successful%' ORDER BY post_modified DESC LIMIT 0, 1");
-	$get_last_modified_row = mysql_fetch_array($get_last_modified);
-	$sync_id = $get_last_modified_row['ID'];
-
-	if($sync_id!=""){
-			// $Surge_json_page_contents .= ;
-			$Surge_json_page_contents .='<tr>';
-			$Surge_json_page_contents .=' <td>' . substr($get_last_modified_row['post_title'], 0, -5) . '</td>';
-			$Surge_json_page_contents .=' <td>' .$get_last_modified_row['post_modified'] . '</td>';
-			$Surge_json_page_contents .=' <td><a>'.$get_last_modified_row['post_content'].'</a></td>';
-			$Surge_json_page_contents .='</tr>';
-	} else {
-		//ISSUE - wp array name
-		$Surge_json_page_contents .= debug($WP_arrayName).'
-			<tr class="no-items">
-				<td class="colspanchange">Not found</td>
-			</tr>
-			';
-		// no posts found
-	}
-	
-*/
-
-/*	$args = array( 'post_type' => 'json_', 'posts_per_page' => 1, 'post_content' => 'Successful', 'orderby' => 'modified', 'order' => 'DESC');
-	$loop = new WP_Query( $args );
-	
-	
-	// The Loop
-	if ( $loop->have_posts() ) {
-		while ( $loop->have_posts() ) {
-			$sync_id = get_the_ID();
-			$Surge_json_page_contents .='<tr>';
-			//
-			$get_last_modified = mysql_query("SELECT post_modified FROM wp_posts WHERE ID = ".$sync_id);
-			$get_last_modified_row = mysql_fetch_array($get_last_modified);
-			$loop->the_post();
-			$Surge_json_page_contents .=' <td>' .$sync_id. get_the_date('d/m/Y', $sync_id) . '</td>';
-			$Surge_json_page_contents .=' <td>' .$sync_id. $get_last_modified_row['post_modified'] . '</td>';
-			$Surge_json_page_contents .=' <td><a>'.$sync_id.get_the_content().'</a></td>';
-			$Surge_json_page_contents .='</tr>';
-		}
-	} else {
-		$Surge_json_page_contents .='
-			<tr class="no-items">
-				<td class="colspanchange">Not found</td>
-			</tr>
-			';
-		// no posts found
-	}
-	//Read the Files Post
-*/	
-//WP_query not work in 'orderby' => 'modified'
-				
+			<h1>Update Courses</h1>
+			<p>Press the Sync Button to update any out of date information. This will sync update the courses with the data in your BMS system.</p>
+			<h2>Lastest Sync</h2>
+			<table class="wp-list-table widefat fixed posts">
+					<thead>
+							<tr>
+									<th id="date" class="manage-column column-date  asc" style="" scope="col">
+											<span>Date</span>
+									</th>
+									<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
+											<span>Time</span>
+									</th>
+									<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
+											<span>Status</span>
+									</th>
+							</tr>
+					</thead>
+					<tfoot>
+						<tr>
+								<th id="date" class="manage-column column-date  asc" style="" scope="col">
+										<span>Date</span>
+								</th>
+								<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
+										<span>Time</span>
+								</th>
+								<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
+										<span>Status</span>
+								</th>
+						</tr>
+					</tfoot>
+					<tbody id="the-list">
+							<tr class="no-items">';
+					// WP_Query arguments
+					$args = array (
+						'post_type'              => 'json_',
+						'order'                  => 'DESC',
+						'orderby'                => 'modified',
+					);
 					
-	$Surge_json_page_contents .='
-				</tr>
-			</tbody>
-		</table>
-		<div class="tablenav bottom">
-		';
-	if($sync_id!=""){
-		$args = array (
-		'post_type'              => 'page',
-		'post_status'            => 'publish',
-		's'                      => 'Json Cron job',
-		'posts_per_page'         => '1',
-		'order'                  => 'DESC',
-		'orderby'                => 'modified',
-		);
-		
-		// The Query
-		$check_cron_page = new WP_Query( $args );
-		$theme_root = site_url().'/wp-content/themes/';
-		// The Loop
-		if ( $check_cron_page->have_posts() ) {
-			while ( $check_cron_page->have_posts() ) {
-				$check_cron_page->the_post();
-				$cron_page_id = get_the_id();
-				// do something
-				$resync_link = '<a target="_blank" href="'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x" class="button action">';	
-				$resync_link2 = '</a>';
-			}
-		}
-		wp_reset_postdata();
-		$Surge_json_page_contents .=$resync_link;
-		$Surge_json_page_contents .='
-			Re-sync Course from BMS
-		';
-		$Surge_json_page_contents .=$resync_link2;
-	}
-	$Surge_json_page_contents .='
-		</div>
-		<h2>Previous Sync</h2>
-		<p>We store at last 3 synce locally to make sure there is no miss information on your website</p>
-		<table class="wp-list-table widefat fixed posts">
-			<thead>
-				<tr>
-					<th id="date" class="manage-column column-date  asc" style="" scope="col">
-						<span>Date</span>
-					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score desc" style="" scope="col">
-						<span>Time</span>
-					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
-						<span>Active</span>
-					</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<th id="date" class="manage-column column-date  asc" style="" scope="col">
-						<span>Date</span>
-					</th>
-					<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
-						<span>Time</span>
-					</th>
-					<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
-						<span>Active</span>
-					</th>
-				</tr>
-			</tfoot>
-			<tbody id="the-list">
-	';
-	$args = array( 'post_type' => 'json_', 'posts_per_page' => 3, 'order' => 'DESC');
-	$loop = new WP_Query( $args );
-	
-	
-	// The Loop
-	if ( $loop->have_posts() ) {
-		while ( $loop->have_posts() ) {
-			$Surge_json_page_contents .='<tr>';
-			$loop->the_post();
-			$Surge_json_page_contents .=' <td>' . get_the_date('d/m/Y') . '</td>';
-			$Surge_json_page_contents .=' <td>' . get_the_time() . '</td>';
-			$Surge_json_page_contents .=' <td><a><form action="#" method="post">
-				<input name="sync_file_id" type="hidden" value="'.get_the_ID().'">
-				<input class="button action" type="submit" value="Sync Now" name="">
-			</form></a></td>';
-			$Surge_json_page_contents .='</tr>';
-		}
-	} else {
-		$Surge_json_page_contents .='
-			<tr class="no-items">
-				<td class="colspanchange">Not found</td>
-			</tr>
-			';
-		// no posts found
-	}
-	//Read the Files Post
-	
-				
+					// The Query
+					$get_last_modified_row = new WP_Query( $args );
 					
-	$Surge_json_page_contents .='
-			</tbody>
-		</table>
+					// The Loop
+					if ( $get_last_modified_row->have_posts() ) {
+						while ( $get_last_modified_row->have_posts() ) {
+							$get_last_modified_row->the_post();
+							$json_contents = get_the_content();
+							$json_title = get_the_title();
+							$json_m_d = get_the_modified_date('Y-m-d h:s');
+							if($json_l_mcount==0 && $json_contents == "Successful"){
+								$Surge_json_page_contents .='<tr>';
+									$Surge_json_page_contents .=' <td>' . substr($json_title, 0, -5) . '</td>';
+									$Surge_json_page_contents .=' <td>' .$json_m_d . '</td>';
+									$Surge_json_page_contents .=' <td><a>'.$json_contents.'</a></td>';
+								$Surge_json_page_contents .='</tr>';
+								$sync_id = get_the_id();
+								$json_l_mcount++;
+							}
+						}
+					} else {
+						// no posts found
+						$Surge_json_page_contents .= debug($WP_arrayName).'
+							<tr class="no-items">
+									<td class="colspanchange">Nothing Synced Yet</td>
+							</tr>
+							';
+					}
+					
+					// Restore original Post Data
+						wp_reset_postdata();
+				/*
+					$get_last_modified = mysql_query("SELECT * FROM wp_posts WHERE post_type LIKE '%json_%' AND post_content LIKE '%Successful%' ORDER BY post_modified DESC LIMIT 0, 1");
+					$get_last_modified_row = mysql_fetch_array($get_last_modified);
+					$sync_id = $get_last_modified_row['ID'];
+					if($sync_id!=""){
+							// $Surge_json_page_contents .= ;
+							$Surge_json_page_contents .='<tr>';
+								$Surge_json_page_contents .=' <td>' . substr($get_last_modified_row['post_title'], 0, -5) . '</td>';
+								$Surge_json_page_contents .=' <td>' .$get_last_modified_row['post_modified'] . '</td>';
+								$Surge_json_page_contents .=' <td><a>'.$get_last_modified_row['post_content'].'</a></td>';
+							$Surge_json_page_contents .='</tr>';
+					} else {
+						//ISSUE - wp array name
+						$Surge_json_page_contents .= debug($WP_arrayName).'
+							<tr class="no-items">
+									<td class="colspanchange">Not found</td>
+							</tr>
+							';
+						// no posts found
+					}
+					
+				*/
+					/*	$args = array( 'post_type' => 'json_', 'posts_per_page' => 1, 'post_content' => 'Successful', 'orderby' => 'modified', 'order' => 'DESC');
+					$loop = new WP_Query( $args );
+					
+					
+					// The Loop
+					if ( $loop->have_posts() ) {
+						while ( $loop->have_posts() ) {
+							$sync_id = get_the_ID();
+							$Surge_json_page_contents .='<tr>';
+								//
+								$get_last_modified = mysql_query("SELECT post_modified FROM wp_posts WHERE ID = ".$sync_id);
+								$get_last_modified_row = mysql_fetch_array($get_last_modified);
+								$loop->the_post();
+								$Surge_json_page_contents .=' <td>' .$sync_id. get_the_date('d/m/Y', $sync_id) . '</td>';
+								$Surge_json_page_contents .=' <td>' .$sync_id. $get_last_modified_row['post_modified'] . '</td>';
+								$Surge_json_page_contents .=' <td><a>'.$sync_id.get_the_content().'</a></td>';
+							$Surge_json_page_contents .='</tr>';
+						}
+					} else {
+						$Surge_json_page_contents .='
+							<tr class="no-items">
+									<td class="colspanchange">Not found</td>
+							</tr>
+							';
+						// no posts found
+					}
+					//Read the Files Post
+					*/
+				//WP_query not work in 'orderby' => 'modified'
+								
+									
+					$Surge_json_page_contents .='
+							</tr>
+					</tbody>
+			</table>
+			<div class="tablenav bottom">
+				';
+			if($sync_id!=""){
+				$args = array (
+				'post_type'              => 'page',
+				'post_status'            => 'publish',
+				's'                      => 'Json Cron job',
+				'posts_per_page'         => '1',
+				'order'                  => 'DESC',
+				'orderby'                => 'modified',
+				);
+				
+				// The Query
+				$check_cron_page = new WP_Query( $args );
+				$theme_root = site_url().'/wp-content/themes/';
+				// The Loop
+				if ( $check_cron_page->have_posts() ) {
+					while ( $check_cron_page->have_posts() ) {
+						$check_cron_page->the_post();
+						$cron_page_id = get_the_id();
+						// do something
+							$resync_link = '<a target="_blank" href="'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x" class="button action">';
+						$resync_link2 = '</a>';
+					}
+				}
+				wp_reset_postdata();
+				$Surge_json_page_contents .=$resync_link;
+				$Surge_json_page_contents .='
+					Re-sync Course from BMS
+				';
+				$Surge_json_page_contents .=$resync_link2;
+			}
+			$Surge_json_page_contents .='
+			</div>
+			<h2>Previous Sync</h2>
+			<p>We store at last 3 synce locally to make sure there is no miss information on your website</p>
+			<table class="wp-list-table widefat fixed posts">
+					<thead>
+							<tr>
+									<th id="date" class="manage-column column-date  asc" style="" scope="col">
+											<span>Date</span>
+									</th>
+									<th id="wpseo-score" class="manage-column column-wpseo-score desc" style="" scope="col">
+											<span>Time</span>
+									</th>
+									<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
+											<span>Active</span>
+									</th>
+							</tr>
+					</thead>
+					<tfoot>
+						<tr>
+								<th id="date" class="manage-column column-date  asc" style="" scope="col">
+										<span>Date</span>
+								</th>
+								<th id="wpseo-score" class="manage-column column-wpseo-score  desc" style="" scope="col">
+										<span>Time</span>
+								</th>
+								<th id="wpseo-metadesc" class="manage-column column-wpseo-metadesc  desc" style="" scope="col">
+										<span>Active</span>
+								</th>
+						</tr>
+					</tfoot>
+					<tbody id="the-list">
+				';
+				$args = array( 'post_type' => 'json_', 'posts_per_page' => 3, 'order' => 'DESC');
+				$loop = new WP_Query( $args );
+				
+				
+				// The Loop
+				if ( $loop->have_posts() ) {
+					while ( $loop->have_posts() ) {
+						$Surge_json_page_contents .='<tr>';
+							$loop->the_post();
+							$Surge_json_page_contents .=' <td>' . get_the_date('d/m/Y') . '</td>';
+							$Surge_json_page_contents .=' <td>' . get_the_time() . '</td>';
+							$Surge_json_page_contents .=' <td><a><form action="#" method="post">
+									<input name="sync_file_id" type="hidden" value="'.get_the_ID().'">
+									<input class="button action" type="submit" value="Sync Now" name="">
+							</form></a></td>';
+						$Surge_json_page_contents .='</tr>';
+					}
+				} else {
+					$Surge_json_page_contents .='
+						<tr class="no-items">
+								<td class="colspanchange">Not found</td>
+						</tr>
+						';
+					// no posts found
+				}
+				//Read the Files Post
+				
+							
+								
+				$Surge_json_page_contents .='
+					</tbody>
+			</table>
 	</div>
 	
 	
@@ -700,12 +661,9 @@ endwhile;
 			<p>Copy the link below </p>
 			<input value="'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x" /><p>Add the link to cpanel cron job to active a daliy or weekly import.</p>
 			<img src="'.$theme_root.'/qeli/assets/img/how_to_cron_job.jpg">';
-
-
 		}
 	} else {
 		// no posts found
-
 		$Auto_page = array(
 			'post_type' => 'page',
 			'post_name' => 'json-cron-job',
@@ -724,7 +682,6 @@ endwhile;
 		<h2>Copy the permalink:[ <a>'.get_permalink($cron_page_id).'?PassWordCode=3yfdr73rw3aRTe4x</a>  ]to cpanel cron job to active it work import daliy or weekly.</h2>
 		<img src="'.$theme_root.'/qeli/assets/img/how_to_cron_job.jpg">';
 	
-
 	}
 	
 	// Restore original Post Data
@@ -732,11 +689,8 @@ endwhile;
 	wp_insert_term( 'brad3', 'post_tag', array('slug'=>'bbbedf'));
 }
 //end Json Import Function
-
-
 /*===========================================
-			  Addition Hook
+			Addition Hook
 ===========================================*/
-
 add_action( 'admin_menu', 'JsonImporter' );
 // Hook into the 'admin_menu' action

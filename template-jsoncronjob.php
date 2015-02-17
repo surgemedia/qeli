@@ -308,22 +308,29 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				update_field('locations', $add_to_location[$i], $post_ID);
 				
 				
-				$value = get_field('field_54ab26dabaf00', $post_ID);
-				
+				//$value = get_field('field_54ab26dabaf00', $post_ID);
+				// debug($value);
+				unset($value);
 				for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 					$value[] = $instances[$j];
+					//Instance 
 					update_field('field_54ab26dabaf00', $value, $post_ID );
-					$value2 = get_sub_field('field_54bee8a23269c', $post_ID);
+					//$value2 = get_sub_field('field_54bee8a23269c', $post_ID);
+					unset($value2);
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
 						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value2[] = $instances[$j]['phases'][$k];
+						//add phases
 						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
 					}
-					$value3 = get_sub_field('field_54e192a62d5a7', $post_ID);
+					//$value3 = get_sub_field('field_54e192a62d5a7', $post_ID);
+					unset($value3);
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value3[] = $instances[$j]['venues'][$k];
+						//add venues
 						update_sub_field( 'field_54e192a62d5a7', $value3, $post_ID );
+
 					}
 				}	
 			//}
@@ -368,9 +375,9 @@ endwhile;
 ?>
 
 <script language="javascript">
-	window.opener=null;
-	window.open("","_self");
-	window.close();
+	// window.opener=null;
+	// window.open("","_self");
+	// window.close();
 </script>
 
 <?
