@@ -70,7 +70,9 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				'post_status'            => 'Published',
 				'orderby'                => 'id',
 				'order'                => 'DESC',
+				'posts_per_page'		=> '-1',
 			);
+			
 			
 			// The Query
 			$check_item_row = new WP_Query( $check_item );
@@ -84,18 +86,19 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					$check_title = get_the_title();
 					if($check_content == $jsonIterator[$i]['programId'] && $check_title == $jsonIterator[$i]['title']){
 						if($first_while_item_get == 0 ){
-							$check_item_row_id = $check_item_id;
+							$check_item_row_id[$i] = $check_item_id;
 							$first_while_item_get = 2;
 						}
 					}
 				}
 			} else {
 				// no posts found
-				$check_item_row_id = "";
+				$check_item_row_id[$i] = "";
 			}
 			
 			
-			//echo '<h1>'.$check_item_row_id.'</h1>';
+			echo '<h1>'.$check_item_row_id[$i].'</h1>';
+			echo '<h2>'.$jsonIterator[$i]['title'].'</h2>';
 			// Restore original Post Data
 			wp_reset_postdata();
 			
@@ -233,7 +236,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
-			if($check_item_row_id==""){
+			echo '<p>'.$check_item_id.'</p>??';
+			if($check_item_id==""){
 				$my_post = array(
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
@@ -245,17 +249,18 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				$show_status= "new post";
 			}else{
 				$my_post = array(
-					'ID' => $check_item_row_id,
+					'ID' => $check_item_id,
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
 					'post_content'  =>  $jsonIterator[$i]['programId'],
 					'post_status'   => 'publish',
 					'post_author'   => 1
 				);
-				$post_ID = $check_item_row_id;
+				$post_ID = $check_item_id;
 				wp_insert_post( $my_post );
 				$show_status= "update post";
 			}
+				echo '<h3>'.$show_status.'</h3>';
 				$all_courses_id[$post_ID] =  'on';//add the ID to array key for delete the course not list in JSON file
 	/* ===============================================================================================================
 											Add new Tag and Catagories
@@ -267,6 +272,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
+				echo $post_ID.'<br/>';
+				echo $jsonIterator[$i]['programId'].'<br/>';
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
 				update_field('outcome', $jsonIterator[$i]['outcome'], $post_ID);
@@ -317,23 +324,27 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			Delete Post Function
 ===========================================*/
 // WP_Query arguments to check all course which avaliable in Web system.
-$delete_other_course = array (
-'post_type'              => 'courses',
-'post_status'            => 'publish',
+$delete_course = array (
+	'post_type'              => 'courses',
+	'post_status'            => 'publish',
+	'posts_per_page'		=> '-1',
 );
 // The Query
-$delete_other_course_row = new WP_Query( $delete_other_course );
+$delete_other_course_row = new WP_Query( $delete_course );
 while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post();
-//echo print_r(array_keys($all_courses_id)).'<br/>';
+echo print_r(array_keys($all_courses_id)).'<br/>';
 $delete_other_course_id = get_the_id();
-//echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>';
+echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>testing';
 if($all_courses_id[$delete_other_course_id]=='on'){
-	//echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
+	echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
 }else{
-	//echo $delete_other_course_id.' will delete.<br/>';
+	echo $delete_other_course_id.' will delete.<br/>';
 	wp_trash_post( $delete_other_course_id );
 }
 endwhile;
+
+
+
 ?>
 <script language="javascript">
 	window.opener=null;

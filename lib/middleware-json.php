@@ -95,6 +95,7 @@ function json_import_function(){
 				'post_status'            => 'Published',
 				'orderby'                => 'id',
 				'order'                => 'DESC',
+				'posts_per_page'		=> '-1',
 			);
 			
 			// The Query
@@ -244,7 +245,8 @@ function json_import_function(){
 														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
-			if($check_item_row_id==""){
+			echo '<p>'.$check_item_id.'</p>??';
+			if($check_item_id==""){
 				$my_post = array(
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
@@ -253,18 +255,21 @@ function json_import_function(){
 					'post_author'   => 1
 				);
 				$post_ID = wp_insert_post( $my_post );
+				$show_status= "new post";
 			}else{
 				$my_post = array(
-					'ID' => $check_item_row_id,
+					'ID' => $check_item_id,
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
 					'post_content'  =>  $jsonIterator[$i]['programId'],
 					'post_status'   => 'publish',
 					'post_author'   => 1
 				);
-				$post_ID = $check_item_row_id;
+				$post_ID = $check_item_id;
 				wp_insert_post( $my_post );
+				$show_status= "update post";
 			}
+				echo '<h3>'.$show_status.'</h3>';
 				$all_courses_id[$post_ID] =  'on';//add the ID to array key for delete the course not list in JSON file
 	/* ===============================================================================================================
 											Add new Tag and Catagories
@@ -327,6 +332,7 @@ function json_import_function(){
 $delete_other_course = array (
 'post_type'              => 'courses',
 'post_status'            => 'publish',
+'posts_per_page'		=> '-1',
 );
 // The Query
 $delete_other_course_row = new WP_Query( $delete_other_course );
