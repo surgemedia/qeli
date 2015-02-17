@@ -1,5 +1,5 @@
 
-<div class="section videos green alt">
+<div class="section videos blue alt">
   <div class="video-top-panel">
     <div class="container">
       <div class="col-xs-12">
@@ -31,9 +31,9 @@
     <div id="player" class="max-height" video-id="<?php echo cleanYoutubeLink(get_field('talks')[0]['embed_code']); ?>"></div>
   <!-- <iframe id="main-video" width="1280" height="720" src="//www.youtube.com/v/<?php echo cleanYoutubeLink(get_field('talks')[0]['embed_code']); ?>?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe> -->
 </div>
-  <a href="#" class="overlay video-in-situ" style="background-image:url('http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/kid4.png')">
+  <div class="overlay video-in-situ" style="background-image:url('http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/kid4.png')">
       <span class="video-modal graphic btn-play-xl"></span>
-  </a>
+  </div>
 </div>
   <?php endif; ?>
 <?php  endwhile; ?>

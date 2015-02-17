@@ -29,6 +29,11 @@ $(".video-in-situ").click(function(e){
         player.playVideo();
     }
     $('.section.videos').addClass('playing-video');
+
+    var headerEl = document.getElementById('header');
+    $('html, body').animate({
+                scrollTop:( $('.section.videos').offset().top - headerEl.offsetHeight)
+    }, 500);
 });
 
 
