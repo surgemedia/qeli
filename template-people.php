@@ -83,8 +83,12 @@ Template Name: About - People
 							if ( $query->have_posts() ): ?>
 								<?php while ( $query->have_posts() ): ?>
 									<?php $query->the_post(); ?>
-
-									<li><a href="#" data-title="<?php the_title();?>" data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); echo $terms[0]->name; ?>"><?php the_title(); ?></a></li>
+									<?php 
+									$new_name = explode(" ",get_the_title());
+									$size = sizeof($new_name)-1;
+									update_field('last_name',$new_name[$size]);
+									?>
+									<li><a href="#" data-lastname="<?php echo $new_name[$size]; ?>" data-title="<?php the_title(); ?>" data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group'); echo $terms[0]->name; ?>"><?php the_title(); ?></a></li>
 									<?php wp_reset_postdata(); ?>
 
 								<?php endwhile; ?>
@@ -107,6 +111,7 @@ Template Name: About - People
 							if ( $query->have_posts() ) {
 							while ( $query->have_posts() ) {
 							$query->the_post();
+							
 							get_template_part('templates/content-post-type','people');
 							}
 							} else {
