@@ -9,7 +9,7 @@
   </a>
 </div>
   <div class="col-xs-12 col-sm-8">
-    <h3 class="title"><?php the_title(); ?> / <?php echo get_the_date('F j');  ?></h3>
+    <h3 class="title"><?php the_title(); ?></h3>
 
     <div class="item-text">
       <p><?php echo truncate(get_field('talks')[0]['description'],25,"..."); ?>
