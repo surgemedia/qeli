@@ -1,21 +1,33 @@
+<article id="content" class="col-xs-12">
+	<div class="row">
+		<div class="page-header colored-background image-background" style="background-image:url('<?php
+				$id = get_post_thumbnail_id();
+				echo wp_get_attachment_image_src($id, 'full')[0];
+			?>')">
+			<?php get_template_part('templates/page', 'colored-header'); ?>
+			<div class="container header-text">
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<?php echo 'This window will automatically close, when the sync is finished!'; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</article>
 <?php
 /*
 Template Name: Json Cron Jobs
 */
-
 /* =============================================
-
-		    Surge Media PTY LTD.
-
+		Surge Media PTY LTD.
 		MiddleWare Function for Qeli
 			
 Course Import - Json Cron to Save in Web locally
-
 ==============================================*/
-
-
 if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron jobs
-	echo 'Hello World!';
+	
 	exit;
 	//If someone try to view this page without password, it will just display Hello World, make it look like is the test page only.
 }else{
@@ -37,7 +49,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 		'post_status'   => 'publish',
 		'post_author'   => 1
 	);
-
 	// Insert the post into the database
 	if($json_test!=""){// If can download file, it will take action to update system.
 		$Files_id = wp_insert_post( $my_post );//insert new file and get the post id in same time.
@@ -51,7 +62,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 		for($i=0; $i< count($jsonIterator); $i++){
 			$course_num = $i+1;
 			//Review Here - @alex / @stagfoo - Depericated
-
 			
 			// WP_Query arguments
 			$check_item = array (
@@ -63,7 +73,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			
 			// The Query
 			$check_item_row = new WP_Query( $check_item );
-
 			// The Loop
 			if ( $check_item_row->have_posts() ) {
 				$first_while_item_get = 0;
@@ -88,8 +97,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			//echo '<h1>'.$check_item_row_id.'</h1>';
 			// Restore original Post Data
 			wp_reset_postdata();
-
-
 			
 			
 	/* ===============================================================================================================
@@ -112,11 +119,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 			}
 			//echo 'addtotag:'.$add_to_tag."<br/>";
-
-
-
 	/* ===============================================================================================================
-												     Add new Catagories
+												Add new Catagories
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['categories']); $j++){
 				$cata_slug1 = str_replace(" ","-", $jsonIterator[$i]['categories'][$j]);
@@ -129,12 +133,10 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 			}
 			//echo print_r($add_to_cata[$i]);
-
-
 	
 	
 	/* ===============================================================================================================
-											 Add Related Program ID Part 1
+											Add Related Program ID Part 1
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['relatedProgramIds']); $j++){
 				if($j==0){
@@ -145,7 +147,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			}
 			//echo $rp_slug[$i].'<br/>';
 	/* ===============================================================================================================
-											    Add Course Locations
+											Add Course Locations
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['locations']); $j++){
 				if($j==0){
@@ -156,9 +158,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			}
 			//echo $locations_slug[$i].'<br/>';
 			
-
 	/* ===============================================================================================================
-												     List all Location
+												List all Location
 	=============================================================================================================== */
 			for($j=0; $j<count($jsonIterator[$i]['locations']); $j++){
 				$location_name = $jsonIterator[$i]['locations'][$j];
@@ -171,7 +172,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 			}
 			//echo $add_to_location[$i];
-
 		
 			//echo print_r($jsonIterator[$i]['instances']);
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
@@ -184,13 +184,13 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 							$facilitatorIds_array_output = $facilitator;
 							$array_count = $array_count+1;
 						}else{
-							$facilitatorIds_array_output .= ', '.$facilitator;						
+													$facilitatorIds_array_output .= ', '.$facilitator;
 						}
 					}
 				}
 					
 	/* ===============================================================================================================
-											    Add Course city
+											Add Course city
 	=============================================================================================================== */
 			for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['cities']); $k++){
 				if($k==0){
@@ -200,32 +200,31 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 			}
 			//echo $city_slug[$i][$j].'<br/>';
-
 				
 				if($jsonIterator[$i]['instances'][$j]['currentClassSize']==NULL){
-					$addtocurrentclasssize = 0;	
+						$addtocurrentclasssize = 0;
 				}else{
-					$addtocurrentclasssize = $jsonIterator[$i]['instances'][$j]['currentClassSize'];						
+											$addtocurrentclasssize = $jsonIterator[$i]['instances'][$j]['currentClassSize'];
 				}
 				
-				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'], 
-									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'], 
-									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'], 
-									"field_54ab271828d67" => $city_slug[$i][$j], 
-									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'], 
-									"field_54d82f9e80ba3" => $addtocurrentclasssize, 
-									"field_54ab312929435" => $facilitatorIds_array_output, 
+				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
+									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'],
+									"field_54ab271828d67" => $city_slug[$i][$j],
+									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
+									"field_54d82f9e80ba3" => $addtocurrentclasssize,
+									"field_54ab312929435" => $facilitatorIds_array_output,
 									"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 				//echo print_r($instances[$j])."<br/>";
 				
 				
-/*				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
+				/*				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k] = array("field_54e192fc2d5a8" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'],
 														"field_54e1930b2d5a9" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'],
 														"field_54e1932b2d5ab" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1']);
 					echo $instances[$j]['venues'][$k];
 				}
-*/				
+				*/
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
 					$instances[$j]['venues'][$k]['room'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'];
@@ -269,12 +268,10 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			}
 				$all_courses_id[$post_ID] =  'on';//add the ID to array key for delete the course not list in JSON file
 	/* ===============================================================================================================
-											    Add new Tag and Catagories
+											Add new Tag and Catagories
 	=============================================================================================================== */
 			wp_set_post_terms( $post_ID, $add_to_tag, 'courses_tags', false );
 			wp_set_object_terms( $post_ID, $add_to_cata[$i], 'courses_categories');
-
-
 			$related_program_course_id[$i] = $post_ID;
 	
 			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
@@ -283,13 +280,13 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				
 				
 				$del_query = "DELETE FROM ".$table_name." WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
-//				mysql_query($del_query) or die(mysql_error());
+				//				mysql_query($del_query) or die(mysql_error());
 				global $wpdb;
 				$db_item =  $wpdb->get_results($wpdb->prepare(
 					$del_query
 				));
-				echo $del_query;
-				echo '<br/>';
+				// echo $del_query;
+				// echo '<br/>';
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
@@ -313,7 +310,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				unset($value);
 				for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 					$value[] = $instances[$j];
-					//Instance 
+					//Instance
 					update_field('field_54ab26dabaf00', $value, $post_ID );
 					//$value2 = get_sub_field('field_54bee8a23269c', $post_ID);
 					unset($value2);
@@ -330,9 +327,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 						$value3[] = $instances[$j]['venues'][$k];
 						//add venues
 						update_sub_field( 'field_54e192a62d5a7', $value3, $post_ID );
-
 					}
-				}	
+					}
 			//}
 		}
 		$Complete_update = array(
@@ -344,42 +340,33 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 		wp_update_post( $Complete_update );
 	}
 }
-
 /*===========================================
 			Delete Post Function
 ===========================================*/
-
 // WP_Query arguments to check all course which avaliable in Web system.
 $delete_other_course = array (
 'post_type'              => 'courses',
 'post_status'            => 'publish',
 );
-
 // The Query
 $delete_other_course_row = new WP_Query( $delete_other_course );
-while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post(); 
-
+while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post();
 //echo print_r(array_keys($all_courses_id)).'<br/>';
 $delete_other_course_id = get_the_id();
 //echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>';
 if($all_courses_id[$delete_other_course_id]=='on'){
-	echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
+	//echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
 }else{
-	echo $delete_other_course_id.' will delete.<br/>';
+	//echo $delete_other_course_id.' will delete.<br/>';
 	wp_trash_post( $delete_other_course_id );
 }
 endwhile;
-
-
-
 ?>
-
 <script language="javascript">
-	// window.opener=null;
-	// window.open("","_self");
-	// window.close();
+	window.opener=null;
+	window.open("","_self");
+	window.close();
 </script>
-
 <?
 mysql_close();
 exit;
