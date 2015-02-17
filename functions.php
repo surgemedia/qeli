@@ -34,7 +34,8 @@ $roots_includes = array(
   'lib/function_exclude_this_page.php',           // Create Function to hide the function if not admin
   'lib/function-remove-post-menu.php',           // Remove posts from menus
   'lib/function-getProgramId.php',                // get post id from program id
-                                                 // 
+  'lib/function-getslug.php',                     //get slug                         
+                                                 
                                                  
   //Post Types
   'lib/action-post-type-courses.php',              // Custom Post Type : Courses
