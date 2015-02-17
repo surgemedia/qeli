@@ -27,6 +27,7 @@ Template Name: Media Releases
 				'post_type'              => 'media_releases',
 				'pagination'             => false,
 				'posts_per_page'         => '6',
+				'orderby'                => 'date',
 				);
 				// The Query
 				$query = new WP_Query( $args );
