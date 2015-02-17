@@ -1,8 +1,13 @@
 
-<div class="section videos blue alt">
-  <span class="hero-overlay left"></span>
-  <div class="container center-all">
-    <div class="row">
+<div class="section videos green alt">
+  <div class="video-top-panel">
+    <div class="container">
+      <div class="col-xs-12">
+        <h2>QEL<span class="text-lowercase">i</span>: Be the difference, that makes a difference, to the lives of children</h2>
+      </div>
+  </div>
+  </div>
+
       <?php
           // TODO JW - this needs to be seperated into a query that returns the main video (brand video) and then these others.
           // WP_Query arguments
@@ -19,23 +24,16 @@
         while ( $query->have_posts() ) : $query->the_post();  ?>
       <?php if(0 == $count) : ?>
       <?php // checks if 1st post, then counts ?>
-      <div class="col-xs-12">
 
 
-<h2>Who is QELi</h2><br>
 <div class="video-item">
-  <a href="#" class="video-popup-thumbnail" data-url="//www.youtube.com/embed/<?php echo cleanYoutubeLink(get_field('talks')[0]['embed_code']); ?>" data-modal="#videoModal" data-width="800" data-height="540" role="button">
-    <img class="img-responsive" src="http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/BrandVideo.jpg" data-holder-rendered="true">
-    <div class="overlay">
-      <!-- <span class="video-modal graphic btn-play-lg"></span> -->
-    </div>
+  <div class="embed-responsive embed-responsive-16by9">
+  <iframe width="1280" height="720" src="//www.youtube.com/embed/<?php echo cleanYoutubeLink(get_field('talks')[0]['embed_code']); ?>" frameborder="0" allowfullscreen></iframe>
+  <a href="#" class="overlay video-in-situ" style="background-image:url('http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/BrandVideo.jpg')">
+      <span class="video-modal graphic btn-play-xl"></span>
   </a>
 </div>
-<a href="<?php echo site_url(); ?>/qeli-talks" class="big-link"><span class="graphic arrow-link-sq"></span> View all videos</a>
 
-
-
-      </div>
   <?php endif; ?>
 <?php  endwhile; ?>
 <?php  else :
@@ -44,10 +42,14 @@ endif;
       // Restore original Post Data
 wp_reset_postdata()
 ?>
+<div class="video-bottom-panel">
+  <div class="container">
+    <div class="col-xs-12">
+      <h3 class="video-title">Video title</h3>
+      <p class="video-date">Video Date</p>
+      <a href="<?php echo site_url(); ?>/program-catalogue" class="big-link"><span class="graphic arrow-link-sq"></span> See our program catalogue</a>
+    </div>
+  </div>
 </div>
-</div>
-<span class="hero-overlay right"></span>
-<div class="section-footer">
-  <span class="graphic arrow-section-down"></span>
-</div>
+
 </div>

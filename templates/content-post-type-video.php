@@ -15,7 +15,7 @@
       <p><?php echo truncate(get_field('talks')[0]['description'],25,"..."); ?>
       </p>
     </div>
-    <span class="share-link">Share</span>
+    <span class="share-link btn btn-share">Share</span>
 
   </div>
 </div>
