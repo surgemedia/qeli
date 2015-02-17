@@ -3,3 +3,66 @@
 	position: relative;
 	max-width: 100%;
 }
+
+.section.videos.alt{
+	padding-top: 0;
+	padding-bottom: 0px;
+	background-color: @green-dark;
+	min-height: 400px;
+	h2{
+		margin: 20px auto;
+	}
+	h3,p{
+		color: #FFF;
+	}
+	// color: #d0d3d5;;
+	> .container{
+		z-index: 2;
+	}
+	.video-bottom-panel{
+		position: absolute;
+		bottom: 0px;
+		width: 100%;
+		background: rgba(60,60,60,0.6);
+		z-index: 4;
+		padding: 20px 0;
+	}
+	.video-top-panel{
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		background: rgba(60,60,60,0.6);
+		z-index: 4;
+		padding: 20px 0;
+	}
+	.overlay {
+		position: absolute;
+		margin-bottom: 0px;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		.transition(all ease 2s);
+	}
+	.video-item{
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+
+	&.playing-video{
+		.video-top-panel{
+			transform: translateY(-200px);
+		}
+		.video-bottom-panel{
+			transform: translateY(200px);
+		}
+		.overlay{
+			opacity: 0;
+			z-index:-1;
+		}
+	}
+}
+

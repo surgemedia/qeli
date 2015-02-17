@@ -28,12 +28,13 @@
 
 <div class="video-item">
   <div class="embed-responsive embed-responsive-16by9">
-  <iframe width="1280" height="720" src="//www.youtube.com/embed/<?php echo cleanYoutubeLink(get_field('talks')[0]['embed_code']); ?>" frameborder="0" allowfullscreen></iframe>
+    <div id="player" video-id="<?php echo cleanYoutubeLink(get_field('talks')[0]['embed_code']); ?>"></div>
+  <!-- <iframe id="main-video" width="1280" height="720" src="//www.youtube.com/v/<?php echo cleanYoutubeLink(get_field('talks')[0]['embed_code']); ?>?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe> -->
+</div>
   <a href="#" class="overlay video-in-situ" style="background-image:url('http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/BrandVideo.jpg')">
       <span class="video-modal graphic btn-play-xl"></span>
   </a>
 </div>
-
   <?php endif; ?>
 <?php  endwhile; ?>
 <?php  else :
@@ -50,6 +51,5 @@ wp_reset_postdata()
       <a href="<?php echo site_url(); ?>/program-catalogue" class="big-link"><span class="graphic arrow-link-sq"></span> See our program catalogue</a>
     </div>
   </div>
-</div>
-
+</div
 </div>

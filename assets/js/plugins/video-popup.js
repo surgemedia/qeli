@@ -25,12 +25,10 @@ $("#videoModal").on('hidden.bs.modal', function (e) {
 
 $(".video-in-situ").click(function(e){
     e.preventDefault();
-    var url = $(this).attr('data-url');
-    var width = $(this).attr('data-width');
-    var height = $(this).attr('data-height');
-    var modal = $(this).attr('data-modal');
-    $(modal).find('.embed-responsive').html('<iframe src="'+url+'" width="'+width+'" height="'+height+'" frameborder="0"></iframe>');
-    $(modal).modal('show');
+    if(player){
+        player.playVideo();
+    }
+    $('.section.videos').addClass('playing-video');
 });
 
 
@@ -46,3 +44,4 @@ $("#videoModal").on('hidden.bs.modal', function (e) {
     // sets it back to the correct link so that it reloads immediately on the next window open
     $frame.attr('src', vidsrc);
 });
+
