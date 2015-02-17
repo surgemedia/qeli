@@ -3,7 +3,7 @@
           <div class="container center-all">
             <p>
 
-              <span class="h1" style="color:#fff;">QELi is</span>
+              <span class="h1" style="color:#fff;">QEL<span class="text-lowercase">i</span> is</span>
               <?php the_field('home_blurb'); ?>
             </p>
             <br class="hidden-xs">
