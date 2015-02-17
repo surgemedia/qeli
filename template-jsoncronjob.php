@@ -77,9 +77,11 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			// The Query
 			$check_item_row = new WP_Query( $check_item );
 			// The Loop
+			$check_item_id = "";
 			if ( $check_item_row->have_posts() ) {
 				$first_while_item_get = 0;
 				while ( $check_item_row->have_posts() ) {
+					echo get_the_id();
 					$check_item_row->the_post();
 					$check_item_id = get_the_id();
 					$check_content = get_the_content();
@@ -93,7 +95,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 			} else {
 				// no posts found
-				$check_item_row_id[$i] = "";
+				$check_item_id = "";
 			}
 			
 			
@@ -236,8 +238,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
-			echo '<p>'.$check_item_id.'</p>??';
-			if($check_item_id==""){
+			echo '<p>'.$check_item_row_id[$i].'</p>??';
+			if($check_item_row_id[$i]==""){
 				$my_post = array(
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
@@ -249,18 +251,18 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				$show_status= "new post";
 			}else{
 				$my_post = array(
-					'ID' => $check_item_id,
+					'ID' => $check_item_row_id[$i],
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
 					'post_content'  =>  $jsonIterator[$i]['programId'],
 					'post_status'   => 'publish',
 					'post_author'   => 1
 				);
-				$post_ID = $check_item_id;
-				wp_insert_post( $my_post );
+				$post_ID = wp_insert_post( $my_post );
+				$post_ID = $check_item_row_id[$i];
 				$show_status= "update post";
 			}
-				echo '<h3>'.$show_status.'</h3>';
+				echo '<h3>'.$post_ID.'</h3>';
 				$all_courses_id[$post_ID] =  'on';//add the ID to array key for delete the course not list in JSON file
 	/* ===============================================================================================================
 											Add new Tag and Catagories

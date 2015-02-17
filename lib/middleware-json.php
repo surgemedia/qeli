@@ -98,30 +98,34 @@ function json_import_function(){
 				'posts_per_page'		=> '-1',
 			);
 			
+			
 			// The Query
 			$check_item_row = new WP_Query( $check_item );
 			// The Loop
+			$check_item_id = "";
 			if ( $check_item_row->have_posts() ) {
 				$first_while_item_get = 0;
 				while ( $check_item_row->have_posts() ) {
+					echo get_the_id();
 					$check_item_row->the_post();
 					$check_item_id = get_the_id();
 					$check_content = get_the_content();
 					$check_title = get_the_title();
 					if($check_content == $jsonIterator[$i]['programId'] && $check_title == $jsonIterator[$i]['title']){
 						if($first_while_item_get == 0 ){
-							$check_item_row_id = $check_item_id;
+							$check_item_row_id[$i] = $check_item_id;
 							$first_while_item_get = 2;
 						}
 					}
 				}
 			} else {
 				// no posts found
-				$check_item_row_id = "";
+				$check_item_id = "";
 			}
 			
 			
-			//echo '<h1>'.$check_item_row_id.'</h1>';
+			echo '<h1>'.$check_item_row_id[$i].'</h1>';
+			echo '<h2>'.$jsonIterator[$i]['title'].'</h2>';
 			// Restore original Post Data
 			wp_reset_postdata();
 			/*
@@ -245,8 +249,8 @@ function json_import_function(){
 														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				}
 			}
-			echo '<p>'.$check_item_id.'</p>??';
-			if($check_item_id==""){
+			echo '<p>'.$check_item_row_id[$i].'</p>??';
+			if($check_item_row_id[$i]==""){
 				$my_post = array(
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
@@ -258,18 +262,18 @@ function json_import_function(){
 				$show_status= "new post";
 			}else{
 				$my_post = array(
-					'ID' => $check_item_id,
+					'ID' => $check_item_row_id[$i],
 					'post_type'     => 'courses',
 					'post_title'    =>  $jsonIterator[$i]['title'],
 					'post_content'  =>  $jsonIterator[$i]['programId'],
 					'post_status'   => 'publish',
 					'post_author'   => 1
 				);
-				$post_ID = $check_item_id;
-				wp_insert_post( $my_post );
+				$post_ID = wp_insert_post( $my_post );
+				$post_ID = $check_item_row_id[$i];
 				$show_status= "update post";
 			}
-				echo '<h3>'.$show_status.'</h3>';
+				echo '<h3>'.$post_ID.'</h3>';
 				$all_courses_id[$post_ID] =  'on';//add the ID to array key for delete the course not list in JSON file
 	/* ===============================================================================================================
 											Add new Tag and Catagories
@@ -329,21 +333,21 @@ function json_import_function(){
 			Delete Post Function
 ===========================================*/
 // WP_Query arguments to check all course which avaliable in Web system.
-$delete_other_course = array (
-'post_type'              => 'courses',
-'post_status'            => 'publish',
-'posts_per_page'		=> '-1',
+$delete_course = array (
+	'post_type'              => 'courses',
+	'post_status'            => 'publish',
+	'posts_per_page'		=> '-1',
 );
 // The Query
-$delete_other_course_row = new WP_Query( $delete_other_course );
+$delete_other_course_row = new WP_Query( $delete_course );
 while ( $delete_other_course_row->have_posts() ) : $delete_other_course_row->the_post();
-//echo print_r(array_keys($all_courses_id)).'<br/>';
+echo print_r(array_keys($all_courses_id)).'<br/>';
 $delete_other_course_id = get_the_id();
-//echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>';
+echo $delete_other_course_id.': '.$all_courses_id[$delete_other_course_id].'<br/>testing';
 if($all_courses_id[$delete_other_course_id]=='on'){
-	//echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
+	echo $delete_other_course_id.' Keep on!<br/>'; //if the course ID is in Json, it will keep on.
 }else{
-	//echo $delete_other_course_id.' will delete.<br/>';
+	echo $delete_other_course_id.' will delete.<br/>';
 	wp_trash_post( $delete_other_course_id );
 }
 endwhile;
