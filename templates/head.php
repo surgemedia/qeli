@@ -9,5 +9,5 @@
   <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
 
   <?php wp_head(); ?>
-  <?php get_template_part('templates/part', 'bugheard-tracking'); ?>
+  <?php get_template_part('templates/part', 'bugherd-tracking'); ?>
 </head>
