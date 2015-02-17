@@ -2,7 +2,8 @@
 	<div class="row">
 		<div class="page-header colored-background image-background" style="background-image:url('<?php
 				$id = get_post_thumbnail_id();
-				echo wp_get_attachment_image_src($id, 'full')[0];
+				$get_image_src = wp_get_attachment_image_src($id, 'full');
+				echo $get_image_src[0];
 			?>')">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
 			<div class="container header-text">
@@ -192,21 +193,20 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 	/* ===============================================================================================================
 											Add Course city
 	=============================================================================================================== */
-			for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['cities']); $k++){
-				if($k==0){
-					$city_slug[$i][$j] .= $jsonIterator[$i]['instances'][$j]['cities'][$k];
-				}else{
-					$city_slug[$i][$j] .= ', '.$jsonIterator[$i]['instances'][$j]['cities'][$k];
+				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['cities']); $k++){
+					if($k==0){
+						$city_slug[$i][$j] .= $jsonIterator[$i]['instances'][$j]['cities'][$k];
+					}else{
+						$city_slug[$i][$j] .= ', '.$jsonIterator[$i]['instances'][$j]['cities'][$k];
+					}
 				}
-			}
-			//echo $city_slug[$i][$j].'<br/>';
-				
+					
 				if($jsonIterator[$i]['instances'][$j]['currentClassSize']==NULL){
 						$addtocurrentclasssize = 0;
 				}else{
-											$addtocurrentclasssize = $jsonIterator[$i]['instances'][$j]['currentClassSize'];
+						$addtocurrentclasssize = $jsonIterator[$i]['instances'][$j]['currentClassSize'];
 				}
-				
+					
 				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
 									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
 									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'],
@@ -215,16 +215,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,
 									"field_54ab312929435" => $facilitatorIds_array_output,
 									"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
-				//echo print_r($instances[$j])."<br/>";
-				
-				
-				/*				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
-					$instances[$j]['venues'][$k] = array("field_54e192fc2d5a8" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'],
-														"field_54e1930b2d5a9" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'],
-														"field_54e1932b2d5ab" => $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['addressLine1']);
-					echo $instances[$j]['venues'][$k];
-				}
-				*/
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
 					$instances[$j]['venues'][$k]['room'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'];
@@ -275,18 +265,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			$related_program_course_id[$i] = $post_ID;
 	
 			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
-			//if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
-				$table_name = $table_prefix."postmeta";
-				
-				
-				$del_query = "DELETE FROM ".$table_name." WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
-				//				mysql_query($del_query) or die(mysql_error());
-				global $wpdb;
-				$db_item =  $wpdb->get_results($wpdb->prepare(
-					$del_query
-				));
-				// echo $del_query;
-				// echo '<br/>';
+			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
 				update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
@@ -305,31 +284,25 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				update_field('locations', $add_to_location[$i], $post_ID);
 				
 				
-				//$value = get_field('field_54ab26dabaf00', $post_ID);
-				// debug($value);
 				unset($value);
 				for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 					$value[] = $instances[$j];
 					//Instance
 					update_field('field_54ab26dabaf00', $value, $post_ID );
-					//$value2 = get_sub_field('field_54bee8a23269c', $post_ID);
 					unset($value2);
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value2[] = $instances[$j]['phases'][$k];
 						//add phases
 						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
 					}
-					//$value3 = get_sub_field('field_54e192a62d5a7', $post_ID);
 					unset($value3);
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
-						//echo "<h2>UPDATE ".count($jsonIterator[$i]['instances'][$j]['phases'])." phases</h2>";
 						$value3[] = $instances[$j]['venues'][$k];
 						//add venues
 						update_sub_field( 'field_54e192a62d5a7', $value3, $post_ID );
 					}
-					}
-			//}
+				}
+			}
 		}
 		$Complete_update = array(
 			'ID'           => $Files_id,
