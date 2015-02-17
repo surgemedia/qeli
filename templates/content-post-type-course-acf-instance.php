@@ -1,5 +1,4 @@
 <?php
-
 $programinstance_type = get_field('instances')[$GLOBALS['instance_count']]['type'];
 switch($programinstance_type) {
 case 1:
@@ -7,11 +6,9 @@ $programinstance_type = 'Scheduled Instance';
 break;
 case 2:
 $programinstance_type = 'Expression Of Interest';
-
 break;
 case 3:
 $programinstance_type = 'On Demand';
-
 break;
 default:
 $programinstance_type = 'Scheduled Instance';
@@ -28,10 +25,22 @@ $programinstance_type = 'Scheduled Instance';
   <div id="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?Php echo $GLOBALS['instance_count'] ?>">
     <div class="panel-body">
       <p>
-      <?php if(isset(get_field('instances')[$GLOBALS['instance_count']]['venue_name'])): ?>
-      <?php echo get_field('instances')[$GLOBALS['instance_count']]['venue_name'] ?><!-- ,<br> -->
-      <?php echo get_field('instances')[$GLOBALS['instance_count']]['venue_address'] ?>
-    <?php endif; ?>
+      <?php // debug(get_field('instances')[$GLOBALS['instance_count']]['venues']);
+      $venunes = get_field('instances')[$GLOBALS['instance_count']]['venues']; ?>
+      <?php for ($i=0; $i < sizeof($venunes); $i++) {
+      echo "<strong>Venue</strong><br>";
+      echo $venunes[$i]['name'].'<br>' ;
+      echo $venunes[$i]['room']." " ;
+      echo $venunes[$i]['addressline1']." ";
+      echo $venunes[$i]['addressline2']." " ;
+      echo $venunes[$i]['surburb']." ";
+      echo $venunes[$i]['city']." " ;
+      echo $venunes[$i]['state'].'<br>' ;
+      echo $venunes[$i]['postcode']." ";
+      echo $venunes[$i]['country']." ";
+      echo "<hr>";
+      }?>
+      
       </p>
       <ul>
         <?php

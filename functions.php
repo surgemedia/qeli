@@ -33,6 +33,8 @@ $roots_includes = array(
   'lib/action-hide-course-field.php',           // Disappear some of custom post type input area in admin page
   'lib/function_exclude_this_page.php',           // Create Function to hide the function if not admin
   'lib/function-remove-post-menu.php',           // Remove posts from menus
+  'lib/function-getProgramId.php',                // get post id from program id
+                                                 // 
                                                  
   //Post Types
   'lib/action-post-type-courses.php',              // Custom Post Type : Courses

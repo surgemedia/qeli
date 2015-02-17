@@ -1,8 +1,8 @@
 <article id="content" class="col-xs-12">
 	<div class="row">
 		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
-				$id = get_post_thumbnail_id();
-				echo wp_get_attachment_image_src($id, 'full')[0];
+					$id = get_post_thumbnail_id();
+					echo wp_get_attachment_image_src($id, 'full')[0];
 			?>')">
 			<div class="facilitator-item">
 				<div class="header">
@@ -36,7 +36,7 @@
 						}
 						unset($GLOBALS['facilitator']);
 					}
-						else {	get_template_part('templates/content', 'no-posts'); }
+							else {	get_template_part('templates/content', 'no-posts'); }
 					?>
 				</div>
 			</div>
@@ -302,11 +302,18 @@
 								<div class="panel-body">
 									<ul>
 										<?php
-										for ($i=0; $i < sizeof(get_field('related_programs')); $i++) { ?>
+										$related_array = get_field('related_programs');
+										$single_related = explode(',',$related_array);
+			
+										for ($i=0; $i < sizeof($single_related); $i++) { 
+										 if(false != getProgramId($single_related[$i])){
+											?>
+
 										<li>
-											<a href="<?php echo get_permalink(get_field('prerequisites')[$i]); ?>"><?php echo get_the_title(get_field('related_programs')[$i]); ?></a>
+											<a href="<?php echo get_permalink(getProgramId($single_related[$i])); ?>"><?php echo get_the_title(getProgramId($single_related[$i])); ?></a>
 										</li>
-										<?php } // for loop ?>
+										<?php 	} // empty check
+											 } // for loop ?>
 									</ul>
 								</div>
 							</div>
