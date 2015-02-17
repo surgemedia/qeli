@@ -212,22 +212,50 @@
 				.circle(30px, #fff, 0);
 				font-size: 14px;
 				line-height: 32px;
+				float: right;
 			}
 
-			.selected-value {
+			.filter-value {
 				background-color: @gray-dark;
 				border-radius: 3px;
 				-webkit-border-radius: 3px;
 				color: #fff;
 				padding: 6px 12px;
+				position: relative;
+				display: inline-block;
+			}
+
+			@media (max-width: @screen-xs-max) {
+				font-size: 1em;
+
+				.filter-value {
+					margin-left: 10px;
+				}
+
+				.circle-or {
+					float: none;
+					display: block;
+					margin: 20px auto 0;
+				}
 			}
 		}
 
 		.filter-clear {
 			.icon-close-circle {
 				position: absolute;
-				top: -12px;
-				right: 6px;
+				top: -8px;
+				right: -8px;
+			}
+		}
+
+		.filter-view-right {
+			float: right;
+		}
+
+		@media (max-width: @screen-xs-max) {
+			.filter-view-right {
+				float: none;
+				margin-left: 15px;
 			}
 		}
 	}

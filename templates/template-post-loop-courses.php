@@ -331,17 +331,22 @@
           <div class="row">
             <span class="filter-message hidden">
               <span class="circle-arrow"><span class="graphic arrow-right-gray"></span></span>
-              <span class="filter-value"></span>
-              <a class="filter-clear" href="#" data-filter="" data-filter-group="all">
-                <span class="graphic icon-close-circle"></span>
-              </a>
-              <span class="circle-or pull-right">OR</span>
+              Showing results for:
+              <span class="filter-value">
+                <span class="filter-label"></span>
+                <a class="filter-clear" href="#" data-filter="" data-filter-group="all">
+                  <span class="graphic icon-close-circle"></span>
+                </a>
+              </span>
+              <div class="visible-xs clearfix"></div>
+              <span class="circle-or">OR</span>
             </span>
           </div>
         </div>
+
         <div class="col-xs-12 col-sm-6">
           <div class="row">
-            <div class="pull-right">
+            <div class="filter-view-right">
             Show me<span class="graphic arrow-right-black"></span> 
             <a href="#" class="btn btn-filter" data-filter="" data-filter-group="all">All</a>
             <a href="#" class="btn btn-filter filter-favourite" data-filter=".favourite" data-filter-group="favourite" data-value-str="favourites">Favourite</a>

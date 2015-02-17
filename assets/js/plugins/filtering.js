@@ -185,7 +185,7 @@ $(document).ready(function () {
 			$this.parent('li').addClass('active');
 
 			var filterGroup = $this.attr('data-filter-group');
-			var filterValurStr = 'Showing results for: ' + '<span class="selected-value">' + $this.attr('data-value-str') + '</span>';
+			var filterValurStr = '<span class="filter-label">' + $this.attr('data-value-str') + '</span>';
 			var filterValue = $this.attr('data-filter');
 
 			if (filterGroup === 'all') {
@@ -195,7 +195,7 @@ $(document).ready(function () {
 				$('.filter-message').removeClass('hidden');
 			}
 
-			$('.filter-value').html(filterValurStr);
+			$('.filter-label').html(filterValurStr);
 
 		  	// set filter for Isotope
 			$('.course.active').removeClass('active');
