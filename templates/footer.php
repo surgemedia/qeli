@@ -4,10 +4,10 @@
             <div class="col-xs-6">
                 <a id="back-to-top" href="#" class="back-to-top"><span class="graphic nav-back-to-top"></span> Back to top</a>
             </div>
-             <div class="col-xs-3 pull-right">
-                <a href="http://www.facebook.com/pages/Queensland-Education-Leadership-Institute-QELi/361682403908834" target="_blank" class="graphic icon-facebook"></a>
-                <a href="http://twitter.com/QELIedu" target="_blank" class="graphic icon-twitter"></a>
+             <div class="col-xs-6 pull-right">
                 <a href="https://www.linkedin.com/company/2774541" target="_blank" class="graphic icon-linkedin"></a>
+                <a href="http://twitter.com/QELIedu" target="_blank" class="graphic icon-twitter"></a>
+                <a href="http://www.facebook.com/pages/Queensland-Education-Leadership-Institute-QELi/361682403908834" target="_blank" class="graphic icon-facebook"></a>
             </div>
         </div>
         <div class="row">

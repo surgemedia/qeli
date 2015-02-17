@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="col-xs-12 col-sm-3">
-		<img class="img-responsive img-circle hidden-xs" src="<?php echo getFeaturedUrl(); ?>" alt="<?php the_field('name') ?>">
+		<img class="img-responsive img-circle" src="<?php echo getFeaturedUrl(); ?>" alt="<?php the_field('name') ?>">
 	</div>
 	<div class="col-xs-12 col-sm-9">
 		<div class="meta-title h3 colored-text"><?php the_field('qualifications'); ?></div>

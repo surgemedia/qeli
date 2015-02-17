@@ -29,7 +29,7 @@
 		.transition(all 0.5s);
 
 		&.open {
-			max-height: 800px;
+			max-height: 940px;
 			padding: 20px 0;
 		}
 
@@ -210,6 +210,8 @@
 
 			.circle-or {
 				.circle(30px, #fff, 0);
+				font-size: 14px;
+				line-height: 32px;
 			}
 
 			.selected-value {
@@ -249,7 +251,9 @@
 		padding-right: 70px;
 
 		@media (max-width: @screen-xs-max) {
+			margin-left: -15px;
 			padding-right: 0;
+			padding-left: 15px;
 		}
 
 		.col-xs-12 {
@@ -290,6 +294,10 @@
 		hr {
 			border-top: 3px solid @gray-lightest;
 			margin: 10px 0;
+
+			@media (max-width: @screen-xs-max) {
+				margin: 10px -15px;
+			}
 		}
 
 		table {

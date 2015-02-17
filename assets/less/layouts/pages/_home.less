@@ -26,11 +26,25 @@
 		height: 650px;
 		background-image: url('../img/home-img-1.jpg');
 		background-size: cover;
-		background-position: center center;
+		background-position: center;
+		background-attachment: fixed;
 		position: relative;
+
 		@media (max-width: @screen-xs-max) {
 			height: 400px;
+			background-position: scroll;
 		}
+		/*
+		@media
+			only screen and (-webkit-min-device-pixel-ratio: 2),
+			only screen and (   min--moz-device-pixel-ratio: 2),
+			only screen and (     -o-min-device-pixel-ratio: 2/1),
+			only screen and (        min-device-pixel-ratio: 2),
+			only screen and (                min-resolution: 192dpi),
+			only screen and (                min-resolution: 2dppx) {
+			background-attachment: scroll;
+		}
+		*/
 		.call-to-action {
 			font-family: @font-heading-med;
 			font-size: 18px;
@@ -274,7 +288,27 @@
 		&.featured-program {
 			background-image: url('../img/listening-bg.jpg');
 			background-size: cover;
+			background-position: center center;
+			background-attachment: fixed;
 			color: #fff;
+			/*
+			@media
+				only screen and (-webkit-min-device-pixel-ratio: 2),
+				only screen and (   min--moz-device-pixel-ratio: 2),
+				only screen and (     -o-min-device-pixel-ratio: 2/1),
+				only screen and (        min-device-pixel-ratio: 2),
+				only screen and (                min-resolution: 192dpi),
+				only screen and (                min-resolution: 2dppx) {
+				background-attachment: scroll;
+			}
+			*/
+
+
+		 	@media only screen and (max-width: @screen-xs-max) {
+		 		background-attachment: scroll;
+		 	}
+
+
 			.underline{
 				padding-bottom: 5px;
 				border-bottom: 1px solid #FFF;
