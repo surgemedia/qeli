@@ -49,19 +49,16 @@
 							</div>
 							
 							<div class="panel-body">
-								<form action="http://qeli.createsend.com/t/d/s/uiklt/" method="post">
+								<form action="http://qeli.createsend.com/t/d/s/tutydt/" method="post">
 								  <label class="sr-only"><?php _e('Subscribe', 'roots'); ?></label>
 								  <div class="input-group">
-								   <input id="fieldEmail" name="cm-uiklt-uiklt" type="email" required />
+								   <input id="fieldEmail" name="cm-tutydt-tutydt" type="email" required />
 								    <span class="input-group-btn">
 								      <button type="submit" class="search-submit btn btn-subscribe"><?php _e('Subscribe', 'roots'); ?></button>
 								    </span>
 								  </div>
 								</form>
-							</div>
-							
-
-							
+							</div>	
 						
 					</li>
 				</ul>
