@@ -126,7 +126,7 @@ $wp_session = WP_Session::get_instance();
             <?php echo json_encode($array); ?>
 		</div>
 		<a href="<?php echo site_url(); ?>/program-catalogue/" class="btn btn-simple"><span class="graphic arrow-left-black"></span>Continue Shopping</a>
-		<a href="#" class="btn btn-simple pull-right" onclick="document.getElementById('post_json').submit();">Next<span class="graphic arrow-right-black"></span></a>
+		<a href="#" class="btn btn-simple pull-right" onclick="document.getElementById('post_json').submit();">Checkout<span class="graphic arrow-right-black"></span></a>
 	</div>
 
 </article>
