@@ -28,8 +28,8 @@ $programinstance_type = 'Scheduled Instance';
       <?php // debug(get_field('instances')[$GLOBALS['instance_count']]['venues']);
       $venunes = get_field('instances')[$GLOBALS['instance_count']]['venues']; ?>
       <?php for ($i=0; $i < sizeof($venunes); $i++) {
-      echo "<strong>Venue</strong><br>";
-      echo $venunes[$i]['name'].'<br>' ;
+      echo "<strong>";
+      echo $venunes[$i]['name'].'</strong><br>' ;
       echo $venunes[$i]['room']." " ;
       echo $venunes[$i]['addressline1']." ";
       echo $venunes[$i]['addressline2']." " ;
