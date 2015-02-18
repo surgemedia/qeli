@@ -364,7 +364,10 @@
      
         <?php
           //Gets a templated post from the ID
-          $args = array ('post_type' => 'courses');
+          $args = array (
+            'post_type' => 'courses',
+            'posts_per_page'         => '-1',
+            );
           // The Query
           $query = new WP_Query( $args );
           // The Loop

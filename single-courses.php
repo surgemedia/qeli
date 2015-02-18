@@ -290,6 +290,7 @@
 								</div>
 							</div>
 						</div>
+						<?php if(get_field('related_programs')) { ?>
 						<div class="panel">
 							<div class="panel-heading" role="tab" id="heading-related">
 								<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-related" aria-expanded="true" aria-controls="collapse-related">
@@ -302,29 +303,32 @@
 								<div class="panel-body">
 									<ul>
 										<?php
-
+										
 										$related_array = trim(get_field('related_programs'));
 										if(-1 != strpos(',',$related_array)){
 											$single_related = explode(',',$related_array);
 										} else 			{
 											$single_related = array($related_array);
 										}
-										$this_other_id = $single_related[1];
+										
 										
 										
 										for ($i=0; $i < sizeof($single_related); $i++) { 
 										 if(false != getProgramId($single_related[$i])){
+										 $real_id = getProgramId($single_related[$i]);
 											?>
 
 										<li>
-											<a href="<?php echo get_permalink(getProgramId($single_related[$i])); ?>"><?php echo get_the_title(getProgramId($single_related[$i])); ?></a>
+											<a href="<?php echo get_permalink( $real_id); ?>"><?php echo get_the_title( $real_id ); ?></a>
 										</li>
 										<?php 	} // empty check
-											 } // for loop ?>
+											 } // for loop 
+											 ?>
 									</ul>
 								</div>
 							</div>
 						</div>
+						<?php } // if no realted courses ?>
 					</div>
 				</div>
 			</div>
