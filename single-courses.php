@@ -1,11 +1,11 @@
 <article id="content" class="col-xs-12">
 	<div class="row">
 		<?php
+			//easily set default course image 
 			$default_img = 'http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/hero-image7.png';
-			$id = get_post_thumbnail_id();
-			$image_url = wp_get_attachment_image_src($id, 'full')[0];
-
-			if(0 <= strlen($image_url)){
+			//fixed image url
+			$image_url = getFeaturedUrl(get_the_id(),'full');
+			if(-1 < strpos($image_url,'/media/default.png')){
 			   $image_url = $default_img;
 			}
 			?>
