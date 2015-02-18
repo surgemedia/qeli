@@ -7,6 +7,10 @@ $wp_session = WP_Session::get_instance();
 		if($_POST['unset_proid']!=""){
 			$wp_session[$_POST['unset_proid'].'qty'] = 0;
 		}
+		if($_POST['ch_proid']!=""){
+			$wp_session[$_POST['ch_proid'].'qty'] = $_POST['ch_qty'];
+			//echo $wp_session[$_POST['ch_proid'].'qty'];
+		}
 		//If user click delete, it will delete the session value.
 		if($_POST['programid']!=""){
 			//echo $_POST['programid'];
@@ -47,7 +51,12 @@ $wp_session = WP_Session::get_instance();
 						$prog_id = $wp_session['programid'.$i];
 						//echo $prog_id.'<br/>';
 						//echo $course_post_id.'<br/>';
-						$total = $wp_session[$prog_id.'qty'] * get_field('cost', $course_post_id);
+						$price[$i] = get_post_meta($course_post_id, 'cost', true);
+						$total_qty[$i] = $wp_session[$prog_id.'qty'];
+	
+
+	
+						$total = $price[$i] * $total_qty[$i];
 						$amount = $amount + $total;
 						if($wp_session[$prog_id.'qty']>0){
 							//check the cart whether have value, if it's zore, just disapear it.
@@ -57,6 +66,18 @@ $wp_session = WP_Session::get_instance();
 									<input name="unset_course_id" value="'.$course_post_id.'" type="hidden">
 									<input name="unset_values" value="'.$i.'" type="hidden">
 								</form>
+							';
+							$change_value_form .='
+								<form id="cart_item_qty'.$input_start.'" method="post" action="#">
+									<input name="ch_proid" value="'.$prog_id.'" type="hidden">
+									<input name="ch_course_id" value="'.$course_post_id.'" type="hidden">
+									<input name="ch_values" value="'.$i.'" type="hidden">
+									<input name="ch_qty" id="ch_qty'.$input_start.'" type="hidden">
+								</form>
+								';
+							$javascript .='	
+									var e = document.getElementById("value'.$input_start.'").value;
+									document.getElementById("ch_qty'.$input_start.'").value = e;
 							';
 							if( get_field('instances', $course_post_id) ){
 								while( has_sub_field('instances', $course_post_id) )
@@ -76,12 +97,12 @@ $wp_session = WP_Session::get_instance();
 									<img src="" class="img-cart"></td>
 										<td><strong>'.get_the_title($course_post_id).'</strong><br/>'.$show_instances_name.'</td>
 										<td>
-											<input class="form-control" name="value'.$input_start.'" type="text" value="'.$wp_session[$prog_id.'qty'].'">
+											<input class="form-control" name="value'.$input_start.'" id="value'.$input_start.'" type="text" value="'.$wp_session[$prog_id.'qty'].'" onkeyup="return runScript()" />
 											<input class="form-control" name="instancesid'.$input_start.'" type="hidden" value="'.$get_piid.'">
-											<button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
+											<a href="#" rel="tooltip" class="btn btn-default" onclick="document.getElementById(\'cart_item_qty'.$input_start.'\').submit();"><i class="fa fa-pencil"></i></a>
 											<a href="#" class="btn btn-primary" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();"><i class="fa fa-trash-o"></i></a>
 										</td>
-									<td>'.get_field('cost', $course_post_id).'</td>
+									<td>$'.get_field('cost', $course_post_id).'</td>
 									<td>'.$total.'</td>
 								</tr>
 							';
@@ -92,6 +113,7 @@ $wp_session = WP_Session::get_instance();
 						}
 					}
 					echo $delete_hidden_form;
+					echo $change_value_form;
 				?>
             <form action="<?php echo site_url().'/order-redirect/';?>" method="post" id="post_json">
 			<table class="table">
@@ -123,11 +145,24 @@ $wp_session = WP_Session::get_instance();
 				</tbody>
 			</table>
             </form>
-            <?php echo json_encode($array); ?>
+            <?php //echo json_encode($array); ?>
 		</div>
 		<a href="<?php echo site_url(); ?>/program-catalogue/" class="btn btn-simple"><span class="graphic arrow-left-black"></span>Continue Shopping</a>
 		<a href="#" class="btn btn-simple pull-right" onclick="document.getElementById('post_json').submit();">Checkout<span class="graphic arrow-right-black"></span></a>
 	</div>
 
 </article>
-<?php endwhile; ?>
+<?php 
+
+$runjs = '
+<script type="text/javascript">
+	'.$javascript .'
+	function runScript() {
+		'.$javascript .'
+	};
+</script>
+
+';
+
+echo $runjs; endwhile; 
+?>
