@@ -103,7 +103,7 @@ $wp_session = WP_Session::get_instance();
 											<a href="#" class="btn btn-primary" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();"><i class="fa fa-trash-o"></i></a>
 										</td>
 									<td>$'.$price[$i].'</td>
-									<td>'.$total.'</td>
+									<td>$'.$total.'</td>
 								</tr>
 							';
 							$input_start = $input_start + 1;
@@ -135,12 +135,12 @@ $wp_session = WP_Session::get_instance();
 					</tr>
 					<tr>
 						<td colspan="4" class="text-right">Total Product</td>
-						<td><?php echo $amount;?></td>
+						<td>$<?php echo $amount;?></td>
 					</tr>
 
 					<tr>
 						<td colspan="4" class="text-right"><strong>Total with GST</strong></td>
-						<td><?php echo $amount * 1.1;?></td>
+						<td>$<?php echo $amount * 1.1;?></td>
 					</tr>
 				</tbody>
 			</table>
