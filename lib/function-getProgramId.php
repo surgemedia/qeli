@@ -6,6 +6,7 @@ function getProgramId($program_id){
 $return_id = false;
 										$args = array (
 										'post_type'              => 'courses',
+										'posts_per_page'         => '-1',
 										'meta_query'             => array(
 										array(
 										'key'       => 'programId',
