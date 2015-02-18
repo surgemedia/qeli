@@ -13,7 +13,7 @@ for($i=1; $i<$_POST['array_time']; $i++){
 	
 }
 $CURLOPT_POSTFIELDS =  json_encode($array);
-echo $CURLOPT_POSTFIELDS;
+//echo $CURLOPT_POSTFIELDS;
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL,            "http://qeli.systina.net/api/cart" );
@@ -28,7 +28,7 @@ $result=curl_exec ($ch);
 $json_guid = json_decode($result, true);
 //echo print_r($json_guid);
 $link_gid = 'http://qeli.systina.net/mycart#/checkout/'.$json_guid['cartGuid'];
-echo $link_gid;
+//echo $link_gid;
 ?>
 <script type="text/javascript">
 window.location= <?php echo "'" . $link_gid . "'"; ?>;
