@@ -102,7 +102,7 @@ $wp_session = WP_Session::get_instance();
 											<a href="#" rel="tooltip" class="btn btn-default" onclick="document.getElementById(\'cart_item_qty'.$input_start.'\').submit();"><i class="fa fa-pencil"></i></a>
 											<a href="#" class="btn btn-primary" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();"><i class="fa fa-trash-o"></i></a>
 										</td>
-									<td>$'.get_field('cost', $course_post_id).'</td>
+									<td>$'.$price[$i].'</td>
 									<td>'.$total.'</td>
 								</tr>
 							';
