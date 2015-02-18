@@ -20,7 +20,7 @@ $return_id = false;
 										if ( $query->have_posts() ) {
 										while ( $query->have_posts() ) {
 										$query->the_post();
-										wp_reset_postdata();
+										
 										$return_id = get_the_id();
 										}
 										}

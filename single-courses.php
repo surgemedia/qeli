@@ -302,9 +302,16 @@
 								<div class="panel-body">
 									<ul>
 										<?php
-										$related_array = get_field('related_programs');
-										$single_related = explode(',',$related_array);
-			
+
+										$related_array = trim(get_field('related_programs'));
+										if(-1 != strpos(',',$related_array)){
+											$single_related = explode(',',$related_array);
+										} else 			{
+											$single_related = array($related_array);
+										}
+										$this_other_id = $single_related[1];
+										
+										
 										for ($i=0; $i < sizeof($single_related); $i++) { 
 										 if(false != getProgramId($single_related[$i])){
 											?>
@@ -348,3 +355,6 @@
 		</div>
 	</div>
 </article>
+
+
+
