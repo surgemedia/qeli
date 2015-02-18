@@ -35,8 +35,8 @@
 				</div>
 			</div>
 			<div class="container header-text">
-				<?php if(get_field('executive_summary')) { ?>
-				<?php the_field('executive_summary') ?>
+				<?php if(get_field('statement')) { ?>
+				<?php the_field('statement') ?>
 				<?php } ?>
 			</div>
 		</div>
@@ -44,7 +44,10 @@
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-9">
-				
+				<?php if(get_field('executive_summary')) { ?>
+				<h2 class="h2-course">Executive Summary</h2>
+				<?php the_field('executive_summary') ?>
+				<?php } ?>
 				<?php if(get_field('outcome')) { ?>
 				<h2>Outcome</h2>
 				<?php the_field('outcome'); ?>
