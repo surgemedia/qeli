@@ -5,6 +5,30 @@
 			// $id = get_post_thumbnail_id();
 			// echo wp_get_attachment_image_src($id, 'full')[0];
 			?>
+			<?php
+				$instanes = get_field('instances');
+				$facil_array = false;
+				for ($i=0; $i < sizeof($instanes); $i++) {
+					if( 0 < strlen($instanes[$i]['facilitator'])){
+						$facil = $instanes[$i]['facilitator'];
+						if(-1 != strpos(',',$facil)){
+							$facil_array = explode(',', $facil);
+						} else {
+							$facil_array = array($facil);
+						}
+					}
+					//slit into array
+				}
+				if(false != $facil_array){
+				//use array of facilactors to get template
+					for ($i=0; $i < sizeof($facil_array); $i++) {
+						$GLOBALS['facilitator'] = $facil_array[$i];
+						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.",";
+					//extends scope for the facil loop
+					}
+				}
+					//
+			?>
 			<div class="header">
 				<div class="container">
 					<h1><?php the_title(); ?></h1>
@@ -302,25 +326,14 @@
 			<div class="col-sm-8">
 				<h2>Facilitators</h2>
 				<?php
-				$instanes = get_field('instances');
-				$facil_array = false;
-				for ($i=0; $i < sizeof($instanes); $i++) {
-					if( 0 < strlen($instanes[$i]['facilitator'])){
-						$facil = $instanes[$i]['facilitator'];
-						if(-1 != strpos(',',$facil)){
-							$facil_array = explode(',', $facil);
-						} else {
-							$facil_array = array($facil);
-						}
-					}
-					//slit into array
-				}
+				
+				
 				if(false != $facil_array){
 				//use array of facilactors to get template
 					for ($i=0; $i < sizeof($facil_array); $i++) {
+					//extends scope for the facil loop
 						$GLOBALS['facilitator'] = $facil_array[$i];
 						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.",";
-					//extends scope for the facil loop
 						get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
 					}
 					unset($GLOBALS['facilitator']);
