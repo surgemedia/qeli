@@ -4,7 +4,8 @@
 			$default_img = 'http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/hero-image7.png';
 			$id = get_post_thumbnail_id();
 			$image_url = wp_get_attachment_image_src($id, 'full')[0];
-			if(0 < strlen($image_url)){
+
+			if(0 <= strlen($image_url)){
 			   $image_url = $default_img;
 			}
 			?>
