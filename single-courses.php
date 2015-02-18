@@ -299,7 +299,7 @@
 							<div class="panel-body">
 								<ul>
 									<?php
-									$related_array = trim(get_field('related_programs'));
+									$related_array = trim(get_post_meta($course_id, 'related_programs', true));
 									if(-1 != strpos(',',$related_array)){
 										$single_related = explode(',',$related_array);
 												} else 			{
