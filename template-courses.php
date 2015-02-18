@@ -14,8 +14,8 @@ Template Name: Courses Page
 			<div class="featured-text">
 				<?php the_content(); ?>
 				<br>
-				
-				<a href="<?php echo get_permalink(get_field('featured_program')); ?>" class="circle-more">
+				<?php $the_course = get_field('featured_program'); ?>
+				<a href="<?php echo get_permalink($the_course); ?>" class="circle-more">
 					More
 				</a>
 			</div>

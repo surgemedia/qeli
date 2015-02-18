@@ -1,10 +1,15 @@
 <article id="content" class="col-xs-12">
 	<div class="row">
-		<div class="page-header colored-background image-background overlay" style="background-image:url('http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/hero-image7.png')">
-			<?php
-			// $id = get_post_thumbnail_id();
-			// echo wp_get_attachment_image_src($id, 'full')[0];
+		<?php
+			$default_img = 'http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/hero-image7.png';
+			$id = get_post_thumbnail_id();
+			$image_url = wp_get_attachment_image_src($id, 'full')[0];
+			if(0 < strlen($image_url)){
+			   $image_url = $default_img;
+			}
 			?>
+		<div class="page-header colored-background image-background overlay" style="background-image:url(<?php echo $image_url; ?>)">
+			
 			<?php
 				$instanes = get_field('instances');
 				$facil_array = false;
