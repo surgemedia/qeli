@@ -433,11 +433,11 @@ endwhile;
 							$get_last_modified_row->the_post();
 							$json_contents = get_the_content();
 							$json_title = get_the_title();
-							$json_m_d = get_the_modified_date('Y-m-d h:s');
+							$json_m_d = get_the_modified_date('h:s A');
 							if($json_l_mcount==0 && $json_contents == "Successful"){
 								$Surge_json_page_contents .='<tr>';
 									$Surge_json_page_contents .=' <td>' . substr($json_title, 0, -5) . '</td>';
-									$Surge_json_page_contents .=' <td>' .$json_m_d . '</td>';
+									$Surge_json_page_contents .=' <td>' .$json_m_d. '</td>';
 									$Surge_json_page_contents .=' <td><a>'.$json_contents.'</a></td>';
 								$Surge_json_page_contents .='</tr>';
 								$sync_id = get_the_id();
