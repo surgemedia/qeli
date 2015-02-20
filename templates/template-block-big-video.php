@@ -2,7 +2,7 @@
   <div class="video-top-panel">
     <div class="container">
       <div class="col-xs-12">
-        <h2>QEL<span class="text-lowercase">i</span>: Be the difference, that makes a difference, to the lives of children</h2>
+        <h2>QEL<span class="text-lowercase">i</span>: QELi Developing leaders, changing lives</h2>
       </div>
     </div>
   </div>
