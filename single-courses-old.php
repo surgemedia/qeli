@@ -1,5 +1,17 @@
-<?php
-				$course_id = get_the_ID();
+<article id="content" class="col-xs-12">
+	<div class="row">
+		<?php
+			//easily set default course image 
+			$default_img = 'http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/hero-image7.png';
+			//fixed image url
+			$image_url = getFeaturedUrl(get_the_id(),'full');
+			if(-1 < strpos($image_url,'/media/default.png')){
+			   $image_url = $default_img;
+			}
+			?>
+		<div class="page-header colored-background image-background overlay" style="background-image:url(<?php echo $image_url; ?>)">
+			
+			<?php
 				$instanes = get_field('instances');
 				$facil_array = false;
 				for ($i=0; $i < sizeof($instanes); $i++) {
@@ -22,21 +34,7 @@
 					}
 				}
 					//
-?>
-<article id="content" class="col-xs-12">
-	<div class="row">
-		<?php
-			//easily set default course image
-			$default_img = 'http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/hero-image7.png';
-			//fixed image url
-			$image_url = getFeaturedUrl(get_the_id(),'full');
-			if(-1 < strpos($image_url,'/media/default.png')){
-			$image_url = $default_img;
-			}
-		?>
-		<div class="page-header colored-background image-background overlay" style="background-image:url(<?php echo $image_url; ?>)">
-			
-			
+			?>
 			<div class="header">
 				<div class="container">
 					<h1><?php the_title(); ?></h1>
@@ -46,76 +44,33 @@
 				<?php if(get_field('statement')) { ?>
 				<?php the_field('statement') ?>
 				<?php } ?>
-				
-				
-				
 			</div>
-			<div class="container">
-			<?php if(get_field('audience')) { ?>
-			<h2>A program suitable for</h2>
-				<?php the_field('audience') ?>
-				<?php } ?>
-				</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-9">
 				<?php if(get_field('executive_summary')) { ?>
+				<h2 class="h2-course">Executive Summary</h2>
 				<?php the_field('executive_summary') ?>
 				<?php } ?>
 				<?php if(get_field('outcome')) { ?>
+				<h2>Outcome</h2>
 				<?php the_field('outcome'); ?>
 				<?php } ?>
-				<h2>Program Delivery</h2>
-				<?php if(get_field('program_outline')){ ?>
-				<?php the_field('program_outline'); ?>
-				<?php } ?>
-				<h2>Aiming Higher</h2>
-				<?php if(get_field('articulation')){ ?>
-				<?php the_field('articulation'); ?>
-				<?php } ?>
-				<h2>Cost</h2>
-					<h4>
-					<?php $cost = strip_tags(get_field('cost')); ?>
-					<?php echo'$'.$cost; ?>
-					</h4>
-					<!-- <h5>Sounds right for you? <strong>Select a date and registor now.</strong> </h5> -->
-				<h2>PDF DOwnload</h2>
-			
-				<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">
-				<i class="dashicons-download dashicons"></i>
-				<?php echo get_field('pdf_download')['title']; ?>
-	
-				</a>
-
-				<!-- <h2>Audience</h2> -->
-				<?php// edit_post_link(); ?>
+				<h2>Audience</h2>
+				<?php the_field('audience') ?>
+				<?php edit_post_link(); ?>
 			</div>
 			<div class="col-sm-3">
 				<div id="aside" class="panel-aside panel-summary">
 					<div class="affix-this affix-top" data-spy="affix" data-offset-top="200" data-offset-bottom="200" style="width: 281px;">
 						<div class="panel">
 							<div class="panel-heading">
-								<h2>At a Glance...</h2>
+								<h2>Program Summary</h2>
 							</div>
 							<div class="panel-body">
 								<ul class="list-striped">
-								<li>
-										<h3>Facilitator: </h3>
-										<p>
-										<?php echo $GLOBALS['facilitator_names']; ?>
-										</p>
-									</li>
-									<li>
-										<h3>Duration</h3>
-										<?php the_field('length') ?>
-									</li>
-									<li>
-										<h3>Delivery</h3>
-										<?php the_field('deliveryMethod'); ?>
-									</li>
-
 									<li>
 										<h3>Cost (incl discounts): </h3>
 										<p>
@@ -123,11 +78,19 @@
 										<?php echo'$'.$cost; ?>
 										</p>
 									</li>
-									
-									
-									
 									<li>
-									<h3>When </h3>
+										<h3>Length </h3>
+										<?php the_field('length') ?>
+									</li>
+									<li>
+										<h3>Delivery method: </h3>
+										<?php the_field('deliveryMethod'); ?>
+									</li>
+									<li>
+										<h3>Facilitator: </h3>
+										<?php echo $GLOBALS['facilitator_names']; ?>
+									</li>
+									<li>
 										<form action="<?php echo site_url();?>/cart/" method="post" id="course_add_to_cart">
 											<input type="hidden" name="postid" value="<?php the_ID();?>" />
 											<?php
@@ -160,50 +123,18 @@
 											?>
 										</form>
 									</li>
-									
 								</ul>
 							</div>
 							<div class="panel-footer">
 								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
-
 							</div>
-							
 						</div>
-					<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">More Infomation >></a>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Facilatator -->
 	<div class="row colored-background">
-		<div class="container facilitator-item">
-			<div class="col-sm-8">
-				<h2>Program Facilitator</h2>
-				<?php
-				
-				
-				if(false != $facil_array){
-				//use array of facilactors to get template
-					for ($i=0; $i < sizeof($facil_array); $i++) {
-					//extends scope for the facil loop
-						$GLOBALS['facilitator'] = $facil_array[$i];
-						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.",";
-						get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
-					}
-					unset($GLOBALS['facilitator']);
-				}
-						else {	get_template_part('templates/content', 'no-posts'); }
-				?>
-			</div>
-		</div>
-	</div>
-	<!-- Facilatator -->
-
-	
-	<div class="row ">
-	<!-- Date Locations -->
 		<div class="container">
 			<div class="col-sm-8">
 				<h2>Dates &amp; Locations</h2>
@@ -218,46 +149,42 @@
 				</div>
 			</div>
 		</div>
-		<!-- Date Locations -->
-		<!-- Related Programs -->
-
-
-	
 	</div>
-	<div class="row colored-background">
-			<?php if(get_field('related_programs')) { ?>
+	<?php /* ?>
+	<div class="row">
 		<div class="container">
-			<div class="container facilitator-item">
-			
-			<h2>Related Programs</h2>
-								<ul>
-									<?php
-									$related_array = trim(get_post_meta($course_id, 'related_programs', true));
-									
-									if(-1 != strpos(',',$related_array)){
-										$single_related = explode(',',$related_array);
-															} else 			{
-										$single_related = array($related_array);
-									}
-									for ($i=0; $i < sizeof($single_related); $i++) {
-										if(false != getProgramId($single_related[$i])){
-											$real_id = getProgramId($single_related[$i]);
-									?>
-									
-										<li><a  href="<?php echo get_permalink( $real_id); ?>"><?php echo get_the_title( $real_id ); ?></a>
-									</li>
-									<?php 	} // empty check
-									} // for loop
-									?>
-								</ul>
-							
-						</div>
-					</div>
-					
-					<?php } // if no realted courses ?>
-<!-- Related Programs -->
-</div>
-	<!-- Testimonimals -->
+			<div class="col-sm-8">
+				<div class="case-study section">
+					<h2>Case Study</h2>
+					<?php
+					// WP_Query arguments
+					$args = array (
+					'post_type'     => 'case_studies',
+					'meta_query'    => array(
+					array( 'key' => 'remove_others', 'value'     => '1',),
+					array( 'key' => 'course', 'value'     => $course_id,),
+											),
+					);
+					// The Query
+					$query = new WP_Query( $args );
+					if ( $query->have_posts() ) {
+					while ( $query->have_posts() ) {
+					$query->the_post();
+					get_template_part('templates/content-post-type', 'case-study-landscape');
+					}
+					} else {
+					get_template_part('templates/content', 'no-posts');
+					}
+					// Restore original Post Data
+					wp_reset_postdata();
+					// WP_Query arguments
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<?php */ ?>
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
@@ -290,24 +217,27 @@
 			</div>
 		</div>
 	</div>
-	<!-- Testimonimals -->
-	
 	<div class="row colored-background">
 		<div class="container">
 			<div class="col-sm-8">
-				<h2>Cancellation Policy</h2>
-				<?php if(get_field('faqs')){ ?>
-				<?php the_field('cancellation_policy'); ?>
-				<?php } ?>
-			</div>
-		</div>
-	</div>
-
-	<div class="row ">
-		<div class="container">
-			<div class="col-sm-8">
-				<h2>Program Extras</h2>
+				<h2>Program Outline</h2>
 				<div class="panel-group" id="accordion-outline" role="tablist">
+					<?php if(get_field('program_outline')){ ?>
+					<div class="panel">
+						<div class="panel-heading" role="tab" id="heading-features">
+							<a data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-features" aria-expanded="true" aria-controls="collapse-features">
+								<h3 class="panel-title">
+								<span class="graphic arrow-panel-gray"></span>Program features <span class="graphic icon-toggle pull-right"></span>
+								</h3>
+							</a>
+						</div>
+						<div id="collapse-features" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-features">
+							<div class="panel-body">
+								<?php the_field('program_outline') ?>
+							</div>
+						</div>
+					</div>
+					<?php } ?>
 					<div class="panel">
 						<div class="panel-heading" role="tab" id="heading-prereq">
 							<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-prereq" aria-expanded="true" aria-controls="collapse-prereq">
@@ -336,27 +266,100 @@
 							</div>
 						</div>
 					</div>
-				
+					<div class="panel">
+						<div class="panel-heading" role="tab" id="heading-articulation">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-articulation" aria-expanded="true" aria-controls="collapse-articulation">
+								<h3 class="panel-title">
+								<span class="graphic arrow-panel-gray"></span>Articulation <span class="graphic icon-toggle pull-right"></span>
+								</h3>
+							</a>
+						</div>
+						<div id="collapse-articulation" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-articulation">
+							<div class="panel-body">
+								<?php the_field('articulation'); ?>
+							</div>
+						</div>
+					</div>
+					<?php if(get_field('related_programs')) { ?>
+					<div class="panel">
+						<div class="panel-heading" role="tab" id="heading-related">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-related" aria-expanded="true" aria-controls="collapse-related">
+								<h3 class="panel-title">
+								<span class="graphic arrow-panel-gray"></span>Related Courses <span class="graphic icon-toggle pull-right"></span>
+								</h3>
+							</a>
+						</div>
+						<div id="collapse-related" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-related">
+							<div class="panel-body">
+								<ul>
+									<?php
+									$related_array = trim(get_post_meta($course_id, 'related_programs', true));
+									if(-1 != strpos(',',$related_array)){
+										$single_related = explode(',',$related_array);
+												} else 			{
+										$single_related = array($related_array);
+									}
+									for ($i=0; $i < sizeof($single_related); $i++) {
+										if(false != getProgramId($single_related[$i])){
+											$real_id = getProgramId($single_related[$i]);
+									?>
+									<li>
+										<a href="<?php echo get_permalink( $real_id); ?>"><?php echo get_the_title( $real_id ); ?></a>
+									</li>
+									<?php 	} // empty check
+									} // for loop
+									?>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<?php } // if no realted courses ?>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	
+	<div class="row">
+		<div class="container facilitator-item">
+			<div class="col-sm-8">
+				<h2>Facilitators</h2>
+				<?php
+				
+				
+				if(false != $facil_array){
+				//use array of facilactors to get template
+					for ($i=0; $i < sizeof($facil_array); $i++) {
+					//extends scope for the facil loop
+						$GLOBALS['facilitator'] = $facil_array[$i];
+						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.",";
+						get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
+					}
+					unset($GLOBALS['facilitator']);
+				}
+					else {	get_template_part('templates/content', 'no-posts'); }
+				?>
+			</div>
+		</div>
+	</div>
+	<?php if(get_field('faqs')){ ?>
 	<div class="row colored-background">
 		<div class="container">
 			<div class="col-sm-8">
 				<h2>FAQs</h2>
-				<?php if(get_field('faqs')){ ?>
 				<div class="panel-group" id="accordion-faq" role="tablist">
 					<?php
 					the_field('faqs');
 					?>
 				</div>
-	<?php } ?>
-
 			</div>
 		</div>
 	</div>
-	
+	<?php } ?>
+	<div class="row">
+		<div class="container">
+			<div class="col-sm-8">
+				<h2>Cancellation Policy</h2>
+				<p>If a participant registers for this program and for some unforseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within&nbsp;seven (7)&nbsp;business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between&nbsp;eight (8) and thirty (30)&nbsp;business days prior to the program commencement date, then a 25% administration charge will apply.</p>
+			</div>
+		</div>
+	</div>
 </article>
