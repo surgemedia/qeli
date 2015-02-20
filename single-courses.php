@@ -183,19 +183,7 @@
 			</div>
 		</div>
 	</div>
-	<?php / ?>
-	<?php if(get_field('testimonial_text')) { ?>
-	<div class="row">
-		<div class="container">
-			<div class="col-sm-8">
-				<h2>Testimonial</h2>
-				<?php
-					the_field('testimonial_text');
-				?>
-			</div>
-		</div>
-	</div>
-	<?php } ?>
+	
 	<?php */ ?>
 	<div class="row">
 		<div class="container">
@@ -207,7 +195,7 @@
 				$args = array (
 					'post_type'     => 'testimonial',
 					'meta_query'    => array(
-						array( 'key' => 'remove_others', 'value'     => '1',),
+						//array( 'key' => 'remove_others', 'value'     => '1',),
 						array( 'key' => 'course', 'value'     => $course_id,),
 						),
 					);
