@@ -63,32 +63,33 @@
 			<div class="col-sm-9">
 				<?php if(get_field('executive_summary')) { ?>
 				<?php the_field('executive_summary') ?>
-				<?php } ?>
+				<?php }  else { get_template_part('templates/content', 'no-posts'); } ?>
 				<?php if(get_field('outcome')) { ?>
 				<?php the_field('outcome'); ?>
 				<?php } ?>
-				<h2>Program Delivery</h2>
 				<?php if(get_field('program_outline')){ ?>
+				<h2>Program Delivery</h2>
 				<?php the_field('program_outline'); ?>
 				<?php } ?>
-				<h2>Aiming Higher</h2>
 				<?php if(get_field('articulation')){ ?>
+				<h2>Aiming Higher</h2>
 				<?php the_field('articulation'); ?>
 				<?php } ?>
+				<?php if(get_field('executive_summary')) { ?>
 				<h2>Cost</h2>
 					<h4>
 					<?php $cost = strip_tags(get_field('cost')); ?>
 					<?php echo'$'.$cost; ?>
 					</h4>
 					<!-- <h5>Sounds right for you? <strong>Select a date and registor now.</strong> </h5> -->
+				<?php }  ?>
+				<?php if(get_field('pdf_download')){ ?>
 				<h2>PDF DOwnload</h2>
-			
 				<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">
 				<i class="dashicons-download dashicons"></i>
 				<?php echo get_field('pdf_download')['title']; ?>
-	
 				</a>
-
+				<?php } ?>
 				<!-- <h2>Audience</h2> -->
 				<?php// edit_post_link(); ?>
 			</div>
