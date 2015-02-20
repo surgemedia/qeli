@@ -12,7 +12,7 @@ Template Name: Contact
 
 				<div class="col-xs-12 col-sm-6">
 					<div class="row">
-						<h3>Address</h3>
+						<h3>Contact</h3>
 						<?php the_field('address'); ?>
 
 						<h3>Postal</h3>
@@ -23,7 +23,7 @@ Template Name: Contact
 
 						<h3>Visit</h3>
 						<?php the_field('homepage'); ?>
-
+						<h3>Connect with us</h3>
 						<div class="social-icons">
 							<span class="graphic arrow-right-circle"></span>
 							<?php if (get_field('facebook_link')): ?>
