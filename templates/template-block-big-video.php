@@ -33,7 +33,7 @@
     <div class="container">
       <div class="col-xs-12">
         <h3 class="video-title"><?php the_title( ); ?></h3>
-        <p class="video-date"><?php echo get_the_date('F j'); ?></p>
+        <!-- <p class="video-date"><?php //echo get_the_date('F j'); ?></p> -->
         <a href="<?php echo site_url(); ?>/program-catalogue" class="big-link"><span class="graphic arrow-link-sq"></span> See our program catalogue</a>
       </div>
     </div>
