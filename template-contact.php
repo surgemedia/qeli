@@ -12,13 +12,13 @@ Template Name: Contact
 
 				<div class="col-xs-12 col-sm-6">
 					<div class="row">
-						<h3>Contact</h3>
+						<h3>Address</h3>
 						<?php the_field('address'); ?>
 
 						<h3>Postal</h3>
 						<?php the_field('postal'); ?>
 
-						<h3>Address</h3>
+						<h3>Contact</h3>
 						<?php the_field('contact'); ?>
 
 						<h3>Visit</h3>
