@@ -267,16 +267,18 @@
 				<h2>Testimonial</h2>
 				<?php
 					// WP_Query arguments
-				$course_id = get_the_ID();
-				$args = array (
-					'post_type'     => 'testimonial',
-					'meta_query'    => array(
-						//array( 'key' => 'remove_others', 'value'     => '1',),
+				
+				
+				
+						$args = array (
+						'post_type'     => 'testimonial',
+						'meta_query'    => array( 
+						
 						array( 'key' => 'course', 'value'     => $course_id,),
-						),
-					);
-					// The Query
-				$query = new WP_Query( $args );
+												),
+						);
+						// The Query
+						$query = new WP_Query( $args );
 				if ( $query->have_posts() ) {
 					while ( $query->have_posts() ) {
 						$query->the_post();
