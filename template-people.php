@@ -71,11 +71,13 @@ Template Name: About - People
 						<?php // WP_Query arguments
 							$args = array (
 							'post_type'              => 'key_people',
-							//'tag_name'               => 'test',
+							
 							'pagination'             => false,
 							'posts_per_page'         => '-1',
-							'order'                  => 'ASC',
-							'orderby'                => 'title',
+							'orderby'		=> 'meta_value_num',
+							'meta_key'		=> 'last_name',
+							'order'			=> 'DESC'
+							
 							);
 							// The Query
 							$query = new WP_Query( $args );
@@ -100,11 +102,12 @@ Template Name: About - People
 				<?php // WP_Query arguments
 					$args = array (
 					'post_type'              => 'key_people',
-					//'tag_name'               => 'test',
+					
 					'pagination'             => false,
 					'posts_per_page'         => '-1',
-					'order'                  => 'ASC',
-					'orderby'                => 'title',
+							'orderby'		=> 'meta_value_num',
+							'meta_key'		=> 'last_name',
+							'order'			=> 'DESC'
 					);
 					// The Query
 					$query = new WP_Query( $args );

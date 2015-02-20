@@ -10,12 +10,12 @@
 		<?php } ?>
 		<?php echo get_field('biography',$GLOBALS['people_id']) ?>
 
-		<?php if (get_field('special_responsibilities',$GLOBALS['people_id'])): ?>
+		<?php /* if (get_field('special_responsibilities',$GLOBALS['people_id'])): ?>
 			<div class="meta-special">
 				<h3>Special Responsibilities:</h3>
 				<?php echo get_field('special_responsibilities',$GLOBALS['people_id']) ?>
 			</div>
-		<?php endif; ?>
+		<?php endif; */ ?>
 	<?php edit_post_link('Edit profile','','',$GLOBALS['people_id']); ?>
 	</div>
 </div>
