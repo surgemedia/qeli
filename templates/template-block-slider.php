@@ -5,7 +5,7 @@
   <div class="home-images" style="background-image: url('<?php echo get_field('sliders')['0']['image']['url']; ?>')">
     <div class="call-to-action">
       <div class="container">
-          <div class="col-xs-8">Quality, innovative and responsive leadership solutions</div>
+          <div class="col-xs-8"><?php echo get_field('sliders')['0']['title']['url']; ?></div>
           <div class="col-xs-4 text-right"><a href="<?php echo get_permalink( 157 ); ?>" class="big-link"><span class="graphic arrow-link-sq-white"></span> See our solutions</a></div>
       </div>
     </div>
