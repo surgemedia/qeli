@@ -153,8 +153,10 @@
 													}
 													$instances_name = get_sub_field('instances_name');
 											if((get_sub_field('instances_name'))){ ?>
+											<div>
 											<input type="radio" name="programid" checked="checked" value="<?php echo $programinstanceid ?>"/>
 											<label for="programid"><?php echo $instances_name ?></label>
+											</div>
 											<?php }
 											}
 											}
