@@ -39,7 +39,7 @@
 					<li class="main-menu-item nav-subscribe ">
 						<a href="#subscribe-collapse" class="menu-link btn-subscribe" data-toggle="collapse" aria-expanded="false" aria-controls="subscribe-collapse">
 							<span class="graphic nav-icon nav-e-news"></span>
-							subscribe
+							Subscribe
 							<span class="graphic nav-menu-callout"></span>
 						</a>
 						<div id="subscribe-collapse" class="panel subscribe-form collapse">
