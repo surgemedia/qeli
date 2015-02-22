@@ -346,7 +346,7 @@
 			</div>
 		</div>
 	</div>
-
+<?php /* ?>
 	
 	<div class="row colored-background">
 		<div class="container">
@@ -363,5 +363,5 @@
 			</div>
 		</div>
 	</div>
-	
+<?php	*/ ?>
 </article>
