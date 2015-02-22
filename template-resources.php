@@ -27,6 +27,7 @@ Template Name: resources
 				$args = array (
 				'post_type'              => 'resource',
 				'type'          => 'annual report',
+				
 				);
 				// The Query
 				$query = new WP_Query( $args );
@@ -46,10 +47,11 @@ Template Name: resources
 			<div class="col-xs-12 col-sm-6">
 			<?php
 				// WP_Query arguments
-				// WP_Query arguments
+				
 				$args = array (
 				'post_type'              => 'resource',
 				'type'          => 'prospectus',
+				
 				);
 				// The Query
 				$query = new WP_Query( $args );
