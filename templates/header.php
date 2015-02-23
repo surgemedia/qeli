@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand graphic logo" href="#"></a>
+				<a class="navbar-brand graphic logo" href="<?php echo site_url(); ?>"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<?php
@@ -39,7 +39,7 @@
 					<li class="main-menu-item nav-subscribe ">
 						<a href="#subscribe-collapse" class="menu-link btn-subscribe" data-toggle="collapse" aria-expanded="false" aria-controls="subscribe-collapse">
 							<span class="graphic nav-icon nav-e-news"></span>
-							subscribe
+							Subscribe
 							<span class="graphic nav-menu-callout"></span>
 						</a>
 						<div id="subscribe-collapse" class="panel subscribe-form collapse">

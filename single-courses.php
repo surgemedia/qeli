@@ -72,22 +72,22 @@
 				<?php the_field('program_outline'); ?>
 				<?php } ?>
 				<?php if(get_field('articulation')){ ?>
-				<h2>Aiming Higher</h2>
+				<h2>Aiming Higher?</h2>
 				<?php the_field('articulation'); ?>
 				<?php } ?>
 				<?php if(get_field('executive_summary')) { ?>
 				<h2>Cost</h2>
 					<h4>
 					<?php $cost = strip_tags(get_field('cost')); ?>
-					<?php echo'$'.$cost; ?>
+					<?php echo'$'.$cost." +GST"; ?>
 					</h4>
 					<!-- <h5>Sounds right for you? <strong>Select a date and registor now.</strong> </h5> -->
 				<?php }  ?>
 				<?php if(get_field('pdf_download')){ ?>
-				<h2>PDF DOwnload</h2>
+				<h2>Download PDF</h2>
 				<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">
 				<i class="dashicons-download dashicons"></i>
-				<?php echo get_field('pdf_download')['title']; ?>
+				<?php echo "[PDF] ".get_field('pdf_download')['title']; ?>
 				</a>
 				<?php } ?>
 				<!-- <h2>Audience</h2> -->
@@ -113,15 +113,15 @@
 										<?php the_field('length') ?>
 									</li>
 									<li>
-										<h3>Delivery</h3>
+										<h3>Delivery Method</h3>
 										<?php the_field('deliveryMethod'); ?>
 									</li>
 
 									<li>
-										<h3>Cost (incl discounts): </h3>
+										<h3>Cost </h3>
 										<p>
 										<?php $cost = strip_tags(get_field('cost')); ?>
-										<?php echo'$'.$cost; ?>
+										<?php echo'$'.$cost." +GST"; ?>
 										</p>
 									</li>
 									
@@ -172,8 +172,9 @@
 							</div>
 							
 						</div>
+						<?php if (get_field('pdf_download')) { ?>
 					<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">More Infomation >></a>
-
+					<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -264,7 +265,7 @@
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
-				<h2>Testimonial</h2>
+				<h2>What others are saying</h2>
 				<?php
 					// WP_Query arguments
 				
@@ -301,13 +302,11 @@
 		<div class="container">
 			<div class="col-sm-8">
 				<h2>Cancellation Policy</h2>
-				<?php if(get_field('faqs')){ ?>
-				<?php the_field('cancellation_policy'); ?>
-				<?php } ?>
+				<p>If a participant registers for this program and for some unforseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within&nbsp;seven (7)&nbsp;business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between&nbsp;eight (8) and thirty (30)&nbsp;business days prior to the program commencement date, then a 25% administration charge will apply.</p>
 			</div>
 		</div>
 	</div>
-
+<?php /* ?>
 	<div class="row ">
 		<div class="container">
 			<div class="col-sm-8">
@@ -327,6 +326,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="panel">
 						<div class="panel-heading" role="tab" id="heading-resources">
 							<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-resources" aria-expanded="true" aria-controls="collapse-resources">
@@ -341,12 +341,14 @@
 							</div>
 						</div>
 					</div>
+
 				
 				</div>
 			</div>
 		</div>
 	</div>
-
+	*/ ?>
+<?php /* ?>
 	
 	<div class="row colored-background">
 		<div class="container">
@@ -363,5 +365,5 @@
 			</div>
 		</div>
 	</div>
-	
+<?php	*/ ?>
 </article>
