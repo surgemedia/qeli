@@ -61,7 +61,7 @@ Template Name: Contact
 					<?php echo do_shortcode('[gravityform id=1 title=false description=false ajax=true]');?>
 				</div>
 			</div>
-
+			<?php /* ?>
 			<div class="col-xs-12 col-sm-6">
 				<div class="row">
 					<img src="<?php
@@ -70,6 +70,7 @@ Template Name: Contact
 							?>" class="img-responsive feat-img"/>
 				</div>
 			</div>
+			<?php */ ?>
 		</div>
 	</div>
 </article>
