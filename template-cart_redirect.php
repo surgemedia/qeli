@@ -2,6 +2,35 @@
 /*
 Template Name: Cart Redirect
 */
+$wp_session = WP_Session::get_instance();
+
+$check_item = array (
+	'post_type'              => 'courses',
+	'post_status'            => 'Published',
+	'orderby'                => 'id',
+	'order'                => 'DESC',
+	'posts_per_page'		=> '-1',
+);
+
+
+// The Query
+$check_item_row = new WP_Query( $check_item );
+// The Loop
+$check_item_id = "";
+if ( $check_item_row->have_posts() ) {
+	$first_while_item_get = 0;
+	while ( $check_item_row->have_posts() ) {
+		$check_item_row->the_post();
+		$check_item_id = get_the_id();
+		if(get_field('instances', $check_item_id)){
+			while( has_sub_field('instances', $check_item_id) ){
+				$delpid = get_sub_field('programinstanceid');
+				unset($wp_session[$delpid.'qty']);
+				$wp_session[$delpid.'qty'] = 0;
+			}
+		}
+	}
+}
 
 
 

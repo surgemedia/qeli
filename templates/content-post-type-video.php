@@ -15,7 +15,9 @@
       <p><?php echo truncate(get_field('talks')[0]['description'],25,"..."); ?>
       </p>
     </div>
-    <span class="share-link btn btn-share">Share</span>
+    <a href="#share-collapse" data-toggle="collapse"  aria-controls="share-collapse" ><span class="share-link btn btn-share" >Share</span></a>
+    <div id="share-collapse" class="addthis_sharing_toolbox "></div>
+
 
   </div>
 </div>

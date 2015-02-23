@@ -27,7 +27,10 @@ Template Name: resources
 				$args = array (
 				'post_type'              => 'resource',
 				'type'          => 'annual report',
-				
+						'posts_per_page'         => -1,
+								'orderby'		=> 'meta_value_num',
+									'meta_key'		=> 'date',
+										'order'			=> 'DESC'
 				);
 				// The Query
 				$query = new WP_Query( $args );
@@ -51,6 +54,10 @@ Template Name: resources
 				$args = array (
 				'post_type'              => 'resource',
 				'type'          => 'prospectus',
+						'posts_per_page'         => -1,
+								'orderby'		=> 'meta_value_num',
+									'meta_key'		=> 'date',
+										'order'			=> 'DESC'
 				
 				);
 				// The Query

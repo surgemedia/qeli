@@ -6,7 +6,7 @@
 		<div class="meta-title h3 colored-text"><?php the_field('author_role'); ?></div>
 		<h2><?php the_title(); ?></h2>
 		<div class="meta-title"><?php the_field('position') ?></div>
-		<div class="meta-title h3 colored-text"><?php the_field('qualifications'); ?></div>
+		<div class="meta-qualifications"><?php the_field('qualifications'); ?></div>
 		<p>
 		<?php the_field('short_description'); ?>
 		</p>
