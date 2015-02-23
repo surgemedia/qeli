@@ -26,7 +26,7 @@
       <a href="<?php echo the_permalink(); ?>" class="btn btn-program"><span class="graphic icon-read-more"></span> Read More</a>
     </div>
     */ ?>
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12 col-sm-12">
       <table class="table">
         <tbody>
           <tr>
