@@ -93,14 +93,13 @@ $wp_session = WP_Session::get_instance();
 							$table_display .= '
 
 								<tr>
-									<td>
-									<img src="" class="img-cart"></td>
+									<td><span class="graphic footer-courses"></span></td>
 										<td><strong>'.get_the_title($course_post_id).'</strong><br/>'.$show_instances_name.'</td>
 										<td>
 											<input class="form-control" name="value'.$input_start.'" id="value'.$input_start.'" type="text" value="'.$wp_session[$prog_id.'qty'].'" onkeyup="return runScript()" />
 											<input class="form-control" name="instancesid'.$input_start.'" type="hidden" value="'.$get_piid.'">
-											<a href="#" rel="tooltip" class="btn btn-default" onclick="document.getElementById(\'cart_item_qty'.$input_start.'\').submit();"><i class="fa fa-pencil"></i></a>
-											<a href="#" class="btn btn-primary" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();"><i class="fa fa-trash-o"></i></a>
+											<a href="#" rel="tooltip" class="btn btn-default" onclick="document.getElementById(\'cart_item_qty'.$input_start.'\').submit();"><Edit</a>
+											<a href="#" class="btn btn-primary" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();">Remove</a>
 										</td>
 									<td>$'.$price[$i].'</td>
 									<td>$'.$total.'</td>
