@@ -20,10 +20,12 @@
     </div>
 
     <hr class="col-xs-12">
+     <?php /*  Removed from Course - Alex ?>
     <div class="col-xs-12 col-sm-6">
       <?php truncate(get_field('executive_summary'),50,"...");?>
       <a href="<?php echo the_permalink(); ?>" class="btn btn-program"><span class="graphic icon-read-more"></span> Read More</a>
     </div>
+    */ ?>
     <div class="col-xs-12 col-sm-6">
       <table class="table">
         <tbody>
