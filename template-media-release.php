@@ -25,49 +25,38 @@ Template Name: Media Releases
 				// WP_Query arguments
 				$args = array (
 				'post_type'              => 'media_releases',
-				'pagination'             => false,
-				'posts_per_page'         => '6',
-				'orderby'                => 'date',
-				);
-				// The Query
-				$query = new WP_Query( $args );
-				if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-						$query->the_post();
-						get_template_part('templates/content-post-type', 'media-release');
-						}
-						} else {
-						get_template_part('templates/content', 'no-posts');
-						}
-						// Restore original Post Data
-					wp_reset_postdata();
+					'pagination'             => true,
+						'posts_per_page'         => -1,
+								'orderby'		=> 'meta_value_num',
+									'meta_key'		=> 'date',
+										'order'			=> 'DESC'
+					);
+					// The Query
+					$query = new WP_Query( $args );
 				?>
+				<?php if(6 == $count){ ?>
 			</div>
 			<div class="col-xs-12 col-sm-6">
+				<?php } ?>
 				<?php
-				// WP_Query arguments
-				$args = array (
-				'post_type'              => 'media_releases',
-				'pagination'             => true,
-				'posts_per_page'         => '6',
-				'offset'                 => '6',
-				'orderby'                => 'date',
-				);
-				// The Query
-				$query = new WP_Query( $args );
-				// The Query
-				$query = new WP_Query( $args );
-				if ( $query->have_posts() ) {
-						while ( $query->have_posts() ) {
-						$query->the_post();
-						get_template_part('templates/content-post-type', 'media-release');
-						}
-						} else {
-						get_template_part('templates/content', 'no-posts');
-						}
-						// Restore original Post Data
-					wp_reset_postdata();
+					if ( $query->have_posts() ) {
+							while ( $query->have_posts() ) {
+								$query->the_post();
+								get_template_part('templates/content-post-type', 'media-release');
+						$count++; ?>
+						<?php if(6 == $count){ ?>
+							</div>
+							<div class="col-xs-12 col-sm-6">
+						<?php } ?>
+				<?php	}
+				} else {
+					get_template_part('templates/content', 'no-posts');
+				}
+					// Restore original Post Data
+				wp_reset_postdata();
 				?>
+				
+			</div>
 			</div>
 		</div>
 	</div>
