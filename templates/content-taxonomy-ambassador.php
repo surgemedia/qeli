@@ -5,7 +5,9 @@
 		</div>
 		<div class="col-xs-12 col-sm-9">
 			<h2><?php the_title() ?></h2>
+			<?php if(get_field('qualifications')) { ?>
 			<div class="meta-qualifications"><?php echo get_field('qualifications') ?></div>
+			<?php } ?>
 			<?php if(get_field('author_role')) { ?>
 			<div class="meta-title h3"><?php echo get_field('author_role'); ?></div>
 			<?php } ?>
