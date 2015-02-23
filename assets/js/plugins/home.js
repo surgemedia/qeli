@@ -20,6 +20,7 @@ $(document).ready(function () {
 			initSections();
 		}
 		initVideo();
+		initSlider();
 
 		//To do: tidy up resize
 		var timeout = null;
@@ -43,6 +44,16 @@ $(document).ready(function () {
 				initVideo();
 			}, 250);
 		};
+	}
+
+	function initSlider() {
+		 $('.bxslider-partners').bxSlider({
+		 	pager: false,
+		 	nextText: 'Next',
+		 	prevText: 'Prev',
+		 	nextSelector: $('.arrow-right-black'),
+		 	prevSelector: $('.arrow-left-black')
+		 });
 	}
 
 	function initVideo() {
