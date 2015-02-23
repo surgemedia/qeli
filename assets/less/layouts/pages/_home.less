@@ -9,13 +9,18 @@
 		width: 100%;
 		position: fixed;
 		z-index: 100;
+
+		@media (max-width: @screen-sm-max) {
+			position: static;
+		}
 	}
 
 	#content-container {
 		padding-top: 134px;
 
 		@media (max-width: @screen-sm-max) {
-			padding-top: 92px;
+			//padding-top: 92px;
+			padding-top: 0;
 		}
 	}
 
