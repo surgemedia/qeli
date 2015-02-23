@@ -8,7 +8,7 @@ Template Name: Partners
 	<div class="row">
 		<div class="page-header colored-background">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
-			<div class="container header-text">
+			<div class="container">
 				<?php the_content(); ?>
 			</div>
 		</div>
