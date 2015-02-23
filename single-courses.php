@@ -54,6 +54,7 @@
 			<?php if(get_field('audience')) { ?>
 			<h2>A program suitable for</h2>
 				<?php the_field('audience') ?>
+				<?php edit_post_link(); ?>
 				<?php } ?>
 				</div>
 		</div>
@@ -83,15 +84,14 @@
 					</h4>
 					<!-- <h5>Sounds right for you? <strong>Select a date and registor now.</strong> </h5> -->
 				<?php }  ?>
-				<?php if(get_field('pdf_download')){ ?>
+				<?php /* if(get_field('pdf_download')){ ?>
 				<h2>Download PDF</h2>
 				<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">
 				<i class="dashicons-download dashicons"></i>
 				<?php echo "[PDF] ".get_field('pdf_download')['title']; ?>
 				</a>
-				<?php } ?>
-				<!-- <h2>Audience</h2> -->
-				<?php// edit_post_link(); ?>
+				<?php } */ ?>
+				
 			</div>
 			<div class="col-sm-3">
 				<div id="aside" class="panel-aside panel-summary">
