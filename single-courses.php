@@ -172,8 +172,9 @@
 							</div>
 							
 						</div>
+						<?php if (get_field('pdf_download')) { ?>
 					<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">More Infomation >></a>
-
+					<?php } ?>
 					</div>
 				</div>
 			</div>
