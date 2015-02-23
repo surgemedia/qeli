@@ -9,8 +9,8 @@ Template Name: Qeli Talks/Videos
 		<?php $featured_id = get_field('featured_video')->ID; ?>
 		<?php if(get_field('featured_video')) {?>
 		<div class="page-header colored-background image-background" style="background-image:url('<?php
-				$id = get_post_thumbnail_id();
-				echo wp_get_attachment_image_src($id, 'full')[0];
+					$id = get_post_thumbnail_id();
+					echo wp_get_attachment_image_src($id, 'full')[0];
 			?>')">
 			<?php } else { ?>
 			<div class="page-header colored-background image-background" style="background-image:url('<?php echo getFeaturedUrl($featured_id);?>')">
@@ -51,7 +51,12 @@ Template Name: Qeli Talks/Videos
 					// WP_Query arguments
 					$args = array (
 						'post_type' => 'videoes',
-
+						'posts_per_page'         => -1,
+						'meta_query'    => array(
+						
+						array( 'key' => 'featured',
+							'value'     => 0,)
+												),
 						);
 					// The Query
 					$query = new WP_Query( $args );
