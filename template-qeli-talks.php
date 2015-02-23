@@ -61,10 +61,18 @@ Template Name: Qeli Talks/Videos
 					// The Query
 					$query = new WP_Query( $args );
 					if ( $query->have_posts() ) {
+
+						$i = 0;
+
 						while ( $query->have_posts() ) {
+							$i++;
 							$query->the_post();
 							echo $post->current_post;
 							get_template_part('templates/content-post-type', 'video');
+
+							if ($i%2 == 0) {
+								echo '<div class="clearfix"></div>';
+							}
 						}
 					} else {
 					}
