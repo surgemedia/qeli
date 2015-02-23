@@ -131,6 +131,7 @@
 									<h3>When </h3>
 										<form action="<?php echo site_url();?>/cart/" method="post" id="course_add_to_cart">
 											<input type="hidden" name="postid" value="<?php the_ID();?>" />
+											<input type="hidden" name="post_timing" value="<?php echo time();?>" />
 											<?php
 											if( get_field('instances') ){
 												while( has_sub_field('instances') )

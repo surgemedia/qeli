@@ -12,26 +12,30 @@ $wp_session = WP_Session::get_instance();
 			//echo $wp_session[$_POST['ch_proid'].'qty'];
 		}
 		//If user click delete, it will delete the session value.
-		if($_POST['programid']!=""){
-			//echo $_POST['programid'];
-			if($wp_session[$_POST['programid']] == $_POST['programid']){
-				$wp_session[$_POST['programid'].'qty'] = $wp_session[$_POST['programid'].'qty'] + 1;
-
-				//echo 'here';
-				//if the item already in cart, just add value only.
-			}else{
-				if($wp_session['count']==""){
-						$wp_session['count'] = 0;
+		
+		if($wp_session['post_time']!=$_POST['post_timing']){// check the post whether first time submit and not reflash page
+			if($_POST['programid']!=""){
+				//echo $_POST['programid'];
+				if($wp_session[$_POST['programid']] == $_POST['programid']){
+					$wp_session[$_POST['programid'].'qty'] = $wp_session[$_POST['programid'].'qty'] + 1;
+					//echo 'here';
+					//if the item already in cart, just add value only.
+				}else{
+					if($wp_session['count']==""){
+							$wp_session['count'] = 0;
+					}
+					$wp_session[$_POST['programid']] = $_POST['programid'];
+					$wp_session['programid'.$wp_session['count']] = $_POST['programid'];
+					$wp_session['postid'.$wp_session['count']] = $_POST['postid'];
+					$wp_session[$_POST['programid'].'qty'] = $wp_session[$_POST['programid'].'qty'] + 1;
+					$wp_session['count'] = $wp_session['count'] + 1;
+					//setup new session to programs.
+					//echo 'add';
 				}
-				$wp_session[$_POST['programid']] = $_POST['programid'];
-				$wp_session['programid'.$wp_session['count']] = $_POST['programid'];
-				$wp_session['postid'.$wp_session['count']] = $_POST['postid'];
-				$wp_session[$_POST['programid'].'qty'] = $wp_session[$_POST['programid'].'qty'] + 1;
-				$wp_session['count'] = $wp_session['count'] + 1;
-				//setup new session to programs.
-				//echo 'add';
 			}
+			$wp_session['post_time'] = $_POST['post_timing'];// check the post whether first time submit and not reflash page
 		}
+
 
 ?>
 <?php while (have_posts()) : the_post(); ?>
@@ -147,7 +151,9 @@ $wp_session = WP_Session::get_instance();
             <?php //echo json_encode($array); ?>
 		</div>
 		<a href="<?php echo site_url(); ?>/program-catalogue/" class="btn btn-simple"><span class="graphic arrow-left-black"></span>Continue Shopping</a>
+        <?php if($input_start > 1){ ?>
 		<a href="#" class="btn btn-simple pull-right" onclick="document.getElementById('post_json').submit();">Checkout<span class="graphic arrow-right-black"></span></a>
+        <?php } ?>
 	</div>
 
 </article>
@@ -162,6 +168,5 @@ $runjs = '
 </script>
 
 ';
-
 echo $runjs; endwhile; 
 ?>
