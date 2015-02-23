@@ -1,4 +1,4 @@
-<?php 
+<?php
 									 ?>
 <div class="person col-xs-12 col-sm-6 col-md-4"
 	data-title="<?php the_title();?>"
@@ -12,7 +12,7 @@
 			<div class="col-xs-6">
 				<div class="row">
 					<img src="<?php echo getFeaturedUrl(); ?>" class="img-responsive img-circle"
-						 data-src="<?php echo getFeaturedUrl(); ?>" alt="150x150"
+						 data-src="<?php echo getFeaturedUrl(); ?>" alt="Photo of <?php the_title(); ?>"
 						 data-holder-rendered="true"/>
 					<div class="graphic panel-info-callout"></div>
 
@@ -27,7 +27,7 @@
 						<br>
 					<?php endif; ?>
 					*/ ?>
-					<span>VIEW BIO</span>
+					<span>VIEW BIO</span><br>
 					<span><?php edit_post_link(); ?></span>
 				</div>
 			</div>
