@@ -87,7 +87,7 @@
 				<h2>PDF DOwnload</h2>
 				<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">
 				<i class="dashicons-download dashicons"></i>
-				<?php echo get_field('pdf_download')['title']; ?>
+				<?php echo "[PDF] ".get_field('pdf_download')['title']; ?>
 				</a>
 				<?php } ?>
 				<!-- <h2>Audience</h2> -->
@@ -301,13 +301,11 @@
 		<div class="container">
 			<div class="col-sm-8">
 				<h2>Cancellation Policy</h2>
-				<?php if(get_field('faqs')){ ?>
-				<?php the_field('cancellation_policy'); ?>
-				<?php } ?>
+				<p>If a participant registers for this program and for some unforseen reason needs to cancel or alter their registration, they should notify the QELi team immediately. Failure to do so within&nbsp;seven (7)&nbsp;business days of the program commencement date will result in their organisation being liable for the full cost of registration fees, as per QELi policy. If a participant cancels their registration for this program between&nbsp;eight (8) and thirty (30)&nbsp;business days prior to the program commencement date, then a 25% administration charge will apply.</p>
 			</div>
 		</div>
 	</div>
-
+<?php /* ?>
 	<div class="row ">
 		<div class="container">
 			<div class="col-sm-8">
@@ -327,6 +325,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="panel">
 						<div class="panel-heading" role="tab" id="heading-resources">
 							<a class="collapsed" data-toggle="collapse" data-parent="#accordion-outline" href="#collapse-resources" aria-expanded="true" aria-controls="collapse-resources">
@@ -341,11 +340,13 @@
 							</div>
 						</div>
 					</div>
+
 				
 				</div>
 			</div>
 		</div>
 	</div>
+	*/ ?>
 <?php /* ?>
 	
 	<div class="row colored-background">
