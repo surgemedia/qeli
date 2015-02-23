@@ -72,19 +72,19 @@
 				<?php the_field('program_outline'); ?>
 				<?php } ?>
 				<?php if(get_field('articulation')){ ?>
-				<h2>Aiming Higher</h2>
+				<h2>Aiming Higher?</h2>
 				<?php the_field('articulation'); ?>
 				<?php } ?>
 				<?php if(get_field('executive_summary')) { ?>
 				<h2>Cost</h2>
 					<h4>
 					<?php $cost = strip_tags(get_field('cost')); ?>
-					<?php echo'$'.$cost; ?>
+					<?php echo'$'.$cost." +GST"; ?>
 					</h4>
 					<!-- <h5>Sounds right for you? <strong>Select a date and registor now.</strong> </h5> -->
 				<?php }  ?>
 				<?php if(get_field('pdf_download')){ ?>
-				<h2>PDF DOwnload</h2>
+				<h2>Download PDF</h2>
 				<a target="_blank" href="<?php echo get_field('pdf_download')['url']; ?>">
 				<i class="dashicons-download dashicons"></i>
 				<?php echo "[PDF] ".get_field('pdf_download')['title']; ?>
@@ -113,15 +113,15 @@
 										<?php the_field('length') ?>
 									</li>
 									<li>
-										<h3>Delivery</h3>
+										<h3>Delivery Method</h3>
 										<?php the_field('deliveryMethod'); ?>
 									</li>
 
 									<li>
-										<h3>Cost (incl discounts): </h3>
+										<h3>Cost </h3>
 										<p>
 										<?php $cost = strip_tags(get_field('cost')); ?>
-										<?php echo'$'.$cost; ?>
+										<?php echo'$'.$cost." +GST"; ?>
 										</p>
 									</li>
 									
@@ -264,7 +264,7 @@
 	<div class="row">
 		<div class="container">
 			<div class="col-sm-8">
-				<h2>Testimonial</h2>
+				<h2>What others are saying</h2>
 				<?php
 					// WP_Query arguments
 				
