@@ -24,7 +24,9 @@ Template Name: Qeli Talks/Videos
 				</div>
 				<?php endif;?>
 				<?php if(get_field('featured_video')) {
-					$video_id = get_field('embed_code',$featured_id);
+					$video_id = get_post_meta($featured_id)['talks_0_embed_code'][0];
+					//debug(get_post_meta($featured_id)['talks_0_embed_code'][0]);
+					
 				?>
 				<a href="#" class="video-popup-thumbnail" data-url="//www.youtube.com/embed/<?php echo cleanYoutubeLink($video_id); ?>" data-modal="#videoModal" data-width="400" data-height="225" role="button">
 					<span class="graphic btn-play-lg"></span>
