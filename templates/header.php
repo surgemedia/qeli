@@ -45,9 +45,7 @@
 						<div id="subscribe-collapse" class="panel subscribe-form collapse">
 							<div class="panel-heading">
 								<h3>Subscribe</h3><span class="graphic icon-close" data-target="#subscribe-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="contact-collapse"></span>
-
 							</div>
-							
 							<div class="panel-body">
 								<form action="http://qeli.createsend.com/t/d/s/tutydt/" method="post">
 								  <label class="sr-only"><?php _e('Subscribe', 'roots'); ?></label>
@@ -59,7 +57,13 @@
 								  </div>
 								</form>
 							</div>	
-						
+						</div>
+					</li>
+					<li>
+						<a href="cart" class="cart-link">
+							<span class="graphic icon-cart"></span>
+							Cart
+						</a>
 					</li>
 				</ul>
 			</div>

@@ -92,3 +92,28 @@
 		}
 	}
 }
+
+input[type="radio"] {
+	display: none;
+}
+
+input[type="radio"] + label {
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+input[type="radio"] + label:before {
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: #fff;
+	border: 2px solid @green;
+	border-radius: 8px;
+	display: inline-block;
+	margin-right: 5px;
+	vertical-align: -3px;	
+}
+
+input[type="radio"]:checked + label:before {
+	background: @green;
+}
