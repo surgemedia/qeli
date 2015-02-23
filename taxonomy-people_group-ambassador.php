@@ -10,11 +10,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
-		<div class="container">
+	
 		<?php while (have_posts()) : the_post(); ?>
+			<div class="container">
 			<?php  get_template_part('templates/content-taxonomy', 'ambassador'); ?>
+			</div>
+			<hr>
 		<?php endwhile; ?>
-		</div>
-	</div>
 </article>
