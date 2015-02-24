@@ -324,6 +324,7 @@
 			background-position: center center;
 			background-attachment: fixed;
 			color: #fff;
+			-webkit-font-smoothing: antialiased;
 			/*
 			@media
 				only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -348,20 +349,21 @@
 				display: inline-block;
 			}
 			.feature-facilitator {
-				-webkit-font-smoothing: antialiased;
 				img{
 					max-width: 100px;
 				}
 				h3{
-					margin-top:0;
+					margin-top: 10px;
 				}
 			}
 			.featured-testimonial{
-				-webkit-font-smoothing: antialiased;
 				margin: 0px 0 20px 0;
-				h3{
-					margin-top:0;
-				}
+				
+				.meta {
+					font-family: @font-bold;
+					font-size: 13px;
+					text-transform: uppercase;
+				}	
 			}
 
 			&:before {
