@@ -59,10 +59,11 @@
 							</div>	
 						</div>
 					</li>
-					<li>
-						<a href="cart" class="cart-link">
-							<span class="graphic icon-cart"></span>
+					<li  class="main-menu-item">
+						<a href="cart" class="menu-link">
+							<span class="graphic nav-icon nav-cart"></span>
 							Cart
+							<span class="graphic nav-menu-callout"></span>
 						</a>
 					</li>
 				</ul>
