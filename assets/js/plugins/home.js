@@ -42,6 +42,7 @@ $(document).ready(function () {
 				}
 
 				initVideo();
+				initSlider();
 			}, 250);
 		};
 	}
@@ -49,10 +50,9 @@ $(document).ready(function () {
 	function initSlider() {
 		 $('.bxslider-partners').bxSlider({
 		 	pager: false,
-		 	nextText: 'Next',
-		 	prevText: 'Prev',
-		 	nextSelector: $('.arrow-right-black'),
-		 	prevSelector: $('.arrow-left-black')
+		 	maxSlides: !isMobile ? 3 : 1,
+		 	slideWidth: !isMobile ? ($('.our-partners .container').width())/3 : $('.our-partners .container').width(),
+		 	moveSlides: 1
 		 });
 	}
 
