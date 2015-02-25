@@ -2,6 +2,7 @@
 				$course_id = get_the_ID();
 				$instanes = get_field('instances');
 				$facil_array = false;
+				$suffix = ", ";
 				for ($i=0; $i < sizeof($instanes); $i++) {
 					if( 0 < strlen($instanes[$i]['facilitator'])){
 						$facil = $instanes[$i]['facilitator'];
@@ -9,15 +10,20 @@
 							$facil_array = explode(',', $facil);
 						} else {
 							$facil_array = array($facil);
+							
 						}
 					}
 					//slit into array
 				}
+
 				if(false != $facil_array){
 				//use array of facilactors to get template
 					for ($i=0; $i < sizeof($facil_array); $i++) {
 						$GLOBALS['facilitator'] = $facil_array[$i];
-						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.",";
+						if(1 == count($facil_array)){
+							$suffix = "";
+						}
+						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.$suffix;
 					//extends scope for the facil loop
 					}
 				}
