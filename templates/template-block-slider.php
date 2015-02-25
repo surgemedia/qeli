@@ -3,9 +3,10 @@
   <?php //debug(get_field('sliders')) ?>
 
   <div class="home-images" style="background-image: url('<?php echo get_field('sliders')['0']['image']['url']; ?>')">
+  <?php the_field( "banner_text" ); ?>
     <div class="call-to-action">
       <div class="container">
-          <div class="col-xs-8"><?php echo get_field('sliders')['0']['title']; ?></div>
+          <div class="col-xs-8"><?php echo get_field('sliders')['0']['footer_text']; ?></div>
           <div class="col-xs-4 text-right"><a href="<?php echo get_permalink( 157 ); ?>" class="big-link"><span class="graphic arrow-link-sq-white"></span> See our solutions</a></div>
       </div>
     </div>
