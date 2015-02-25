@@ -46,15 +46,16 @@
 				<?php if(get_field('statement')) { ?>
 				<?php the_field('statement') ?>
 				<?php } ?>
-				
-				
-				
 			</div>
 			<div class="container">
-			<?php if(get_field('audience')) { ?>
+			
 			<h2>A program suitable for</h2>
-				<?php the_field('audience') ?>
-				<?php edit_post_link(); ?>
+				<?php 
+				$audience = strip_tags(get_the_taxonomies()['courses_categories']);
+				$audience_array = explode(':',$audience)[1];
+				$audience_list = explode(',',$audience_array);
+				for ($i=0; $i < count($audience_list); $i++) { ?>
+					<li><?php echo $audience_list[$i]; ?></li>
 				<?php } ?>
 				</div>
 		</div>
