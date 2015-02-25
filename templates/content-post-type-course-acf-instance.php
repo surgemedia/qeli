@@ -18,14 +18,14 @@ $programinstance_type = 'Scheduled Instance';
   <div class="panel-heading" role="tab" id="heading<?Php echo $GLOBALS['instance_count'] ?>">
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?Php echo $GLOBALS['instance_count'] ?>" aria-expanded="true" aria-controls="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="collapsed">
       <h3 class="panel-title">
-      <span class="graphic arrow-panel-gray <?php echo $programinstance_type ?>"></span><?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name']; ?> <?php // echo get_field('instances')[$GLOBALS['instance_count']]['city'] ?><span class="graphic icon-toggle pull-right"></span>
+      <span class="graphic arrow-panel-gray <?php echo $programinstance_type ?>"></span><?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name']; ?> <?php// echo get_field('instances')[$GLOBALS['instance_count']]['city'] ?><span class="graphic icon-toggle pull-right"></span>
       </h3>
     </a>
   </div>
   <div id="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?Php echo $GLOBALS['instance_count'] ?>">
     <div class="panel-body">
       <p>
-      <?php // debug(get_field('instances')[$GLOBALS['instance_count']]['venues']);
+      <?php
       $venunes = get_field('instances')[$GLOBALS['instance_count']]['venues']; ?>
       <?php for ($i=0; $i < sizeof($venunes); $i++) {
       echo "<strong>";
