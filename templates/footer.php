@@ -32,7 +32,7 @@
             <?php
             // these need to be setup so they reference the links to the pages via a query;
             ?>
-            <p class="blue"><a href="http://54.79.72.151/~qeliedu/privacy-policy/">Privacy Policy</a> | <a href="http://54.79.72.151/~qeliedu/sitemap/">Sitemap</a> | <a href="http://54.79.72.151/~qeliedu/terms-of-use/">Terms of Use</a> | <a href="http://54.79.72.151/~qeliedu/disclaimer/">Disclaimer</a></p>
+            <p class="blue"><a href="/privacy-policy/">Privacy Policy</a> <!-- | <a href="http://54.79.72.151/~qeliedu/sitemap/">Sitemap</a> --> | <a href="/terms-of-use/">Terms of Use</a> | <a href="/disclaimer/">Disclaimer</a></p>
             <p>©2014 QELi. All rights reserved  |  credits / surge media / breadcrumb digital /  volt design</p>
             </div>
         </div>
