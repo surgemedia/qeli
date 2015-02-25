@@ -27,8 +27,11 @@ Template Name: Json Cron Jobs
 			
 Course Import - Json Cron to Save in Web locally
 ==============================================*/
-if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron jobs
-	
+if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron jobs ?>
+	<script>
+	alert('failed!!!!');
+	</script>
+<?PHP	
 	exit;
 	//If someone try to view this page without password, it will just display Hello World, make it look like is the test page only.
 }else{
@@ -214,12 +217,12 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					
 				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
 									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
-									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'],
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhen'],
 									"field_54ab271828d67" => $city_slug[$i][$j],
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,
-									"field_54ab312929435" => $facilitatorIds_array_output,
-									"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
+									"field_54ab312929435" => $facilitatorIds_array_output]);
+									// "field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering'
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
 					$instances[$j]['venues'][$k]['room'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'];

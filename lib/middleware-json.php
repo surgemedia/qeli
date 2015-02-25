@@ -225,12 +225,12 @@ function json_import_function(){
 					
 				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
 									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
-									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['name'],
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhen'],
 									"field_54ab271828d67" => $city_slug[$i][$j],
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,
-									"field_54ab312929435" => $facilitatorIds_array_output,
-									"field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
+									"field_54ab312929435" => $facilitatorIds_array_output]);
+									// "field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
 					$instances[$j]['venues'][$k]['room'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'];
@@ -242,12 +242,12 @@ function json_import_function(){
 					$instances[$j]['venues'][$k]['postcode'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode'];
 					$instances[$j]['venues'][$k]['country'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country'];
 				}
-				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
-														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
-														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
-				}
+				// for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
+				// 	$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
+				// 										"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
+				// 										"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
+				// 										"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
+				// }
 			}
 			//echo '<p>'.$check_item_row_id[$i].'</p>??';
 			if($check_item_row_id[$i]==""){
@@ -285,20 +285,20 @@ function json_import_function(){
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				update_field('executive_summary', $jsonIterator[$i]['executiveSummary'], $post_ID);
-				update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
+				// update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
 				update_field('outcome', $jsonIterator[$i]['outcome'], $post_ID);
 				update_field('articulation', $jsonIterator[$i]['articulation'], $post_ID);
-				update_field('program_outline', $jsonIterator[$i]['programOutline'], $post_ID);
+				update_field('program_outline', $jsonIterator[$i]['programDelivery'], $post_ID);
 				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
 				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
 				update_field('length', $jsonIterator[$i]['length'], $post_ID);
 				update_field('deliveryMethod', $jsonIterator[$i]['deliveryMethod'], $post_ID);
 				update_field('faqs', $jsonIterator[$i]['faqs'], $post_ID);
-				update_field('resources', $jsonIterator[$i]['resources'], $post_ID);
-				update_field('cancellation_policy', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
+				// update_field('resources', $jsonIterator[$i]['resources'], $post_ID);
+				// update_field('cancellation_policy', $jsonIterator[$i]['cancellationPolicy'], $post_ID);
 				update_field('date_last_updated', $jsonIterator[$i]['dateLastUpdated'], $post_ID);
 				update_field('related_programs', $rp_slug[$i], $post_ID);
-				update_field('locations', $add_to_location[$i], $post_ID);
+				// update_field('locations', $add_to_location[$i], $post_ID);
 				
 				
 				unset($value);
