@@ -3,7 +3,7 @@
   <?php //debug(get_field('sliders')) ?>
 
   <div class="home-images" style="background-image: url('<?php echo get_field('sliders')['0']['image']['url']; ?>')">
-  <?php echo get_field('sliders')['0']['header_text']; ?>
+  <div class="container"><h1> <?php echo get_field('sliders')['0']['header_text']; ?></h1></div>
     <div class="call-to-action">
       <div class="container">
           <div class="col-xs-8"><?php echo get_field('sliders')['0']['footer_text']; ?></div>
