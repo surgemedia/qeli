@@ -353,11 +353,11 @@ endwhile;
 
 
 ?>
-<!-- <script language="javascript">
+<script language="javascript">
 	window.opener=null;
 	window.open("","_self");
 	window.close();
-</script> -->
+</script>
 <?
 mysql_close();
 exit;
