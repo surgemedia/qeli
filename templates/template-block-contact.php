@@ -6,16 +6,15 @@
               <span class="h1" style="color:#fff;">QEL<span class="text-lowercase">i is</span></span>
               <?php the_field('home_blurb'); ?>
             </p>
+            
+           
             <br class="hidden-xs">
             <p>
-              QELi is a vital investment.
-            </p>
-            <br class="hidden-xs">
-            <p>
-              <a href="<?php the_field('home_link'); ?>" class="big-link"><span class="graphic arrow-link-sq"></span> See which program is best for you</a>
+              <a href="<?php the_field('home_link'); ?>" class="big-link"><span class="graphic arrow-link-sq"></span> Choose to invest in your future now</a>
             </p>
           </div>
           <div class="section-footer">
             <span class="graphic arrow-section-down"></span>
           </div>
         </div>
+290backlog10
