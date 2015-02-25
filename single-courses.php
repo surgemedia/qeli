@@ -262,12 +262,7 @@
 					<?php } // if no realted courses ?>
 <!-- Related Programs -->
 </div>
-	<!-- Testimonimals -->
-	<div class="row">
-		<div class="container">
-			<div class="col-sm-8">
-				<h2>What others are saying</h2>
-				<?php
+<?php
 					// WP_Query arguments
 				
 				
@@ -280,7 +275,16 @@
 												),
 						);
 						// The Query
-						$query = new WP_Query( $args );
+						$query = new WP_Query( $args ); ?>
+				<?php
+				if ( $query->have_posts() ) { ?>
+	<!-- Testimonimals -->
+	<div class="row">
+		<div class="container">
+			<div class="col-sm-8">
+				<h2>What others are saying</h2>
+				<?php  } ?>
+				<?php
 				if ( $query->have_posts() ) {
 					while ( $query->have_posts() ) {
 						$query->the_post();
@@ -288,15 +292,20 @@
 					}
 				}
 				else {
-					get_template_part('templates/content', 'no-posts');
+					//get_template_part('templates/content', 'no-posts');
 				}
 					// Restore original Post Data
-				wp_reset_postdata();
 					// WP_Query arguments
 				?>
+				<?php
+				if ( $query->have_posts() ) { ?>
 			</div>
 		</div>
 	</div>
+	<?php  } 
+				wp_reset_postdata();
+
+	?>
 	<!-- Testimonimals -->
 	
 	<div class="row colored-background">
