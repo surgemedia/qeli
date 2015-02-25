@@ -236,12 +236,12 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					$instances[$j]['venues'][$k]['postcode'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode'];
 					$instances[$j]['venues'][$k]['country'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country'];
 				}
-				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-					$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
-														"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
-														"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
-														"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
-				}
+				// for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
+				// 	$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
+				// 										"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
+				// 										"field_54bee8d63269f" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['start'],
+				// 										"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
+				// }
 			}
 			//echo '<p>'.$check_item_row_id[$i].'</p>??';
 			if($check_item_row_id[$i]==""){
