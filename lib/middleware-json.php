@@ -229,7 +229,7 @@ function json_import_function(){
 									"field_54ab271828d67" => $city_slug[$i][$j],
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,
-									"field_54ab312929435" => $facilitatorIds_array_output]);
+									"field_54ab312929435" => $facilitatorIds_array_output);
 									// "field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering']);
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
