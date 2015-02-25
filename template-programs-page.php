@@ -76,7 +76,7 @@ Template Name: Programs Page
 						<div class="panel panel-programs">
 							<div class="panel-heading">
 								<div class="numbering">2</div>
-								<h3 class="panel-title">Custom Programs</h3>
+								<h3 class="panel-title">Customised Programs</h3>
 							</div>
 							<div class="panel-body">
 								<?php the_field('custom_programs'); ?>
