@@ -26,7 +26,7 @@ Template Name: Partners
 						?>" class="img-responsive"/>
 					</div>
 					<div class="col-xs-12 col-sm-9">
-						<div class="numbering"><?php echo $i; ?></div>
+						<!-- <div class="numbering"><?php // echo $i; ?></div> -->
 						<h2><?php the_sub_field('name'); ?></h2>
 						<?php the_sub_field('description'); ?>
 						<a href="<?php the_sub_field('homepage'); ?>" target="_blank"><span class="graphic arrow-right-outline"></span><?php the_sub_field('homepage'); ?></a>
