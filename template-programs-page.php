@@ -69,7 +69,7 @@ Template Name: Programs Page
 								<br>
 								<br>
 								<p>Or visit the Programs Catalogue for more options to search by</p>
-								<a href="http://54.79.72.151/~qeliedu/program-catalogue/" class="btn btn-shadowed text-uppercase"><span class="graphic arrow-right"></span>Program Catalogue</a>
+								<a href="/program-catalogue/" class="btn btn-shadowed text-uppercase"><span class="graphic arrow-right"></span>Program Catalogue</a>
 							</div>
 						</div>
 					</div>
