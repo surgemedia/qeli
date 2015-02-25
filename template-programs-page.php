@@ -33,8 +33,7 @@ Template Name: Programs Page
 							<h3 class="panel-title">Scheduled Programs</h3>
 						</div>
 						<div class="panel-body">
-							<p>QELi runs a selection of scheduled programs which you can enrol in directly on this site. </p>
-							<p>If you know the name of your course then please select it here:</p>
+							<?php the_field('scheduled_text'); ?>
 							
 							<select class="col-lg-8 col-sm-12">
 								<option> - Program Name - </option>
@@ -68,7 +67,7 @@ Template Name: Programs Page
 								</select> <a href="<?php //TODO @walt get data url ?>" class="btn btn-shadowed small col-lg-1">go</a>
 								<br>
 								<br>
-								<?php the_field('scheduled_text'); ?>
+								
 								<a href="/program-catalogue/" class="btn btn-shadowed text-uppercase"><span class="graphic arrow-right"></span>Program Catalogue</a>
 							</div>
 						</div>
