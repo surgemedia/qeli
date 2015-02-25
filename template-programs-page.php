@@ -30,14 +30,14 @@ Template Name: Programs Page
 					<div class="panel panel-programs">
 						<div class="panel-heading">
 							<div class="numbering">1</div>
-							<h3 class="panel-title">Schdeuled Programs</h3>
+							<h3 class="panel-title">Scheduled Programs</h3>
 						</div>
 						<div class="panel-body">
 							<p>QELi runs a selection of scheduled programs which you can enrol in directly on this site. </p>
 							<p>If you know the name of your course then please select it here:</p>
 							
 							<select class="col-lg-8 col-sm-12">
-								<option> - Course Name - </option>
+								<option> - Program Name - </option>
 								<?php
 								
 								// WP_Query arguments
@@ -68,7 +68,7 @@ Template Name: Programs Page
 								</select> <a href="<?php //TODO @walt get data url ?>" class="btn btn-shadowed small col-lg-1">go</a>
 								<br>
 								<br>
-								<p>Or visit the Programs Catalogue for more options to search by</p>
+								<?php the_field('scheduled_text'); ?>
 								<a href="/program-catalogue/" class="btn btn-shadowed text-uppercase"><span class="graphic arrow-right"></span>Program Catalogue</a>
 							</div>
 						</div>
@@ -80,7 +80,7 @@ Template Name: Programs Page
 								<h3 class="panel-title">Custom Programs</h3>
 							</div>
 							<div class="panel-body">
-								<p>We’ll work closely with you to understand your situation, requirements and goals. We can then customise and contextualise one of our existing programs, or create an integrated leadership development solution specifically for you. QELi’s customised programs can be delivered on-site and within budget.</p>
+								<?php the_field('custom_programs'); ?>
 								<br>
 								<br>
 								<a href="/customised-programs/" class="btn btn-shadowed text-uppercase"><span class="graphic arrow-right"></span>Read more</a>
@@ -94,7 +94,7 @@ Template Name: Programs Page
 								<h3 class="panel-title">Specialist Services</h3>
 							</div>
 							<div class="panel-body">
-								<p>QELi can fully customise leadership programs for schools, systems and sectors across Australia and internationally. Our approach, program design and delivery can be tailored to the specific needs of your context and school setting.</p>
+								<?php the_field('specialist_services'); ?>
 								<br>
 								<br>
 								<br>
