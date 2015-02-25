@@ -36,7 +36,7 @@ Template Name: Programs Page
 							<p>QELi runs a selection of scheduled programs which you can enrol in directly on this site. </p>
 							<p>If you know the name of your course then please select it here:</p>
 							
-							<select>
+							<select class="col-lg-8 col-sm-12">
 								<option> - Course Name - </option>
 								<?php
 								
@@ -65,7 +65,7 @@ Template Name: Programs Page
 								// Restore original Post Data
 								wp_reset_postdata();
 								?>
-								</select> <a href="<?php //TODO @walt get data url ?>" class="btn btn-shadowed small">go</a>
+								</select> <a href="<?php //TODO @walt get data url ?>" class="btn btn-shadowed small col-lg-1">go</a>
 								<br>
 								<br>
 								<p>Or visit the Programs Catalogue for more options to search by</p>
