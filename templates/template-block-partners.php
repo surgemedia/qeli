@@ -13,7 +13,7 @@
 			<ul class="bxslider-partners">
 			<?php while(have_rows('partners')): the_row();?>
 				<li>
-					<a href="<?php the_sub_field('homepage'); ?>" target="_blank">
+					<a href="/our-partners/" >
 						<img src="<?php $id = get_sub_field('image');
 									echo wp_get_attachment_image_src($id, 'qeli-partner-logo')[0]; ?>" 
 							class="img-responsive"/>
