@@ -111,7 +111,8 @@ function json_import_function(){
 					$check_item_id = get_the_id();
 					$check_content = get_the_content();
 					$check_title = get_the_title();
-					if($check_content == $jsonIterator[$i]['programId'] && $check_title == $jsonIterator[$i]['title']){
+					//echo '<pre>'.$check_content.'='.$jsonIterator[$i]['programId'].'</pre><br>';
+					if($check_content == $jsonIterator[$i]['programId'] ){
 						if($first_while_item_get == 0 ){
 							$check_item_row_id[$i] = $check_item_id;
 							$first_while_item_get = 2;
@@ -225,7 +226,7 @@ function json_import_function(){
 					
 				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
 									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
-									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhen'],
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhere'],
 									"field_54ab271828d67" => $city_slug[$i][$j],
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,

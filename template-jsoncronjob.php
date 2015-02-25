@@ -89,7 +89,9 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					$check_item_id = get_the_id();
 					$check_content = get_the_content();
 					$check_title = get_the_title();
-					if($check_content == $jsonIterator[$i]['programId'] && $check_title == $jsonIterator[$i]['title']){
+
+					if($check_content == $jsonIterator[$i]['programId']){
+						//echo '<pre>'.$check_content.'='.$jsonIterator[$i]['programId'].'</pre><br>';
 						if($first_while_item_get == 0 ){
 							$check_item_row_id[$i] = $check_item_id;
 							$first_while_item_get = 2;
@@ -217,11 +219,11 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					
 				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
 									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
-									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhen'],
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhere'],
 									"field_54ab271828d67" => $city_slug[$i][$j],
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,
-									"field_54ab312929435" => $facilitatorIds_array_output]);
+									"field_54ab312929435" => $facilitatorIds_array_output);
 									// "field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering'
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
@@ -283,7 +285,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				update_field('audience', $jsonIterator[$i]['audience'], $post_ID);
 				update_field('outcome', $jsonIterator[$i]['outcome'], $post_ID);
 				update_field('articulation', $jsonIterator[$i]['articulation'], $post_ID);
-				update_field('program_outline', $jsonIterator[$i]['programOutline'], $post_ID);
+				update_field('program_outline', $jsonIterator[$i]['programDelivery'], $post_ID);
 				update_field('prerequisites', $jsonIterator[$i]['preRequisites'], $post_ID);
 				update_field('cost', $jsonIterator[$i]['rrp'], $post_ID);
 				update_field('length', $jsonIterator[$i]['length'], $post_ID);
@@ -351,11 +353,11 @@ endwhile;
 
 
 ?>
-<script language="javascript">
+<!-- <script language="javascript">
 	window.opener=null;
 	window.open("","_self");
 	window.close();
-</script>
+</script> -->
 <?
 mysql_close();
 exit;
