@@ -65,7 +65,7 @@ Template Name: Programs Page
 								// Restore original Post Data
 								wp_reset_postdata();
 								?>
-								</select> <a href="http://54.79.72.151/~qeliedu/courses/resource-management-for-educational-leaders/" class="btn btn-shadowed small">go</a>
+								</select> <a href="<?php //TODO @walt get data url ?>" class="btn btn-shadowed small">go</a>
 								<br>
 								<br>
 								<p>Or visit the Programs Catalogue for more options to search by</p>
