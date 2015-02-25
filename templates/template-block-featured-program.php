@@ -1,6 +1,6 @@
 <div class="section featured-program green">
   <div class="container center-all">
-    <h2 class="text-uppercase">Featured Program</h2>
+    <h2 class="text-uppercase">Monthy promotion</h2>
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
