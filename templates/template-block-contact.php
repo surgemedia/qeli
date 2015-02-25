@@ -17,4 +17,3 @@
             <span class="graphic arrow-section-down"></span>
           </div>
         </div>
-290backlog10
