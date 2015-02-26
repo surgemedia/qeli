@@ -93,7 +93,7 @@ $tags_fill = array_filter($tags_fill);
       </div>
     </div>
    <div class="leadin container">
-  <h2>What is your current or aspiring postion</h2>
+  <h2>What is your current or aspiring postion?</h2>
   </div>
     <div class="colored-background">
       <div class="container">
