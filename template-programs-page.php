@@ -35,36 +35,36 @@ Template Name: Programs Page
 						<div class="panel-body">
 							<?php the_field('scheduled_text'); ?>
 							
-							<select class="col-lg-8 col-sm-12">
+							<select name="scheduled-programs" id="scheduled-programs" class="col-lg-8 col-sm-12">
 								<option> - Program Name - </option>
 								<?php
 								
-								// WP_Query arguments
-								$args = array (
-								'post_type'              => 'courses',
-								'meta_query'             => array(
-								array(
-								'key'       => 'instances_0_type',
-								'value'     => '1',
-								),
-								),
-								
-								);
-								// The Query
-								$query = new WP_Query( $args );
-								// The Loop
-								if ( $query->have_posts() ) {
-								while ( $query->have_posts() ) {
-								$query->the_post(); ?>
-								<option data-url="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
-								<?php }
-								} else {
-								// no posts found
-								}
-								// Restore original Post Data
-								wp_reset_postdata();
+									// WP_Query arguments
+									$args = array (
+										'post_type'              => 'courses',
+										'meta_query'             => array(
+											array(
+											'key'       => 'instances_0_type',
+											'value'     => '1',
+											),
+										),
+									
+									);
+									// The Query
+									$query = new WP_Query( $args );
+									// The Loop
+									if ( $query->have_posts() ) {
+									while ( $query->have_posts() ) {
+									$query->the_post(); ?>
+									<option value="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
+									<?php }
+									} else {
+									// no posts found
+									}
+									// Restore original Post Data
+									wp_reset_postdata();
 								?>
-								</select> <a href="<?php //TODO @walt get data url ?>" class="btn btn-shadowed small col-lg-1">go</a>
+								</select> <a href="<?php //TODO @walt get data url ?>" class="btn-go btn btn-shadowed small col-lg-1">go</a>
 								<br>
 								<br>
 								

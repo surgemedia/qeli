@@ -134,8 +134,6 @@
 										</p>
 									</li>
 									
-									
-									
 									<li>
 									<h3>When </h3>
 										<form action="<?php echo site_url();?>/cart/" method="post" id="course_add_to_cart">
@@ -143,8 +141,11 @@
 											<input type="hidden" name="post_timing" value="<?php echo time();?>" />
 											<?php
 											if( get_field('instances') ){
+												$i = 0;
+
 												while( has_sub_field('instances') )
 												{
+													$i++;
 													$programinstanceid = get_sub_field('programinstanceid');
 													$programinstance_city = get_sub_field('city');
 													$programinstance_type;
@@ -161,14 +162,16 @@
 														default:
 														$programinstance_type = 'Scheduled Instance';
 													}
+													
 													$instances_name = get_sub_field('instances_name');
-											if((get_sub_field('instances_name'))){ ?>
-											<div>
-											<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" value="<?php echo $programinstanceid ?>"/>
-											<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?></label>
-											</div>
-											<?php }
-											}
+
+													if((get_sub_field('instances_name'))){ ?>
+														<div>
+															<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
+															<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?></label>
+														</div>
+													<?php }
+												}
 											}
 											?>
 										</form>
