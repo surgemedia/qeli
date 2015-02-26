@@ -6,7 +6,7 @@
 				// Get the ids in an array
 				for ($i=0; $i < sizeof($instanes); $i++) {
 						$facil = trim($instanes[$i]['facilitator']);
-						debug($facil );
+						
 						if(0 < strlen($facil)){
 						if(false === strstr($facil,',')){
 							array_push($facil_array, trim($facil));
@@ -21,11 +21,16 @@
 					}
 					
 				}
+				
 				// Get the name for at a glance
 				if(false != $facil_array){
+
+					$facil_array = array_keys(array_flip($facil_array));
 					for ($y=0; $y < sizeof($facil_array); $y++) {
-						if(1 == count($facil_array)){
+						debug( sizeof($facil_array)." + ".$y);
+						if($y+1 == sizeof($facil_array)){
 							$suffix = "";
+
 						}
 						$GLOBALS['facilitator_names'] .= get_post($facil_array[$y])->post_title.$suffix;
 					}
@@ -116,8 +121,9 @@
 								<ul class="list-striped">
 									<li>
 										<h3>Facilitator: </h3>
-										<p>
-											<?php echo $GLOBALS['facilitator_names']; ?>
+										<p><?php
+											 echo $GLOBALS['facilitator_names']; ?>
+
 										</p>
 									</li>
 									<li>
@@ -202,15 +208,19 @@
 				
 				if(false != $facil_array){
 				
+
+				//$facil_array = array_keys(array_flip($facil_array));
+				//debug(array_flip($facil_array));
+
 					for ($k=0; $k < sizeof($facil_array); $k++) {
 					//extends scope for the facil loop
 						$GLOBALS['facilitator'] = $facil_array[$k];
-						$GLOBALS['facilitator_names'] .= get_post($facil_array[$i])->post_title.",";
+						
 						get_template_part('templates/content-post-type', 'course-facilitator-for-loop');
 					}
 					unset($GLOBALS['facilitator']);
 				}
-							else {	get_template_part('templates/content', 'no-posts'); }
+							else {	get_template_part('templates/content', 'no-facilitator'); }
 				?>
 			</div>
 		</div>
