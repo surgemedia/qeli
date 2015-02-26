@@ -12,9 +12,9 @@ Template Name: Media Releases
 		?>')">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
 			<div class="container header-text">
-				<p>
+				
 				<?php the_content(); ?>
-				</p>
+				
 			</div>
 		</div>
 	</div>
