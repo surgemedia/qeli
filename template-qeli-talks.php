@@ -52,6 +52,10 @@ Template Name: Qeli Talks/Videos
 					$args = array (
 						'post_type' => 'videoes',
 						'posts_per_page'         => -1,
+						'orderby'         => 'date',
+						'order'         => 'ASC',
+
+
 						'meta_query'    => array(
 						
 						array( 'key' => 'featured',
