@@ -26,7 +26,7 @@ for ($i=0; $i < count($categories); $i++) {
 }
 }
 $audiences_fill = array_filter($audiences_fill);
-debug($audiences_fill);
+
 ?> 
 <?php 
 /*========================================
@@ -56,7 +56,7 @@ for ($i=0; $i < count($categories); $i++) {
   }
 }
 $tags_fill = array_filter($tags_fill);
-debug($tags_fill);
+
 ?> 
 
 
@@ -69,18 +69,22 @@ debug($tags_fill);
       <div class="container">
         <div id="filter-primary">
           <div class="selectors open">
-            <ul class="col-xs-12 filter-group skills" data-filter-group="skills">
+            <ul class="col-xs-12 filter-group tags" data-filter-group="tags">
             
-            <?php for ($i=0; $i < count($audiences_fill); $i++) { 
-              $parts = explode('#',$audiences_fill[$i]);
+            
+
+           <?php for ($i=0; $i < count($tags_fill); $i++) { 
+              $parts = explode('#',$tags_fill[$i]);
 
               ?>
               <li>
-                <a href="#" role="presentation" data-filter=".<?php echo $parts[1]; ?>" data-filter-group="skills" data-value-str="<?php echo $parts[0]; ?>">
+                <a href="#" role="presentation" data-filter=".<?php echo $parts[1]; ?>" data-filter-group="tags" data-value-str="<?php echo $parts[0]; ?>">
                   <span class="filter-arrow">&gt;</span><?php echo $parts[0]; ?>
                 </a>
               </li>
               <?php  } ?>
+
+
 
             </ul>
             
@@ -89,21 +93,21 @@ debug($tags_fill);
       </div>
     </div>
    <div class="leadin container">
-  <h2>Tags?</h2>
+  <h2>What is your current or aspiring postion</h2>
   </div>
     <div class="colored-background">
       <div class="container">
         <div id="filter-extended">
 
           <div class="selectors open">
-            <ul class="col-xs-12 filter-group skills" data-filter-group="skills">
+            <ul class="col-xs-12 filter-group audience" data-filter-group="audience">
              
-              <?php for ($i=0; $i < count($tags_fill); $i++) { 
-              $parts = explode('#',$tags_fill[$i]);
+             <?php for ($i=0; $i < count($audiences_fill); $i++) { 
+              $parts = explode('#',$audiences_fill[$i]);
 
               ?>
               <li>
-                <a href="#" role="presentation" data-filter=".<?php echo $parts[1]; ?>" data-filter-group="skills" data-value-str="<?php echo $parts[0]; ?>">
+                <a href="#" role="presentation" data-filter=".<?php echo $parts[1]; ?>" data-filter-group="audience" data-value-str="<?php echo $parts[0]; ?>">
                   <span class="filter-arrow">&gt;</span><?php echo $parts[0]; ?>
                 </a>
               </li>

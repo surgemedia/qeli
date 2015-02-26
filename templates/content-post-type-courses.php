@@ -1,10 +1,19 @@
-<?php //  ?>
+<?php
+  $audience = strip_tags(get_the_taxonomies()['courses_categories']);
+  $tags = strip_tags(get_the_taxonomies()['courses_tags']);
+  $tags_array = explode(':',$tags)[1];
+
+  $audience_array = explode(':',$audience)[1];
+  $audience_list = explode(',',$audience_array);
+
+  ?>
 <div class="course col-xs-12 col-sm-6" 
-    data-audience="<?php echo strip_tags(get_field('audience')); ?>"
+    data-audience="<?php echo $audience_array; ?>"
     data-fee="<?php echo strip_tags(get_field('cost')); ?>"
-    data-location="<?php echo strip_tags(get_field('instances')[0]['location']); ?>"
-    data-delivery="<?php echo strip_tags(get_field('deliveryMethod')); ?>" 
+    data-tags="<?php echo $tags_array; ?>"
     <?php /* Removed from Course - Alex  ?>
+    data-delivery="<?php echo strip_tags(get_field('deliveryMethod')); ?>" 
+     data-location="<?php echo strip_tags(get_field('instances')[0]['location']); ?>"
     data-month="<?php echo get_field('instances')[0]['date']; ?>" 
     data-development="<?php the_field('development'); ?>" 
     <?php */ ?>
@@ -37,17 +46,26 @@
           </tr>
           <tr>
             <td><b>Audience</b></td>
-            <td><?php truncate(get_field('audience'),5,"..."); ?></td>
+            <td>
+            <ul>
+            <?php 
+        
+        for ($i=0; $i < count($audience_list); $i++) { ?>
+          <li><?php echo $audience_list[$i]; ?></li>
+        <?php } ?>
+        </ul>
+        </td>
           </tr>
           <tr>
             <td><b>Fees</b></td>
             <td><?php echo '$'.strip_tags(get_field('cost')); ?></td>
           </tr>
+          <?php /*  Removed from Course - Alex ?>
           <tr>
             <td><b>Location</b></td>
             <td><?php echo get_field('locations'); ?></td>
           </tr>
-          <?php /*  Removed from Course - Alex ?>
+          
           <tr> 
             <td><b>Month</b></td>
             <td><?php echo get_field('instances')[0]['instances_name']; ?></td>
