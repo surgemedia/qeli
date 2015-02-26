@@ -161,6 +161,9 @@ $tags_fill = array_filter($tags_fill);
     $args = array (
     'post_type' => 'courses',
     'posts_per_page'         => '-1',
+    'orderby'                  => 'name',
+    'order'                    => 'ASC',
+
     );
     // The Query
     $query = new WP_Query( $args );
