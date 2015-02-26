@@ -56,6 +56,7 @@
 			<div class="container">
 			
 			<h2>A program suitable for</h2>
+			<ul>
 				<?php 
 				$audience = strip_tags(get_the_taxonomies()['courses_categories']);
 				$audience_array = explode(':',$audience)[1];
@@ -63,6 +64,7 @@
 				for ($i=0; $i < count($audience_list); $i++) { ?>
 					<li><?php echo $audience_list[$i]; ?></li>
 				<?php } ?>
+			</ul>
 				</div>
 		</div>
 	</div>
