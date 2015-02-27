@@ -47,7 +47,6 @@ $audience_list[sizeof($audience_list)-1] = substr($audience_list[sizeof($audienc
             <td>
               <ul>
                 <?php
-                
                 for ($i=0; $i < count($audience_list); $i++) { ?>
                 <?php
                

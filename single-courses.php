@@ -24,13 +24,11 @@
 				
 				// Get the name for at a glance
 				if(false != $facil_array){
-
 					$facil_array = array_keys(array_flip($facil_array));
 					for ($y=0; $y < sizeof($facil_array); $y++) {
 						//debug( sizeof($facil_array)." + ".$y);
 						if($y+1 == sizeof($facil_array)){
 							$suffix = "";
-
 						}
 						$GLOBALS['facilitator_names'] .= get_post($facil_array[$y])->post_title.$suffix;
 					}
@@ -69,8 +67,16 @@
 					$audience = strip_tags(get_the_taxonomies()['courses_categories']);
 					$audience_array = explode(':',$audience)[1];
 					$audience_list = explode(',',$audience_array);
+					$audience_list[sizeof($audience_list)-1] = substr($audience_list[sizeof($audience_list)-1],0,-1);
+					
 					for ($i=0; $i < count($audience_list); $i++) { ?>
+					<?php
+					
+					if(1 == strpos($audience_list[$i],'and ')){ ?>
+					<li><?php echo substr($audience_list[$i], 5); ?></li>
+					<?php } else { ?>
 					<li><?php echo $audience_list[$i]; ?></li>
+					<?php } ?>
 					<?php } ?>
 				</ul>
 			</div>
@@ -122,8 +128,7 @@
 									<li>
 										<h3>Facilitator: </h3>
 										<p><?php
-											 echo $GLOBALS['facilitator_names']; ?>
-
+											echo $GLOBALS['facilitator_names']; ?>
 										</p>
 									</li>
 									<li>
@@ -208,10 +213,8 @@
 				
 				if(false != $facil_array){
 				
-
 				//$facil_array = array_keys(array_flip($facil_array));
 				//debug(array_flip($facil_array));
-
 					for ($k=0; $k < sizeof($facil_array); $k++) {
 					//extends scope for the facil loop
 						$GLOBALS['facilitator'] = $facil_array[$k];
@@ -220,7 +223,7 @@
 					}
 					unset($GLOBALS['facilitator']);
 				}
-							else {	get_template_part('templates/content', 'no-facilitator'); }
+								else {	get_template_part('templates/content', 'no-facilitator'); }
 				?>
 			</div>
 		</div>
@@ -259,7 +262,7 @@
 					
 					if(-1 != strpos(',',$related_array)){
 						$single_related = explode(',',$related_array);
-														} else 			{
+																	} else 			{
 						$single_related = array($related_array);
 					}
 					for ($i=0; $i < sizeof($single_related); $i++) {
@@ -324,7 +327,6 @@ if ( $query->have_posts() ) { ?>
 			wp_reset_postdata();
 ?>
 <!-- Testimonimals -->
-
 <div class="row colored-background">
 	<div class="container">
 		<div class="col-sm-8">
@@ -375,7 +377,6 @@ if ( $query->have_posts() ) { ?>
 </div>
 */ ?>
 <?php /* ?>
-
 <div class="row colored-background">
 	<div class="container">
 		<div class="col-sm-8">
