@@ -30,7 +30,10 @@
               wp_reset_postdata();
             }
           ?>
-          <?php
+          
+        </div>
+        <div class="col-xs-12 col-sm-6">
+        <?php
 
            if(get_field('featured_testimonial')){
             //Gets a templated post from the ID
@@ -54,28 +57,28 @@
             wp_reset_postdata();
           }
           ?>
-        </div>
         <?php
         
-          if(get_field('featured_testimonial')){
-            //Gets a templated post from the ID
-            $args = array (
-              'post_type' => 'testimonial',
-              'p' => $GLOBALS['testimonial_id'],
-            );
-            // The Query
-            $query = new WP_Query( $args );
-            // The Loop
-            if ( $query->have_posts() ) {
-              while ( $query->have_posts() ) {
-                $query->the_post();
-                get_template_part('templates/content', 'featured-testimonial-home-content');
-              }
-            }
-            // Restore original Post Data
-            wp_reset_postdata();
-          }
+          // if(get_field('featured_testimonial')){
+          //   //Gets a templated post from the ID
+          //   $args = array (
+          //     'post_type' => 'testimonial',
+          //     'p' => $GLOBALS['testimonial_id'],
+          //   );
+          //   // The Query
+          //   $query = new WP_Query( $args );
+          //   // The Loop
+          //   if ( $query->have_posts() ) {
+          //     while ( $query->have_posts() ) {
+          //       $query->the_post();
+          //       get_template_part('templates/content', 'featured-testimonial-home-content');
+          //     }
+          //   }
+          //   // Restore original Post Data
+          //   wp_reset_postdata();
+          // }
         ?>
+        </div>
           <div class="col-xs-12">
             <a href="<?php echo get_permalink($GLOBALS['program_id']); ?>" class="big-link text-green"><span class="graphic arrow-link-sq"></span> visit program profile</a>
           </div>
