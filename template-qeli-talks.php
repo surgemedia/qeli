@@ -8,7 +8,7 @@ Template Name: Qeli Talks/Videos
 	<div class="row">
 		<?php $featured_id = get_field('featured_video')->ID; ?>
 		<?php if(get_field('featured_video')) {?>
-		<div class="page-header colored-background image-background" style="background-image:url('<?php
+		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
 					$id = get_post_thumbnail_id();
 					echo wp_get_attachment_image_src($id, 'full')[0];
 			?>')">
