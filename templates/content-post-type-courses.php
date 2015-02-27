@@ -6,7 +6,26 @@ $audience_array = explode(':',$audience)[1];
 $audience_list = explode(',',$audience_array);
 $audience_list[sizeof($audience_list)-1] = substr($audience_list[sizeof($audience_list)-1],0,-1);
 ?>
-<div class="course col-xs-12 col-sm-6"
+
+
+<?php
+  $term_audience =  wp_get_post_terms($post->ID, 'courses_categories');
+  $class_string = '';
+
+  foreach($term_audience as $term) {
+     $class_string .= " " . $term->slug;
+  }
+
+  $term_tags =  wp_get_post_terms($post->ID, 'courses_tags');
+
+  foreach($term_tags as $term) {
+     $class_string .= " " . $term->slug;
+  }
+
+?>
+
+
+<div class="course col-xs-12 col-sm-6 <?php echo $class_string; ?>"
   data-audience="<?php echo $audience_array; ?>"
   data-fee="<?php echo strip_tags(get_field('cost')); ?>"
   data-tags="<?php echo $tags_array; ?>"
@@ -17,6 +36,9 @@ $audience_list[sizeof($audience_list)-1] = substr($audience_list[sizeof($audienc
   data-development="<?php the_field('development'); ?>"
   <?php */ ?>
   >
+
+
+
   <div class="row">
     <div class="col-xs-12">
       <h2><a href="<?php the_permalink() ?> "><?php the_title(); ?></a></h2>
@@ -60,10 +82,6 @@ $audience_list[sizeof($audience_list)-1] = substr($audience_list[sizeof($audienc
               </ul>
             </td>
           </tr>
-          <tr>
-            <td><b>Fees</b></td>
-            <td><?php echo '$'.strip_tags(get_field('cost')); ?></td>
-          </tr>
           <?php /*  Removed from Course - Alex ?>
           <tr>
             <td><b>Location</b></td>
@@ -80,6 +98,21 @@ $audience_list[sizeof($audience_list)-1] = substr($audience_list[sizeof($audienc
             <td><?php truncate(get_field('outcome'),9,"..."); ?></td>
           </tr>
           <?php */ ?>
+
+          <tr>
+            <td><b>Skills</b></td>
+            <td>
+              <ul>
+                <?php foreach($term_tags as $term):?>
+                    <li><?php echo $term->name; ?></li>
+                <?php endforeach; ?>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Fees</b></td>
+            <td><?php echo '$'.strip_tags(get_field('cost')); ?></td>
+          </tr>
         </tbody>
       </table>
     </div>

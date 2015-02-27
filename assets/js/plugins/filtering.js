@@ -154,6 +154,8 @@ $(document).ready(function () {
 			layoutMode: 'fitRows'
 		});
 
+		$('.isotope').isotope({ filter: 'none'});
+
 		$container.isotope( 'on', 'layoutComplete', function(isoInstance, laidOutItems) {
 			$('#filter-no-results').addClass('hidden');
 			console.dir($('#filter-no-results'));
