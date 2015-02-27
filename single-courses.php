@@ -190,8 +190,14 @@
 									
 								</ul>
 							</div>
+
 							<div class="panel-footer">
-								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();"><span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right"></span></a>
+							<?php if(0 != $cost) { ?>
+
+								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();">
+								<span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right">
+								</span></a>
+								<?php } ?>
 							</div>
 							
 						</div>
