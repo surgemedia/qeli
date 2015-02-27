@@ -1,62 +1,65 @@
 <?php 
-/*========================================
-=    Category Filter (Audience)          =
-========================================*/
-$args = array(
-  'type'                     => 'course',
-  'child_of'                 => 0,
-  'parent'                   => '',
-  'orderby'                  => 'name',
-  'order'                    => 'ASC',
-  'hide_empty'               => 1,
-  'hierarchical'             => 1,
-  'exclude'                  => '',
-  'include'                  => '',
-  'number'                   => '',
-  'taxonomy'                 => 'courses_categories',
-  'pad_counts'               => false 
+  /*========================================
+  =    Category Filter (Audience)          =
+  ========================================*/
+  $args = array(
+    'type'                     => 'course',
+    'child_of'                 => 0,
+    'parent'                   => '',
+    'orderby'                  => 'name',
+    'order'                    => 'ASC',
+    'hide_empty'               => 1,
+    'hierarchical'             => 1,
+    'exclude'                  => '',
+    'include'                  => '',
+    'number'                   => '',
+    'taxonomy'                 => 'courses_categories',
+    'pad_counts'               => false 
 
-);
-//Create Clean Filter Array
-$audiences_fill = array(); 
-$categories = get_categories( $args ); 
-for ($i=0; $i < count($categories); $i++) { 
-   if(strlen($categories[$i]->cat_name) > 0){
-  array_push($audiences_fill, $categories[$i]->cat_name."#".$categories[$i]->slug);
-}
-}
-$audiences_fill = array_filter($audiences_fill);
+  );
+  //Create Clean Filter Array
+  $audiences_fill = array(); 
 
-?> 
-<?php 
-/*========================================
-        =   Tag Filter      =
-========================================*/
-$args = array(
-  'type'                     => 'course',
-  'child_of'                 => 0,
-  'parent'                   => '',
-  'orderby'                  => 'name',
-  'order'                    => 'ASC',
-  'hide_empty'               => 1,
-  'hierarchical'             => 1,
-  'exclude'                  => '',
-  'include'                  => '',
-  'number'                   => '',
-  'taxonomy'                 => 'courses_tags',
-  'pad_counts'               => false 
+  $categories = get_categories( $args ); 
 
-);
-//Create Clean Filter Array
-$tags_fill = array(); 
-$categories = get_categories( $args ); 
-for ($i=0; $i < count($categories); $i++) { 
-  if(strlen($categories[$i]->cat_name) > 0){
-  array_push($tags_fill, $categories[$i]->cat_name."#".$categories[$i]->slug);
+  for ($i=0; $i < count($categories); $i++) { 
+    if(strlen($categories[$i]->cat_name) > 0){
+      array_push($audiences_fill, $categories[$i]->cat_name."#".$categories[$i]->slug);
+    }
   }
-}
-$tags_fill = array_filter($tags_fill);
 
+  $audiences_fill = array_filter($audiences_fill);
+
+  ?> 
+
+<?php 
+  /*========================================
+          =   Tag Filter      =
+  ========================================*/
+  $args = array(
+    'type'                     => 'course',
+    'child_of'                 => 0,
+    'parent'                   => '',
+    'orderby'                  => 'name',
+    'order'                    => 'ASC',
+    'hide_empty'               => 1,
+    'hierarchical'             => 1,
+    'exclude'                  => '',
+    'include'                  => '',
+    'number'                   => '',
+    'taxonomy'                 => 'courses_tags',
+    'pad_counts'               => false 
+
+  );
+  //Create Clean Filter Array
+  $tags_fill = array(); 
+  $categories = get_categories( $args ); 
+  for ($i=0; $i < count($categories); $i++) { 
+    if(strlen($categories[$i]->cat_name) > 0){
+      array_push($tags_fill, $categories[$i]->cat_name."#".$categories[$i]->slug);
+    }
+  }
+  $tags_fill = array_filter($tags_fill);
 ?> 
 
 
