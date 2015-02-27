@@ -27,7 +27,7 @@
 
 					$facil_array = array_keys(array_flip($facil_array));
 					for ($y=0; $y < sizeof($facil_array); $y++) {
-						debug( sizeof($facil_array)." + ".$y);
+						//debug( sizeof($facil_array)." + ".$y);
 						if($y+1 == sizeof($facil_array)){
 							$suffix = "";
 
