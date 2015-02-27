@@ -45,7 +45,7 @@ $CURLOPT_POSTFIELDS =  json_encode($array);
 //echo $CURLOPT_POSTFIELDS;
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL,            "http://qeli.systina.net/api/cart" );
+curl_setopt($ch, CURLOPT_URL,            "https://my.qeli.qld.edu.au/api/cart" );
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
 curl_setopt($ch, CURLOPT_POST,           1 );
 curl_setopt($ch, CURLOPT_POSTFIELDS,     $CURLOPT_POSTFIELDS ); 
@@ -56,7 +56,7 @@ $result=curl_exec ($ch);
 
 $json_guid = json_decode($result, true);
 //echo print_r($json_guid);
-$link_gid = 'http://qeli.systina.net/mycart#/checkout/'.$json_guid['cartGuid'];
+$link_gid = 'https://my.qeli.qld.edu.au/mycart#/checkout/'.$json_guid['cartGuid'];
 //echo $link_gid;
 ?>
 <script type="text/javascript">

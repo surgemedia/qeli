@@ -36,7 +36,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 	//If someone try to view this page without password, it will just display Hello World, make it look like is the test page only.
 }else{
 	date_default_timezone_set("Australia/Brisbane");
-	$json_test = file_get_contents('http://qeli.systina.net/api/catalog');
+	$json_test = file_get_contents('https://my.qeli.qld.edu.au/api/catalog');
 	//Read Json Files from BMS
 	$check_date = date('Y-m-d');
 	$theme_root = get_theme_root();
