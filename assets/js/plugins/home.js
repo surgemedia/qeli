@@ -42,18 +42,35 @@ $(document).ready(function () {
 				}
 
 				initVideo();
-				initSlider();
+				//initSlider();
 			}, 250);
 		};
 	}
 
 	function initSlider() {
-		 $('.bxslider-partners').bxSlider({
+
+		$('.slider-container').width($('.our-partners .container').width() - ($('.slider-next').width()*2));
+
+
+		var bxSlider = $('.bxslider-partners').bxSlider({
 		 	pager: false,
+		 	controls: false,
 		 	maxSlides: !isMobile ? 3 : 1,
-		 	slideWidth: !isMobile ? ($('.our-partners .container').width())/3 : $('.our-partners .container').width(),
-		 	moveSlides: 1
+		 	slideWidth: !isMobile ? ($('.slider-container').width())/3  : $('.our-partners .container').width(),
+		 	moveSlides: 1,
+		 	onSliderLoad: function() {
+		 		$('.slider .slider-prev').click(function() {
+		 			bxSlider.goToPrevSlide();
+		 		});
+
+		 		$('.slider .slider-next').click(function() {
+		 			bxSlider.goToNextSlide();
+		 		});
+		 	}
 		 });
+		
+		
+
 	}
 
 	function initVideo() {

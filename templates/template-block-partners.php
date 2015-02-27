@@ -10,17 +10,23 @@
 			<?php the_content(); ?>
 		</div>
 		<?php if(have_rows('partners')): ?>
-			<ul class="bxslider-partners">
-			<?php while(have_rows('partners')): the_row();?>
-				<li>
-					<a href="/our-partners/" >
-						<img src="<?php $id = get_sub_field('image');
-									echo wp_get_attachment_image_src($id, 'qeli-partner-logo')[0]; ?>" 
-							class="img-responsive"/>
-					</a>
-				</li>
-			<?php endwhile; ?>
-			</ul>
+			<div class="slider">
+				<div class="slider-prev"></div>
+				<div class="slider-container">
+					<ul class="bxslider-partners">
+					<?php while(have_rows('partners')): the_row();?>
+						<li>
+							<a href="<?php the_sub_field('homepage'); ?>" target="_blank">
+								<img src="<?php $id = get_sub_field('image');
+											echo wp_get_attachment_image_src($id, 'qeli-partner-logo')[0]; ?>" 
+									class="img-responsive"/>
+							</a>
+						</li>
+					<?php endwhile; ?>
+					</ul>
+				</div>
+				<div class="slider-next"></div>
+			</div>
 		<?php endif; ?>
 	</div>
 	<div class="section-footer">
