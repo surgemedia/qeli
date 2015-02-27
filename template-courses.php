@@ -11,13 +11,9 @@ Template Name: Courses Page
 
 	<?php get_template_part('templates/page', 'colored-header'); ?>
 		<div class="container">
-			<div class="featured-text">
+			<div class="header-text">
 				<?php the_content(); ?>
 				<br>
-				<?php $the_course = get_field('featured_program'); ?>
-				<a href="<?php echo get_permalink($the_course); ?>" class="circle-more">
-					More
-				</a>
 			</div>
 		</div>
 		<?php //get_template_part('templates/content', 'featured-program'); ?>
