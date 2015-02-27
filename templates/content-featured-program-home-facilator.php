@@ -17,10 +17,14 @@ if($fac_ids){
 	<div class="col-xs-12 feature-facilitator">
 		<div class="row">
 			<div class="col-xs-12 col-sm-3">
+			
 				<img class="img-circle img-responsive" src="<?php echo getFeaturedUrl($facil_array) ?>"><br>
 			</div>
 			<div class="col-xs-12 col-sm-9">
-				<h3>Program Facilitator</h3>
+				<h3>Program Facilitator </h3>
+				<?php /* ?>
+				<small><?php echo get_the_title( $fac_post ); ?></small>
+				<?php */ ?>
 				<p><?php the_field('short_description',$fac_post) ?></p>
 			</div>
 		</div>
