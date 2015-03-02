@@ -60,8 +60,11 @@
 				<?php } ?>
 			</div>
 			<div class="container">
-				
 				<h2>A program suitable for</h2>
+				<?php if(get_field('sponsor')) { ?>
+
+				<img class="col-sm-12 col-md-3 col-lg-3 pull-right" src="<?php echo get_field('sponsor')['sizes']['medium']; ?>" alt="<?php echo get_field('sponsor')['name']; ?>">
+				<?php } ?>
 				<ul>
 					<?php
 					$audience = strip_tags(get_the_taxonomies()['courses_categories']);
@@ -79,10 +82,7 @@
 					<?php } ?>
 					<?php } ?>
 				</ul>
-				<?php if(get_field('sponsor')) { ?>
-
-				<img class="col-xs-3 pull-right" src="<?php echo get_field('sponsor')['sizes']['medium']; ?>" alt="<?php echo get_field('sponsor')['name']; ?>">
-				<?php } ?>
+				
 			</div>
 		</div>
 	</div>
@@ -107,7 +107,11 @@
 				<h2>Cost</h2>
 				<h4>
 				<?php $cost = strip_tags(get_field('cost')); ?>
+				<?php if(0 != $cost){ ?>
 				<?php echo'$'.$cost." +GST"; ?>
+				<?php } else { ?>
+				POA
+				<?php } ?>
 				</h4>
 				<!-- <h5>Sounds right for you? <strong>Select a date and registor now.</strong> </h5> -->
 				<?php }  ?>
@@ -179,18 +183,18 @@
 														default:
 														$programinstance_type = 'Scheduled Instance';
 													}
-													$maxSize = (int)get_field('instances')[$i]['class_size'];
-													$currentSize = (int)get_field('instances')[$i]['currentClassSize'];
+													$maxSize = (int)get_sub_field('class_size');
+													$currentSize = (int)get_sub_field('currentClassSize');
 													$instances_name = get_sub_field('instances_name');
 											if((get_sub_field('instances_name'))){ ?>
-											<?php if(true != get_classSize($maxSize,$currentSize,false)) { ?>
+											<?php if(false == get_classSize($maxSize,$currentSize,true)) { ?>
 											<div>
 												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
 												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?></label>
 											</div>
 											<?php } else { ?>
 											<div>
-												<label for=""><?php echo $instances_name ?> - (<?php echo get_classSize((int)get_field('instances')[$i]['class_size'],(int)get_field('instances')[$i]['currentClassSize'],true) ?>)</label>
+												<label for=""><?php echo $instances_name ?> - (<?php echo get_classSize($maxSize,$currentSize,true) ?>)</label>
 											</div>
 											<?php } ?>
 											<?php }
