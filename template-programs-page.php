@@ -7,9 +7,9 @@ Template Name: Programs Page
 <article id="content" class="col-xs-12">
 	<div class="row">
 		<div class="page-header colored-background image-background" style="background-image:url('<?php
-			$id = get_post_thumbnail_id();
-			echo wp_get_attachment_image_src($id, 'full')[0];
-		?>')">
+				$id = get_post_thumbnail_id();
+				echo wp_get_attachment_image_src($id, 'full')[0];
+			?>')">
 			<?php get_template_part('templates/page', 'colored-header'); ?>
 			<?php get_template_part('templates/content-header', 'text'); ?>
 		</div>
@@ -18,8 +18,8 @@ Template Name: Programs Page
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="lead">
-				<?php get_template_part('templates/content', 'lead'); ?>
-				<?php the_content(); ?>
+					<?php get_template_part('templates/content', 'lead'); ?>
+					<?php the_content(); ?>
 					<div class="lead">
 						<p>Our offering includes three different kinds of programs:</p>
 					</div>
@@ -42,29 +42,35 @@ Template Name: Programs Page
 									// WP_Query arguments
 									$args = array (
 										'post_type'              => 'courses',
-										'meta_query'             => array(
-											array(
-											'key'       => 'instances_0_type',
-											'value'     => '1',
-											),
-										),
-									
+										'posts_per_page'         => '-1',
+										'orderby'                  => 'name',
+										'order'                    => 'ASC',
 									);
 									// The Query
 									$query = new WP_Query( $args );
 									// The Loop
 									if ( $query->have_posts() ) {
 									while ( $query->have_posts() ) {
-									$query->the_post(); ?>
-									<option value="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
-									<?php }
-									} else {
-									// no posts found
+									$query->the_post();
+									$instanes = get_field('instances');
+									$check;
+									for ($i=0; $i < count($instanes); $i++) {
+										$check = 0;
+										if($instanes[$i]['type'] == 1 || $instanes[$i]['type'] == 3){
+											$check++;
+										}
 									}
-									// Restore original Post Data
-									wp_reset_postdata();
+									if($check !== 0){
 								?>
-								<?php
+								<option value="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
+								<?php }}
+								} else {
+								
+								}
+								// Restore original Post Data
+								wp_reset_postdata();
+								?>
+								<?php /*
 								
 									// WP_Query arguments
 									$args = array (
@@ -82,15 +88,15 @@ Template Name: Programs Page
 									// The Loop
 									if ( $query->have_posts() ) {
 									while ( $query->have_posts() ) {
-									$query->the_post(); ?>
-									<option value="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
-									<?php }
-									} else {
-									// no posts found
-									}
-									// Restore original Post Data
-									wp_reset_postdata();
-								?>
+								$query->the_post(); ?>
+								<option value="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
+								<?php }
+								} else {
+								// no posts found
+								}
+								// Restore original Post Data
+								wp_reset_postdata();
+								*/ ?>
 								</select> <a href="<?php //TODO @walt get data url ?>" class="btn-go btn btn-shadowed small col-lg-1">go</a>
 								<br>
 								<br>
