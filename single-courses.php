@@ -79,6 +79,8 @@
 					<?php } ?>
 					<?php } ?>
 				</ul>
+				<?php //debug(get_field('sponsor')); ?>
+				<img class="pull-right" src="<?php echo get_field('sponsor')['sizes']['medium']; ?>" alt="<?php echo get_field('sponsor')['name']; ?>">
 			</div>
 		</div>
 	</div>
