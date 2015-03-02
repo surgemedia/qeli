@@ -190,7 +190,7 @@
 											</div>
 											<?php } else { ?>
 											<div>
-												<label for=""><?php echo get_classSize((int)get_field('instances')[$i]['class_size'],(int)get_field('instances')[$i]['currentClassSize'],true) ?></label>
+												<label for=""><?php echo $instances_name ?> - (<?php echo get_classSize((int)get_field('instances')[$i]['class_size'],(int)get_field('instances')[$i]['currentClassSize'],true) ?>)</label>
 											</div>
 											<?php } ?>
 											<?php }
