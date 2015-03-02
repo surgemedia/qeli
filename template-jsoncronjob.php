@@ -71,7 +71,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			// WP_Query arguments
 			$check_item = array (
 				'post_type'              => 'courses',
-				'post_status'            => 'Published',
 				'orderby'                => 'id',
 				'order'                => 'DESC',
 				'posts_per_page'		=> '-1',
@@ -279,6 +278,10 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 	
 			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
+				global $wpdb;
+				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
+				$result = $wpdb->get_results( $del_all_postmate);
+				print_r($result);
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				//echo $post_ID.'<br/>';
 				//echo $jsonIterator[$i]['programId'].'<br/>';
