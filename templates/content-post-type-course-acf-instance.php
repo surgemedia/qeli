@@ -14,12 +14,26 @@ break;
 default:
 $programinstance_type = 'Scheduled Instance';
 } ?>
+<?php 
+$maxSize = (int)get_field('instances')[$GLOBALS['instance_count']]['class_size'];
+$currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentClassSize'];
+
+
+ ?>
 <div class="panel">
   <?php //debug(get_field('instances')[$GLOBALS['instance_count']]) ?>
   <div class="panel-heading" role="tab" id="heading<?Php echo $GLOBALS['instance_count'] ?>">
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?Php echo $GLOBALS['instance_count'] ?>" aria-expanded="true" aria-controls="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="collapsed">
       <h3 class="panel-title">
-      <span class="graphic arrow-panel-gray <?php echo $programinstance_type; ?>"></span><?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name']; ?> <?php// echo get_field('instances')[$GLOBALS['instance_count']]['city'] ?><span class="graphic icon-toggle pull-right"></span>
+      <span class="graphic arrow-panel-gray <?php echo $programinstance_type; ?>"></span>
+      <?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name']; ?>
+    <?php if ( 0 < strlen(get_classSize($maxSize,$currentSize,true))): ?>
+      
+      <?php echo ' - ('.get_classSize($maxSize,$currentSize,true).')'; ?> 
+     
+      <?php endif ?>
+
+      <span class="graphic icon-toggle pull-right"></span>
       </h3>
     </a>
   </div>

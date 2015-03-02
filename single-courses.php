@@ -156,12 +156,8 @@
 
 											if( get_field('instances') ){
 												$i = 0;
-												while( has_sub_field('instances') )
 
-												//echo (int) get_sub_field('currentClassSize')."CCS<br>";
-												//echo get_field('instances')[0]['class_size']."MCS";
-
-												{
+												while( has_sub_field('instances') ){
 													$i++;
 													$programinstanceid = get_sub_field('programinstanceid');
 													$programinstance_city = get_sub_field('city');
@@ -179,13 +175,20 @@
 														default:
 														$programinstance_type = 'Scheduled Instance';
 													}
-													
+													$maxSize = (int)get_field('instances')[$i]['class_size'];
+													$currentSize = (int)get_field('instances')[$i]['currentClassSize'];
 													$instances_name = get_sub_field('instances_name');
-											if((get_sub_field('instances_name')) || get_field('instances')[0]['class_size'] <= (int) get_sub_field('currentClassSize')){ ?>
+											if((get_sub_field('instances_name'))){ ?>
+											<?php if(true != get_classSize($maxSize,$currentSize,false)) { ?>
 											<div>
 												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
 												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?></label>
 											</div>
+											<?php } else { ?>
+											<div>
+												<label for=""><?php echo get_classSize((int)get_field('instances')[$i]['class_size'],(int)get_field('instances')[$i]['currentClassSize'],true) ?></label>
+											</div>
+											<?php } ?>
 											<?php }
 											}
 											}
