@@ -81,7 +81,7 @@
 				</ul>
 				<?php if(get_field('sponsor')) { ?>
 
-				<img class="col-xs-2 pull-right" src="<?php echo get_field('sponsor')['sizes']['medium']; ?>" alt="<?php echo get_field('sponsor')['name']; ?>">
+				<img class="col-xs-3 pull-right" src="<?php echo get_field('sponsor')['sizes']['medium']; ?>" alt="<?php echo get_field('sponsor')['name']; ?>">
 				<?php } ?>
 			</div>
 		</div>
