@@ -64,6 +64,33 @@ Template Name: Programs Page
 									// Restore original Post Data
 									wp_reset_postdata();
 								?>
+								<?php
+								
+									// WP_Query arguments
+									$args = array (
+										'post_type'              => 'courses',
+										'meta_query'             => array(
+											array(
+											'key'       => 'instances_0_type',
+											'value'     => '3',
+											),
+										),
+									
+									);
+									// The Query
+									$query = new WP_Query( $args );
+									// The Loop
+									if ( $query->have_posts() ) {
+									while ( $query->have_posts() ) {
+									$query->the_post(); ?>
+									<option value="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
+									<?php }
+									} else {
+									// no posts found
+									}
+									// Restore original Post Data
+									wp_reset_postdata();
+								?>
 								</select> <a href="<?php //TODO @walt get data url ?>" class="btn-go btn btn-shadowed small col-lg-1">go</a>
 								<br>
 								<br>
