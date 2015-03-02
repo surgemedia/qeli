@@ -60,7 +60,7 @@ Template Name: Programs Page
 											$check++;
 										}
 									}
-									if($check !== 0){
+									if($check >= 1){
 								?>
 								<option value="<?php echo the_permalink(); ?>" ><?php echo get_the_title(); ?></option>
 								<?php }}
