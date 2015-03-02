@@ -29,7 +29,7 @@ Template Name: Programs Page
 				<div class="col-xs-4">
 					<div class="panel panel-programs">
 						<div class="panel-heading">
-							<div class="numbering">1</div>
+							
 							<h3 class="panel-title">Scheduled Programs</h3>
 						</div>
 						<div class="panel-body">
@@ -75,7 +75,7 @@ Template Name: Programs Page
 					<div class="col-xs-4">
 						<div class="panel panel-programs">
 							<div class="panel-heading">
-								<div class="numbering">2</div>
+								
 								<h3 class="panel-title">Customised Programs</h3>
 							</div>
 							<div class="panel-body">
@@ -89,7 +89,7 @@ Template Name: Programs Page
 					<div class="col-xs-4">
 						<div class="panel panel-programs">
 							<div class="panel-heading">
-								<div class="numbering">3</div>
+								
 								<h3 class="panel-title">Specialist Services</h3>
 							</div>
 							<div class="panel-body">
