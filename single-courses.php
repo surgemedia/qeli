@@ -39,7 +39,7 @@
 	<div class="row">
 		<?php
 			//easily set default course image
-			$default_img = 'http://54.79.72.151/~qeliedu/wp-content/uploads/2015/02/hero-image7.png';
+			$default_img = '/wp-content/uploads/2015/02/hero-image7.png';
 			//fixed image url
 			$image_url = getFeaturedUrl(get_the_id(),'full');
 			if(-1 < strpos($image_url,'/media/default.png')){
@@ -153,9 +153,14 @@
 											<input type="hidden" name="postid" value="<?php the_ID();?>" />
 											<input type="hidden" name="post_timing" value="<?php echo time();?>" />
 											<?php
+
 											if( get_field('instances') ){
 												$i = 0;
 												while( has_sub_field('instances') )
+
+												//echo (int) get_sub_field('currentClassSize')."CCS<br>";
+												//echo get_field('instances')[0]['class_size']."MCS";
+
 												{
 													$i++;
 													$programinstanceid = get_sub_field('programinstanceid');
@@ -176,7 +181,7 @@
 													}
 													
 													$instances_name = get_sub_field('instances_name');
-											if((get_sub_field('instances_name'))){ ?>
+											if((get_sub_field('instances_name')) || get_field('instances')[0]['class_size'] <= (int) get_sub_field('currentClassSize')){ ?>
 											<div>
 												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
 												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?></label>
@@ -192,12 +197,12 @@
 							</div>
 
 							<div class="panel-footer">
-							<?php if(0 != $cost) { ?>
+							<?php //if(0 != $cost) { ?>
 
 								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();">
 								<span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right">
 								</span></a>
-								<?php } ?>
+								<?php //} ?>
 							</div>
 							
 						</div>
