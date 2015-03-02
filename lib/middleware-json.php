@@ -194,14 +194,15 @@ function json_import_function(){
 			//echo $locations_slug[$i].'<br/>';
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 					$array_count = 0;
+					$facilitatorIds_array_output = "";
 					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['facilitatorIds']); $k++){
 						$facilitator = $jsonIterator[$i]['instances'][$j]['facilitatorIds'][$k];
 						if($facilitator!=""){
 							if($array_count==0){
-								$facilitatorIds_array_output[$i][$j] = $facilitator;
+								$facilitatorIds_array_output = $facilitator;
 								$array_count = $array_count+1;
 							}else{
-														$facilitatorIds_array_output[$i][$j] .= ', '.$facilitator;
+								$facilitatorIds_array_output .= ', '.$facilitator;
 							}
 						}
 					}

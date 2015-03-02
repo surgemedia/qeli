@@ -188,6 +188,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			for($j=0; $j<count($jsonIterator[$i]['instances']); $j++){
 				//echo print_r($jsonIterator[$i]['instances'][$j]['facilitatorIds']).'<br/>';
 				$array_count = 0;
+				$facilitatorIds_array_output = "";
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['facilitatorIds']); $k++){
 					$facilitator = $jsonIterator[$i]['instances'][$j]['facilitatorIds'][$k];
 					if($facilitator!=""){
@@ -195,10 +196,11 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 							$facilitatorIds_array_output = $facilitator;
 							$array_count = $array_count+1;
 						}else{
-													$facilitatorIds_array_output .= ', '.$facilitator;
+							$facilitatorIds_array_output .= ', '.$facilitator;
 						}
 					}
 				}
+				//echo $facilitatorIds_array_output;
 					
 	/* ===============================================================================================================
 											Add Course city
@@ -223,7 +225,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 									"field_54ab271828d67" => $city_slug[$i][$j],
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,
-									"field_54ab312929435" => $facilitatorIds_array_output);
+									"facilitator" => $facilitatorIds_array_output);
 									// "field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering'
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
@@ -281,7 +283,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				global $wpdb;
 				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
 				$result = $wpdb->get_results( $del_all_postmate);
-				print_r($result);
+				//print_r($result);
 				update_field('programId', $jsonIterator[$i]['programId'], $post_ID);
 				//echo $post_ID.'<br/>';
 				//echo $jsonIterator[$i]['programId'].'<br/>';
