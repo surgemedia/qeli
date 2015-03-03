@@ -62,7 +62,6 @@
 			<div class="container">
 				<h2>A program suitable for</h2>
 				<?php if(get_field('sponsor')) { ?>
-
 				<img class="col-sm-12 col-md-3 col-lg-3 pull-right" src="<?php echo get_field('sponsor')['sizes']['medium']; ?>" alt="<?php echo get_field('sponsor')['name']; ?>">
 				<?php } ?>
 				<ul>
@@ -151,7 +150,11 @@
 										<h3>Cost </h3>
 										<p>
 											<?php $cost = strip_tags(get_field('cost')); ?>
+											<?php if(0 != $cost){ ?>
 											<?php echo'$'.$cost." +GST"; ?>
+											<?php } else { ?>
+											POA
+											<?php } ?>
 										</p>
 									</li>
 									
@@ -161,10 +164,8 @@
 											<input type="hidden" name="postid" value="<?php the_ID();?>" />
 											<input type="hidden" name="post_timing" value="<?php echo time();?>" />
 											<?php
-
 											if( get_field('instances') ){
 												$i = 0;
-
 												while( has_sub_field('instances') ){
 													$i++;
 													$programinstanceid = get_sub_field('programinstanceid');
@@ -206,12 +207,10 @@
 									
 								</ul>
 							</div>
-
 							<div class="panel-footer">
-							<?php //if(0 != $cost) { ?>
-
+								<?php //if(0 != $cost) { ?>
 								<a href="#" class="link-purchase" onclick="document.getElementById('course_add_to_cart').submit();">
-								<span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right">
+									<span class="graphic arrow-right-sm"></span> Add to cart <span class="graphic icon-cart pull-right">
 								</span></a>
 								<?php //} ?>
 							</div>
@@ -245,7 +244,7 @@
 					}
 					unset($GLOBALS['facilitator']);
 				}
-								else {	get_template_part('templates/content', 'no-facilitator'); }
+									else {	get_template_part('templates/content', 'no-facilitator'); }
 				?>
 			</div>
 		</div>
@@ -284,7 +283,7 @@
 					
 					if(-1 != strpos(',',$related_array)){
 						$single_related = explode(',',$related_array);
-																	} else 			{
+																				} else 			{
 						$single_related = array($related_array);
 					}
 					for ($i=0; $i < sizeof($single_related); $i++) {

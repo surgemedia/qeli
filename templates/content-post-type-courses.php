@@ -111,7 +111,12 @@ $audience_list[sizeof($audience_list)-1] = substr($audience_list[sizeof($audienc
           </tr>
           <tr>
             <td><b>Fees</b></td>
-            <td><?php echo '$'.strip_tags(get_field('cost')); ?></td>
+            <td><?php $cost = strip_tags(get_field('cost')); ?>
+                      <?php if(0 != $cost){ ?>
+                      <?php echo'$'.$cost." +GST"; ?>
+                      <?php } else { ?>
+                      POA
+                      <?php } ?></td>
           </tr>
         </tbody>
       </table>
