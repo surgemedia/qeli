@@ -195,6 +195,9 @@
 											</div>
 											<?php } else { ?>
 											<div>
+												<?php if('Fully booked' != get_classSize($maxSize,$currentSize,true)) ?>
+												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
+												<?php } ?>
 												<label for=""><?php echo $instances_name ?> - (<?php echo get_classSize($maxSize,$currentSize,true) ?>)</label>
 											</div>
 											<?php } ?>
