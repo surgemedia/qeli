@@ -3,6 +3,12 @@
 .navbar-default {
 	background: #fff;
 	border: 0;
+
+	@media (max-width: @screen-md-max) {
+		.container {
+			width: 100%;
+		}
+	}
 }
 
 .navbar {
@@ -13,7 +19,7 @@
 		margin-left: 0;
 		margin-right: 115px;
 
-		@media (max-width: @screen-xs-max) {
+		@media (max-width: @screen-sm-max) {
 			margin-left: 15px;
 			margin-right: 0;
 			margin-bottom: 15px;
@@ -101,6 +107,10 @@
 	li:last-child {
 		border-right: 1px dashed @gray;
 		padding-right: 10px;
+
+		@media (max-width: @screen-md-max) {
+			border: 0;
+		}
 	}
 
 	.navbar-right {
@@ -141,7 +151,7 @@
 		}
 	}
 
-	@media (max-width: @screen-xs-max) {
+	@media (max-width: @screen-sm-max) {
 		padding-top: 0;
 
 		li {
