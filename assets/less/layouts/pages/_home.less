@@ -37,7 +37,7 @@
 		top: 0;
 		bottom: 0;
 
-		/*
+		
 		@media
 			only screen and (-webkit-min-device-pixel-ratio: 2),
 			only screen and (   min--moz-device-pixel-ratio: 2),
@@ -47,7 +47,7 @@
 			only screen and (                min-resolution: 2dppx) {
 			background-attachment: scroll;
 		}
-		*/
+		
 
 
 
@@ -64,11 +64,6 @@
 				color: #FFF;
 			}
 		}
-
-		only screen and (min-resolution: 192dpi),
-    	only screen and (min-resolution: 2dppx) {
-   			background-attachment: scroll;
-    	}
 
 		@media (max-width: @screen-sm-max) {
 			height: 400px;
@@ -229,10 +224,15 @@
 				list-style: disc;
 			}
 
-			only screen and (min-resolution: 192dpi),
-	    	only screen and (min-resolution: 2dppx) {
-	   			background-attachment: scroll;
-	    	}
+			@media
+				only screen and (-webkit-min-device-pixel-ratio: 2),
+				only screen and (   min--moz-device-pixel-ratio: 2),
+				only screen and (     -o-min-device-pixel-ratio: 2/1),
+				only screen and (        min-device-pixel-ratio: 2),
+				only screen and (                min-resolution: 192dpi),
+				only screen and (                min-resolution: 2dppx) {
+				background-attachment: scroll;
+			}
 	    	
 			@media (max-width: @screen-sm-max) {
 				background-attachment: scroll;
@@ -349,9 +349,13 @@
 			line-height: 1.4;
 			color: #fff;
 			-webkit-font-smoothing: antialiased;
-			/*
+		
+			h3 {
+				font-size: 1.1em;
+			}
+
 			@media
-				only screen and (-webkit-min-device-pixel-ratio: 2),
+			only screen and (-webkit-min-device-pixel-ratio: 2),
 				only screen and (   min--moz-device-pixel-ratio: 2),
 				only screen and (     -o-min-device-pixel-ratio: 2/1),
 				only screen and (        min-device-pixel-ratio: 2),
@@ -359,15 +363,6 @@
 				only screen and (                min-resolution: 2dppx) {
 				background-attachment: scroll;
 			}
-			*/
-			h3 {
-				font-size: 1.1em;
-			}
-
-			only screen and (min-resolution: 192dpi),
-	    	only screen and (min-resolution: 2dppx) {
-	   			background-attachment: scroll;
-	    	}
 
 		 	@media only screen and (max-width: @screen-sm-max) {
 		 		background-attachment: scroll;
