@@ -49,6 +49,8 @@
 		}
 		*/
 
+
+
 		.call-to-action {
 			font-family: @font-heading-med;
 			font-size: 18px;
@@ -62,6 +64,11 @@
 				color: #FFF;
 			}
 		}
+
+		only screen and (min-resolution: 192dpi),
+    	only screen and (min-resolution: 2dppx) {
+   			background-attachment: scroll;
+    	}
 
 		@media (max-width: @screen-sm-max) {
 			height: 400px;
@@ -222,6 +229,11 @@
 				list-style: disc;
 			}
 
+			only screen and (min-resolution: 192dpi),
+	    	only screen and (min-resolution: 2dppx) {
+	   			background-attachment: scroll;
+	    	}
+	    	
 			@media (max-width: @screen-sm-max) {
 				background-attachment: scroll;
 				font-size: 1.3em;
@@ -352,6 +364,11 @@
 				font-size: 1.1em;
 			}
 
+			only screen and (min-resolution: 192dpi),
+	    	only screen and (min-resolution: 2dppx) {
+	   			background-attachment: scroll;
+	    	}
+
 		 	@media only screen and (max-width: @screen-sm-max) {
 		 		background-attachment: scroll;
 		 	}
@@ -369,6 +386,12 @@
 				h3 {
 					font-size: 1.1em;
 					margin-top: 10px;
+				}
+
+				@media only screen and (max-width: @screen-md-max) {
+					img {
+						max-width: 80px;
+					}
 				}
 			}
 			.featured-testimonial{
