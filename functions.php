@@ -32,7 +32,7 @@ $roots_includes = array(
   'lib/function-only-this-post.php',   //Displays arrays in a pre for easy reading
   'lib/action-hide-course-field.php',           // Disappear some of custom post type input area in admin page
   'lib/function_exclude_this_page.php',           // Create Function to hide the function if not admin
-  'lib/function-remove-post-menu.php',           // Remove posts from menus
+  'lib/function-rename-post-menu.php',           // rename posts to blog
   'lib/function-getProgramId.php',                // get post id from program id
   'lib/function-getslug.php',                     //get slug        
   'lib/function-get_classSize.php',               //                        

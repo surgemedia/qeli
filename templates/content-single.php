@@ -1,15 +1,21 @@
 <?php while (have_posts()) : the_post(); ?>
-  <article <?php post_class(); ?>>
-    <header>
-      <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php get_template_part('templates/entry-meta'); ?>
-    </header>
-    <div class="entry-content">
-      <?php the_content(); ?>
+ <article id="content" class="col-xs-12">
+  <div class="row">
+    <div class="page-header colored-background image-background overlay" style="background-image:url('<?php
+      $id = get_post_thumbnail_id();
+      echo wp_get_attachment_image_src($id, 'full')[0];
+    ?>')">
+      <?php get_template_part('templates/page', 'colored-header'); ?>
+      <?php get_template_part('templates/content-header', 'text'); ?>
     </div>
-    <footer>
-      <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
-    </footer>
-    <?php comments_template('/templates/comments.php'); ?>
-  </article>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <?php get_template_part('templates/content', 'lead'); ?>
+        <?php the_content(); ?>
+      </div>
+    </div>
+  </div>
+</article>
 <?php endwhile; ?>

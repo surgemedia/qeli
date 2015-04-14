@@ -1,5 +1,6 @@
 <?php 
-	if(0 != strlen(get_the_content())){ $the_link = the_permalink(); } else { $the_link = 'javascript:void(0)'; }
+	if(0 != strlen(get_the_content())){ 
+		$the_link = get_the_permalink(); } else { $the_link = 'javascript:void(0)'; }
  ?>
 <h3>
 <a href="<?php echo $the_link; ?>">
