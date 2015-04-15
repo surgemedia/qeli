@@ -16,6 +16,13 @@
         <?php the_content(); ?>
       </div>
     </div>
+     <div class="col-xs-12">
+     <hr>
+  <?php // debug(get_post_type()); ?>
+  <?php if('post' == get_post_type()){ ?>
+      <?php comments_template('/templates/comments.php'); ?>
+  <?php } ?>
+  </div>
   </div>
 </article>
 <?php endwhile; ?>
