@@ -3,7 +3,7 @@
 	if(0 != strlen(get_field('link'))){ $the_link = get_field('link'); } else { $the_link = 'javascript:void(0)'; }
  ?>
 <h3>
-<a href="<?php echo $the_link; ?>">
+<a href="<?php echo $the_link; ?>" target="_blank">
 <span class="graphic arrow-link"></span> <?php the_title(); ?></a>
 </h3>
 <?php if( get_field( "published_in" ) ): ?>
