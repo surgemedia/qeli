@@ -74,24 +74,24 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       $newDate = date("d-M-Y", strtotime($get_date));
       $newTime = substr($events[$j]['eventstartdate'], 11, 5);
       if($events[$j]['eventstartdate']!=""){
-        echo '<strong>Event Date: </strong><i>'.$newDate.' at '.$newTime.'</i>';
+        echo '<i>'.$newDate.' at '.$newTime.'</i>';
       }
       $get_date2 = substr($events[$j]['eventenddate'], 0, 10);
       $newDate2 = date("d-M-Y", strtotime($get_date2));
       $newTime2 = substr($events[$j]['eventenddate'], 11, 5);
       if($events[$i]['eventenddate']!=""){
-        if($get_date != $get_date2){ $showinform = '<strong> End on: </strong><i>'.$newDate2.' at '.$newTime2.'</i>';
+        if($get_date != $get_date2){ $showinform = 'End on: <i>'.$newDate2.' at '.$newTime2.'</i>';
         }else{ $showinform = '<strong> to: </strong><i>'.$newTime2.'</i>';}
         echo $showinform;
       }
       echo '<br>';
       echo $events[$j]['eventvenuename']." " ;
       echo $events[$j]['eventvenueroom']." " ;
-      echo $events[$j]['eventaddressline1']." ";
-      echo $events[$j]['eventaddressline2']." " ;
+      echo $events[$j]['eventaddressline1'].", ";
+      echo $events[$j]['eventaddressline2']."<br/> " ;
       echo $events[$j]['eventsurburb']." ";
       echo $events[$j]['eventcity']." " ;
-      echo $events[$j]['eventstate'].'<br>' ;
+      echo $events[$j]['eventstate'].' ' ;
       echo $events[$j]['eventpostcode']." ";
       echo $events[$j]['eventcountry']." ";
       echo "<hr>";
