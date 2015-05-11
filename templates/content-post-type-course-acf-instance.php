@@ -74,14 +74,16 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       $newDate = date("d-M-Y", strtotime($get_date));
       $newTime = substr($events[$j]['eventstartdate'], 11, 5);
       if($events[$j]['eventstartdate']!=""){
-        echo '<i>'.$newDate.' at '.$newTime.'</i>';
+        // echo '<i>'.$newDate.' at '.$newTime.'</i>';
+        echo '<i>'.$newDate.'</i>';
       }
       $get_date2 = substr($events[$j]['eventenddate'], 0, 10);
       $newDate2 = date("d-M-Y", strtotime($get_date2));
       $newTime2 = substr($events[$j]['eventenddate'], 11, 5);
       if($events[$i]['eventenddate']!=""){
-        if($get_date != $get_date2){ $showinform = 'End on: <i>'.$newDate2.' at '.$newTime2.'</i>';
-        }else{ $showinform = '<strong> to: </strong><i>'.$newTime2.'</i>';}
+        // if($get_date != $get_date2){ $showinform = 'End on: <i>'.$newDate2.' at '.$newTime2.'</i>';
+        // }else{ $showinform = '<strong> to: </strong><i>'.$newTime2.'</i>';}
+        $showinform = '<strong> to: </strong><i>'.$newDate2.'</i>';
         echo $showinform;
       }
       echo '<br>';
