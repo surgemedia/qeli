@@ -39,6 +39,7 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
   </div>
   <div id="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?Php echo $GLOBALS['instance_count'] ?>">
     <div class="panel-body">
+    <?php /*
       <p>
       <?php
       $venunes = get_field('instances')[$GLOBALS['instance_count']]['venues']; ?>
@@ -57,14 +58,33 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       }?>
 
       </p>
-	  <p>
+      */ ?>
+      <p>
       <?php
       $events = get_field('instances')[$GLOBALS['instance_count']]['events'];
       //echo print_r($events;)
+      function sortFunction( $a, $b ) {
+          return strtotime($a["eventstartdate"]) - strtotime($b["eventstartdate"]);
+      }
+      usort($events, "sortFunction");
       for ($j=0; $j < sizeof($events); $j++) {
-      echo '<strong><span class="event_icon"><i class="events_icon"></i>Event:</span> ';
+      echo '<strong>';
       echo $events[$j]['eventname'].'</strong><br>' ;
-      echo $events[$j]['eventstartdate'].'-'. $events[$i]['eventenddate'].'<br>' ;
+      $get_date = substr($events[$j]['eventstartdate'], 0, 10);
+      $newDate = date("d-M-Y", strtotime($get_date));
+      $newTime = substr($events[$j]['eventstartdate'], 11, 5);
+      if($events[$j]['eventstartdate']!=""){
+        echo '<strong>Event Date: </strong><i>'.$newDate.' at '.$newTime.'</i>';
+      }
+      $get_date2 = substr($events[$j]['eventenddate'], 0, 10);
+      $newDate2 = date("d-M-Y", strtotime($get_date2));
+      $newTime2 = substr($events[$j]['eventenddate'], 11, 5);
+      if($events[$i]['eventenddate']!=""){
+        if($get_date != $get_date2){ $showinform = '<strong> End on: </strong><i>'.$newDate2.' at '.$newTime2.'</i>';
+        }else{ $showinform = '<strong> to: </strong><i>'.$newTime2.'</i>';}
+        echo $showinform;
+      }
+      echo '<br>';
       echo $events[$j]['eventvenuename']." " ;
       echo $events[$j]['eventvenueroom']." " ;
       echo $events[$j]['eventaddressline1']." ";
