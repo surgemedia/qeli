@@ -57,6 +57,27 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       }?>
 
       </p>
+	  <p>
+      <?php
+      $events = get_field('instances')[$GLOBALS['instance_count']]['events'];
+      //echo print_r($events;)
+      for ($j=0; $j < sizeof($events); $j++) {
+      echo '<strong><span class="event_icon"><i class="events_icon"></i>Event:</span> ';
+      echo $events[$j]['eventname'].'</strong><br>' ;
+      echo $events[$j]['eventstartdate'].'-'. $events[$i]['eventenddate'].'<br>' ;
+      echo $events[$j]['eventvenuename']." " ;
+      echo $events[$j]['eventvenueroom']." " ;
+      echo $events[$j]['eventaddressline1']." ";
+      echo $events[$j]['eventaddressline2']." " ;
+      echo $events[$j]['eventsurburb']." ";
+      echo $events[$j]['eventcity']." " ;
+      echo $events[$j]['eventstate'].'<br>' ;
+      echo $events[$j]['eventpostcode']." ";
+      echo $events[$j]['eventcountry']." ";
+      echo "<hr>";
+      }?>
+
+      </p> 
       <ul>
         <?php
         $phases = get_field('instances')[$GLOBALS['instance_count']]['phases'];

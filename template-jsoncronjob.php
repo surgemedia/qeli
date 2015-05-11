@@ -219,14 +219,7 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 						$addtocurrentclasssize = $jsonIterator[$i]['instances'][$j]['currentClassSize'];
 				}
 					
-				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
-									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
-									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhere'],
-									"field_54ab271828d67" => $city_slug[$i][$j],
-									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
-									"field_54d82f9e80ba3" => $addtocurrentclasssize,
-									"facilitator" => $facilitatorIds_array_output);
-									// "field_54ab313029436" => $jsonIterator[$i]['instances'][$j]['catering'
+
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
 					$instances[$j]['venues'][$k]['room'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'];
@@ -238,6 +231,29 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					$instances[$j]['venues'][$k]['postcode'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['postcode'];
 					$instances[$j]['venues'][$k]['country'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['address']['country'];
 				}
+				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['events']); $k++){
+					$instances[$j]['event'][$k]['eventname'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['name'];
+					$instances[$j]['event'][$k]['eventstartdate'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['startDate'];
+					$instances[$j]['event'][$k]['eventenddate'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['endDate'];
+					$instances[$j]['event'][$k]['eventvenuename'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['name'];
+					$instances[$j]['event'][$k]['eventvenueroom'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['room'];
+					$instances[$j]['event'][$k]['eventaddressline1'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['addressLine1'];
+					$instances[$j]['event'][$k]['eventaddressline2'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['addressLine2'];
+					$instances[$j]['event'][$k]['eventsurburb'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['surburb'];
+					$instances[$j]['event'][$k]['eventcity'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['city'];
+					$instances[$j]['event'][$k]['eventstate'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['state'];
+					$instances[$j]['event'][$k]['eventpostcode'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['postcode'];
+					$instances[$j]['event'][$k]['eventcountry'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['country'];
+				}
+				$instances[$j] = array("field_54ceda6053402" => $jsonIterator[$i]['instances'][$j]['instanceId'],
+									"field_54dc24517ca32" => $jsonIterator[$i]['instances'][$j]['type'],
+									"field_54d176cac1d70" => $jsonIterator[$i]['instances'][$j]['whenAndWhere'],
+									"field_54ab271828d67" => $city_slug[$i][$j],
+									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
+									"field_54d82f9e80ba3" => $addtocurrentclasssize,
+									"facilitator" => $facilitatorIds_array_output, 
+									"field_55470824e72b4" => $instances[$j]['event'], 
+									"field_54e192a62d5a7" => $instances[$j]['venues']);	
 				// for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
 				// 	$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
 				// 										"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],
@@ -309,18 +325,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 					$value[] = $instances[$j];
 					//Instance
 					update_field('field_54ab26dabaf00', $value, $post_ID );
-					unset($value2);
-					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
-						$value2[] = $instances[$j]['phases'][$k];
-						//add phases
-						update_sub_field( 'field_54bee8a23269c', $value2, $post_ID );
-					}
-					unset($value3);
-					for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
-						$value3[] = $instances[$j]['venues'][$k];
-						//add venues
-						update_sub_field( 'field_54e192a62d5a7', $value3, $post_ID );
-					}
 				}
 			}
 		}
