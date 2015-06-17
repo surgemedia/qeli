@@ -233,8 +233,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['events']); $k++){
 					$instances[$j]['event'][$k]['eventname'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['name'];
-					$instances[$j]['event'][$k]['eventstartdate'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['startDate'];
-					$instances[$j]['event'][$k]['eventenddate'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['endDate'];
+					$instances[$j]['event'][$k]['eventstartdate'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['brisbaneStartDate'];
+					$instances[$j]['event'][$k]['eventenddate'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['brisbaneEndDate'];
 					$instances[$j]['event'][$k]['eventvenuename'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['name'];
 					$instances[$j]['event'][$k]['eventvenueroom'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['room'];
 					$instances[$j]['event'][$k]['eventaddressline1'] = $jsonIterator[$i]['instances'][$j]['events'][$k]['venue']['address']['addressLine1'];
@@ -261,7 +261,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				// 										"field_54bee8e8326a0" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['end']);
 				// }
 			}
-			//echo '<p>'.$check_item_row_id[$i].'</p>??';
+			
+
 			if($check_item_row_id[$i]==""){
 				$my_post = array(
 					'post_type'     => 'courses',
