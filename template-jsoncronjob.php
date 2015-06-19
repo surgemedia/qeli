@@ -218,8 +218,6 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 				}else{
 						$addtocurrentclasssize = $jsonIterator[$i]['instances'][$j]['currentClassSize'];
 				}
-					
-
 				for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['venues']); $k++){
 					$instances[$j]['venues'][$k]['name'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['name'];
 					$instances[$j]['venues'][$k]['room'] = $jsonIterator[$i]['instances'][$j]['venues'][$k]['room'];
@@ -251,9 +249,9 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 									"field_54ab271828d67" => $city_slug[$i][$j],
 									"field_54ab26b1baeff" => $jsonIterator[$i]['instances'][$j]['maxClassSize'],
 									"field_54d82f9e80ba3" => $addtocurrentclasssize,
-									"facilitator" => $facilitatorIds_array_output, 
-									"field_55470824e72b4" => $instances[$j]['event'], 
-									"field_54e192a62d5a7" => $instances[$j]['venues']);	
+									"facilitator" => $facilitatorIds_array_output,
+									"field_5542a92f7e558" => $instances[$j]['event'], 
+									"field_54e192a62d5a7" => $instances[$j]['venues']);		
 				// for($k=0; $k<count($jsonIterator[$i]['instances'][$j]['phases']); $k++){
 				// 	$instances[$j]['phases'][$k] = array("field_54bee8ce3269d" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['name'],
 				// 										"field_54bee8d33269e" => $jsonIterator[$i]['instances'][$j]['phases'][$k]['type'],

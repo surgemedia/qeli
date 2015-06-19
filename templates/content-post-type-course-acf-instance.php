@@ -39,52 +39,50 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
   </div>
   <div id="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?Php echo $GLOBALS['instance_count'] ?>">
     <div class="panel-body">
-    <?php /*
-      <p>
-      <?php
-      $venunes = get_field('instances')[$GLOBALS['instance_count']]['venues']; ?>
-      <?php for ($i=0; $i < sizeof($venunes); $i++) {
-      echo "<strong>";
-      echo $venunes[$i]['name'].'</strong><br>' ;
-      echo $venunes[$i]['room']." " ;
-      echo $venunes[$i]['addressline1']." ";
-      echo $venunes[$i]['addressline2']." " ;
-      echo $venunes[$i]['surburb']." ";
-      echo $venunes[$i]['city']." " ;
-      echo $venunes[$i]['state'].'<br>' ;
-      echo $venunes[$i]['postcode']." ";
-      echo $venunes[$i]['country']." ";
-      echo "<hr>";
-      }?>
-
-      </p>
-      */ ?>
       <p>
       <?php
       $events = get_field('instances')[$GLOBALS['instance_count']]['events'];
-      //echo print_r($events;)
-      function sortFunction( $a, $b ) {
-          return strtotime($a["eventstartdate"]) - strtotime($b["eventstartdate"]);
+
+      // vars
+      $order = array();
+
+
+      // populate order
+      foreach( $events as $i => $row ) {
+        
+        $order[ $i ] = $row['eventstartdate'];
+        
       }
-      usort($events, "sortFunction");
+      
+      array_multisort( $order, SORT_ASC, $events );
+
       for ($j=0; $j < sizeof($events); $j++) {
       echo '<strong>';
       echo $events[$j]['eventname'].'</strong><br>' ;
       $get_date = substr($events[$j]['eventstartdate'], 0, 10);
-      $newDate = date("d-M-Y", strtotime($get_date));
+      $newDate = date("Y-m-d", strtotime($get_date));
       $newTime = substr($events[$j]['eventstartdate'], 11, 5);
+
+      $the_date = strtotime($newDate." ".$newTime);
+      date_default_timezone_set("Australia/Brisbane");
+      $display_newDate = date("d-M-Y", $the_date);
       if($events[$j]['eventstartdate']!=""){
         // echo '<i>'.$newDate.' at '.$newTime.'</i>';
-        echo '<i>'.$newDate.'</i>';
+        echo '<i>'.$display_newDate.'</i>';
       }
       $get_date2 = substr($events[$j]['eventenddate'], 0, 10);
       $newDate2 = date("d-M-Y", strtotime($get_date2));
       $newTime2 = substr($events[$j]['eventenddate'], 11, 5);
+      $the_date = strtotime($newDate2." ".$newTime2);
+      $display_newDate2 = date("d-M-Y", $the_date);
+
       if($events[$i]['eventenddate']!=""){
         // if($get_date != $get_date2){ $showinform = 'End on: <i>'.$newDate2.' at '.$newTime2.'</i>';
         // }else{ $showinform = '<strong> to: </strong><i>'.$newTime2.'</i>';}
-        $showinform = '<strong> to: </strong><i>'.$newDate2.'</i>';
-        echo $showinform;
+        if($display_newDate2!=$display_newDate){
+          $showinform = '<i> to: </i><i>'.$display_newDate2.'</i>';
+          echo $showinform;
+        }
       }
       echo '<br>';
       echo $events[$j]['eventvenuename']." " ;
@@ -98,6 +96,9 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       echo $events[$j]['eventcountry']." ";
       echo "<hr>";
       }?>
+
+      </p>
+      <p>
 
       </p> 
       <ul>
