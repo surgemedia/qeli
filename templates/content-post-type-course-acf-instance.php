@@ -26,23 +26,27 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?Php echo $GLOBALS['instance_count'] ?>" aria-expanded="true" aria-controls="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="collapsed">
       <h3 class="panel-title">
       <span class="graphic arrow-panel-gray <?php echo $programinstance_type; ?>"></span>
-      <?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name']; ?>
-    <?php if ( 0 < strlen(get_classSize($maxSize,$currentSize,true))): ?>
-      
-      <?php echo ' - ('.get_classSize($maxSize,$currentSize,true).')'; ?> 
-     
-      <?php endif ?>
-
+      <?php  $events = get_field('instances')[$GLOBALS['instance_count']]['events'];
+        if(sizeof($events)>0){$programinstance_type2="";}else{$programinstance_type2 = '-(On Demand)';}
+      ?>
+      <?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name'].$programinstance_type2; ?>
+        <?php if ( 0 < strlen(get_classSize($maxSize,$currentSize,true))): ?>
+        
+        <?php echo ' - ('.get_classSize($maxSize,$currentSize,true).')'; ?> 
+       
+        <?php endif ?>
       <span class="graphic icon-toggle pull-right"></span>
       </h3>
     </a>
   </div>
+  <?php       
+   
+    if(sizeof($events)>0){
+  ?>
   <div id="collapse<?Php echo $GLOBALS['instance_count'] ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?Php echo $GLOBALS['instance_count'] ?>">
     <div class="panel-body">
       <p>
       <?php
-      $events = get_field('instances')[$GLOBALS['instance_count']]['events'];
-
       // vars
       $order = array();
 
@@ -59,28 +63,18 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       for ($j=0; $j < sizeof($events); $j++) {
       echo '<strong>';
       echo $events[$j]['eventname'].'</strong><br>' ;
-      $get_date = substr($events[$j]['eventstartdate'], 0, 10);
-      $newDate = date("Y-m-d", strtotime($get_date));
-      $newTime = substr($events[$j]['eventstartdate'], 11, 5);
+      
+       // START DATE
+      $start_date = $events[$j]['eventstartdate'];
 
-      $the_date = strtotime($newDate." ".$newTime);
-      date_default_timezone_set("Australia/Brisbane");
-      $display_newDate = date("d-M-Y", $the_date);
       if($events[$j]['eventstartdate']!=""){
-        // echo '<i>'.$newDate.' at '.$newTime.'</i>';
-        echo '<i>'.$display_newDate.'</i>';
+        echo '<i>'.$start_date.'</i>';
       }
-      $get_date2 = substr($events[$j]['eventenddate'], 0, 10);
-      $newDate2 = date("d-M-Y", strtotime($get_date2));
-      $newTime2 = substr($events[$j]['eventenddate'], 11, 5);
-      $the_date = strtotime($newDate2." ".$newTime2);
-      $display_newDate2 = date("d-M-Y", $the_date);
-
-      if($events[$i]['eventenddate']!=""){
-        // if($get_date != $get_date2){ $showinform = 'End on: <i>'.$newDate2.' at '.$newTime2.'</i>';
-        // }else{ $showinform = '<strong> to: </strong><i>'.$newTime2.'</i>';}
-        if($display_newDate2!=$display_newDate){
-          $showinform = '<i> to: </i><i>'.$display_newDate2.'</i>';
+      // END DATE
+      $end_date = $events[$j]['eventenddate'];
+      if($events[$i]['eventenddate']!=""){ 
+        if($end_date!=$start_date){
+          $showinform = '<i> to </i><i>'.$end_date.'</i>';
           echo $showinform;
         }
       }
@@ -112,4 +106,5 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       </ul>
     </div>
   </div>
+  <?php } ?>
 </div>
