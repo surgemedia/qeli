@@ -188,17 +188,17 @@
 													$currentSize = (int)get_sub_field('currentClassSize');
 													$instances_name = get_sub_field('instances_name');
 											if((get_sub_field('instances_name'))){ ?>
-											<?php if(false == get_classSize($maxSize,$currentSize,true)) { ?>
+											<?php 
+											if(false == get_classSize($maxSize,$currentSize,true)) { ?>
 											<div>
 												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
-												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?></label>
+												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name; ?></label>
 											</div>
+
 											<?php } else { ?>
 											<div>
-												<?php if('Fully booked' != get_classSize($maxSize,$currentSize,true)) ?>
 												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
-												<?php } ?>
-												<label for=""><?php echo $instances_name ?> - (<?php echo get_classSize($maxSize,$currentSize,true) ?>)</label>
+												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name; ?> - (<?php echo get_classSize($maxSize,$currentSize,true) ?>)</label>
 											</div>
 											<?php } ?>
 											<?php }
