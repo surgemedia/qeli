@@ -299,7 +299,8 @@ if($_GET['PassWordCode']!="3yfdr73rw3aRTe4x"){ //Setting the password for cron j
 			wp_set_object_terms( $post_ID, $add_to_cata[$i], 'courses_categories');
 			$related_program_course_id[$i] = $post_ID;
 	
-			$checkLastModifyDate = get_field('date_last_updated', $post_ID);// check the last modify date to reduce query.
+			$checkLastModifyDate = '2015-01-01T01:00:00.577Z';// check the last modify date to reduce query.
+			//Changed to static modified date to assure it always syncs
 			if($checkLastModifyDate != $jsonIterator[$i]['dateLastUpdated']){//if the last Modify date is same as database record, don't take any action.
 				global $wpdb;
 				$del_all_postmate = "DELETE FROM `".$wpdb->dbname."`.`".$table_prefix."postmeta` WHERE post_id = ".$post_ID." AND meta_key LIKE '_instances%' OR  post_id = ".$post_ID." AND meta_key LIKE 'instances%'";
