@@ -5,7 +5,7 @@ function videos_post() {
 	$labels = array(
 		'name'                => _x( 'Videos', 'Post Type General Name', 'text_domain' ),
 		'singular_name'       => _x( 'Video', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Videos', 'text_domain' ),
+		'menu_name'           => __( 'Videoes', 'text_domain' ),
 		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
 		'all_items'           => __( 'All video', 'text_domain' ),
 		'view_item'           => __( 'View Item', 'text_domain' ),

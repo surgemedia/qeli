@@ -188,6 +188,7 @@
 													$maxSize = (int)get_sub_field('class_size');
 													$currentSize = (int)get_sub_field('currentClassSize');
 													$instances_name = get_sub_field('instances_name');
+<<<<<<< HEAD
 													
 											if((get_sub_field('instances_name'))){ 
 												// debug($maxSize."m - c".$currentSize." -".var_dump(get_classSize($maxSize,$currentSize,true)));
@@ -198,6 +199,20 @@
 												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if($count_checked == 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
 												<?php } ?>
 												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?> <?php echo get_classSize($maxSize,$currentSize,true) ?></label>
+=======
+											if((get_sub_field('instances_name'))){ ?>
+											<?php 
+											if(false == get_classSize($maxSize,$currentSize,true)) { ?>
+											<div>
+												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
+												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name; ?></label>
+											</div>
+
+											<?php } else { ?>
+											<div>
+												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
+												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name; ?> - (<?php echo get_classSize($maxSize,$currentSize,true) ?>)</label>
+>>>>>>> origin/master
 											</div>
 											<?php  } ?>
 											<?php }

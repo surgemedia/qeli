@@ -2,7 +2,7 @@
 									 ?>
 <div class="person col-xs-12 col-sm-6 col-md-4"
 	data-title="<?php the_title();?>"
-	data-description="<?php echo get_field('biography');?>"
+	data-description='<?php echo get_field('biography');?>'
 	data-lastname="<?php echo get_field('last_name'); ?>"
 	data-term="<?php $terms = wp_get_post_terms($post->ID, 'people_group');
 					foreach($terms as $term) {echo $term->name . ' ';  }
