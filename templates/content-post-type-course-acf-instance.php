@@ -32,7 +32,7 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
       <?php echo get_field('instances')[$GLOBALS['instance_count']]['instances_name'].$programinstance_type2; ?>
         <?php if ( 0 < strlen(get_classSize($maxSize,$currentSize,true))): ?>
         
-        <?php echo ' - ('.get_classSize($maxSize,$currentSize,true).')'; ?> 
+        <?php echo ' '.get_classSize($maxSize,$currentSize,true).''; ?> 
        
         <?php endif ?>
       <span class="graphic icon-toggle pull-right"></span>

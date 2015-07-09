@@ -164,6 +164,7 @@
 											<input type="hidden" name="postid" value="<?php the_ID();?>" />
 											<input type="hidden" name="post_timing" value="<?php echo time();?>" />
 											<?php
+											$count_checked = 0;
 											if( get_field('instances') ){
 												$i = 0;
 												while( has_sub_field('instances') ){
@@ -187,23 +188,21 @@
 													$maxSize = (int)get_sub_field('class_size');
 													$currentSize = (int)get_sub_field('currentClassSize');
 													$instances_name = get_sub_field('instances_name');
-											if((get_sub_field('instances_name'))){ ?>
-											<?php if(false == get_classSize($maxSize,$currentSize,true)) { ?>
-											<div>
-												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
-												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?></label>
-											</div>
-											<?php } else { ?>
-											<div>
-												<?php if('Fully booked' != get_classSize($maxSize,$currentSize,true)) ?>
-												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if(i < 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
+													
+											if((get_sub_field('instances_name'))){ 
+												// debug($maxSize."m - c".$currentSize." -".var_dump(get_classSize($maxSize,$currentSize,true)));
+												?>
+											<div class="option">
+												<?php if('- (Fully booked)' != get_classSize($maxSize,$currentSize,true)) { ?>
+												<?php $count_checked++ ?>
+												<input type="radio" name="programid" id="programid-<?php echo $programinstanceid ?>" <?php if($count_checked == 1) {  echo 'checked'; }  ?> value="<?php echo $programinstanceid ?>"/>
 												<?php } ?>
-												<label for=""><?php echo $instances_name ?> - (<?php echo get_classSize($maxSize,$currentSize,true) ?>)</label>
+												<label for="programid-<?php echo $programinstanceid ?>"><?php echo $instances_name ?> <?php echo get_classSize($maxSize,$currentSize,true) ?></label>
 											</div>
-											<?php } ?>
+											<?php  } ?>
 											<?php }
 											}
-											}
+											
 											?>
 										</form>
 									</li>
