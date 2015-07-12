@@ -1,0 +1,176 @@
+.single-courses {
+
+	#content > .row{
+		margin-bottom: 30px;
+		padding-bottom: 30px;
+	}
+
+	.facilitator-item {
+		// h2 {
+		// 	font-size: 0.8em;
+		// 	color: @gray;
+		// 	margin-top: 0;
+		// }
+		margin-top: 15px;
+		h3 {
+			color: @gray-dark;
+			margin-top: 0;
+		}
+
+		img {
+			width: 90px;
+			border: 6px solid lighten(@green, 20%);
+		}
+
+		.text {
+			font-size: 1.6em;
+			line-height: 1.5;
+		}
+	}
+/*
+	ul {
+		list-style-position: inside;
+		margin-left: 0;
+		padding-left: 0;
+	}
+*/
+	.colored-background h2 {
+		margin-top: 30px;
+	}
+
+
+	.h2-course {
+		font-family: @font-agile-book;
+		font-size: 21px;
+		color: @gray-dark;
+		text-transform: initial;
+	}
+
+	.panel-summary {
+		position: relative;
+		z-index: 100;
+		
+		.affix-this {
+			border: 0;
+
+			@media (max-width: @screen-xs-max) {
+			    position: static;
+			    width: auto;
+			    top: 0;
+			}
+		}
+
+		.panel {
+			//border-radius: 8px;
+			//-webkit-border-radius: 8px;
+		}
+
+		.panel-heading {
+			// padding-top: 10px;
+			// padding-bottom: 5px;
+
+			h2 {
+				color: #fff;
+				margin-bottom: 0;
+			}
+		}
+
+		.panel-body {
+			padding: 0;
+
+			h3 {
+				color: @gray;
+				margin: 0;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+
+				li {
+					margin: 0;
+					padding: 10px 15px;
+				}
+			}
+		}
+
+		.panel-footer {
+			border: 0;
+			background-color: transparent;
+			padding: 10px 15px;
+
+			.link-purchase {
+				font-family: @font-bold;
+				color: @gray-dark;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.panel-group {
+		.panel {
+			border: 0;
+			-webkit-box-shadow: 3px 3px 0px 0px rgba(124, 133, 140, 0.6);
+			-moz-box-shadow: 3px 3px 0px 0px rgba(124, 133, 140, 0.6);
+			box-shadow: 3px 3px 0px 0px rgba(124, 133, 140, 0.6);
+		}
+
+		.panel:hover,
+		.panel:focus {
+			.panel-heading {
+				background: @gray-dark;
+
+				a {
+					color: #fff;
+					text-decoration: none;
+				}
+			}
+
+			.arrow-panel-gray {
+				.graphic.arrow-panel-white;
+			}
+
+			.icon-toggle {
+				.graphic.icon-collapse-white;
+			}
+
+			a.collapsed {
+				.icon-toggle {
+					.graphic.icon-expand-white;
+				}
+			}
+		}
+
+		.panel-heading {
+			border: 0;
+
+			.panel-title {
+				padding-right: 25px;
+				position: relative;
+			}
+
+			.arrow-panel-gray {
+				margin-right: 10px;
+			}
+
+			.icon-toggle {
+				position: absolute;
+				top: -2px;
+				right: 0;
+				.graphic.icon-collapse;
+			}
+
+			a.collapsed {
+				.icon-toggle {
+					.graphic.icon-expand;
+				}
+			}
+		}
+
+		.panel-collapse > .panel-body {
+			border: 0;
+		}
+	}
+}
+

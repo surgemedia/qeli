@@ -16,10 +16,8 @@ if($fac_ids){
 <div class="col-xs-12 feature-facilitator">
 	<br>
 	<div class="row">
-		<div class="col-xs-12 col-sm-3">
-			<img class="img-circle img-responsive" src="<?php echo getFeaturedUrl($facil_array) ?>"><br>
-		</div>
-		<div class="col-xs-12 col-sm-9">
+		<div class="col-xs-12 col-sm-12">
+		<img class="img-circle img-responsive pull-left" src="<?php echo getFeaturedUrl($facil_array) ?>"><br>
 			<h3>Program Facilitator </h3>
 			
 			<strong><small><?php echo get_the_title( $fac_post ); ?></small></strong>

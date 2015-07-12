@@ -1,0 +1,268 @@
+.theme(@color, @lighten) {
+	//#content {
+	h1, h2,
+	.h1, .h2,
+	.colored-text,
+	a,
+	a:link,
+	a:hover,
+	a:focus {
+		color: @color;
+	}
+
+	.btn-primary {
+		color: #fff !important;
+	}
+	
+	.header {
+		background-color: @color;
+		margin-bottom: 25px;
+	}
+
+	.arrow-link {
+		margin-right: 5px;
+	}
+
+	.colored-background {
+		background-color: lighten(@color, @lighten);
+		margin-bottom: 30px;
+		padding-bottom: 30px;
+
+		&.page-header {
+			padding-top: 30px;
+			margin-top: 0;
+			border: 0;
+		}
+
+		&.dark {
+			background-color: lighten(@color, @lighten * 0.6);
+		}
+
+		h1 {
+			padding-top: 10px;
+			margin-bottom: 8px;
+		}
+	}
+
+	.image-background {
+		min-height: 500px;
+		position: relative;
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center center;
+		
+		@media
+			only screen and (-webkit-min-device-pixel-ratio: 2),
+			only screen and (   min--moz-device-pixel-ratio: 2),
+			only screen and (     -o-min-device-pixel-ratio: 2/1),
+			only screen and (        min-device-pixel-ratio: 2),
+			only screen and (                min-resolution: 192dpi),
+			only screen and (                min-resolution: 2dppx) {
+			background-attachment: scroll;
+		}
+	
+	 	@media only screen and (max-width: @screen-sm-max) {
+	 		background-attachment: scroll;
+	 	}
+	 	
+		&.overlay:before {
+			content: '';
+			width: 100%;
+			height: 100%;
+			background-color: lighten(@color, @lighten);
+			opacity: 0.8;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 5;
+		}
+
+		> * {
+			position: relative;
+			z-index: 100;
+		}
+	}
+	
+	.header {
+		h1 {
+			color: #fff;
+		}
+	}
+
+	.numbering {
+		font-size: 18px;
+		text-align: center;
+		color: @color;
+		line-height: 1.5;
+		border: 1px solid @color;
+		width: 26px;
+		height: 26px;
+		border-radius: 26px;;
+		-webkit-border-radius: 26px;;
+	}
+	//}
+
+	&.footer .row {
+		border-color: @color;
+	}
+	
+	.panel-aside {
+		.panel {
+			border: 1px solid @color;
+			box-shadow: none;
+
+			.panel-heading {
+				background-color: @color;
+			}
+		}
+	}
+
+	.list-striped {
+		li {
+			background-color: lighten(@color, @lighten);
+		}
+
+		li:nth-child(2n) {
+			background-color: #fff;
+		}
+	}
+
+	.sidebar {
+		.sidebar(@color);
+	}
+
+	.table-themed {
+		border: 1px solid @color;
+
+		thead {
+			background-color: @color;
+			color: #fff;
+
+			th {
+				border-top: 0;
+				border-bottom: 0;
+			}
+		}
+
+		tbody {
+			tr {
+				background-color: lighten(@color, @lighten);
+			}
+
+			tr:nth-child(2n) {
+				background-color: #fff;
+			}
+
+
+			td {
+				border-top: 0;
+				border-bottom: 0;
+			}
+
+			td:last-child {
+				border-right: 1px solid @color;
+			}
+		}
+	}
+}
+
+.green {
+	.theme(@green, 40%);
+
+	.arrow-link-sq {
+		.graphic.arrow-link-sq-green;
+	}
+
+	.arrow-link {
+		.graphic.arrow-link-green;
+	}
+
+	.arrow-right {
+		.graphic.arrow-right-green;
+	}
+
+	.arrow-right-sm {
+		.graphic.arrow-right-sm-green;
+	}
+
+	.arrow-right-outline {
+		.graphic.arrow-right-outline-green;
+	}
+}
+
+.blue {
+	.theme(@blue, 52%);
+
+	.arrow-link-sq {
+		.graphic.arrow-link-sq-blue;
+	}
+
+	.arrow-link {
+		.graphic.arrow-link-blue;
+	}
+
+	.arrow-right {
+		.graphic.arrow-right-blue;
+	}
+
+	.arrow-right-sm {
+		.graphic.arrow-right-sm-blue;
+	}
+
+	.arrow-right-outline {
+		.graphic.arrow-right-outline-blue;
+	}
+}
+
+.gray {
+	.theme(@gray-dark, 70%);
+
+	.arrow-link-sq {
+		.graphic.arrow-link-sq-blue;
+	}
+
+	.arrow-link {
+		.graphic.arrow-link-blue;
+	}
+
+	.arrow-right {
+		.graphic.arrow-right-green;
+	}
+
+	.arrow-right-sm {
+		.graphic.arrow-right-sm-blue;
+	}
+
+	.arrow-right-outline {
+		.graphic.arrow-right-outline-blue;
+	}
+
+	.numbering {
+		color: @blue;
+		border: 1px solid @blue;
+	}
+}
+
+.pink {
+	.theme(@pink, 40%);
+
+	.arrow-link-sq {
+		.graphic.arrow-link-sq-pink;
+	}
+
+	.arrow-right {
+		.graphic.arrow-right-pink;
+	}
+
+	.arrow-link {
+		.graphic.arrow-link-pink;
+	}
+
+	.arrow-right-sm {
+		.graphic.arrow-right-sm-pink;
+	}
+
+	.arrow-right-outline {
+		.graphic.arrow-right-outline-pink;
+	}
+}

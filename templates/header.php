@@ -50,7 +50,10 @@
 								<form action="http://qeli.createsend.com/t/d/s/tutydt/" method="post">
 								  <label class="sr-only"><?php _e('Subscribe', 'roots'); ?></label>
 								  <div class="input-group">
-								   <input id="fieldEmail" name="cm-tutydt-tutydt" type="email" required />
+								   <input id="fieldName" name="cm-tutydt-tutydt" type="name" required placeholder="" />
+								   <input id="fieldCompany" name="cm-tutydt-tutydt" type="company" required placeholder="" />
+								   <input id="fieldPhone" name="cm-tutydt-tutydt" type="phone" required placeholder="" />
+								   <input id="fieldEmail" name="cm-tutydt-tutydt" type="email" required placeholder="" />
 								    <span class="input-group-btn">
 								      <button type="submit" class="search-submit btn btn-subscribe"><?php _e('Subscribe', 'roots'); ?></button>
 								    </span>
