@@ -12,19 +12,18 @@
     get_template_part('templates/header');
   ?>
 
-<?php
-$post_type = get_post_type($post);
-if(get_field('color_scheme')){
-  $color_scheme = get_field('color_scheme');
-} else {
-  $color_scheme = 'blue';
-}
+  <?php
+  $post_type = get_post_type($post);
+  if(get_field('color_scheme')){
+    $color_scheme = get_field('color_scheme');
+  } else {
+    $color_scheme = 'blue';
+  }
 
-if($post_type==='courses') {
-  $color_scheme = 'green';
-}
-?>
-
+  if($post_type==='courses') {
+    $color_scheme = 'green';
+  }
+  ?>
   <div id="content-container" class="<?php echo $color_scheme; ?> <?php echo $post_type; ?>">
     <div class="col-xs-12">
       <main class="row" role="main">

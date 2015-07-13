@@ -1,5 +1,24 @@
 <div id="header" role="banner" aria-labelledby="landmark-label-2">
 	<?php get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
+	<nav >
+	<div class="container">
+		<ul id="login-nav" class="nav navbar navbar-nav pull-right">
+			<li>
+				<a href="#login"><i class="qeli-icon-enroll"></i>
+				<span>>></span>
+				<span>enroll</span>
+				</a>
+			</li>
+			<li>
+				<a href="http://my.qeli.qld.edu.au">
+				<i class="qeli-icon-login"></i>
+				<span>>></span>
+				<span>login</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	</nav>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -50,10 +69,10 @@
 								<form action="http://qeli.createsend.com/t/d/s/tutydt/" method="post">
 								  <label class="sr-only"><?php _e('Subscribe', 'roots'); ?></label>
 								  <div class="input-group">
-								   <input id="fieldName" name="cm-tutydt-tutydt" type="name" required placeholder="" />
-								   <input id="fieldCompany" name="cm-tutydt-tutydt" type="company" required placeholder="" />
-								   <input id="fieldPhone" name="cm-tutydt-tutydt" type="phone" required placeholder="" />
-								   <input id="fieldEmail" name="cm-tutydt-tutydt" type="email" required placeholder="" />
+								   <input id="fieldName" name="cm-tutydt-tutydt" type="name" required placeholder="Name" />
+								   <input id="fieldCompany" name="cm-tutydt-tutydt" type="company" required placeholder="Company" />
+								   <input id="fieldPhone" name="cm-tutydt-tutydt" type="phone" required placeholder="Phone" />
+								   <input id="fieldEmail" name="cm-tutydt-tutydt" type="email" required placeholder="Email" />
 								    <span class="input-group-btn">
 								      <button type="submit" class="search-submit btn btn-subscribe"><?php _e('Subscribe', 'roots'); ?></button>
 								    </span>
