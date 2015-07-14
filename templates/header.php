@@ -1,20 +1,21 @@
 <div id="header" role="banner" aria-labelledby="landmark-label-2">
-	<?php get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
-	<nav >
-	<div class="container">
-		<ul id="login-nav" class="nav navbar navbar-nav pull-right">
+	<?php
+get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
+	<nav class="hidden-xs hidden-sm">
+	<div id="login-nav-container" class="container">
+		<ul class="login-nav  nav navbar navbar-nav pull-right">
 			<li>
-				<a href="#login"><i class="qeli-icon-enroll"></i>
-				<span>>></span>
-				<span>enroll</span>
+				<a href="/program-catalogue/"><i class="qeli-icon-enroll"></i>
+				<small class="">>></small>
+				<span class="">enroll</span>
 				</a>
 			</li>
 			<li>
-				<a href="http://my.qeli.qld.edu.au">
+				<a href="http://my.qeli.qld.edu.au" target="_blank">
 				<i class="qeli-icon-login"></i>
-				<span>>></span>
+				<small>>></small>
 				<span>login</span>
-				</a>
+				</a>	
 			</li>
 		</ul>
 	</div>
@@ -28,20 +29,26 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand graphic logo" href="<?php echo site_url(); ?>"></a>
+				
+		<ul class="login-nav-buttons hidden-md hidden-lg nav navbar navbar-nav pull-right">
+			<li>
+				<a href="/program-catalogue/"><i class="qeli-icon-enroll"></i>
+				</a>
+			</li>
+			<li>
+				<a href="http://my.qeli.qld.edu.au">
+				<i class="qeli-icon-login"></i>
+				</a>
+			</li>
+		</ul>
+	
+				<a class="navbar-brand graphic logo-five-years" href="<?php
+echo site_url(); ?>"></a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<?php
-					wp_nav_menu(array('theme_location' => 'primary',
-									'container' => false,
-									'menu'=> 'primary',
-									'menu_id' => 'home-nav',
-									'menu_class' => 'nav navbar navbar-nav',
-									'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-									'walker' => new QELi_Nav_Menu()
-								)
-							);
-					?>
+wp_nav_menu(array('theme_location' => 'primary', 'container' => false, 'menu' => 'primary', 'menu_id' => 'home-nav', 'menu_class' => 'nav navbar navbar-nav', 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>', 'walker' => new QELi_Nav_Menu()));
+?>
 				<ul class="nav navbar navbar-nav navbar-right" role="search">
 					<li class="main-menu-item nav-search">
 						<a href="#search-collapse" class="menu-link" data-toggle="collapse" aria-expanded="false" aria-controls="search-collapse">
@@ -51,7 +58,8 @@
 						</a>
 						<div id="search-collapse" class="panel search-form collapse">
 							<div class="panel-body">
-								<?php get_template_part('templates/searchform'); ?>
+								<?php
+get_template_part('templates/searchform'); ?>
 							</div>
 						</div>
 					</li>
@@ -67,14 +75,16 @@
 							</div>
 							<div class="panel-body">
 								<form action="http://qeli.createsend.com/t/d/s/tutydt/" method="post">
-								  <label class="sr-only"><?php _e('Subscribe', 'roots'); ?></label>
+								  <label class="sr-only"><?php
+_e('Subscribe', 'roots'); ?></label>
 								  <div class="input-group">
-								   <input id="fieldName" name="cm-tutydt-tutydt" type="name" required placeholder="Name" />
-								   <input id="fieldCompany" name="cm-tutydt-tutydt" type="company" required placeholder="Company" />
-								   <input id="fieldPhone" name="cm-tutydt-tutydt" type="phone" required placeholder="Phone" />
+								   <input id="fieldName" name="cm-name" type="text" required placeholder="Name" />
+								   <input id="fieldjkktll" name="cm-f-jkktll" type="text" required placeholder="Company" />
+								   <input id="fieldjuirht" name="cm-f-juirht" type="text" required placeholder="Phone" />
 								   <input id="fieldEmail" name="cm-tutydt-tutydt" type="email" required placeholder="Email" />
 								    <span class="input-group-btn">
-								      <button type="submit" class="search-submit btn btn-subscribe"><?php _e('Subscribe', 'roots'); ?></button>
+								      <button type="submit" class="search-submit btn btn-subscribe"><?php
+_e('Subscribe', 'roots'); ?></button>
 								    </span>
 								  </div>
 								</form>
