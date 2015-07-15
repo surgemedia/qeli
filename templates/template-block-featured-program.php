@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-12 col-sm-6">
+          <div class="col-xs-12 col-sm-7">
           <?php
             $GLOBALS['program_id'] = get_field('featured_program');
             $GLOBALS['testimonial_id'] = get_field('featured_testimonial');
@@ -32,7 +32,7 @@
           ?>
           
         </div>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-5">
         <?php
 
            if(get_field('featured_testimonial')){
