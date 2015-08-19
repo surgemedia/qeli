@@ -52,15 +52,15 @@ $currentSize = (int)get_field('instances')[$GLOBALS['instance_count']]['currentC
 
 
       // populate order
-      foreach( $events as $i => $row ) {
+      // foreach( $events as $i => $row ) {
         
-        $order[ $i ] = $row['eventstartdate'];
+      //   $order[ $i ] = $row['eventstartdate'];
         
-      }
+      // }
       
-      array_multisort( $order, SORT_ASC, $events );
-
+      //array_multisort( $order, SORT_ASC, $events );
       for ($j=0; $j < sizeof($events); $j++) {
+      // for ($j=sizeof($events)-1; $j >= 0; $j--) {
       echo '<strong>';
       echo $events[$j]['eventname'].'</strong><br>' ;
       

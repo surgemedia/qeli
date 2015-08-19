@@ -49,8 +49,10 @@ $wp_session = WP_Session::get_instance();
 		<div class="table-responsive">
                 <?php
 					$input_start = 1;
+					$fully_booked = false;
 					for($i=0; $i<=$wp_session['count']; $i++){
 						//echo $wp_session['count'].'<br/>';
+						// debug(get_post_meta($course_post_id));
 						$course_post_id = $wp_session['postid'.$i];
 						$prog_id = $wp_session['programid'.$i];
 						//echo $prog_id.'<br/>';
@@ -83,15 +85,29 @@ $wp_session = WP_Session::get_instance();
 									var e = document.getElementById("value'.$input_start.'").value;
 									document.getElementById("ch_qty'.$input_start.'").value = e;
 							';
+							$max_class_size = 0;
+							$current_class_size = 0;
 							if( get_field('instances', $course_post_id) ){
 								while( has_sub_field('instances', $course_post_id) )
 								{
 									$programinstanceid = get_sub_field('programinstanceid', $course_post_id);
 									$instances_name = get_sub_field('instances_name', $course_post_id);
-									if($prog_id==$programinstanceid){
-										$get_piid = $prog_id;
-										$show_instances_name =  $instances_name;
+									// debug($max_class_size);
+									// debug($current_class_size);
+
+									$max_class_size = get_sub_field('class_size', $course_post_id);
+									$current_class_size = get_sub_field('currentClassSize', $course_post_id);
+								if(((int)$max_class_size - (int)$current_class_size) > 0){
+								$fully_booked = false;
+								if($prog_id==$programinstanceid){
+									$get_piid = $prog_id;
+									$show_instances_name =  $instances_name;
 									}
+								} else {
+									$fully_booked = true;
+									$get_piid = "";
+									$show_instances_name =  "FULLY BOOKED";
+								}
 								}
 							}
 							$table_display .= '
@@ -100,10 +116,10 @@ $wp_session = WP_Session::get_instance();
 									<td><span class="graphic footer-courses"></span></td>
 										<td><strong>'.get_the_title($course_post_id).'</strong><br/>'.$show_instances_name.'</td>
 										<td>
-											<input class="form-control" name="value'.$input_start.'" id="value'.$input_start.'" type="text" value="'.$wp_session[$prog_id.'qty'].'" onkeyup="return runScript()" />
+											<input class="form-control" name="value'.$input_start.'" id="value'.$input_start.'" type="number" max="'.((int)$max_class_size - (int)$current_class_size).'" value="'.$wp_session[$prog_id.'qty'].'" onkeyup="return runScript()" />
 											<input class="form-control quantity" name="instancesid'.$input_start.'" type="hidden" value="'.$get_piid.'">
 											<!--<a href="#" rel="tooltip" class="btn btn-default" onclick="document.getElementById(\'cart_item_qty'.$input_start.'\').submit();"><Edit</a>-->
-											<a href="#" class="btn btn-primary btn-remove" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();">Remove</a>
+											<a href="#" class="btn btn-primary btn-remove" onclick="document.getElementById(\'cart_item_del'.$i.'\').submit();">Remove</a><p>There is <strong>'.((int)$max_class_size - (int)$current_class_size).'</strong> seats remain, if you require more please<a class="btn" href="/contact-us/">contact us</a></p>
 										</td>
 									<td>$'.$price[$i].'</td>
 									<td>$'.$total.'</td>
@@ -118,6 +134,7 @@ $wp_session = WP_Session::get_instance();
 					echo $delete_hidden_form;
 					echo $change_value_form;
 				?>
+
             <form action="<?php echo site_url().'/order-redirect/';?>" method="post" id="post_json">
 			<table class="table">
 					<tr>
@@ -131,6 +148,7 @@ $wp_session = WP_Session::get_instance();
 					</tr>
 				</thead>
 				<tbody>
+
                 	<?php echo $table_display;?>
 
 					<tr>
@@ -140,20 +158,32 @@ $wp_session = WP_Session::get_instance();
 						<td colspan="4" class="text-right">Total Product</td>
 						<td>$<?php echo $amount;?></td>
 					</tr>
-
+					<?php if(false == $fully_booked){ ?>
 					<tr>
 						<td colspan="4" class="text-right"><strong>Total with GST</strong></td>
-						<td>$<?php echo $amount * 1.1;?></td>
+						<td><?php 
+						
+						echo "$".$amount * 1.1;
+						
+						?></td>
+
 					</tr>
+					<?php } else {  ?>
+						<tr>
+						<td class="error" colspan="6"><strong>One or more of the items in your cart is fully booked, please remove this item before processing to the checkout</strong></td>
+						</tr>
+						<?php } ?>
 				</tbody>
 			</table>
             </form>
             <?php //echo json_encode($array); ?>
 		</div>
 		<a href="<?php echo site_url(); ?>/program-catalogue/" class="btn btn-simple"><span class="graphic arrow-left-black"></span>Continue Shopping</a>
-        <?php if($input_start > 1){ ?>
+        <?php if($input_start > 1 && false == $fully_booked){ ?>
 		<a href="#" class="btn btn-simple pull-right" onclick="document.getElementById('post_json').submit();">Checkout<span class="graphic arrow-right-black"></span></a>
-        <?php } ?>
+        <?php } else {
+
+        	}?>
 	</div>
 
 </article>
