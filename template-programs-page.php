@@ -6,7 +6,7 @@ Template Name: Programs Page
 <?php while (have_posts()) : the_post(); ?>
 <article id="content" class="col-xs-12">
 	<div class="row">
-		<div class="page-header colored-background image-background overlay" style="background-image:url('<?php
+		<div class="page-header colored-background image-background" style="background-image:url('<?php
 				$id = get_post_thumbnail_id();
 				echo wp_get_attachment_image_src($id, 'full')[0];
 			?>')">
