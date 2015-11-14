@@ -19,6 +19,7 @@ Template Name: Courses Page
 		<?php //get_template_part('templates/content', 'featured-program'); ?>
 		<?php //get_template_part('templates/content', 'featured-Testimonial'); ?>
 	<?php endwhile; ?>
+
 	
 </div>
 

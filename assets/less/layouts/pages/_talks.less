@@ -12,9 +12,30 @@
 	.video-name{
 		margin-bottom: 0;
 	}
+	.video-obj {
+		transition:all .5s;
+    	overflow: visible;
+    	visibility: visible;
+		// width: inherit;
+    	// height: inherit;
 
+
+	}
+	.video-obj.out {
+	width: 0;
+    height: 0;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+	transition:all .5s;
+
+	}
+	.out + .clearfix {
+		display:none;
+	}
 	.video-item {
-
+		
 		padding-right: 0;
 		margin-bottom: 25px;
 		.overlay{
