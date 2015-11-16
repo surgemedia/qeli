@@ -16,7 +16,7 @@
           <div class="col-xs-8"><?php echo get_field('sliders')['0']['footer_text']; ?></div>
           <div class="col-xs-4 text-right"><a href="<?php echo get_field('sliders')['0']['arrow_link']; ?>" class="big-link">
             <span class="graphic arrow-link-sq-white"></span><?php echo get_field('sliders')['0']['arrow_text']; ?></a>
-          </div>A
+          </div>
       </div>
     </div>
   </div>
