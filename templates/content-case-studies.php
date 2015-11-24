@@ -22,13 +22,14 @@
         <?php get_template_part('templates/content', 'lead'); ?>
         <?php the_field('body_text'); ?>
       <div class="col-xs-12">
-       <h3>Participants</h3>
+       <!-- <h3>Participants</h3> -->
         <?php the_field('participants') ?>
       </div>
       <div class="col-xs-12">
-       <h3>Outcome</h3>
+       <!-- <h3>Outcome</h3> -->
         <?php the_field('outcome') ?>
       </div>
+      <?php if(strlen(get_field('gallery')[0]) > 0 ) { ?>
       <div class="col-xs-12">
        <h3>Gallery</h3>
               <div id="bs-gallery" class="slider">
@@ -75,6 +76,7 @@
             </div>
       </div>
       </div>
+      <?php } ?>
     </div>
      <div class="col-xs-12">
      <hr>

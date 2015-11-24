@@ -1,6 +1,6 @@
 <div class="section news blue">
   <div class="container center-all">
-    <h2>QELi BLOG</h2>
+    <h2>QELi News</h2>
     <div class="row">
       <div class="col-xs-12 col-md-6">
         <?php
@@ -58,7 +58,7 @@
         ?>
       </div>
     </div>
-    <a href="<?php echo site_url(); ?>/qeli-blog/" class="big-link"><span class="graphic arrow-link-sq"></span> View all blog articles</a>
+    <a href="<?php echo site_url(); ?>/qeli-blog/" class="big-link"><span class="graphic arrow-link-sq"></span> View all news articles</a>
   </div>
   <div class="section-footer">
     <span class="graphic arrow-section-down"></span>
