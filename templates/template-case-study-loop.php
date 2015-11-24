@@ -1,11 +1,10 @@
 <?php
-
 				// TODO JW - this query should pull the news items published in the last 7 days
 				// WP_Query arguments
 				$args = array (
 				'post_type'              => 'case_studies',
 				'pagination'             => false,
-				'posts_per_page'         => '12',
+				'post__in' => get_field('select_studies'),
 				);
 				// The Query
 				$query = new WP_Query( $args );

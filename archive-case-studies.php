@@ -27,9 +27,21 @@
 			</div>
 			<div class="col-xs-12 col-sm-3">
 			    <?php if (roots_display_sidebar()) : ?>
-			        <aside class="sidebar" role="complementary">
-			          <?php include roots_sidebar_path(); ?>
-			        </aside><!-- /.sidebar -->
+			       <aside class="sidebar" role="complementary">
+                    <section class="widget search-2 widget_search">
+                        <?php
+                           get_template_part('templates/searchform');
+                        ?>
+                    </section>
+                    <section class="widget archives widget_archive">
+                        <?php
+                          	  $archive_pt = 'case_studies';
+                           include(locate_template('templates/part-archive_tax-list.php'));
+                            unset($archive_pt );
+                            
+                        ?>
+                    </section>
+                    </aside><!-- /.sidebar -->
 	  			<?php endif; ?>
 			</div>
 		</div>

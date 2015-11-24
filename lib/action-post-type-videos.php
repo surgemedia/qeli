@@ -41,14 +41,14 @@ add_action( 'init', 'video_tags', 0 );
 function videos_post() {
 
 	$labels = array(
-		'name'                => _x( 'Videos', 'Post Type General Name', 'text_domain' ),
-		'singular_name'       => _x( 'Video', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'           => __( 'Videoes', 'text_domain' ),
+		'name'                => _x( 'Qeli Talks', 'Post Type General Name', 'text_domain' ),
+		'singular_name'       => _x( 'Talk', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'           => __( 'Qeli Talks', 'text_domain' ),
 		'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
-		'all_items'           => __( 'All video', 'text_domain' ),
+		'all_items'           => __( 'All Talks', 'text_domain' ),
 		'view_item'           => __( 'View Item', 'text_domain' ),
-		'add_new_item'        => __( 'Add New Video', 'text_domain' ),
-		'add_new'             => __( 'Add New Video', 'text_domain' ),
+		'add_new_item'        => __( 'Add New Talk', 'text_domain' ),
+		'add_new'             => __( 'Add New Talk', 'text_domain' ),
 		'edit_item'           => __( 'Edit Item', 'text_domain' ),
 		'update_item'         => __( 'Update Item', 'text_domain' ),
 		'search_items'        => __( 'Search Item', 'text_domain' ),

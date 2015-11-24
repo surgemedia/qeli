@@ -47,7 +47,7 @@ Template Name: Qeli Talks/Videos
 					<div class="row">
 
 						<ul class="video-filter">
-							<li><a href="#" class="selected" data-term="clear">All Tags</a></li>
+							<li><a href="#" class="selected" data-term="clear">All Videos</a></li>
 							<?php
 							$args = array( 'hide_empty=0' );
 							$terms = get_terms( 'video_tag', $args );

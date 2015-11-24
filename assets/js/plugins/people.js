@@ -12,7 +12,6 @@ $(document).ready(function () {
 		panelTitleEl = panelEl.querySelector('.panel-title'),
 		panelTextEl = panelEl.querySelector('.panel-text'),
 
-
 		init();
 	}
 

@@ -272,38 +272,7 @@
 		<!-- Date Locations -->
 		<!-- Case Study -->
 	<?php ?>
-	<div class="row">
-		<div class="container">
-			<div class="col-sm-8">
-				<div class="case-study section">
-					<!-- <h2>Case Study</h2> -->
-					<?php
-					// WP_Query arguments
-					$args = array (
-					'post_type'     => 'case_studies',
-					'meta_query'    => array(
-					array( 'key' => 'remove_others', 'value'     => '1',),
-					array( 'key' => 'course', 'value'     => $course_id,),
-						),
-					);
-					// The Query
-					$query = new WP_Query( $args );
-					if ( $query->have_posts() ) {
-					while ( $query->have_posts() ) {
-					$query->the_post();
-					get_template_part('templates/content-post-type', 'case-study-landscape');
-					}
-					} else {
-					get_template_part('templates/content', 'no-posts');
-					}
-					// Restore original Post Data
-					wp_reset_postdata();
-					// WP_Query arguments
-					?>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	
 	<?php ?>
 
@@ -343,6 +312,38 @@
 	<?php } // if no realted courses ?>
 	<!-- Related Programs -->
 </div>
+<div class="row">
+		<div class="container">
+			<div class="col-sm-8">
+				<div class="case-study section">
+					<!-- <h2>Case Study</h2> -->
+					<?php
+					// WP_Query arguments
+					$args = array (
+					'post_type'     => 'case_studies',
+					'meta_query'    => array(
+					array( 'key' => 'remove_others', 'value'     => '1',),
+					array( 'key' => 'course', 'value'     => $course_id,),
+						),
+					);
+					// The Query
+					$query = new WP_Query( $args );
+					if ( $query->have_posts() ) {
+					while ( $query->have_posts() ) {
+					$query->the_post();
+					get_template_part('templates/content-post-type', 'case-study-landscape');
+					}
+					} else {
+					get_template_part('templates/content', 'no-posts');
+					}
+					// Restore original Post Data
+					wp_reset_postdata();
+					// WP_Query arguments
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
 <?php
 					// WP_Query arguments
 				

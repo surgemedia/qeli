@@ -31,8 +31,11 @@ function archive_tax() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => false,
 		'show_tagcloud'              => false,
+		'rewrite' => array(
+                'slug' => 'archived-work',
+            ),
 	);
-	register_taxonomy( 'archive_tax', array( 'newsletter' ), $args );
+	register_taxonomy( 'archive_tax', array( 'newsletter','post','case_studies','news_article' ), $args );
 
 }
 add_action( 'init', 'archive_tax', 0 );
@@ -61,7 +64,7 @@ function newsletter_posts() {
 		'description'         => __( 'QELi Newsletter', 'text_domain' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'editor', 'excerpt', 'author', ),
-		'taxonomies'          => array( ),
+		'taxonomies'          => array('archive_tax'),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,

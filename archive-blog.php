@@ -27,11 +27,18 @@
 				?>
 			</div>
 			<div class="col-xs-12 col-sm-3">
-			    <?php if (roots_display_sidebar()) : ?>
-			        <aside class="sidebar" role="complementary">
-			          <?php include roots_sidebar_path(); ?>
-			        </aside><!-- /.sidebar -->
-	  			<?php endif; ?>
+			  <aside class="sidebar" role="complementary">
+                    <section class="widget search-2 widget_search">
+                        <?php
+                           get_template_part('templates/searchform');
+                        ?>
+                    </section>
+                    <section class="widget archives widget_archive">
+                        <?php
+                            get_template_part('templates/part-archive_tax-list');
+                        ?>
+                    </section>
+                    </aside><!-- /.sidebar -->
 			</div>
 		</div>
 	</div>
