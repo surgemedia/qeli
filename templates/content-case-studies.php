@@ -29,7 +29,8 @@
        <!-- <h3>Outcome</h3> -->
         <?php the_field('outcome') ?>
       </div>
-      <?php if(strlen(get_field('gallery')[0]) > 0 ) { ?>
+
+      <?php if(sizeof(get_field('gallery')[0]) > 0 ) { ?>
       <div class="col-xs-12">
        <h3>Gallery</h3>
               <div id="bs-gallery" class="slider">
