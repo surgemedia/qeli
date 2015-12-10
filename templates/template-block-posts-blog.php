@@ -1,4 +1,4 @@
-<div class="section news">
+<div class="section news green">
   <div class="container center-all">
     <h2>QELi News</h2>
     <div class="row">

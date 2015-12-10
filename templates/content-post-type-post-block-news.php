@@ -1,17 +1,19 @@
 <div class="news-obj">
-<div class="col-xs-3">
-<div class="img-circle">
-<img class=" img-responsive pull-left" src="<?php echo getFeaturedUrl(get_the_ID(),'Full'); ?> " alt="<?php the_title(); ?>">
-</div>
-</div>
-<div class="col-xs-9">
-<h3><a href="<?php the_permalink(); ?>"><span class="graphic arrow-link"></span> <?php the_title(); ?></a></h3>
-<p><?php the_excerpt(); ?></p>
-<p class="date">
-	[<?php
-		//Used post date but also have control for date published.
-	 	echo get_the_date('F j');
-	 ?>] <?php edit_post_link(); ?>
-</p>
-</div>
+    <div class="img-crop col-xs-3">
+    <?php echo get_the_post_thumbnail( $post_id, array( 200, 200), array( 'class' => 'img-responsive pull-left' )); ?>
+        <!-- <img class=" img-responsive pull-left" src="<?php echo getFeaturedUrl(get_the_ID()); ?> " alt="<?php the_title(); ?>"> -->
+    </div>
+    <div class="col-xs-9">
+        <h3><a href="<?php the_permalink(); ?>"><span class="graphic arrow-link"></span> <?php the_title(); ?></a></h3>
+    </div>
+    <div class="col-xs-12">
+        <p><?php truncate(get_the_excerpt(),15,'...'); ?>
+        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">Continued</a></p>
+        <p class="date">
+        <?php
+        //Used post date but also have control for date published.
+        //echo get_the_date('F j');
+        ?> <?php edit_post_link(); ?>
+        </p>
+    </div>
 </div>
