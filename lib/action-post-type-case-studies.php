@@ -21,8 +21,8 @@ function case_studies() {
 		'label'               => __( 'case_studies', 'text_domain' ),
 		'description'         => __( 'Study of Cases', 'text_domain' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', ),
-		'taxonomies'          => array( 'category', 'post_tag' ),
+		'supports'            => array( 'title', 'editor', 'thumbnail' ),
+		'taxonomies'          => array('archive_tax'),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
@@ -36,6 +36,7 @@ function case_studies() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'page',
+		
 	);
 	register_post_type( 'case_studies', $args );
 

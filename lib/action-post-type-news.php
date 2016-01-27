@@ -22,7 +22,7 @@ function news_posts() {
 		'description'         => __( 'New articles', 'text_domain' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'excerpt', 'thumbnail', ),
-		'taxonomies'          => array( 'post_tag' ),
+		'taxonomies'          => array( 'archive_tax' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,

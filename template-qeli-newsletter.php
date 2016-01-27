@@ -18,6 +18,6 @@ Template Name: QELi News Letter
 		</div>
 	</div>
 	<hr>
-	<?php get_template_part('archive', 'newsletter'); ?>
+	<?php get_template_part('archive', 'newsletters'); ?>
 </article>
 <?php endwhile; ?>

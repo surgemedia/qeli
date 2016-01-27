@@ -7,7 +7,7 @@
 				// TODO JW - this query should pull the news items published in the last 7 days
 				// WP_Query arguments
 				$args = array (
-				'post_type'              => 'news_article',
+				'post_type'              => 'case_studies',
 				'pagination'             => false,
 				'posts_per_page'         => '12',
 				);
@@ -16,7 +16,7 @@
 				if ( $query->have_posts() ) {
 						while ( $query->have_posts() ) {
 						$query->the_post();
-						get_template_part('templates/content-post-type-post-block-news', 'listing');
+						get_template_part('templates/content-post-type-post', 'case-study');
 						}
 						} else {
 						get_template_part('templates/content', 'no-posts');
@@ -35,10 +35,10 @@
                     </section>
                     <section class="widget archives widget_archive">
                         <?php
-                       	  $archive_pt = 'news_article';
+                          	  $archive_pt = 'case_studies';
                            include(locate_template('templates/part-archive_tax-list.php'));
                             unset($archive_pt );
-
+                            
                         ?>
                     </section>
                     </aside><!-- /.sidebar -->

@@ -3,6 +3,29 @@
 - `grunt watch` watches for file changes.
 - added Bugherd Commit Hook
 
+---
+###Update
+__Home page__
+Promotion panel - make link update option
+
+__Programs__
+QELI Newsletter – move newsletters in to Archives (archive2014 articles) 
+
+__Home page__
+- Create blog panel based on News panel
+
+__Programs page__
+- Merge Our Programs & Program Catalogue and apply Scheduled Programs dropdown 
+
+__Case study integration__
+- Add case study panel to program pages, develop case study landing and details page based on blog template 
+- Add case study lisings to the Customised Programs and Specialist Services pages
+
+QELi Talks
+- add ability to filter like Our Community page - outsource to BCD if required
+
+---
+
 For Markup Basics [Click Here](https://help.github.com/articles/markdown-basics/)
 
 <h2>Git Setup</h2>

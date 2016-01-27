@@ -7,7 +7,7 @@ get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
 			<li>
 				<a href="/program-catalogue/"><i class="qeli-icon-enroll"></i>
 				<small class="">>></small>
-				<span class="">enroll</span>
+				<span class="">enrol</span>
 				</a>
 			</li>
 			<li>

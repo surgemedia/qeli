@@ -43,10 +43,40 @@ Template Name: Qeli Talks/Videos
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-lg-2 col-sm-2 col-xs-2">
+					<div class="row">
+
+						<ul class="video-filter">
+							<li><a href="#" class="selected" data-term="clear">All Videos</a></li>
+							<?php
+							$args = array( 'hide_empty=0' );
+							$terms = get_terms( 'video_tag', $args );
+							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+								$count = count( $terms );
+								$i = 0;
+								$term_list = "";
+								foreach ( $terms as $term ) {
+									$i++;
+									$term_list .= '<li><a data-term="' . $term->name . '" href="' . get_term_link( $term ) . '" title="' . sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) . '">' . $term->name . '</a></li>';
+									
+									if ( $count != $i ) {
+
+									}
+									else {
+
+									}
+								}
+								echo $term_list;
+							}?>
+						</ul>
+					</div>
+				</div>
+
+					<div class=" col-sm-10 col-xs-12">
 						<?php the_content(); ?>
 					</div>
 					<hr class="spacer">
+					<div class="col-xs-12 col-lg-10">
 					<?php
 					// WP_Query arguments
 					$args = array (
@@ -83,6 +113,7 @@ Template Name: Qeli Talks/Videos
 					// Restore original Post Data
 					wp_reset_postdata();
 					?>
+				</div>
 				</div>
 			</div>
 		</article>
