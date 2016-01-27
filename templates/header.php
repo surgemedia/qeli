@@ -5,7 +5,7 @@ get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
 	<div id="login-nav-container" class="container">
 		<ul class="login-nav  nav navbar navbar-nav pull-right">
 			<li>
-				<a href="/program-catalogue/"><i class="qeli-icon-enroll"></i>
+				<a href="/our-programs/"><i class="qeli-icon-enroll"></i>
 				<small class="">>></small>
 				<span class="">enrol</span>
 				</a>
@@ -32,7 +32,7 @@ get_template_part('templates/part', 'trimming-stripe-rainbow'); ?>
 				
 		<ul class="login-nav-buttons hidden-md hidden-lg nav navbar navbar-nav pull-right">
 			<li>
-				<a href="/program-catalogue/"><i class="qeli-icon-enroll"></i>
+				<a href="/our-programs/"><i class="qeli-icon-enroll"></i>
 				</a>
 			</li>
 			<li>

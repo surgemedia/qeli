@@ -20,7 +20,9 @@
     <div class="row">
       <div class="col-xs-12">
         <?php get_template_part('templates/content', 'lead'); ?>
+        <?php the_content(); ?>
         <?php the_field('body_text'); ?>
+
       <div class="col-xs-12">
        <!-- <h3>Participants</h3> -->
         <?php the_field('participants') ?>
