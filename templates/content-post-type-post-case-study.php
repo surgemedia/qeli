@@ -1,5 +1,5 @@
 <?php 
-	if(0 != strlen( get_field('body_text')) ){ 
+	if(0 != strlen( get_field('body_text')) OR 0 != strlen( get_field('header_text')) ){ 
 		$the_link = get_the_permalink(); } else { $the_link = 'javascript:void(0)'; }
  ?>
 <h3>
@@ -13,3 +13,4 @@
 
 <p><?php edit_post_link(); ?></p>
 <hr> 
+
